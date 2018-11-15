@@ -19,25 +19,29 @@
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <div class="header">
+    <div class="main-wrapper"></div>
+        <!-- <div class="header">
             <h1>Vue Shopping Cart</h1>
-        </div>
+        </div> -->
         <div id="vue">
             <v-card>
-                <v-container xs10 justify-space-around>
+                <v-container xs12>
                     <v-layout row wrap>
                         <v-layout column>
                             <v-flex v-for="product in products">
-                                <v-expansion-panel expand=true>
+                                <!-- <v-expansion-panel expand=true> -->
                                     <v-card color="blue-grey darken-2" class="white--text">
                                         <v-card-title primary-title>
+                                            <!-- product name -->
                                             <div class="headline">{{product.product}}</div>
+                                            <!-- description -->
                                             <div>{{ product.description }}</div>
                                         </v-card-title>
                                         <v-card-actions>
+                                            <!-- early price button + add to cart -->
                                             <v-btn v-on:click="addToCart(product);" flat dark v-if="Date.now() < new Date(product.earlybirdends)">{{
                                                 $n(product.priceearly, 'currency') }}</v-btn>
+                                                <!-- price button + add to cart-->
                                             <v-btn v-on:click="product.incart = 1; cart.push(product);" flat dark v-else>{{
                                                 $n(product.price, 'currency') }}</v-btn>
                                             <p v-if="product.incart > 0">{{ product.incart }} in package <v-btn flat dark v-on:click="product.incart = 0">
@@ -45,7 +49,7 @@
                                             </p>
                                         </v-card-actions>
                                     </v-card>
-                                </v-expansion-panel>
+                                <!-- </v-expansion-panel> -->
                             </v-flex>
                         </v-layout>
                         
@@ -72,9 +76,13 @@
     
                 </v-container>
                 <v-container>
+                    <v-card v-if="saved">
+                        Saved: {{$n(total, 'currency')}}
+                    </v-card>
                     <v-card>
                         Total: {{$n(total, 'currency')}}
                     </v-card>
+                    
                 </v-container>
             </v-card>
         </div>

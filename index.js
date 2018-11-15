@@ -22,40 +22,40 @@ var vue = new Vue({
     data: {
         products: [
             {
-                product: "ANZA",
+                name: "ANZA",
                 price: 6900,
                 priceearly: 3900,
                 currency: "AUD",
                 description: "ANZA Workshop description text goes here",
                 earlybirdends: 20200320,
-                incart: 0
+                incart: false
             },
             {
-                product: "Berlin",
+                name: "Berlin",
                 price: 6900,
                 priceearly: 3900,
                 currency: "AUD",
                 description: "Berlin Workshop description text goes here",
                 earlybirdends: 20190311,
-                incart: 0
+                incart: false
             },
             {
-                product: "Beijing",
+                name: "Beijing",
                 price: 6900,
                 priceearly: 3900,
                 currency: "AUD",
                 description: "Beijing Workshop description text goes here",
                 earlybirdends: 20190311,
-                incart: 0
+                incart: false
             },
             {
-                product: "Miami",
+                name: "Miami",
                 price: 6900,
                 priceearly: 3900,
                 currency: "AUD",
                 description: "Miami Workshop description text goes here",
                 earlybirdends: 20190311,
-                incart: 0
+                incart: false
             }
         ],
         addons: [
@@ -73,8 +73,10 @@ var vue = new Vue({
     },
     methods: {
         addToCart: function (product) {
+            product.incart = true;
             this.cart.push(product);
-            this.products = this.products.filter(m => m.product !== product.product);
+            this.products = this.products.filter(m => m.product != product.product);
+            console.log(this.products)
             let price, difference;
             if (Date.now() > new Date(product.earlybirdends)) {
                 new Date(product.earlybirdends)
@@ -103,12 +105,13 @@ var vue = new Vue({
                         difference = product.price * 0.27;
                 }
             }
-            else price = product.priceearly;
+            else { price = priceearly };
             this.total += price;
             this.saved += difference;
 
         },
         removeFromCart: function (product) {
+            product.incart = false;
             this.cart = this.cart.filter(m => m.product !== product.product);
             this.products.push(product);
             this.products.sort((a, b) => { return a.product - b.product })
