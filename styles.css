@@ -4,6 +4,10 @@
     font-family: Roboto;
 }
 
+body {
+    background-color: #eef0f3;
+}
+
 .headline {
     margin-right: 3%;
 }
@@ -11,6 +15,7 @@
 .main-wrapper {
     max-width: 1140px;
     margin: 0 auto;
+    background: #eef0f3;
 }
 
 .layout.column {
@@ -51,6 +56,14 @@
     overflow-y: hidden;
     max-width: 840px;
     margin: 0 auto;
+}
+
+table.v-table {
+    background-color: transparent!important;
+}
+
+.events {
+    background-color: transparent!important;
 }
 
 .attendance {

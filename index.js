@@ -24,17 +24,28 @@ var vue = new Vue({
             {
                 id: 1,
                 name: "ANZA",
+                priceearly: 3400,
                 price: 6900,
-                priceearly: 3900,
                 currency: "AUD",
                 description: "ANZA Workshop description text goes here",
                 earlybirdends: 20200320,
                 incart: 0,
-                schedules: 0,
-                additionalPeople: 0,
-                attendance: {
-                    schedules: 0,
-                    additionalPeople: 0
+                quantity: 0,
+                subtotal: 0,
+                tables: {
+                    price: 6900,
+                    priceearly: 5600,
+                    quantity: 0,
+                    schedules: {
+                        name: "ANZA Schedule",
+                        quantity: 1,
+                        price: 2400
+                    },
+                    additionalPeople: {
+                        name: "ANZA additional person",
+                        quantity: 0,
+                        price: 990
+                    },
                 },
                 additional: []
             },
@@ -48,7 +59,7 @@ var vue = new Vue({
                 earlybirdends: 20190311,
                 incart: 0,
                 attendance: {
-                    schedules: 0,
+                    schedules: 1,
                     additionalPeople: 0
                 },
                 additional: []
@@ -63,7 +74,7 @@ var vue = new Vue({
                 earlybirdends: 20190311,
                 incart: 0,
                 attendance: {
-                    schedules: 0,
+                    schedules: 1,
                     additionalPeople: 0
                 },
                 additional: []
@@ -78,7 +89,7 @@ var vue = new Vue({
                 earlybirdends: 20190311,
                 incart: 0,
                 attendance: {
-                    schedules: 0,
+                    schedules: 1,
                     additionalPeople: 0
                 },
                 additional: []
@@ -116,50 +127,24 @@ var vue = new Vue({
         saved: 0
     },
     methods: {
-        addToCart: function (product) {
+        addToCart: function (product, subitem, selector) {
+            let cartitem = Object.assign({},product); //make copy of product
+            this.cart.push(cartitem); //push copy of product into cart
+            cartitem.subtotal = subitem.price; //
+            cartitem.price = subitem.price;
+            this.total += subitem.price;
+            subitem.quantity++;
             product.incart++;
-            product.attendance.schedules++;
-            product.attendance.additionalPeople = 0;
-            this.cart.push(product);
-            // console.log(this.products)
-            // let price, difference;
-            // if (Date.now() > new Date(product.earlybirdends)) {
-            //     new Date(product.earlybirdends)
-            //     switch (this.cart.length) {
-            //         case '1':
-            //             price = product.price;
-            //             difference = 0;
-            //         case '2':
-            //             price = product.price * 0.82;
-            //             difference = product.price * 0.18;
-            //             break;
-            //         case '3':
-            //             price = product.price * 0.8;
-            //             difference = product.price * 0.2;
-            //             break;
-            //         case '4':
-            //             price = product.price * 0.77;
-            //             difference = product.price * 0.23;
-            //             break;
-            //         case '5':
-            //             price = product.price * 0.75;
-            //             difference = product.price * 0.25;
-            //             break;
-            //         default:
-            //             price = product.price * 0.73;
-            //             difference = product.price * 0.27;
-            //     }
-            // }
-            // else { price = priceearly };
-            this.total += product.price;
         },
-        removeFromCart: function (product) {
-            product.incart--;
-            product.attendance.schedules--;
-            this.total -= product.price;
-            if (product.incart == 0) {
-                this.absoluteRemoveFromCart(product);
-            }
+        removeFromCart: function (product, subitem, selector) {
+            if (selector == 'schedules' && product.tables.schedules == 1) { return; }
+
+            // product.incart--;
+            // product.attendance.schedules--;
+            // this.total -= product.price;
+            // if (product.incart == 0) {
+            //     this.absoluteRemoveFromCart(product);
+            // }
         },
         absoluteRemoveFromCart: function (product){
             product.attendance.additionalPeople = 0;
@@ -171,27 +156,39 @@ var vue = new Vue({
             product.incart = 0;
             let position = this.cart.indexOf(product);
             this.cart.splice(position, 1);
-        },
-        addSchedule: function (product) {
-            product.attendance.schedules++;
-            product.incart++;
-            this.total += product.price;
-        },
-        removeSchedule: function (product) {
-            product.attendance.schedules--;
-            this.total -= product.price;
-            if (product.attendance.schedules == 0){
-                this.removeFromCart(product);
-            }
-        },
-        addPerson: function (product) {
-            product.attendance.schedules++;
-        },
-        removePerson: function (product) {
-            product.attendance.schedules--;
         }
     }
-}).$mount('#vue')
+}).$mount('#vue');
+
+//everything below this line will apply to multiple workshop discounts:
+
+// if (Date.now() > new Date(product.earlybirdends)) {
+//     new Date(product.earlybirdends)
+//     switch (this.cart.length) {
+//         case '1':
+//             price = product.price;
+//             difference = 0;
+//         case '2':
+//             price = product.price * 0.82;
+//             difference = product.price * 0.18;
+//             break;
+//         case '3':
+//             price = product.price * 0.8;
+//             difference = product.price * 0.2;
+//             break;
+//         case '4':
+//             price = product.price * 0.77;
+//             difference = product.price * 0.23;
+//             break;
+//         case '5':
+//             price = product.price * 0.75;
+//             difference = product.price * 0.25;
+//             break;
+//         default:
+//             price = product.price * 0.73;
+//             difference = product.price * 0.27;
+//     }
+// }
 
 
 
