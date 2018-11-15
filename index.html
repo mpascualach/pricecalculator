@@ -35,12 +35,21 @@
                 :items="cart">
 
                 <template slot="items" slot-scope="props">
-                    <td>{{props.item.name}}</td>
-                    <td>€{{props.item.price}}</td>
-                    <td>{{props.item.quantity}}</td>
-                    <td>€{{props.item.subtotal}}</td>
-                    <td><v-btn class="add-to-package" v-on:click="removeFromCart(props.item)">REMOVE</v-btn></td>
-                    <!-- <tr v-if="props.item.additional.length">
+                    <tr>
+                        <td>{{props.item.name}} <br /> <sub>(includes 1 schedule)</sub> </td>
+                        <td>€{{props.item.price}}</td>
+                        <td>{{props.item.quantity}}</td>
+                        <td>€{{props.item.subtotal}}</td>
+                        <td><v-btn class="add-to-package" v-on:click="removeFromCart(props.item)">REMOVE</v-btn></td>
+                    </tr>
+                    <tr v-if="props.item.schedules.quantity > 1">
+                        <td>{{props.item.schedules.name}}</td>
+                        <td>€{{props.item.schedules.price}}</td>
+                        <td>{{props.item.schedules.quantity}}</td>
+                        <td>{{props.item.schedules.price * props.item.schedules.quantity}}</td>
+                        <td></td>
+                    </tr>
+                        <!-- <tr v-if="props.item.additional.length">
                         test
                     </tr> -->
                 </template>    
@@ -77,7 +86,7 @@
                                         </div>
                                         <div class="attendance" v-if="product.incart > 0">
                                             <div class="attendance schedules">
-                                                <i class="fa fa-calendar-o"></i> Schedules: 
+                                                <i class="fa fa-calendar-o"></i> Additional schedules: 
                                                 <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')"></i> 
                                                 <span>{{ product.tables.schedules.quantity }}</span> 
                                                 <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.schedules)"></i>

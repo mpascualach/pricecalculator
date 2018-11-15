@@ -41,7 +41,7 @@ var vue = new Vue({
                     schedules: {
                         id: 1,
                         name: "ANZA Schedule",
-                        quantity: 1,
+                        quantity: 0,
                         price: 2400
                     },
                     additionalPeople: {
@@ -63,7 +63,7 @@ var vue = new Vue({
                 earlybirdends: 20190311,
                 incart: 0,
                 attendance: {
-                    schedules: 1,
+                    schedules: 0,
                     additionalPeople: 0
                 },
                 additional: []
@@ -78,7 +78,7 @@ var vue = new Vue({
                 earlybirdends: 20190311,
                 incart: 0,
                 attendance: {
-                    schedules: 1,
+                    schedules: 0,
                     additionalPeople: 0
                 },
                 additional: []
@@ -93,7 +93,7 @@ var vue = new Vue({
                 earlybirdends: 20190311,
                 incart: 0,
                 attendance: {
-                    schedules: 1,
+                    schedules: 0,
                     additionalPeople: 0
                 },
                 additional: []
@@ -156,13 +156,7 @@ var vue = new Vue({
             // }
         },
         addSubItem: function (product, subitem, selector) {
-                var cartitem = Object.assign({}, subitem); //make copy of product
-                this.cart.push(cartitem); //push copy of product into cart
-                cartitem.price = subitem.price; //log price of subitem and assign it to copy's price
-                cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
-                this.total += subitem.price;
                 subitem.quantity++;
-                product.incart++;
             },
         removeSubItem: function (product, subitem, selector) {
             if (selector == 'schedules' && product.tables.schedules == 1) {
