@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 * {
     font-family: Roboto;
 }
@@ -16,10 +18,37 @@
 }
 
 .layout.column>.flex {
-    max-width: 70%!important;
-    margin-bottom: 5%;
+    margin-bottom: 1%;
+}
+
+.v-card.theme--light {
+    display: flex;
+    justify-content: space-between;
 }
 
 .white--text.v-card.theme--light.blue-grey.darken-2 {
     width: 100%;
+}
+
+.product-info {
+    display: flex;
+    font-size: 1.4em;
+    width: 120%;
+    justify-content: space-between;
+    margin-top: 13%;
+    margin-left: 6%;
+}
+
+.add-to-package {
+    background-color: transparent !important;
+    border: 0px transparent !important;
+    box-shadow: none !important;
+}
+
+.v-table__overflow {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 840px;
+    margin: 0 auto;
 }
