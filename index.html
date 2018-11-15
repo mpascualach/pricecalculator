@@ -68,12 +68,18 @@
                                                 €{{ product.price }}
                                             </div>
                                         </div>
-                                        <div>
-
+                                        <div class="attendance" v-if="product.incart > 0">
+                                            <div class="attendance schedules">
+                                                <i class="fal fa-calendar"> </i> Schedules: {{ product.attendance.schedules }}
+                                            </div>
+                                            <div class="attendance additional-people">
+                                                <i class="fal fa-calendar"> </i> Additional people: {{ product.attendance.schedules }}
+                                            </div>
                                         </div>
                                     </div>
                                    <v-card-actions>
-                                       <v-btn class="add-to-package" v-on:click="addToCart(product)">Add to package</v-btn>
+                                        <v-btn class="add-to-package" v-on:click="addToCart(product)" v-if="!product.incart">Add to package</v-btn>
+                                        <v-btn class="add-to-package" v-on:click="addToCart(product)" v-if="product.incart">Remove</v-btn>
                                    </v-card-actions>
                                 </v-card>
 

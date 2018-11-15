@@ -22,6 +22,7 @@ var vue = new Vue({
     data: {
         products: [
             {
+                id: 1,
                 name: "ANZA",
                 price: 6900,
                 priceearly: 3900,
@@ -29,34 +30,54 @@ var vue = new Vue({
                 description: "ANZA Workshop description text goes here",
                 earlybirdends: 20200320,
                 incart: 0,
-                
+                schedules: 0,
+                additionalPeople: 0,
+                attendance: {
+                    schedules: 0,
+                    additionalPeople: 0
+                } 
             },
             {
+                id: 2,
                 name: "Berlin",
                 price: 6900,
                 priceearly: 3900,
                 currency: "AUD",
                 description: "Berlin Workshop description text goes here",
                 earlybirdends: 20190311,
-                incart: 0
+                incart: 0,
+                attendance: {
+                    schedules: 0,
+                    additionalPeople: 0
+                }
             },
             {
+                id: 3,
                 name: "Beijing",
                 price: 6900,
                 priceearly: 3900,
                 currency: "AUD",
                 description: "Beijing Workshop description text goes here",
                 earlybirdends: 20190311,
-                incart: 0
+                incart: 0,
+                attendance: {
+                    schedules: 0,
+                    additionalPeople: 0
+                }
             },
             {
+                id: 4,
                 name: "Miami",
                 price: 6900,
                 priceearly: 3900,
                 currency: "AUD",
                 description: "Miami Workshop description text goes here",
                 earlybirdends: 20190311,
-                incart: 0
+                incart: 0,
+                attendance: {
+                    schedules: 0,
+                    additionalPeople: 0
+                }
             }
         ],
         addons: [
@@ -90,8 +111,8 @@ var vue = new Vue({
     methods: {
         addToCart: function (product) {
             product.incart++;
+            product.attendance.schedules++;
             this.cart.push(product);
-            // this.products = this.products.filter(m => { return m.product != product.product});
             // console.log(this.products)
             // let price, difference;
             // if (Date.now() > new Date(product.earlybirdends)) {
@@ -123,13 +144,15 @@ var vue = new Vue({
             // }
             // else { price = priceearly };
             this.total += product.price;
-            this.saved += difference;
         },
         removeFromCart: function (product) {
             product.incart = false;
             this.cart = this.cart.filter(m => m.product !== product.product);
             this.products.push(product);
             this.products.sort((a, b) => { return a.product - b.product })
+        },
+        addSchedule: function (product) {
+            product.attendance.schedules++;
         }
     }
 }).$mount('#vue')
