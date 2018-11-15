@@ -1,0 +1,25 @@
+* {
+    font-family: Roboto;
+}
+
+.headline {
+    margin-right: 3%;
+}
+
+.main-wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.layout.column {
+    margin-right: 5%;
+}
+
+.layout.column>.flex {
+    max-width: 70%!important;
+    margin-bottom: 5%;
+}
+
+.white--text.v-card.theme--light.blue-grey.darken-2 {
+    width: 100%;
+}
