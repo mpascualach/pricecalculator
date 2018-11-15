@@ -33,15 +33,19 @@ var vue = new Vue({
                 quantity: 0,
                 subtotal: 0,
                 tables: {
+                    id: 1,
+                    name: "ANZA Table",
                     price: 6900,
                     priceearly: 5600,
                     quantity: 0,
                     schedules: {
+                        id: 1,
                         name: "ANZA Schedule",
                         quantity: 1,
                         price: 2400
                     },
                     additionalPeople: {
+                        id: 1,
                         name: "ANZA additional person",
                         quantity: 0,
                         price: 990
@@ -128,16 +132,21 @@ var vue = new Vue({
     },
     methods: {
         addToCart: function (product, subitem, selector) {
-            let cartitem = Object.assign({},product); //make copy of product
+            var cartitem = Object.assign({}, subitem); //make copy of product
             this.cart.push(cartitem); //push copy of product into cart
-            cartitem.subtotal = subitem.price; //
-            cartitem.price = subitem.price;
+            cartitem.price = subitem.price; //log price of subitem and assign it to copy's price
+            cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
             this.total += subitem.price;
             subitem.quantity++;
             product.incart++;
         },
         removeFromCart: function (product, subitem, selector) {
-            if (selector == 'schedules' && product.tables.schedules == 1) { return; }
+            if (selector == 'schedules' && product.tables.schedules == 1) {
+                return;
+            }
+
+            //search for corresponding product copy in cart and remove it from cart (via filter?)
+
 
             // product.incart--;
             // product.attendance.schedules--;
@@ -146,17 +155,41 @@ var vue = new Vue({
             //     this.absoluteRemoveFromCart(product);
             // }
         },
-        absoluteRemoveFromCart: function (product){
-            product.attendance.additionalPeople = 0;
-            product.attendance.schedules = 0;
-            while (product.incart !== 0){
-                product.incart--;
-                this.total -= product.price;
+        addSubItem: function (product, subitem, selector) {
+                var cartitem = Object.assign({}, subitem); //make copy of product
+                this.cart.push(cartitem); //push copy of product into cart
+                cartitem.price = subitem.price; //log price of subitem and assign it to copy's price
+                cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
+                this.total += subitem.price;
+                subitem.quantity++;
+                product.incart++;
+            },
+        removeSubItem: function (product, subitem, selector) {
+            if (selector == 'schedules' && product.tables.schedules == 1) {
+                return;
             }
-            product.incart = 0;
-            let position = this.cart.indexOf(product);
-            this.cart.splice(position, 1);
-        }
+
+            //search for corresponding product copy in cart and remove it from cart (via filter?)
+
+
+            // product.incart--;
+            // product.attendance.schedules--;
+            // this.total -= product.price;
+            // if (product.incart == 0) {
+            //     this.absoluteRemoveFromCart(product);
+            // }
+        },
+        // absoluteRemoveFromCart: function (product){
+        //     product.attendance.additionalPeople = 0;
+        //     product.attendance.schedules = 0;
+        //     while (product.incart !== 0){
+        //         product.incart--;
+        //         this.total -= product.price;
+        //     }
+        //     product.incart = 0;
+        //     let position = this.cart.indexOf(product);
+        //     this.cart.splice(position, 1);
+        // }
     }
 }).$mount('#vue');
 
