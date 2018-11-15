@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons">
+    <link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css">
+    <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css"> -->
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
@@ -37,7 +39,7 @@
                     <td>€{{props.item.price}}</td>
                     <td>{{props.item.incart}}</td>
                     <td>€{{props.item.price * props.item.incart}}</td>
-                    <td><v-btn class="add-to-package">REMOVE</v-btn></td>
+                    <td><v-btn class="add-to-package" v-on:click="removeFromCart(props.item)">REMOVE</v-btn></td>
                 </template>    
 
                 <template slot="footer">
@@ -70,16 +72,19 @@
                                         </div>
                                         <div class="attendance" v-if="product.incart > 0">
                                             <div class="attendance schedules">
-                                                <i class="fal fa-calendar"> </i> Schedules: {{ product.attendance.schedules }}
+                                                <i class="fa fa-calendar-o"></i> Schedules: 
+                                                <i class="fa fa-minus-square smaller" v-on:click="removeSchedule(product)"></i> 
+                                                <span>{{ product.attendance.schedules }}</span> 
+                                                <i class="fa fa-plus-square smaller" v-on:click="addSchedule(product)"></i>
                                             </div>
                                             <div class="attendance additional-people">
-                                                <i class="fal fa-calendar"> </i> Additional people: {{ product.attendance.schedules }}
+                                                <i class="fa fa-id-card"></i> </i> Additional people: <i class="fa fa-minus-square smaller"></i> <span> {{ product.attendance.additionalPeople }} </span> <i class="fa fa-plus-square smaller"></i>
                                             </div>
                                         </div>
                                     </div>
                                    <v-card-actions>
                                         <v-btn class="add-to-package" v-on:click="addToCart(product)" v-if="!product.incart">Add to package</v-btn>
-                                        <v-btn class="add-to-package" v-on:click="addToCart(product)" v-if="product.incart">Remove</v-btn>
+                                        <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(product)" v-if="product.incart">Remove</v-btn>
                                    </v-card-actions>
                                 </v-card>
 

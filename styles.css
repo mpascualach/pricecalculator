@@ -58,5 +58,25 @@
 }
 
 .v-datatable__actions {
-    display: none;
+    display: none !important;
+}
+
+.blue--text.v-card.theme--light {
+    width: 100%;
+}
+
+img.icef-pricer-logo {
+    height: 180px;
+}
+
+.blue--text.v-card.theme--light {
+    border-radius: 5px;
+}
+
+.theme--light.v-table thead tr:first-child {
+    border: none!important;
+}
+
+table.v-table thead tr {
+    height: unset!important;
 }

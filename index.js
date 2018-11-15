@@ -35,7 +35,8 @@ var vue = new Vue({
                 attendance: {
                     schedules: 0,
                     additionalPeople: 0
-                } 
+                },
+                additional: []
             },
             {
                 id: 2,
@@ -49,7 +50,8 @@ var vue = new Vue({
                 attendance: {
                     schedules: 0,
                     additionalPeople: 0
-                }
+                },
+                additional: []
             },
             {
                 id: 3,
@@ -63,7 +65,8 @@ var vue = new Vue({
                 attendance: {
                     schedules: 0,
                     additionalPeople: 0
-                }
+                },
+                additional: []
             },
             {
                 id: 4,
@@ -77,7 +80,8 @@ var vue = new Vue({
                 attendance: {
                     schedules: 0,
                     additionalPeople: 0
-                }
+                },
+                additional: []
             }
         ],
         addons: [
@@ -93,15 +97,18 @@ var vue = new Vue({
             { text: 'Name', value: 'name', sortable: false },
             {
                 text: 'Price',
-                value: 'price'
+                value: 'price',
+                sortable: false,
             },
             {
                 text: 'Qty',
-                value: 'qty'
+                value: 'qty',
+                sortable: false
             },
             {
                 text: 'SubTotal',
-                value: 'subTotal'
+                value: 'subTotal',
+                sortable: false
             },
         ], 
         cart: [], //it starts empty
@@ -112,6 +119,7 @@ var vue = new Vue({
         addToCart: function (product) {
             product.incart++;
             product.attendance.schedules++;
+            product.attendance.additionalPeople = 0;
             this.cart.push(product);
             // console.log(this.products)
             // let price, difference;
@@ -146,13 +154,41 @@ var vue = new Vue({
             this.total += product.price;
         },
         removeFromCart: function (product) {
-            product.incart = false;
-            this.cart = this.cart.filter(m => m.product !== product.product);
-            this.products.push(product);
-            this.products.sort((a, b) => { return a.product - b.product })
+            product.incart--;
+            product.attendance.schedules--;
+            this.total -= product.price;
+            if (product.incart == 0) {
+                this.absoluteRemoveFromCart(product);
+            }
+        },
+        absoluteRemoveFromCart: function (product){
+            product.attendance.additionalPeople = 0;
+            product.attendance.schedules = 0;
+            while (product.incart !== 0){
+                product.incart--;
+                this.total -= product.price;
+            }
+            product.incart = 0;
+            let position = this.cart.indexOf(product);
+            this.cart.splice(position, 1);
         },
         addSchedule: function (product) {
             product.attendance.schedules++;
+            product.incart++;
+            this.total += product.price;
+        },
+        removeSchedule: function (product) {
+            product.attendance.schedules--;
+            this.total -= product.price;
+            if (product.attendance.schedules == 0){
+                this.removeFromCart(product);
+            }
+        },
+        addPerson: function (product) {
+            product.attendance.schedules++;
+        },
+        removePerson: function (product) {
+            product.attendance.schedules--;
         }
     }
 }).$mount('#vue')
