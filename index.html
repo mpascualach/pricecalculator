@@ -44,7 +44,7 @@
                                                 <!-- price button + add to cart-->
                                             <v-btn v-on:click="product.incart = 1; cart.push(product);" flat dark v-else>{{
                                                 $n(product.price, 'currency') }}</v-btn>
-                                            <p v-if="product.incart > 0">{{ product.incart }} in package <v-btn flat dark v-on:click="product.incart = 0">
+                                            <p v-if="product.incart > 0"><v-btn flat dark v-on:click="product.incart = 0">
                                                     remove </v-btn>
                                             </p>
                                         </v-card-actions>

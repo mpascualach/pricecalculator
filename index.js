@@ -75,7 +75,7 @@ var vue = new Vue({
         addToCart: function (product) {
             product.incart = true;
             this.cart.push(product);
-            this.products = this.products.filter(m => m.product != product.product);
+            this.products = this.products.filter(m => { return m.product != product.product});
             console.log(this.products)
             let price, difference;
             if (Date.now() > new Date(product.earlybirdends)) {
