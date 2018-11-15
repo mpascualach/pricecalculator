@@ -51,11 +51,12 @@ body {
 }
 
 .v-table__overflow {
-    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     max-width: 840px;
     margin: 0 auto;
+  	width: 50% !important;
+ 	 float: right;
 }
 
 table.v-table {
@@ -92,4 +93,11 @@ img.icef-pricer-logo {
 
 table.v-table thead tr {
     height: unset!important;
+}
+
+.theme--light.v-card {
+  background-color: #fff;
+  border-color: #fff;
+  color: rgba(0,0,0,.87);
+  width: 50%;
 }

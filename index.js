@@ -21,53 +21,70 @@ var vue = new Vue({
     i18n,
     data: {
         products: [
-            {
-                id: 1,
-                name: "ANZA",
-                priceearly: 3400,
-                price: 6900,
-                currency: "AUD",
-                description: "ANZA Workshop description text goes here",
-                earlybirdends: 20200320,
-                incart: 0,
-                quantity: 0,
-                subtotal: 0,
-                tables: {
-                    id: 1,
-                    name: "ANZA Table",
-                    price: 6900,
-                    priceearly: 5600,
-                    quantity: 0,
-                    schedules: {
-                        id: 1,
-                        name: "ANZA Schedule",
-                        quantity: 0,
-                        price: 2400
-                    },
-                    additionalPeople: {
-                        id: 1,
-                        name: "ANZA additional person",
-                        quantity: 0,
-                        price: 990
-                    },
-                },
-                additional: []
-            },
-            {
-                id: 2,
-                name: "Berlin",
-                price: 6900,
-                priceearly: 3900,
-                currency: "AUD",
-                description: "Berlin Workshop description text goes here",
-                earlybirdends: 20190311,
-                incart: 0,
-                attendance: {
-                    schedules: 0,
-                    additionalPeople: 0
-                },
-                additional: []
-            },
+					{
+							id: 1,
+							name: "ANZA",
+							priceearly: 3400,
+							price: 6900,
+							currency: "AUD",
+							description: "ANZA Workshop description text goes here",
+							earlybirdends: 20200320,
+							incart: 0,
+							quantity: 0,
+							subtotal: 0,
+							tables: {
+									id: 1,
+									name: "ANZA Table",
+									price: 6900,
+									priceearly: 5600,
+									quantity: 0,
+									schedules: {
+											id: 1,
+											name: "ANZA Additional Schedule",
+											quantity: 0,
+											price: 2400
+									},
+									additionalPeople: {
+											id: 1,
+											name: "ANZA Additional Person",
+											quantity: 0,
+											price: 990
+									},
+							},
+							additional: []
+						},
+						{
+								id: 2,
+								name: "Berlin",
+								priceearly: 3900,
+								price: 4400,
+								currency: "EUR",
+								description: "Berlin Workshop description text goes here",
+								earlybirdends: 20190311,
+								incart: 0,
+								quantity: 0,
+								subtotal: 0,
+								tables: {
+										id: 2,
+										name: "Berlin Table",
+										price: 4400,
+										priceearly: 3900,
+										quantity: 0,
+										schedules: {
+												id: 2,
+												name: "Berlin Additional Schedule",
+												quantity: 0,
+												price: 2400
+										},
+										additionalPeople: {
+												id: 2,
+												name: "Berlin Additional Person",
+												quantity: 0,
+												price: 990
+										},
+								},
+								additional: []
+						},
             {
                 id: 3,
                 name: "Beijing",
@@ -138,12 +155,10 @@ var vue = new Vue({
             cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
             this.total += subitem.price;
             subitem.quantity++;
+            cartitem.quantity++;
             product.incart++;
         },
         removeFromCart: function (product, subitem, selector) {
-            if (selector == 'schedules' && product.tables.schedules == 1) {
-                return;
-            }
 
             //search for corresponding product copy in cart and remove it from cart (via filter?)
 
@@ -156,12 +171,10 @@ var vue = new Vue({
             // }
         },
         addSubItem: function (product, subitem, selector) {
-                subitem.quantity++;
+								subitem.quantity++;
             },
         removeSubItem: function (product, subitem, selector) {
-            if (selector == 'schedules' && product.tables.schedules == 1) {
-                return;
-            }
+					subitem.quantity--;
 
             //search for corresponding product copy in cart and remove it from cart (via filter?)
 
@@ -173,17 +186,18 @@ var vue = new Vue({
             //     this.absoluteRemoveFromCart(product);
             // }
         },
-        // absoluteRemoveFromCart: function (product){
-        //     product.attendance.additionalPeople = 0;
-        //     product.attendance.schedules = 0;
+        absoluteRemoveFromCart: function (product){
+					product.tables.additionalPeople.quantity = 0;
+					product.tables.schedules.quantity = 0;
+					//     product.attendance.schedules = 0;
         //     while (product.incart !== 0){
         //         product.incart--;
         //         this.total -= product.price;
         //     }
-        //     product.incart = 0;
-        //     let position = this.cart.indexOf(product);
-        //     this.cart.splice(position, 1);
-        // }
+        product.incart = 0;
+        var position = this.cart.indexOf(product);
+        this.cart.splice(position, 1);
+        }
     }
 }).$mount('#vue');
 

@@ -42,11 +42,18 @@
                         <td>€{{props.item.subtotal}}</td>
                         <td><v-btn class="add-to-package" v-on:click="removeFromCart(props.item)">REMOVE</v-btn></td>
                     </tr>
-                    <tr v-if="props.item.schedules.quantity > 1">
+                    <tr v-if="props.item.schedules.quantity > 0">
                         <td>{{props.item.schedules.name}}</td>
                         <td>€{{props.item.schedules.price}}</td>
                         <td>{{props.item.schedules.quantity}}</td>
                         <td>{{props.item.schedules.price * props.item.schedules.quantity}}</td>
+                        <td></td>
+                    </tr>
+                    <tr v-if="props.item.additionalPeople.quantity > 0">
+                        <td>{{props.item.additionalPeople.name}}</td>
+                        <td>€{{props.item.additionalPeople.price}}</td>
+                        <td>{{props.item.additionalPeople.quantity}}</td>
+                        <td>{{props.item.additionalPeople.price * props.item.additionalPeople.quantity}}</td>
                         <td></td>
                     </tr>
                         <!-- <tr v-if="props.item.additional.length">
