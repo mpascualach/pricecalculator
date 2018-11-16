@@ -39,14 +39,14 @@
                         <td>{{props.item.name}} <br /> <sub>(includes 1 schedule)</sub> </td>
                         <td>€{{props.item.price}}</td>
                         <td>{{props.item.quantity}}</td>
-                        <td>€{{props.item.subtotal}}</td>
+                        <td>€{{props.item.price * props.item.quantity}}</td>
                         <td><v-btn class="add-to-package" v-on:click="removeFromCart(props.item)">REMOVE</v-btn></td>
                     </tr>
                     <tr v-if="props.item.schedules.quantity > 0">
                         <td>{{props.item.schedules.name}}</td>
                         <td>€{{props.item.schedules.price}}</td>
                         <td>{{props.item.schedules.quantity}}</td>
-                        <td>{{props.item.schedules.price * props.item.schedules.quantity}}</td>
+                        <td>€{{props.item.schedules.price * props.item.schedules.quantity}}</td>
                         <td></td>
                     </tr>
                     <tr v-if="props.item.additionalPeople.quantity > 0">
@@ -96,7 +96,7 @@
                                                 <i class="fa fa-calendar-o"></i> Additional schedules: 
                                                 <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')"></i> 
                                                 <span>{{ product.tables.schedules.quantity }}</span> 
-                                                <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.schedules)"></i>
+                                                <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.schedules, 'schedules')"></i>
                                             </div>
                                             <div class="attendance additional-people">
                                                 <i class="fa fa-id-card"></i> </i> Additional people: 
