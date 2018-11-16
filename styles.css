@@ -108,6 +108,10 @@ table.v-table tbody td {
     padding: 0 15px !important;
 }
 
-i.fa.fa-plus-square.smaller {
-    margin-left: 3px;
+.qty {
+    width: 70px;
+}
+
+.fa-minus-square, .fa-plus-square {
+    cursor: pointer;
 }
