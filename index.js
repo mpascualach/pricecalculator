@@ -171,32 +171,20 @@ var vue = new Vue({
             // }
         },
         addSubItem: function (product, subitem, selector) {
-								subitem.quantity++;
-            },
+            subitem.quantity++;
+            this.total += subitem.price;
+        },
         removeSubItem: function (product, subitem, selector) {
-					subitem.quantity--;
-
-            //search for corresponding product copy in cart and remove it from cart (via filter?)
-
-
-            // product.incart--;
-            // product.attendance.schedules--;
-            // this.total -= product.price;
-            // if (product.incart == 0) {
-            //     this.absoluteRemoveFromCart(product);
-            // }
+            subitem.quantity--;
+            this.toal -= subitem.price;
         },
         absoluteRemoveFromCart: function (product){
-					product.tables.additionalPeople.quantity = 0;
-					product.tables.schedules.quantity = 0;
-					//     product.attendance.schedules = 0;
-        //     while (product.incart !== 0){
-        //         product.incart--;
-        //         this.total -= product.price;
-        //     }
-        product.incart = 0;
-        var position = this.cart.indexOf(product);
-        this.cart.splice(position, 1);
+            product.tables.additionalPeople.quantity = 0;
+            product.tables.schedules.quantity = 0;
+            product.tables.quantity = 0;
+            product.incart = 0;
+            var position = this.cart.indexOf(product);
+            this.cart.splice(position, 1);
         }
     }
 }).$mount('#vue');
