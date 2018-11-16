@@ -176,7 +176,7 @@ var vue = new Vue({
             if (selector == 'schedules' && subitem.quantity > 1){
                 this.cart.forEach(m => {
                     if (m.id == product.id){
-                        m.quantity = (subitem.quantity / 2) + 1;
+                        m.quantity = Math.floor((subitem.quantity / 2) + 1);
                         this.total += m.price;
                     }
                 })
@@ -185,11 +185,12 @@ var vue = new Vue({
         removeSubItem: function (product, subitem, selector) {
             subitem.quantity--;
             this.total -= subitem.price;
-            if (selector == 'schedules' && subitem.quantity < 2){
+            if (selector == 'schedules'){
                 this.cart.forEach(m => {
                     if (m.id == product.id) {
-                        m.quantity = (subitem.quantity / 2) + 1;
-                        this.total += m.price;
+                        m.quantity = Math.floor((subitem.quantity / 2));
+                        if (subitem.quantity == 1 || subitem.quantity == 0) m.quantity = 1;
+                        if (subitem.quantity !== 0) this.total -= m.price;
                     }
                 })
             }
