@@ -32,15 +32,15 @@ var vue = new Vue({
                 incart: 0,
                 quantity: 0,
                 subtotal: 0,
+                original: true,
                 tables: {
                     id: 1,
                     name: "ANZA Table",
                     price: 6900,
                     priceearly: 5600,
-                    quantity: 0,
                     schedules: {
                         id: 1,
-                        name: "ANZA Schedule",
+                        name: "ANZA additional schedule",
                         quantity: 0,
                         price: 2400
                     },
@@ -138,6 +138,7 @@ var vue = new Vue({
             cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
             this.total += subitem.price;
             subitem.quantity++;
+            cartitem.quantity = subitem.quantity;
             product.incart++;
         },
         removeFromCart: function (product, subitem, selector) {
@@ -157,6 +158,11 @@ var vue = new Vue({
         },
         addSubItem: function (product, subitem, selector) {
                 subitem.quantity++;
+                // if (this.cart.filter(m => m.name == subitem.name).length !== 0){
+                    console.log(subitem)
+                    this.cart.push(subitem);
+                // }
+                this.total += subitem.price;
             },
         removeSubItem: function (product, subitem, selector) {
             if (selector == 'schedules' && product.tables.schedules == 1) {
