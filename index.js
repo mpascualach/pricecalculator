@@ -22,69 +22,69 @@ var vue = new Vue({
     data: {
         products: [
 					{
-							id: 1,
-							name: "ANZA",
-							priceearly: 3400,
-							price: 6900,
-							currency: "AUD",
-							description: "ANZA Workshop description text goes here",
-							earlybirdends: 20200320,
-							incart: 0,
-							quantity: 0,
-							subtotal: 0,
-							tables: {
-									id: 1,
-									name: "ANZA Table",
-									price: 6900,
-									priceearly: 5600,
-									quantity: 0,
-									schedules: {
-											id: 1,
-											name: "ANZA Additional Schedule",
-											quantity: 0,
-											price: 2400
-									},
-									additionalPeople: {
-											id: 1,
-											name: "ANZA Additional Person",
-											quantity: 0,
-											price: 990
-									},
-							},
-							additional: []
-						},
-						{
-								id: 2,
-								name: "Berlin",
-								priceearly: 3900,
-								price: 4400,
-								currency: "EUR",
-								description: "Berlin Workshop description text goes here",
-								earlybirdends: 20190311,
-								incart: 0,
-								quantity: 0,
-								subtotal: 0,
-								tables: {
-										id: 2,
-										name: "Berlin Table",
-										price: 4400,
-										priceearly: 3900,
-										quantity: 0,
-										schedules: {
-												id: 2,
-												name: "Berlin Additional Schedule",
-												quantity: 0,
-												price: 2400
-										},
-										additionalPeople: {
-												id: 2,
-												name: "Berlin Additional Person",
-												quantity: 0,
-												price: 990
-										},
-								},
-								additional: []
-						},
+                        id: 1,
+                        name: "ANZA",
+                        priceearly: 3400,
+                        price: 6900,
+                        currency: "AUD",
+                        description: "ANZA Workshop description text goes here",
+                        earlybirdends: 20200320,
+                        incart: 0,
+                        quantity: 0,
+                        subtotal: 0,
+                        tables: {
+                            id: 1,
+                            name: "ANZA Table",
+                            price: 6900,
+                            priceearly: 5600,
+                            quantity: 0,
+                            schedules: {
+                                    id: 1,
+                                    name: "ANZA Additional Schedule",
+                                    quantity: 0,
+                                    price: 2400
+                            },
+                            additionalPeople: {
+                                    id: 1,
+                                    name: "ANZA Additional Person",
+                                    quantity: 0,
+                                    price: 990
+                            },
+                        },
+                        additional: []
+                    },
+                    {
+                        id: 2,
+                        name: "Berlin",
+                        priceearly: 3900,
+                        price: 4400,
+                        currency: "EUR",
+                        description: "Berlin Workshop description text goes here",
+                        earlybirdends: 20190311,
+                        incart: 0,
+                        quantity: 0,
+                        subtotal: 0,
+                        tables: {
+                                id: 2,
+                                name: "Berlin Table",
+                                price: 4400,
+                                priceearly: 3900,
+                                quantity: 0,
+                                schedules: {
+                                        id: 2,
+                                        name: "Berlin Additional Schedule",
+                                        quantity: 0,
+                                        price: 2400
+                                },
+                                additionalPeople: {
+                                        id: 2,
+                                        name: "Berlin Additional Person",
+                                        quantity: 0,
+                                        price: 990
+                                },
+                        },
+                        additional: []
+                    },
             {
                 id: 3,
                 name: "Beijing",
@@ -158,8 +158,8 @@ var vue = new Vue({
             cartitem.quantity++;
             product.incart++;
         },
-        removeFromCart: function (product, subitem, selector) {
-
+        removeFromCart: function (cartitem) {
+            console.log(cartitem);
             //search for corresponding product copy in cart and remove it from cart (via filter?)
 
 
@@ -196,10 +196,24 @@ var vue = new Vue({
             }
         },
         absoluteRemoveFromCart: function (product){
-            product.tables.additionalPeople.quantity = 0;
-            product.tables.schedules.quantity = 0;
-            product.tables.quantity = 0;
-            product.incart = 0;
+            if (product.tables){
+                product.tables.additionalPeople.quantity = 0;
+                product.tables.schedules.quantity = 0;
+                product.tables.quantity = 0;
+                product.incart = 0;
+            }
+            else {
+                product.additionalPeople.quantity = 0;
+                product.schedules.quantity = 0;
+                this.products.forEach(m => {
+                    if (m.id == product.id){
+                        m.incart = 0;
+                        console.log(m)
+                        m.tables.quantity = 0;
+                    }
+                })
+            }
+            this.total -= product.price;
             var position = this.cart.indexOf(product);
             this.cart.splice(position, 1);
         }

@@ -40,7 +40,7 @@
                         <td>€{{props.item.price}}</td>
                         <td>{{props.item.quantity}}</td>
                         <td>€{{props.item.price * props.item.quantity}}</td>
-                        <td><v-btn class="add-to-package" v-on:click="removeFromCart(props.item)">REMOVE</v-btn></td>
+                        <td><v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn></td>
                     </tr>
                     <tr v-if="props.item.schedules.quantity > 0">
                         <td>{{props.item.schedules.name}}</td>
@@ -85,10 +85,10 @@
                                                 {{ product.name }}
                                             </div>
                                             <div class="product-price" v-if="product.tables">
-                                                €{{ product.tables.price }}
+                                                €{{ product.tables.price || currency }}
                                             </div>
                                             <div class="product-price" v-else>
-                                                €{{ product.price }}
+                                                €{{ product.price || currency }}
                                             </div>
                                         </div>
                                         <div class="attendance" v-if="product.incart > 0">
