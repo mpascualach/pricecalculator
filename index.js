@@ -189,7 +189,26 @@ var vue = new Vue({
             product.incart++;
             this.regularWorkshops++;
             if (this.regularWorkshops > 1){
-
+                let price;
+                switch (this.regularWorkshops) {
+                    case '2':
+                        price = subitem.price * 0.82;
+                        break;
+                    case '3':
+                        price = product.price * 0.8;
+                        break;
+                    case '4':
+                        price = product.price * 0.77;
+                        break;
+                    case '5':
+                        price = product.price * 0.75;
+                        break;
+                    default:
+                        price = product.price * 0.73;
+                }
+                cartitem.price = price;
+                cartitem.name = cartitem.name + "(discounted)";
+                this.total += price;
             }
             else this.total += subitem.price;
             subitem.quantity++;
@@ -262,30 +281,7 @@ var vue = new Vue({
 
 // if (Date.now() > new Date(product.earlybirdends)) {
 //     new Date(product.earlybirdends)
-//     switch (this.cart.length) {
-//         case '1':
-//             price = product.price;
-//             difference = 0;
-//         case '2':
-//             price = product.price * 0.82;
-//             difference = product.price * 0.18;
-//             break;
-//         case '3':
-//             price = product.price * 0.8;
-//             difference = product.price * 0.2;
-//             break;
-//         case '4':
-//             price = product.price * 0.77;
-//             difference = product.price * 0.23;
-//             break;
-//         case '5':
-//             price = product.price * 0.75;
-//             difference = product.price * 0.25;
-//             break;
-//         default:
-//             price = product.price * 0.73;
-//             difference = product.price * 0.27;
-//     }
+//   
 // }
 
 
