@@ -188,29 +188,30 @@ var vue = new Vue({
             cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
             product.incart++;
             this.regularWorkshops++;
-            if (this.regularWorkshops > 1){
-                let price;
-                switch (this.regularWorkshops) {
-                    case '2':
-                        price = subitem.price * 0.82;
-                        break;
-                    case '3':
-                        price = product.price * 0.8;
-                        break;
-                    case '4':
-                        price = product.price * 0.77;
-                        break;
-                    case '5':
-                        price = product.price * 0.75;
-                        break;
-                    default:
-                        price = product.price * 0.73;
-                }
-                cartitem.price = price;
-                cartitem.name = cartitem.name + "(discounted)";
-                this.total += price;
-            }
-            else this.total += subitem.price;
+            // if (this.regularWorkshops > 1){ //this if statement will also have a condition checking whether the early date price applies to the added workshop
+            //     let price;
+            //     switch (this.regularWorkshops) {
+            //         case '2':
+            //             price = subitem.price * 0.82;
+            //             break;
+            //         case '3':
+            //             price = product.price * 0.8;
+            //             break;
+            //         case '4':
+            //             price = product.price * 0.77;
+            //             break;
+            //         case '5':
+            //             price = product.price * 0.75;
+            //             break;
+            //         default:
+            //             price = product.price * 0.73;
+            //     }
+            //     cartitem.price = price;
+            //     cartitem.name = cartitem.name + "(discounted)";
+            //     this.total += price;
+            // }
+            // else this.total += subitem.price;
+            this.total += subitem.price;
             subitem.quantity++;
             cartitem.quantity++;
         },
