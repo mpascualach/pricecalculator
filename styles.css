@@ -101,3 +101,9 @@ table.v-table thead tr {
   color: rgba(0,0,0,.87);
   width: 50%;
 }
+
+table.v-table thead th,
+table.v-table tfoot td,
+table.v-table tbody td {
+    padding: 0 15px !important;
+}
