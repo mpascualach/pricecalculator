@@ -97,19 +97,22 @@ var vue = new Vue({
             subtotal: 0,
             tables: {
                 id: 2,
-                name: "Beijing Table",
+								name: "Beijing Table",
+								discount: 0,
                 price: 4400,
                 priceearly: 3900,
                 quantity: 0,
                 schedules: {
                     id: 2,
                     name: "Beijing Additional Schedule",
+										discount: 0,
                     quantity: 0,
                     price: 2400
                 },
                 additionalPeople: {
                     id: 2,
                     name: "Beijing Additional Person",
+										discount: 0,
                     quantity: 0,
                     price: 990
                 },
@@ -130,18 +133,21 @@ var vue = new Vue({
             tables: {
                 id: 2,
                 name: "Miami Table",
+								discount: 0,
                 price: 4400,
                 priceearly: 3900,
                 quantity: 0,
                 schedules: {
                     id: 2,
                     name: "Miami Additional Schedule",
+										discount: 0,
                     quantity: 0,
                     price: 2400
                 },
                 additionalPeople: {
                     id: 2,
                     name: "Miami Additional Person",
+										discount: 0,
                     quantity: 0,
                     price: 990
                 },
@@ -174,9 +180,20 @@ var vue = new Vue({
                 value: 'subTotal',
                 sortable: false
             },
+            {
+                text: 'Discount',
+                value: 'discount',
+                sortable: false
+            },
+            {
+                text: 'Total',
+                value: 'total',
+                sortable: false
+            },
         ], 
         cart: [], //it starts empty
-        total: 0,
+				total: 0,
+				discount: 1,
         saved: 0,
         regularWorkshops: 0,
     },
@@ -186,30 +203,24 @@ var vue = new Vue({
             this.cart.push(cartitem); //push copy of product into cart
             cartitem.price = subitem.price; //log price of subitem and assign it to copy's price
             cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
-            product.incart++;
-            this.regularWorkshops++;
-            // if (this.regularWorkshops > 1){ //this if statement will also have a condition checking whether the early date price applies to the added workshop
-            //     let price;
-            //     switch (this.regularWorkshops) {
-            //         case '2':
-            //             price = subitem.price * 0.82;
-            //             break;
-            //         case '3':
-            //             price = product.price * 0.8;
-            //             break;
-            //         case '4':
-            //             price = product.price * 0.77;
-            //             break;
-            //         case '5':
-            //             price = product.price * 0.75;
-            //             break;
-            //         default:
-            //             price = product.price * 0.73;
-            //     }
-            //     cartitem.price = price;
-            //     cartitem.name = cartitem.name + "(discounted)";
-            //     this.total += price;
-            // }
+						product.incart++;
+						this.regularWorkshops++;
+						switch (this.regularWorkshops) {
+								case 2:
+										this.discount = 0.82;
+										break;
+								case 3:
+										this.discount = 0.8;
+										break;
+								case 4:
+										this.discount * 0.77;
+										break;
+								case 5:
+										this.discount * 0.75;
+										break;
+								default:
+										this.discount * 0.73;
+            }
             // else this.total += subitem.price;
             this.total += subitem.price;
             subitem.quantity++;

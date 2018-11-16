@@ -38,10 +38,11 @@
                     <tr>
                         <td>{{props.item.name}} <br /> <sub>(includes 1 schedule)</sub> </td>
                         <td>€{{props.item.price}}</td>
-                        <td class="qty">
-                            <i class="fa fa-minus-square smaller"></i> {{props.item.quantity}}<i class="fa fa-plus-square smaller"></i> </td>
-                        <td>€{{props.item.price * props.item.quantity}}</td>
-                        <td><v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn></td>
+                        <td class="qty"><i class="fa fa-minus-square smaller"></i> {{props.item.quantity}}<i class="fa fa-plus-square smaller"></i> </td>
+												<td>€{{props.item.price * props.item.quantity}}</td>
+												<td>€{{props.item.price * props.item.quantity * discount - props.item.price * props.item.quantity}}</td>
+												<td>€{{props.item.price * props.item.quantity * discount}}</td>
+												<td><v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn></td>
                     </tr>
                     <tr v-if="props.item.schedules.quantity > 0">
                     <td>{{props.item.schedules.name}}<br /> <sub>(max. 1 per table)</sub></td>
@@ -51,6 +52,8 @@
                             {{props.item.schedules.quantity}}
 <i class="fa fa-plus-square smaller" v-on:click="addSubItem(props.item, props.item.schedules, 'schedules')"></i></td>
                         <td>€{{props.item.schedules.price * props.item.schedules.quantity}}</td>
+												<td>€ 0</td>
+												<td>€{{props.item.schedules.price * props.item.schedules.quantity - 0}}</td>
                         <td></td>
                     </tr>
                     <tr v-if="props.item.additionalPeople.quantity > 0">
@@ -61,6 +64,8 @@
                             {{props.item.additionalPeople.quantity}}
                         <i class="fa fa-plus-square smaller" v-on:click="addSubItem(props.item, props.item.additionalPeople, 'additionalPeople')"></i></td>
                         <td>€{{props.item.additionalPeople.price * props.item.additionalPeople.quantity}}</td>
+												<td>€ 0</td>
+												<td>€{{props.item.additionalPeople.price * props.item.additionalPeople.quantity - 0}}</td>
                         <td></td>
                     </tr>
                         <!-- <tr v-if="props.item.additional.length">
@@ -72,8 +77,10 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
-                       <strong>Total: €{{total}} </strong> 
+                       <strong>Total: €{{total * discount}} </strong> 
                     </td>
                 </template>
                </v-data-table>
