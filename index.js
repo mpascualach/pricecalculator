@@ -228,6 +228,9 @@ var vue = new Vue({
             // }
         },
         addSubItem: function (product, subitem, selector) {
+            if (selector == 'schedules' && subitem.quantity > product.quantity){
+                return;
+            }
             subitem.quantity++;
             this.total += subitem.price;
             if (selector == 'schedules' && subitem.quantity > 1){
