@@ -11,11 +11,11 @@ const numberFormats = {
             style: 'currency', currency: 'AUD', currencyDisplay: 'symbol'
         }
     }
-}
+};
 
 const i18n = new VueI18n({
     numberFormats
-})
+});
 
 var vue = new Vue({
     i18n,
@@ -235,7 +235,7 @@ var vue = new Vue({
                         m.quantity = Math.floor((subitem.quantity / 2) + 1);
                         this.total += m.price;
                     }
-                })
+                });
             }
         },
         removeSubItem: function (product, subitem, selector) {
@@ -248,7 +248,7 @@ var vue = new Vue({
                         if (subitem.quantity == 1 || subitem.quantity == 0) m.quantity = 1;
                         if (subitem.quantity !== 0) this.total -= m.price;
                     }
-                })
+                });
             }
         },
         absoluteRemoveFromCart: function (product){
@@ -264,10 +264,9 @@ var vue = new Vue({
                 this.products.forEach(m => {
                     if (m.id == product.id){
                         m.incart = 0;
-                        console.log(m)
                         m.tables.quantity = 0;
                     }
-                })
+                });
             }
             this.total -= product.price;
             var position = this.cart.indexOf(product);
