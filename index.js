@@ -184,7 +184,15 @@ var vue = new Vue({
         },
         removeSubItem: function (product, subitem, selector) {
             subitem.quantity--;
-            this.toal -= subitem.price;
+            this.total -= subitem.price;
+            if (selector == 'schedules' && subitem.quantity < 2){
+                this.cart.forEach(m => {
+                    if (m.id == product.id) {
+                        m.quantity = (subitem.quantity / 2) + 1;
+                        this.total += m.price;
+                    }
+                })
+            }
         },
         absoluteRemoveFromCart: function (product){
             product.tables.additionalPeople.quantity = 0;
