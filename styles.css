@@ -130,10 +130,13 @@ table.v-table thead tr {
   width: 50%;
 }
 
-table.v-table thead th,
-table.v-table tfoot td,
-table.v-table tbody td {
-    padding: 0 15px !important;
+.name {
+    padding: 0 !important;
+    padding-left: 10px !important;
+}
+
+tr {
+    height: 70px;
 }
 
 .qty {

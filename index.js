@@ -24,7 +24,8 @@ var vue = new Vue({
             id: 1,
             name: "ANZA",
             priceearly: 5600,
-            price: 6900,
+            selectedearly: false,
+            price: 6900, //this is going to be subject to change with respect to the copies of it that'll appear in the cart
             currency: "AUD",
             description: "ANZA Workshop description text goes here",
             earlybirdends: 20200320,
@@ -37,6 +38,7 @@ var vue = new Vue({
                 name: "ANZA Table",
                 discount: 1, //1 means there is no discount applied
                 price: 6900,
+                originalprice: 6900,
                 priceearly: 5600,
                 quantity: 0,
                 schedules: {
@@ -58,6 +60,7 @@ var vue = new Vue({
             id: 2,
             name: "Berlin",
             priceearly: 3900,
+            selectedearly: false,
             price: 4400,
             currency: "EUR",
             description: "Berlin Workshop description text goes here",
@@ -71,6 +74,7 @@ var vue = new Vue({
                 name: "Berlin Table",
                 discount: 1,
                 price: 4400,
+                originalprice: 4400,
                 priceearly: 3900,
                 quantity: 0,
                 schedules: {
@@ -93,6 +97,7 @@ var vue = new Vue({
             name: "Beijing",
             price: 4400,
             priceearly: 3900,
+            selectedearly: false,
             currency: "EUR",
             description: "Beijing Workshop description text goes here",
             earlybirdends: 20190311,
@@ -105,6 +110,7 @@ var vue = new Vue({
                 name: "Beijing Table",
                 discount: 1,
                 price: 4400,
+                originalprice: 4400,
                 priceearly: 3900,
                 quantity: 0,
                 schedules: {
@@ -129,6 +135,7 @@ var vue = new Vue({
             name: "Miami",
             price: 6900,
             priceearly: 3900,
+            selectedearly: false,
             currency: "AUD",
             description: "Miami Workshop description text goes here",
             earlybirdends: 20180311,
@@ -139,8 +146,9 @@ var vue = new Vue({
             tables: {
                 id: 2,
                 name: "Miami Table",
-								discount: 0,
+				discount: 0,
                 price: 4400,
+                originalprice: 4400,
                 priceearly: 3900,
                 quantity: 0,
                 schedules: {
@@ -186,11 +194,11 @@ var vue = new Vue({
                 value: 'subTotal',
                 sortable: false
             },
-            {
-                text: 'Discount',
-                value: 'discount',
-                sortable: false
-            },
+            // {
+            //     text: 'Discount',
+            //     value: 'discount',
+            //     sortable: false
+            // },
             {
                 text: 'Total',
                 value: 'total',
@@ -205,6 +213,7 @@ var vue = new Vue({
         saved: 0,
         regularWorkshops: 0,
         limitReached: false,
+        earlyRates: false,
         checkout: false,
         currentDate: new Date(),
         fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(),
@@ -213,16 +222,18 @@ var vue = new Vue({
         addToCart: function (product, subitem) {
             var cartitem = Object.assign({}, subitem); //make copy of product
             this.regularWorkshops++;
+            this.earlyRates = false;
             this.cart.push(cartitem); //push copy of product into cart
-            if( this.fullDate < product.earlybirdends
-                //  && 1 == this.regularWorkshops
-                ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+            if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+                    cartitem.selectedearly = true;
+                    product.selectedearly = true;
                     cartitem.price = subitem.priceearly; 
                     this.earlytotal += cartitem.price;
             } else {
+                this.earlytotal = 0;
                 cartitem.price = subitem.price;
-                this.earlytotal = cartitem.price;
             } //log price of subitem and assign it to copy's price
+            this.total += cartitem.price;
             product.incart++;
             switch (this.regularWorkshops) {
                 case 1:
@@ -243,7 +254,6 @@ var vue = new Vue({
                 default:
                     this.discount = 0.73;
             }
-            this.total += cartitem.price;
             subitem.quantity++;
             cartitem.quantity++;
         },
@@ -263,11 +273,36 @@ var vue = new Vue({
                     }
                 });
             }
-            this.total -= product.price;
-            this.subitemtotal -= product.price;
+            console.log(product);
+            if (product.selectedearly) {
+                this.total -= product.priceearly;
+            }
+            else this.total -= product.price;
             var position = this.cart.indexOf(product);
             this.cart.splice(position, 1);
             this.regularWorkshops--;
+            switch(this.regularWorkshops){
+                case 0:
+                    this.discount = 1;
+                    break;
+                case 1:
+                    this.discount = 1; //resetting this.discount;
+                    break;
+                case 2:
+                    this.discount = 0.82;
+                    break;
+                case 3:
+                    this.discount = 0.8;
+                    break;
+                case 4:
+                    this.discount = 0.77;
+                    break;
+                case 5:
+                    this.discount = 0.75;
+                    break;
+                default:
+                    this.discount = 0.73;
+            }
         },
         addTable: function (product) {
             product.quantity++;
@@ -282,17 +317,19 @@ var vue = new Vue({
             else this.total -= product.price;
         },
         addSubItem: function (product, subitem, selector) {
-            if (selector == 'schedules' && subitem.quantity > product.quantity && subitem.quantity > product.tables.quantity){
+            if ( selector == 'schedules' && subitem.quantity > product.quantity && subitem.quantity > product.tables.quantity ) {
                 this.limitReached = true;
                 return;
             }
             subitem.quantity++;
             this.subitemtotal += subitem.price;
-            if (selector == 'schedules' && subitem.quantity > 1){
+            if ( selector == 'schedules' && subitem.quantity > 1 ){
                 this.cart.forEach(m => {
                     if (m.id == product.id){
                         m.quantity = Math.floor((subitem.quantity / 2) + 1);
-                        this.subitemtotal += m.price;
+                        if (m.selectedearly) this.earlytotal += m.price;
+                        this.total += m.price;
+                        // this.subitemtotal += m.price;
                     }
                 });
             }
@@ -300,10 +337,10 @@ var vue = new Vue({
         removeSubItem: function (product, subitem, selector) {
             subitem.quantity--;
             this.subitemtotal -= subitem.price;
-            if (selector == 'schedules'){
+            if ( selector == 'schedules' ){
                 this.cart.forEach(m => {
                     if (m.id == product.id) {
-                        m.quantity = Math.floor((subitem.quantity / 2)+1);
+                        m.quantity = Math.floor( (subitem.quantity / 2 )+1 );
                         if (subitem.quantity == 1 || subitem.quantity == 0) m.quantity = 1;
                         if (subitem.quantity !== 0) this.subitemtotal -= m.price;
                     }
@@ -315,11 +352,12 @@ var vue = new Vue({
         }
     },
     beforeMount(){
+        this.earlyRates = true;
         this.products.forEach(m => {
             if (this.fullDate < m.earlybirdends){
                 m.earlyRate = true;
             }
-            console.log(m.name,m.earlyRate)
+            console.log(m.name,m.earlyRate);
         });
     }
 }).$mount('#vue');
