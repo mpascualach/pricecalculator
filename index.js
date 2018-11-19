@@ -300,9 +300,19 @@ var vue = new Vue({
             switch(this.regularWorkshops){
                 case 0:
                     this.discount = 1;
+                    console.log("No items in cart")
+                    this.products.forEach(m => {
+                        if (m.selectedearly) m.selectedearly = false;
+                        this.earlyRates = true;
+                    })
                     break;
                 case 1:
                     this.discount = 1; //resetting this.discount;
+                    this.products.forEach(m => {
+                        if (m.selectedearly && m.endofearly){
+                            m.endofearly = false;
+                        }
+                    })
                     this.cart[0].price = this.cart[0].priceearly;
                     this.cart[0].endofearly = false;
                     this.total = this.cart[0].price; //+ this.subitemtotal;
