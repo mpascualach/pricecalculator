@@ -179,6 +179,7 @@ var vue = new Vue({
         total: 0,
         saved: 0,
         regularWorkshops: 0,
+        limitReached: false
     },
     methods: {
         addToCart: function (product, subitem, selector) {
@@ -229,9 +230,11 @@ var vue = new Vue({
         },
         addSubItem: function (product, subitem, selector) {
             if (selector == 'schedules' && subitem.quantity > product.quantity){
+                this.limitReached = true;
                 return;
             }
             subitem.quantity++;
+            this.limitReached = false;
             this.total += subitem.price;
             if (selector == 'schedules' && subitem.quantity > 1){
                 this.cart.forEach(m => {

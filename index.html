@@ -39,17 +39,25 @@
                         <td>{{props.item.name}} <br /> <sub>(includes 1 schedule)</sub> </td>
                         <td>€{{props.item.price}}</td>
                         <td class="qty">
-                            <i class="fa fa-minus-square smaller"></i> {{props.item.quantity}}<i class="fa fa-plus-square smaller"></i> </td>
+                            <i class="fa fa-minus-square smaller"></i> 
+                            {{props.item.quantity}}
+                            <i class="fa fa-plus-square smaller"></i> 
+                        </td>
                         <td>€{{props.item.price * props.item.quantity}}</td>
                         <td><v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn></td>
                     </tr>
                     <tr v-if="props.item.schedules.quantity > 0">
-                    <td>{{props.item.schedules.name}}<br /> <sub>(max. 1 per table)</sub></td>
+                        <td>{{props.item.schedules.name}}<br /> 
+                            <!-- <sub>(max. 1 per table)</sub>  -->
+                            <span v-if="limitReached" class="schedule-alert">There can only be one additional alert per table</span> 
+                        </td>
+
                         <td>€{{props.item.schedules.price}}</td>
                         <td class="qty">
-                            <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(props.item, props.item.schedules,'schedules')"></i> 
+                            <i class="fa fa-minus-square smaller hidden" v-on:click="removeSubItem(props.item, props.item.schedules,'schedules')"></i> 
                             {{props.item.schedules.quantity}}
-<i class="fa fa-plus-square smaller" v-on:click="addSubItem(props.item, props.item.schedules, 'schedules')"></i></td>
+                            <i class="fa fa-plus-square smaller hidden" v-on:click="addSubItem(props.item, props.item.schedules, 'schedules')"></i>
+                        </td>
                         <td>€{{props.item.schedules.price * props.item.schedules.quantity}}</td>
                         <td></td>
                     </tr>
@@ -101,13 +109,21 @@
                                         <div class="attendance" v-if="product.incart > 0">
                                             <div class="attendance schedules">
                                                 <i class="fa fa-calendar-o"></i> Additional schedules: 
-                                                <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')" v-if="product.tables.schedules.quantity > 0"></i> 
+                                                <i class="fa fa-minus-square smaller" 
+                                                    v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')" 
+                                                    v-if="product.tables.schedules.quantity > 0">
+                                                </i> 
+                                                <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                 <span>{{ product.tables.schedules.quantity }}</span> 
                                                 <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.schedules, 'schedules')"></i>
                                             </div>
                                             <div class="attendance additional-people">
                                                 <i class="fa fa-id-card"></i> </i> Additional people: 
-                                                <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.additionalPeople)" v-if="product.tables.additionalPeople.quantity > 0"></i>
+                                                <i class="fa fa-minus-square smaller" 
+                                                    v-on:click="removeSubItem(product, product.tables.additionalPeople)" 
+                                                    v-if="product.tables.additionalPeople.quantity > 0">
+                                                </i>
+                                                <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                 <span> {{ product.tables.additionalPeople.quantity }} </span> 
                                                 <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.additionalPeople)"></i>
                                             </div>
