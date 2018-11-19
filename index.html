@@ -20,11 +20,12 @@
 </head>
 
 <body>
-    <div class="main-wrapper"></div>
+    <div class="main-wrapper">
+        
         <!-- <div class="header">
             <h1>Vue Shopping Cart</h1>
         </div> -->
-        <div class="header">
+        <div class="header" v-if="checkout">
             <img class="icef-pricer-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/471364/icef_logo-min-12.png" />
         </div>
         <div id="vue">
@@ -92,22 +93,30 @@
                                                 {{ product.name }}
                                             </div>
                                             <div class="product-price" v-if="product.tables">
-                                                €{{ product.tables.price || currency }}
+                                                €{{ product.tables.price  }}
                                             </div>
                                             <div class="product-price" v-else>
-                                                €{{ product.price || currency }}
+                                                €{{ product.price  }}
                                             </div>
                                         </div>
                                         <div class="attendance" v-if="product.incart > 0">
                                             <div class="attendance schedules">
                                                 <i class="fa fa-calendar-o"></i> Additional schedules: 
-                                                <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')" v-if="product.tables.schedules.quantity > 0"></i> 
+                                                <i class="fa fa-minus-square smaller" 
+                                                    v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')" 
+                                                    v-if="product.tables.schedules.quantity > 0">
+                                                </i> 
+                                                <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                 <span>{{ product.tables.schedules.quantity }}</span> 
                                                 <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.schedules, 'schedules')"></i>
                                             </div>
                                             <div class="attendance additional-people">
                                                 <i class="fa fa-id-card"></i> </i> Additional people: 
-                                                <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.additionalPeople)" v-if="product.tables.additionalPeople.quantity > 0"></i>
+                                                <i class="fa fa-minus-square smaller" 
+                                                    v-on:click="removeSubItem(product, product.tables.additionalPeople)" 
+                                                    v-if="product.tables.additionalPeople.quantity > 0">
+                                                </i>
+                                                <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                 <span> {{ product.tables.additionalPeople.quantity }} </span> 
                                                 <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.additionalPeople)"></i>
                                             </div>
@@ -126,7 +135,7 @@
                 </v-container>
             </v-card>
         </div>
-        </div>
+        
     </div>
     <!-- all our custom functions come from here -->
     <script type="text/javascript" src="index.js"></script> 
