@@ -99,9 +99,14 @@
                                 <v-card class="blue--text">
                                     <div class="product-info-container">
                                         <div class="product-info">
-                                            <div class="product-name">                                      
+                                            <div class="product-name"> 
+                                                {{ product.name }}                                     
                                                 <span v-if="product.earlyRate && earlyRates" class="early-notification">Early rate: €{{ product.priceearly }}!</span>
-                                                <span v-else-if="product.selectedearly" class="early-notification">Early rate discount applied!</span>
+                                                <span v-else-if="product.endofearly && product.selectedearly"
+                                                 class="early-notification  multiple-bookings">
+                                                    Early discount rates are no longer applicable.
+                                                </span>
+                                                <span v-else-if="product.selectedearly" class="early-notification">Early discount rates have been applied at: €{{ product.priceearly }}!</span>
                                             </div>
                                             <!-- <div v-if='product.earlyRate && earlyRates || product.selectedearly'>
                                                 <div class="product-price" v-if="product.tables">

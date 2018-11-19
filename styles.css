@@ -176,6 +176,10 @@ span.schedule-alert {
     bottom: 0;
 }
 
+.multiple-bookings {
+    color: grey;
+}
+
 .product-name {
     display: flex;
     flex-direction: column;

@@ -25,6 +25,7 @@ var vue = new Vue({
             name: "ANZA",
             priceearly: 5600,
             selectedearly: false,
+            endofearly: false,
             price: 6900, //this is going to be subject to change with respect to the copies of it that'll appear in the cart
             currency: "AUD",
             description: "ANZA Workshop description text goes here",
@@ -61,6 +62,7 @@ var vue = new Vue({
             name: "Berlin",
             priceearly: 3900,
             selectedearly: false,
+            endofearly: false,
             price: 4400,
             currency: "EUR",
             description: "Berlin Workshop description text goes here",
@@ -98,6 +100,7 @@ var vue = new Vue({
             price: 4400,
             priceearly: 3900,
             selectedearly: false,
+            endofearly: false,
             currency: "EUR",
             description: "Beijing Workshop description text goes here",
             earlybirdends: 20190311,
@@ -136,6 +139,7 @@ var vue = new Vue({
             price: 6900,
             priceearly: 3900,
             selectedearly: false,
+            endofearly: false,
             currency: "AUD",
             description: "Miami Workshop description text goes here",
             earlybirdends: 20180311,
@@ -232,6 +236,13 @@ var vue = new Vue({
             } else {
                 this.earlytotal = 0;
                 cartitem.price = subitem.price;
+                if (this.regularWorkshops > 1){
+                    this.products.forEach(m => {
+                        if (m.selectedearly) m.endofearly = true;
+                        console.log(m)
+                    });
+                }
+                
             } //log price of subitem and assign it to copy's price
             this.total += cartitem.price;
             product.incart++;
@@ -293,7 +304,8 @@ var vue = new Vue({
                 case 1:
                     this.discount = 1; //resetting this.discount;
                     this.cart[0].price = this.cart[0].priceearly;
-                    this.total = this.cart[0].price + this.subitemtotal;
+                    this.cart[0].endofearly = false;
+                    this.total = this.cart[0].price; //+ this.subitemtotal;
                     break;
                 case 2:
                     this.discount = 0.82;
