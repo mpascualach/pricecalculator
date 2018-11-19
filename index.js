@@ -224,7 +224,7 @@ var vue = new Vue({
             this.regularWorkshops++;
             this.earlyRates = false;
             this.cart.push(cartitem); //push copy of product into cart
-            if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+            if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
                     cartitem.selectedearly = true;
                     product.selectedearly = true;
                     cartitem.price = subitem.priceearly; 
@@ -253,6 +253,12 @@ var vue = new Vue({
                     break;
                 default:
                     this.discount = 0.73;
+            }
+            if (this.regularWorkshops == 2){
+                this.cart.forEach(m => {
+                    if (m.selectedearly) m.price = m.originalprice;
+                })
+                this.total = this.cart.reduce((a,b)=>a.price + b.price);
             }
             subitem.quantity++;
             cartitem.quantity++;
@@ -341,10 +347,13 @@ var vue = new Vue({
                 this.cart.forEach(m => {
                     if (m.id == product.id) {
                         m.quantity = Math.floor( (subitem.quantity / 2 )+1 );
-                        if (subitem.quantity == 1 || subitem.quantity == 0) m.quantity = 1;
-                        if (subitem.quantity !== 0) this.subitemtotal -= m.price;
+                        if ( subitem.quantity == 1 || subitem.quantity == 0 ) m.quantity = 1;
+                        if ( subitem.quantity !== 0 ) this.subitemtotal -= m.price;
                     }
                 });
+                if ( this.cart.length == 1 && this.cart[0].selectedearly ) {
+                    this.cart[0].price = this.cart[0].priceearly;
+                }
             }
         },
         gotoCheckout(){
@@ -354,10 +363,9 @@ var vue = new Vue({
     beforeMount(){
         this.earlyRates = true;
         this.products.forEach(m => {
-            if (this.fullDate < m.earlybirdends){
+            if ( this.fullDate < m.earlybirdends ){
                 m.earlyRate = true;
             }
-            console.log(m.name,m.earlyRate);
         });
     }
 }).$mount('#vue');
