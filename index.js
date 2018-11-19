@@ -193,18 +193,31 @@ var vue = new Vue({
         ], 
         cart: [], //it starts empty
 				total: 0,
+				subitemtotal: 0,
+				earlytotal: 0,
 				discount: 1,
         saved: 0,
         regularWorkshops: 0,
     },
     methods: {
         addToCart: function (product, subitem, selector) {
-            var cartitem = Object.assign({}, subitem); //make copy of product
-            this.cart.push(cartitem); //push copy of product into cart
-            cartitem.price = subitem.price; //log price of subitem and assign it to copy's price
+					var d = new Date();
+					var fulldate = d.getFullYear()+d.getMonth()+d.getDate();//this currently adds not strings together
+					console.log(fulldate);
+					console.log(product.earlybirdends);
+					var cartitem = Object.assign({}, subitem); //make copy of product
+					this.regularWorkshops++;
+					this.cart.push(cartitem); //push copy of product into cart
+						if( fulldate < product.earlybirdends || 1 == this.regularWorkshops){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+							cartitem.price = subitem.priceearly 
+							this.earlytotal = cartitem.price
+						} else {
+							cartitem.price = subitem.price
+							this.earlytotal = cartitem.price
+
+						} //log price of subitem and assign it to copy's price
             cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
 						product.incart++;
-						this.regularWorkshops++;
 						switch (this.regularWorkshops) {
 								case 2:
 										this.discount = 0.82;
@@ -222,7 +235,7 @@ var vue = new Vue({
 										this.discount * 0.73;
             }
             // else this.total += subitem.price;
-            this.total += subitem.price;
+            this.total += cartitem.subtotal;
             subitem.quantity++;
             cartitem.quantity++;
         },
@@ -243,25 +256,25 @@ var vue = new Vue({
                 return;
             }
             subitem.quantity++;
-            this.total += subitem.price;
+            this.subitemtotal += subitem.price;
             if (selector == 'schedules' && subitem.quantity > 1){
                 this.cart.forEach(m => {
                     if (m.id == product.id){
                         m.quantity = Math.floor((subitem.quantity / 2) + 1);
-                        this.total += m.price;
+                        this.subitemtotal += m.price;
                     }
                 });
             }
         },
         removeSubItem: function (product, subitem, selector) {
             subitem.quantity--;
-            this.total -= subitem.price;
+            this.subitemtotal -= subitem.price;
             if (selector == 'schedules'){
                 this.cart.forEach(m => {
                     if (m.id == product.id) {
                         m.quantity = Math.floor((subitem.quantity / 2)+1);
                         if (subitem.quantity == 1 || subitem.quantity == 0) m.quantity = 1;
-                        if (subitem.quantity !== 0) this.total -= m.price;
+                        if (subitem.quantity !== 0) this.subitemtotal -= m.price;
                     }
                 });
             }
@@ -283,11 +296,13 @@ var vue = new Vue({
                     }
                 });
             }
-            this.total -= product.price;
+						this.total -= product.price;
+						this.subitemtotal -= product.price;
             var position = this.cart.indexOf(product);
             this.cart.splice(position, 1);
             this.regularWorkshops--;
-        }
+				}
+				
     }
 }).$mount('#vue');
 

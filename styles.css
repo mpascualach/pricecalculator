@@ -28,7 +28,35 @@ body {
 
 .v-card.theme--light {
     display: flex;
-    justify-content: space-between;
+		justify-content: space-between;
+		box-shadow: none !important;
+}
+
+.theme--light.v-table {
+  background-color: #fff;
+  color: rgba(0,0,0,.87);
+  margin-right: 10px !important;
+  background: #eef0f3 !important;
+  border-collapse: collapse;
+}
+
+table.v-table tbody td:first-child, table.v-table tbody td:not(:first-child), table.v-table tbody th:first-child, table.v-table tbody th:not(:first-child), table.v-table thead td:first-child, table.v-table thead td:not(:first-child), table.v-table thead th:first-child, table.v-table thead th:not(:first-child) {
+  padding: 0 24px;
+  border: 1px solid #eef0f3;
+}
+
+th.column.text-xs-left {
+  background: #00479e;
+  color: white !important;
+  padding: 5px !important;
+}
+
+td {
+  background: white;
+}
+
+th.column.text-xs-left:first-child {
+  width: 20%;
 }
 
 .white--text.v-card.theme--light.blue-grey.darken-2 {
