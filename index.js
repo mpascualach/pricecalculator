@@ -229,8 +229,20 @@ var vue = new Vue({
             //     this.absoluteRemoveFromCart(product);
             // }
         },
+        addTable: function (product) {
+            product.quantity++;
+            this.total += product.price;
+            console.log(product);
+        },
+        removeTable: function (product) {
+            product.quantity--;
+            if (product.quantity == 0){
+                this.absoluteRemoveFromCart(product);
+            }
+            else this.total -= product.price;
+        },
         addSubItem: function (product, subitem, selector) {
-            if (selector == 'schedules' && subitem.quantity > product.quantity){
+            if (selector == 'schedules' && subitem.quantity > product.quantity && subitem.quantity > product.tables.quantity){
                 this.limitReached = true;
                 return;
             }
