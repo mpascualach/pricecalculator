@@ -21,11 +21,12 @@
 </head>
 
 <body>
-    <div class="main-wrapper"></div>
+    <div class="main-wrapper">
+        
         <!-- <div class="header">
             <h1>Vue Shopping Cart</h1>
         </div> -->
-        <div class="header">
+        <div class="header" v-if="checkout">
             <img class="icef-pricer-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/471364/icef_logo-min-12.png" />
         </div>
         <div id="vue">
@@ -77,12 +78,15 @@
                 </template>    
 
                 <template slot="footer">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                       <strong>Total: €{{total}} </strong> 
-                    </td>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <strong>Total: €{{total | price }} </strong>
+                        </td>
+                    </tr>
+                        <v-btn class="go-to-checkout" v-on:click="gotoCheckout()">Go to checkout</v-btn>
                 </template>
                </v-data-table>
             </template>
@@ -142,7 +146,12 @@
                 </v-container>
             </v-card>
         </div>
-        </div>
+        <modal v-if="checkout" @close="checkout = false">
+            <!--
+            you can use custom content here to overwrite
+            default content
+            -->
+        </modal>
     </div>
     <!-- all our custom functions come from here -->
     <script type="text/javascript" src="index.js"></script> 

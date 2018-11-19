@@ -179,7 +179,8 @@ var vue = new Vue({
         total: 0,
         saved: 0,
         regularWorkshops: 0,
-        limitReached: false
+        limitReached: false,
+        checkout: false
     },
     methods: {
         addToCart: function (product, subitem, selector) {
@@ -279,6 +280,10 @@ var vue = new Vue({
             var position = this.cart.indexOf(product);
             this.cart.splice(position, 1);
             this.regularWorkshops--;
+        },
+        gotoCheckout(){
+            this.checkout = true;
+            console.log("Checkout: ", this.checkout)
         }
     }
 }).$mount('#vue');

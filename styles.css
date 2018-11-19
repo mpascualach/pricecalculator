@@ -126,3 +126,8 @@ span.schedule-alert {
     color: transparent;
     pointer-events: none;
 }
+
+.go-to-checkout {
+    position: absolute!important;
+    right: 13%;
+}
