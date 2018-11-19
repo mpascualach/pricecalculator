@@ -38,14 +38,14 @@
                     <tr>
                         <td class="name">{{props.item.name}} <br /> <sub>(includes 1 schedule)</sub> </td>
                         <td class="price">{{props.item.price}}€</td>
-                        <td class="qty"><i class="fa fa-minus-square smaller"></i> {{props.item.quantity}}<i class="fa fa-plus-square smaller"></i> </td>
+                        <td class="qty"><i class="fa fa-plus-square smaller"></i> {{props.item.quantity}}<i class="fa fa-minus-square smaller"></i> </td>
                         <td class="sub-total">{{props.item.price * props.item.quantity}}€</td>
                         <td class="discount">{{((props.item.price * props.item.quantity) * discount) - (props.item.price * props.item.quantity)}}€</td>
                         <td class="item-total">{{props.item.price * props.item.quantity * discount}}€</td>
                         <td><v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn></td>
                     </tr>
                     <tr v-if="props.item.schedules.quantity > 0">
-                    <td>{{props.item.schedules.name}}<br /> <sub>(max. 1 per table)</sub></td>
+                        <td>{{props.item.schedules.name}}<br /> <sub>(max. 1 per table)</sub></td>
                         <td>{{props.item.schedules.price}}€</td>
                         <td class="qty">{{props.item.schedules.quantity}}</td>
                         <td>{{props.item.schedules.price * props.item.schedules.quantity}}€</td>
@@ -54,7 +54,7 @@
                         <td></td>
                     </tr>
                     <tr v-if="props.item.additionalPeople.quantity > 0">
-                        <td>{{props.item.additionalPeople.name}}</td>
+                        <td class=>{{props.item.additionalPeople.name}}</td>
                         <td>{{props.item.additionalPeople.price}}€</td>
                         <td class="qty">{{props.item.additionalPeople.quantity}}</td>
                         <td>{{props.item.additionalPeople.price * props.item.additionalPeople.quantity}}€</td>
@@ -68,16 +68,17 @@
                 </template>    
 
                 <template slot="footer">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                       <strong>Total: €{{total * discount + subitemtotal + this.earlytotal}} </strong> 
+                    <!-- <td>
+                        <v-btn>Go to checkout</v-btn>
+                    </td> -->
+                    
+                    <td class="totals">
+                        <span>Early bird total: €{{ earlytotal }} </span>
+                        <span>Discounted : €{{ (total * discount) - total }} </span>
+                        <strong>Total: €{{total * discount + subitemtotal + this.earlytotal}} </strong> 
                     </td>
                 </template>
-							 </v-data-table>
+				</v-data-table>
             </template>
 
             <v-card class="events">

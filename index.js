@@ -211,21 +211,23 @@ var vue = new Vue({
     },
     methods: {
         addToCart: function (product, subitem) {
-            console.log(this.fullDate);
-            console.log(product.earlybirdends);
             var cartitem = Object.assign({}, subitem); //make copy of product
             this.regularWorkshops++;
             this.cart.push(cartitem); //push copy of product into cart
-            if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
-                cartitem.price = subitem.priceearly; 
-                this.earlytotal = cartitem.price;
+            if( this.fullDate < product.earlybirdends
+                //  && 1 == this.regularWorkshops
+                ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+                    cartitem.price = subitem.priceearly; 
+                    this.earlytotal += cartitem.price;
             } else {
                 cartitem.price = subitem.price;
                 this.earlytotal = cartitem.price;
             } //log price of subitem and assign it to copy's price
-            cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
             product.incart++;
             switch (this.regularWorkshops) {
+                case 1:
+                    this.discount = 1;
+                    break;
                 case 2:
                     this.discount = 0.82;
                     break;
@@ -241,8 +243,7 @@ var vue = new Vue({
                 default:
                     this.discount = 0.73;
             }
-            // else this.total += subitem.price;
-            this.total += cartitem.subtotal;
+            this.total += cartitem.price;
             subitem.quantity++;
             cartitem.quantity++;
         },
@@ -311,7 +312,6 @@ var vue = new Vue({
         },
         gotoCheckout(){
             this.checkout = true;
-            console.log("Checkout: ", this.checkout)
         }
     },
     beforeMount(){

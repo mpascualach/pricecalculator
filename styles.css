@@ -137,7 +137,8 @@ table.v-table tbody td {
 }
 
 .qty {
-    width: 70px;
+    width: 10px;
+    text-align: center;
 }
 
 .fa-minus-square, .fa-plus-square {
@@ -168,4 +169,13 @@ span.schedule-alert {
 .product-name {
     display: flex;
     flex-direction: column;
+}
+
+td.totals {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    right: 12.5%;
+    text-align: right;
 }
