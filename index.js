@@ -28,12 +28,14 @@ var vue = new Vue({
             currency: "AUD",
             description: "ANZA Workshop description text goes here",
             earlybirdends: 20200320,
+            earlyRate: false,
             incart: 0,
             quantity: 0,
             subtotal: 0,
             tables: {
                 id: 1,
                 name: "ANZA Table",
+                discount: 1, //1 means there is no discount applied
                 price: 6900,
                 priceearly: 5600,
                 quantity: 0,
@@ -60,12 +62,14 @@ var vue = new Vue({
             currency: "EUR",
             description: "Berlin Workshop description text goes here",
             earlybirdends: 20190311,
+            earlyRate: false,
             incart: 0,
             quantity: 0,
             subtotal: 0,
             tables: {
                 id: 2,
                 name: "Berlin Table",
+                discount: 1,
                 price: 4400,
                 priceearly: 3900,
                 quantity: 0,
@@ -92,27 +96,28 @@ var vue = new Vue({
             currency: "EUR",
             description: "Beijing Workshop description text goes here",
             earlybirdends: 20190311,
+            earlyRate: false,
             incart: 0,
             quantity: 0,
             subtotal: 0,
             tables: {
                 id: 2,
                 name: "Beijing Table",
-                discount: 0,
+                discount: 1,
                 price: 4400,
                 priceearly: 3900,
                 quantity: 0,
                 schedules: {
                     id: 2,
                     name: "Beijing Additional Schedule",
-                    discount: 0,
+                    discount: 1,
                     quantity: 0,
                     price: 2400
                 },
                 additionalPeople: {
                     id: 2,
                     name: "Beijing Additional Person",
-                    discount: 0,
+                    discount: 1,
                     quantity: 0,
                     price: 990
                 },
@@ -126,7 +131,8 @@ var vue = new Vue({
             priceearly: 3900,
             currency: "AUD",
             description: "Miami Workshop description text goes here",
-            earlybirdends: 20190311,
+            earlybirdends: 20180311,
+            earlyRate: false,
             incart: 0,
             quantity: 0,
             subtotal: 0,
@@ -200,63 +206,67 @@ var vue = new Vue({
         regularWorkshops: 0,
         limitReached: false,
         checkout: false,
-        fullDate: ''
+        currentDate: new Date(),
+        fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(),
     },
     methods: {
-        getDate() {
-            var d = new Date();
-            var fulldate = d.getFullYear() + "" + d.getMonth() + "" + d.getDate();
-            this.fullDate = fulldate;
-            console.log(this.fullDate)
-        },
-        addToCart: function (product, subitem, selector) {
+        addToCart: function (product, subitem) {
             console.log(this.fullDate);
             console.log(product.earlybirdends);
             var cartitem = Object.assign({}, subitem); //make copy of product
             this.regularWorkshops++;
             this.cart.push(cartitem); //push copy of product into cart
-                if( this.fullDate < product.earlybirdends || 1 == this.regularWorkshops){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
-                    cartitem.price = subitem.priceearly; 
-                    this.earlytotal = cartitem.price;
-                } else {
-                    cartitem.price = subitem.price;
-                    this.earlytotal = cartitem.price;
-
-                } //log price of subitem and assign it to copy's price
+            if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+                cartitem.price = subitem.priceearly; 
+                this.earlytotal = cartitem.price;
+            } else {
+                cartitem.price = subitem.price;
+                this.earlytotal = cartitem.price;
+            } //log price of subitem and assign it to copy's price
             cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
-                product.incart++;
-                switch (this.regularWorkshops) {
-                    case 2:
-                        this.discount = 0.82;
-                        break;
-                    case 3:
-                        this.discount = 0.8;
-                        break;
-                    case 4:
-                        this.discount = 0.77;
-                        break;
-                    case 5:
-                        this.discount = 0.75;
-                        break;
-                    default:
-                        this.discount = 0.73;
+            product.incart++;
+            switch (this.regularWorkshops) {
+                case 2:
+                    this.discount = 0.82;
+                    break;
+                case 3:
+                    this.discount = 0.8;
+                    break;
+                case 4:
+                    this.discount = 0.77;
+                    break;
+                case 5:
+                    this.discount = 0.75;
+                    break;
+                default:
+                    this.discount = 0.73;
             }
             // else this.total += subitem.price;
             this.total += cartitem.subtotal;
             subitem.quantity++;
             cartitem.quantity++;
         },
-        removeFromCart: function (cartitem) {
-            console.log(cartitem);
-            //search for corresponding product copy in cart and remove it from cart (via filter?)
-
-
-            // product.incart--;
-            // product.attendance.schedules--;
-            // this.total -= product.price;
-            // if (product.incart == 0) {
-            //     this.absoluteRemoveFromCart(product);
-            // }
+        absoluteRemoveFromCart: function (product) {
+            if (product.tables) {
+                product.tables.additionalPeople.quantity = 0;
+                product.tables.schedules.quantity = 0;
+                product.tables.quantity = 0;
+                product.incart = 0;
+            } else {
+                product.additionalPeople.quantity = 0;
+                product.schedules.quantity = 0;
+                this.products.forEach(m => {
+                    if (m.id == product.id) {
+                        m.incart = 0;
+                        m.tables.quantity = 0;
+                    }
+                });
+            }
+            this.total -= product.price;
+            this.subitemtotal -= product.price;
+            var position = this.cart.indexOf(product);
+            this.cart.splice(position, 1);
+            this.regularWorkshops--;
         },
         addTable: function (product) {
             product.quantity++;
@@ -299,37 +309,19 @@ var vue = new Vue({
                 });
             }
         },
-        absoluteRemoveFromCart: function (product){
-            if (product.tables){
-                product.tables.additionalPeople.quantity = 0;
-                product.tables.schedules.quantity = 0;
-                product.tables.quantity = 0;
-                product.incart = 0;
-            }
-            else {
-                product.additionalPeople.quantity = 0;
-                product.schedules.quantity = 0;
-                this.products.forEach(m => {
-                    if (m.id == product.id){
-                        m.incart = 0;
-                        m.tables.quantity = 0;
-                    }
-                });
-            }
-            this.total -= product.price;
-            this.subitemtotal -= product.price;
-            var position = this.cart.indexOf(product);
-            this.cart.splice(position, 1);
-            this.regularWorkshops--;
-        },
         gotoCheckout(){
             this.checkout = true;
             console.log("Checkout: ", this.checkout)
         }
     },
-    beforeMount() {
-        this.getDate();
-    },
+    beforeMount(){
+        this.products.forEach(m => {
+            if (this.fullDate < m.earlybirdends){
+                m.earlyRate = true;
+            }
+            console.log(m.name,m.earlyRate)
+        });
+    }
 }).$mount('#vue');
 
 //everything below this line will apply to multiple workshop discounts:

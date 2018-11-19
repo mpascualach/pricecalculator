@@ -159,3 +159,13 @@ span.schedule-alert {
     position: absolute!important;
     right: 13%;
 }
+
+.early-notification {
+    color: green;
+    font-size: 12px;
+}
+
+.product-name {
+    display: flex;
+    flex-direction: column;
+}
