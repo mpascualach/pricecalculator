@@ -23,7 +23,7 @@ var vue = new Vue({
         products: [{
             id: 1,
             name: "ANZA",
-            priceearly: 3400,
+            priceearly: 5600,
             price: 6900,
             currency: "AUD",
             description: "ANZA Workshop description text goes here",
@@ -97,22 +97,22 @@ var vue = new Vue({
             subtotal: 0,
             tables: {
                 id: 2,
-								name: "Beijing Table",
-								discount: 0,
+                name: "Beijing Table",
+                discount: 0,
                 price: 4400,
                 priceearly: 3900,
                 quantity: 0,
                 schedules: {
                     id: 2,
                     name: "Beijing Additional Schedule",
-										discount: 0,
+                    discount: 0,
                     quantity: 0,
                     price: 2400
                 },
                 additionalPeople: {
                     id: 2,
                     name: "Beijing Additional Person",
-										discount: 0,
+                    discount: 0,
                     quantity: 0,
                     price: 990
                 },
@@ -140,14 +140,14 @@ var vue = new Vue({
                 schedules: {
                     id: 2,
                     name: "Miami Additional Schedule",
-										discount: 0,
+                    discount: 0,
                     quantity: 0,
                     price: 2400
                 },
                 additionalPeople: {
                     id: 2,
                     name: "Miami Additional Person",
-										discount: 0,
+                    discount: 0,
                     quantity: 0,
                     price: 990
                 },
@@ -192,49 +192,54 @@ var vue = new Vue({
             },
         ], 
         cart: [], //it starts empty
-				total: 0,
-				subitemtotal: 0,
-				earlytotal: 0,
-				discount: 1,
+        total: 0,
+        subitemtotal: 0,
+        earlytotal: 0,
+        discount: 1,
         saved: 0,
         regularWorkshops: 0,
         limitReached: false,
-        checkout: false
+        checkout: false,
+        fullDate: ''
     },
     methods: {
+        getDate() {
+            var d = new Date();
+            var fulldate = d.getFullYear() + "" + d.getMonth() + "" + d.getDate();
+            this.fullDate = fulldate;
+            console.log(this.fullDate)
+        },
         addToCart: function (product, subitem, selector) {
-					var d = new Date();
-					var fulldate = d.getFullYear()+d.getMonth()+d.getDate();//this currently adds not strings together
-					console.log(fulldate);
-					console.log(product.earlybirdends);
-					var cartitem = Object.assign({}, subitem); //make copy of product
-					this.regularWorkshops++;
-					this.cart.push(cartitem); //push copy of product into cart
-						if( fulldate < product.earlybirdends || 1 == this.regularWorkshops){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
-							cartitem.price = subitem.priceearly 
-							this.earlytotal = cartitem.price
-						} else {
-							cartitem.price = subitem.price
-							this.earlytotal = cartitem.price
+            console.log(this.fullDate);
+            console.log(product.earlybirdends);
+            var cartitem = Object.assign({}, subitem); //make copy of product
+            this.regularWorkshops++;
+            this.cart.push(cartitem); //push copy of product into cart
+                if( this.fullDate < product.earlybirdends || 1 == this.regularWorkshops){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+                    cartitem.price = subitem.priceearly; 
+                    this.earlytotal = cartitem.price;
+                } else {
+                    cartitem.price = subitem.price;
+                    this.earlytotal = cartitem.price;
 
-						} //log price of subitem and assign it to copy's price
+                } //log price of subitem and assign it to copy's price
             cartitem.subtotal = subitem.price; //do same for subtotal (this one's subject to change)
-						product.incart++;
-						switch (this.regularWorkshops) {
-								case 2:
-										this.discount = 0.82;
-										break;
-								case 3:
-										this.discount = 0.8;
-										break;
-								case 4:
-										this.discount * 0.77;
-										break;
-								case 5:
-										this.discount * 0.75;
-										break;
-								default:
-										this.discount * 0.73;
+                product.incart++;
+                switch (this.regularWorkshops) {
+                    case 2:
+                        this.discount = 0.82;
+                        break;
+                    case 3:
+                        this.discount = 0.8;
+                        break;
+                    case 4:
+                        this.discount = 0.77;
+                        break;
+                    case 5:
+                        this.discount = 0.75;
+                        break;
+                    default:
+                        this.discount = 0.73;
             }
             // else this.total += subitem.price;
             this.total += cartitem.subtotal;
@@ -311,8 +316,8 @@ var vue = new Vue({
                     }
                 });
             }
-						this.total -= product.price;
-						this.subitemtotal -= product.price;
+            this.total -= product.price;
+            this.subitemtotal -= product.price;
             var position = this.cart.indexOf(product);
             this.cart.splice(position, 1);
             this.regularWorkshops--;
@@ -321,7 +326,10 @@ var vue = new Vue({
             this.checkout = true;
             console.log("Checkout: ", this.checkout)
         }
-    }
+    },
+    beforeMount() {
+        this.getDate();
+    },
 }).$mount('#vue');
 
 //everything below this line will apply to multiple workshop discounts:
