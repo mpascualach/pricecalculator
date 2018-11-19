@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div class="main-wrapper">
+    <div class="main-wrapper" id="main-wrapper">
         
         <!-- <div class="header">
             <h1>Vue Shopping Cart</h1>
@@ -40,8 +40,9 @@
                         <td class="price">{{props.item.price}}€</td>
                         <td class="qty"><i class="fa fa-plus-square smaller"></i> {{props.item.quantity}}<i class="fa fa-minus-square smaller"></i> </td>
                         <td class="sub-total">{{props.item.price * props.item.quantity}}€</td>
-                        <!-- <td class="discount">{{((props.item.price * props.item.quantity) * discount) - (props.item.price * props.item.quantity)}}€</td> -->
-                        <td class="item-total">{{props.item.price * props.item.quantity}}€</td> 
+                        <td class="item-total">{{props.item.price * props.item.quantity * discount}}€</td>
+                        <td class="discount">{{((props.item.price * props.item.quantity) * discount) - (props.item.price * props.item.quantity)}}€</td>
+
                         <!-- * discount -->
                         <td><v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn></td>
                     </tr>
@@ -50,8 +51,8 @@
                         <td>{{props.item.schedules.price}}€</td>
                         <td class="qty">{{props.item.schedules.quantity}}</td>
                         <td>{{props.item.schedules.price * props.item.schedules.quantity}}€</td>
-                        <!-- <td>0€</td> -->
                         <td>{{props.item.schedules.price * props.item.schedules.quantity - 0}}€</td>
+                        <td>0€</td>
                         <td></td>
                     </tr>
                     <tr v-if="props.item.additionalPeople.quantity > 0">
@@ -59,8 +60,8 @@
                         <td>{{props.item.additionalPeople.price}}€</td>
                         <td class="qty">{{props.item.additionalPeople.quantity}}</td>
                         <td>{{props.item.additionalPeople.price * props.item.additionalPeople.quantity}}€</td>
-                        <!-- <td>0€</td> -->
                         <td>{{props.item.additionalPeople.price * props.item.additionalPeople.quantity}}€</td>
+                        <td>0€</td>
                         <td></td>
                     </tr>
                         <!-- <tr v-if="props.item.additional.length">
@@ -70,12 +71,15 @@
 
                 <template slot="footer">
                     <td class="checkout-btn-container">
-                        <v-btn>Go to checkout</v-btn>
+                        <v-btn v-on:click="gotoCheckout()">Go to checkout</v-btn>
                     </td>
                     
                     <td class="totals">
-                        <span v-if="earlytotal">Original total : €{{ earlytotal + subitemtotal}} </span>
-                        <span v-else>Original total : €{{ total + subitemtotal}} </span>
+                        <span v-if="earlytotal">Original total : €{{ earlytotal }} </span>
+                        <span v-else>Original total : €{{ total }} </span>
+                        <span v-if="subitemtotal">Subitems total: €{{ subitemtotal }} </span>
+                        <span v-if="earlytotal && subitemtotal">Undiscounted total: €{{ earlytotal + subitemtotal}} </span>
+                        <span v-if="!earlytotal && subitemtotal">Undiscounted total: €{{ total + subitemtotal }} </span>
                         <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ).toFixed() }}% </span>
                         <span>Discounted : €{{ (total * discount) - total }} </span>
                         <strong v-if="earlytotal">Total: €{{subitemtotal + earlytotal}} </strong>
@@ -95,12 +99,11 @@
                                 <v-card class="blue--text">
                                     <div class="product-info-container">
                                         <div class="product-info">
-                                            <div class="product-name">
-                                                {{ product.name }}
-                                                <span v-if="product.earlyRate && earlyRates" class="early-notification">Early rate!</span>
-                                                <span v-else-if="product.selectedearly" class="early-notification">Early rate!</span>
+                                            <div class="product-name">                                      
+                                                <span v-if="product.earlyRate && earlyRates" class="early-notification">Early rate: €{{ product.priceearly }}!</span>
+                                                <span v-else-if="product.selectedearly" class="early-notification">Early rate discount applied!</span>
                                             </div>
-                                            <div v-if='product.earlyRate && earlyRates || product.selectedearly'>
+                                            <!-- <div v-if='product.earlyRate && earlyRates || product.selectedearly'>
                                                 <div class="product-price" v-if="product.tables">
                                                     €{{ product.tables.priceearly}}
                                                 </div>
@@ -108,8 +111,8 @@
                                                     €{{ product.priceearly }}
                                                 </div>
                                                 
-                                            </div>
-                                            <div v-else>
+                                            </div> -->
+                                            <div>
                                                 <div class="product-price" v-if="product.tables">
                                                     €{{ product.tables.price }}
                                                 </div>
@@ -155,6 +158,9 @@
             </v-card>
         </div>
         
+    </div>
+    <div class="checkout" id="checkout">
+        This works!
     </div>
     <!-- all our custom functions come from here -->
     <script type="text/javascript" src="index.js"></script> 

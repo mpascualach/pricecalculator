@@ -194,11 +194,11 @@ var vue = new Vue({
                 value: 'subTotal',
                 sortable: false
             },
-            // {
-            //     text: 'Discount',
-            //     value: 'discount',
-            //     sortable: false
-            // },
+            {
+                text: 'Discount',
+                value: 'discount',
+                sortable: false
+            },
             {
                 text: 'Total',
                 value: 'total',
@@ -279,7 +279,6 @@ var vue = new Vue({
                     }
                 });
             }
-            console.log(product);
             if (product.selectedearly) {
                 this.total -= product.priceearly;
             }
@@ -293,6 +292,8 @@ var vue = new Vue({
                     break;
                 case 1:
                     this.discount = 1; //resetting this.discount;
+                    this.cart[0].price = this.cart[0].priceearly;
+                    this.total = this.cart[0].price + this.subitemtotal;
                     break;
                 case 2:
                     this.discount = 0.82;
@@ -357,7 +358,8 @@ var vue = new Vue({
             }
         },
         gotoCheckout(){
-            this.checkout = true;
+            document.getElementById("main-wrapper").style.display = "none";
+            document.getElementById("checkout").style.display = "block";
         }
     },
     beforeMount(){

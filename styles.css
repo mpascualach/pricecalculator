@@ -8,6 +8,11 @@ body {
     background-color: #eef0f3;
 }
 
+div#vue {
+    position: relative;
+    left: -5%;
+}
+
 .headline {
     margin-right: 3%;
 }
@@ -79,8 +84,8 @@ th.column.text-xs-left:first-child {
 }
 
 .v-table__overflow {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: unset!important;
+    overflow-y: unset!important;
     max-width: 840px;
     margin: 0 auto;
   	width: 50% !important;
@@ -167,6 +172,8 @@ span.schedule-alert {
 .early-notification {
     color: green;
     font-size: 12px;
+    position: absolute;
+    bottom: 0;
 }
 
 .product-name {
@@ -181,4 +188,18 @@ td.totals {
     height: auto;
     right: 12.5%;
     text-align: right;
+}
+
+td.checkout-btn-container {
+    background: none;
+    position: relative;
+    top: 5px;
+}
+
+td.checkout-btn-container > button {
+    border-radius: 5px;
+}
+
+.checkout {
+    display: none;
 }
