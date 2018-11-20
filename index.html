@@ -100,14 +100,15 @@
                                     <div class="product-info-container">
                                         <div class="product-info">
                                             <div class="product-name"> 
-                                                {{ product.name }}                                     
+                                                {{ product.name }}   
                                                 <span v-if="product.earlyRate && earlyRates" class="early-notification">Early rate: €{{ product.priceearly }}!</span>
-                                                <span v-else-if="product.endofearly && product.selectedearly"
-                                                 class="early-notification  multiple-bookings">
+                                                <span v-else-if="product.endofearly && product.selectedearly" class="early-notification  multiple-bookings">
                                                     Early discount rates are no longer applicable.
                                                 </span>
-                                                <span v-else-if="product.selectedearly" class="early-notification">Early discount rates have been applied at: €{{ product.priceearly }}!</span>
+                                                <span v-else-if="product.selectedearly" class="early-notification">Early discount rates have been applied at: €{{
+                                                    product.priceearly }}!</span>
                                             </div>
+                                            
                                             <!-- <div v-if='product.earlyRate && earlyRates || product.selectedearly'>
                                                 <div class="product-price" v-if="product.tables">
                                                     €{{ product.tables.priceearly}}
@@ -124,9 +125,6 @@
                                                 <div class="product-price" v-else>
                                                     €{{ product.price }}
                                                 </div>    
-                                            </div>
-                                            <div class="sponsorship-container">
-                                                
                                             </div>
                                         </div>
                                         <div class="attendance" v-if="product.incart > 0">
@@ -149,7 +147,13 @@
                                                 <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                 <span> {{ product.tables.additionalPeople.quantity }} </span> 
                                                 <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.additionalPeople)"></i>
-                                            </div>
+                                            </div>                                         
+                                        </div>
+                                        <div class="sponsorship-container" v-if="product.incart > 0">
+                                            <v-btn class="platinum">Platinum: {{ product.sponsorships.platinum}}</v-btn>
+                                            <v-btn class="gold">Gold: {{ product.sponsorships.gold}}</v-btn>
+                                            <v-btn class="silver">Silver: {{ product.sponsorships.silver}}</v-btn>
+                                            <i class="fa fa-question-circle"></i>
                                         </div>
                                     </div>
                                    <v-card-actions>

@@ -172,7 +172,7 @@ span.schedule-alert {
 .early-notification {
     color: green;
     font-size: 12px;
-    position: absolute;
+    width: 200%;
     bottom: 0;
 }
 
@@ -206,4 +206,35 @@ td.checkout-btn-container > button {
 
 .checkout {
     display: none;
+}
+
+.sponsorship-container {
+    display: flex;
+    padding-bottom: 20px;
+    margin-left: 5px;
+}
+
+button.v-btn.theme--light {
+    margin: 2px;
+    border-radius: 15px;
+    background-color: white!important;
+}
+
+.v-btn {
+    padding: 0 10px;
+}
+
+button.platinum.v-btn.theme--light {
+    border: 2px solid #E5E4E2 !important;
+    color: #e5e4e2 !important;
+}
+
+button.gold.v-btn.theme--light {
+    border: 2px solid #D4AF37 !important;
+    color: #D4AF37 !important;
+}
+
+button.silver.v-btn.theme--light {
+    border: 2px solid #C0C0C0 !important;
+    color: #C0C0C0 !important;
 }

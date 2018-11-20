@@ -219,13 +219,13 @@ var vue = new Vue({
                 sortable: false
             },
             {
-                text: 'Discount',
-                value: 'discount',
+                text: 'Total',
+                value: 'total',
                 sortable: false
             },
             {
-                text: 'Total',
-                value: 'total',
+                text: 'Discount',
+                value: 'discount',
                 sortable: false
             },
         ], 
