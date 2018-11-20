@@ -280,3 +280,26 @@ button.silver.v-btn.theme--light {
 .theme--light.v-btn {
     color: white;
 }
+
+.booths-table.v-card.theme--light {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.booth-container-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.booth-choice {
+    display: flex;
+    align-items: center;
+}
+
+.booth-buttons {
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+}
