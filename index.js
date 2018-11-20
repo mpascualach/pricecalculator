@@ -55,7 +55,48 @@ var vue = new Vue({
                     price: 990
                 },
                 booths: {
-                    //filling in
+                    large12: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 12m²",
+                        quantity: 0,
+                        price: 12000,
+                    },
+                    large10: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 10m²",
+                        quantity: 0,
+                        price: 9000,
+                    },
+                    medium8: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 8m²",
+                        quantity: 0,
+                        price: 8000,
+                    },
+                    medium6: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 6m²",
+                        quantity: 0,
+                        price: 6000,
+                    },
+                    std5: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 4.5m²",
+                        quantity: 0,
+                        price: 5500,
+                    },
+                    std4: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 4m²",
+                        quantity: 0,
+                        price: 5000,
+                    },
+                    std3: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 3m²",
+                        quantity: 0,
+                        price: 4400,
+                    }
                 },
                 sponsorships: {
                     platinum: {
