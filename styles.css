@@ -33,35 +33,35 @@ body {
 
 .v-card.theme--light {
     display: flex;
-		justify-content: space-between;
-		box-shadow: none !important;
+    justify-content: space-between;
+    box-shadow: none !important;
 }
 
 .theme--light.v-table {
-  background-color: #fff;
-  color: rgba(0,0,0,.87);
-  margin-right: 10px !important;
-  background: #eef0f3 !important;
-  border-collapse: collapse;
+    background-color: #fff;
+    color: rgba(0,0,0,.87);
+    margin-right: 10px !important;
+    background: #eef0f3 !important;
+    border-collapse: collapse;
 }
 
 table.v-table tbody td:first-child, table.v-table tbody td:not(:first-child), table.v-table tbody th:first-child, table.v-table tbody th:not(:first-child), table.v-table thead td:first-child, table.v-table thead td:not(:first-child), table.v-table thead th:first-child, table.v-table thead th:not(:first-child) {
-  padding: 0 24px;
-  border: 1px solid #eef0f3;
+    padding: 0 24px;
+    border: 1px solid #eef0f3;
 }
 
 th.column.text-xs-left {
-  background: #00479e;
-  color: white !important;
-  padding: 5px !important;
+    background: #00479e;
+    color: white !important;
+    padding: 5px !important;
 }
 
 td {
-  background: white;
+    background: white;
 }
 
 th.column.text-xs-left:first-child {
-  width: 20%;
+    width: 20%;
 }
 
 .white--text.v-card.theme--light.blue-grey.darken-2 {
@@ -104,6 +104,11 @@ table.v-table {
     padding: 10px;
 }
 
+.v-card__actions {
+    position: relative;
+    right: 5%;
+}
+
 .v-datatable__actions {
     display: none !important;
 }
@@ -129,10 +134,10 @@ table.v-table thead tr {
 }
 
 .theme--light.v-card {
-  background-color: #fff;
-  border-color: #fff;
-  color: rgba(0,0,0,.87);
-  width: 50%;
+    background-color: #fff;
+    border-color: #fff;
+    color: rgba(0,0,0,.87);
+    width: 50%;
 }
 
 .name {
@@ -208,10 +213,16 @@ td.checkout-btn-container > button {
     display: none;
 }
 
+.sponsorship-intro {
+    margin-left: 5%;
+}
+
 .sponsorship-container {
     display: flex;
     padding-bottom: 20px;
-    margin-left: 5px;
+    position: relative;
+    left: 20px;
+    margin-top: 2%;
 }
 
 button.v-btn.theme--light {

@@ -149,11 +149,15 @@
                                                 <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.additionalPeople)"></i>
                                             </div>                                         
                                         </div>
-                                        <div class="sponsorship-container" v-if="product.incart > 0">
-                                            <v-btn class="platinum">Platinum: {{ product.sponsorships.platinum}}</v-btn>
-                                            <v-btn class="gold">Gold: {{ product.sponsorships.gold}}</v-btn>
-                                            <v-btn class="silver">Silver: {{ product.sponsorships.silver}}</v-btn>
-                                            <i class="fa fa-question-circle"></i>
+                                        <div class="sponsorship-box" v-if="product.incart > 0">
+                                            <span class="sponsorship-intro">Sponsorship packages:</span>
+                                            <div class="sponsorship-container">
+                                                <v-btn class="platinum">Platinum: {{ product.sponsorships.platinum}}</v-btn>
+                                                <v-btn class="gold">Gold: {{ product.sponsorships.gold}}</v-btn>
+                                                <v-btn class="silver">Silver: {{ product.sponsorships.silver}}</v-btn>
+                                                <i class="fa fa-question-circle"></i>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                    <v-card-actions>

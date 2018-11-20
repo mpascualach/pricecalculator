@@ -56,9 +56,24 @@ var vue = new Vue({
                 },
             },
             sponsorships: {
-                platinum: 22000,
-                gold: 14000,
-                silver: 9000
+                platinum: {
+                    id: 1,
+                    name: "ANZA Platinum Sponsorship Package",
+                    price: 22000,
+                    qty: 0,
+                },
+                gold: {
+                    id: 1,
+                    name: "ANZA Gold Sponsorship Package",
+                    price: 14000,
+                    qty: 0,
+                },
+                silver: {
+                    id: 1,
+                    name: "ANZA Silver Sponsorship Package",
+                    price: 9000,
+                    qty: 0,
+                },
             },
             additional: []
         },
@@ -98,9 +113,24 @@ var vue = new Vue({
                 },
             },
             sponsorships: {
-                platinum: 22000,
-                gold: 16000,
-                silver: 10000
+                platinum: {
+                    id: 1,
+                    name: "Berlin Platinum Sponsorship Package",
+                    price: 22000,
+                    qty: 0,
+                },
+                gold: {
+                    id: 1,
+                    name: "Berlin Gold Sponsorship Package",
+                    price: 16000,
+                    qty: 0,
+                },
+                silver: {
+                    id: 1,
+                    name: "Berlin Silver Sponsorship Package",
+                    price: 10000,
+                    qty: 0,
+                },
             },
             additional: []
         },
@@ -142,9 +172,24 @@ var vue = new Vue({
                 },
             },
             sponsorships: {
-                platinum: 16000,
-                gold: 11000,
-                silver: 8000
+                platinum: {
+                    id: 1,
+                    name: "Beijing Platinum Sponsorship Package",
+                    price: 16000,
+                    qty: 0,
+                },
+                gold: {
+                    id: 1,
+                    name: "Beijing Gold Sponsorship Package",
+                    price: 11000,
+                    qty: 0,
+                },
+                silver: {
+                    id: 1,
+                    name: "Beijing Silver Sponsorship Package",
+                    price: 8000,
+                    qty: 0,
+                },
             },
             additional: []
         },
@@ -186,9 +231,24 @@ var vue = new Vue({
                 },
             },
             sponsorships: {
-                platinum: 16000,
-                gold: 11000,
-                silver: 8000
+                platinum: {
+                    id: 1,
+                    name: "Miami Platinum Sponsorship Package",
+                    price: 16000,
+                    qty: 0,
+                },
+                gold: {
+                    id: 1,
+                    name: "Miami Gold Sponsorship Package",
+                    price: 11000,
+                    qty: 0,
+                },
+                silver: {
+                    id: 1,
+                    name: "Miami Silver Sponsorship Package",
+                    price: 8000,
+                    qty: 0,
+                },
             },
             additional: []
         }],
