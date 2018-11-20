@@ -485,7 +485,10 @@ var vue = new Vue({
         earlyRates: true,
         checkout: false,
         checkoutscreen: {},
+        choiceModal: false,
         boothModal: false,
+        accountType: 'educator', //can also be 'service provider' and 'work and travel'
+        attendBooths: false,
         currentDate: new Date(),
         fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(),
         fixer: {}
