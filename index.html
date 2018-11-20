@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div class="main-wrapper" id="main-wrapper">
+    <div class="main-wrapper">
         
         <!-- <div class="header">
             <h1>Vue Shopping Cart</h1>
@@ -30,202 +30,293 @@
             <img class="icef-pricer-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/471364/icef_logo-min-12.png" />
         </div>
         <div id="vue">
-            <template class="cart" v-if="cart.length > 0">
-               <v-data-table
-                :headers="headers"
-                :items="cart">
+            <div class="calculator" id="main-wrapper">
+                <template class="cart" v-if="cart.length > 0">
+                    <v-data-table :headers="headers" :items="cart">
 
-                <template slot="items" slot-scope="props">
-                    <tr>
-                        <td class="name">{{props.item.name}} <br /> <sub>(includes 1 schedule)</sub> </td>
-                        <td class="price">{{props.item.price}}€</td>
-                        <td class="qty"><i class="fa fa-plus-square smaller"></i> {{props.item.quantity}}<i class="fa fa-minus-square smaller"></i> </td>
-                        <td class="sub-total">{{props.item.price * props.item.quantity}}€</td>
-                        <td class="item-total">{{props.item.price * props.item.quantity * discount}}€</td>
-                        <td class="discount">{{((props.item.price * props.item.quantity) * discount) - (props.item.price * props.item.quantity)}}€</td>
+                        <template slot="items" slot-scope="props">
+                            <tr>
+                                <td class="name">{{props.item.name}} <br /> <sub>(includes 1 schedule)</sub> </td>
+                                <td class="price">{{props.item.price}}€</td>
+                                <td class="qty"><i class="fa fa-plus-square smaller"></i> {{props.item.quantity}}<i class="fa fa-minus-square smaller"></i>
+                                </td>
+                                <td class="sub-total">{{props.item.price * props.item.quantity}}€</td>
+                                <td class="item-total">{{props.item.price * props.item.quantity * discount}}€</td>
+                                <td class="discount">{{((props.item.price * props.item.quantity) * discount) - (props.item.price *
+                                    props.item.quantity)}}€</td>
 
-                        <!-- * discount -->
-                        <td><v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn></td>
-                    </tr>
-                    <tr v-if="props.item.schedules.quantity > 0">
-                        <td>{{ props.item.schedules.name }}<br /> <sub>(max. 1 per table)</sub></td>
-                        <td>{{ props.item.schedules.price }}€</td>
-                        <td class="qty">{{ props.item.schedules.quantity }}</td>
-                        <td>{{ props.item.schedules.price * props.item.schedules.quantity }}€</td>
-                        <td>{{ props.item.schedules.price * props.item.schedules.quantity - 0 }}€</td>
-                        <td>0€</td>
-                        <td></td>
-                    </tr>
-                    <tr v-if="props.item.additionalPeople.quantity > 0">
-                        <td>{{ props.item.additionalPeople.name }}</td>
-                        <td>{{ props.item.additionalPeople.price }}€</td>
-                        <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
-                        <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}€</td>
-                        <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}€</td>
-                        <td>0€</td>
-                        <td></td>
-                    </tr>
+                                <!-- * discount -->
+                                <td>
+                                    <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
+                                </td>
+                            </tr>
+                            <tr v-if="props.item.schedules.quantity > 0">
+                                <td>{{ props.item.schedules.name }}<br /> <sub>(max. 1 per table)</sub></td>
+                                <td>{{ props.item.schedules.price }}€</td>
+                                <td class="qty">{{ props.item.schedules.quantity }}</td>
+                                <td>{{ props.item.schedules.price * props.item.schedules.quantity }}€</td>
+                                <td>{{ props.item.schedules.price * props.item.schedules.quantity - 0 }}€</td>
+                                <td>0€</td>
+                                <td></td>
+                            </tr>
+                            <tr v-if="props.item.additionalPeople.quantity > 0">
+                                <td>{{ props.item.additionalPeople.name }}</td>
+                                <td>{{ props.item.additionalPeople.price }}€</td>
+                                <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
+                                <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}€</td>
+                                <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}€</td>
+                                <td>0€</td>
+                                <td></td>
+                            </tr>
 
-                    <tr v-if="props.item.sponsorships.platinum.quantity > 0">
-                        <td> {{ props.item.sponsorships.platinum.name }} </td>
-                        <td> {{ props.item.sponsorships.platinum.price }}€ </td>
-                        <td> {{ props.item.sponsorships.platinum.quantity }} </td>
-                        <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
-                        <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
-                        <td> 0€ </td>
-                        <td></td>
-                    </tr>
+                            <tr v-if="props.item.sponsorships.platinum.quantity > 0">
+                                <td> {{ props.item.sponsorships.platinum.name }} </td>
+                                <td> {{ props.item.sponsorships.platinum.price }}€ </td>
+                                <td> {{ props.item.sponsorships.platinum.quantity }} </td>
+                                <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
+                                <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
+                                <td> 0€ </td>
+                                <td></td>
+                            </tr>
 
-                    <tr v-if="props.item.sponsorships.gold.quantity > 0">
-                        <td> {{ props.item.sponsorships.gold.name }} </td>
-                        <td> {{ props.item.sponsorships.gold.price }}€ </td>
-                        <td> {{ props.item.sponsorships.gold.quantity }} </td>
-                        <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}€ </td>
-                        <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}€ </td>
-                        <td> 0€ </td>
-                        <td></td>
-                    </tr>
+                            <tr v-if="props.item.sponsorships.gold.quantity > 0">
+                                <td> {{ props.item.sponsorships.gold.name }} </td>
+                                <td> {{ props.item.sponsorships.gold.price }}€ </td>
+                                <td> {{ props.item.sponsorships.gold.quantity }} </td>
+                                <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}€ </td>
+                                <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}€ </td>
+                                <td> 0€ </td>
+                                <td></td>
+                            </tr>
 
-                    <tr v-if="props.item.sponsorships.silver.quantity > 0">
-                        <td> {{ props.item.sponsorships.silver.name }} </td>
-                        <td> {{ props.item.sponsorships.silver.price }}€ </td>
-                        <td> {{ props.item.sponsorships.silver.quantity }} </td>
-                        <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
-                        <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
-                        <td> 0€ </td>
-                        <td></td>
-                    </tr>
-                </template>    
+                            <tr v-if="props.item.sponsorships.silver.quantity > 0">
+                                <td> {{ props.item.sponsorships.silver.name }} </td>
+                                <td> {{ props.item.sponsorships.silver.price }}€ </td>
+                                <td> {{ props.item.sponsorships.silver.quantity }} </td>
+                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
+                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
+                                <td> 0€ </td>
+                                <td></td>
+                            </tr>
+                        </template>
 
-                <template slot="footer">
-                    <td class="checkout-btn-container">
-                        <v-btn v-on:click="gotoCheckout()">Go to checkout</v-btn>
-                    </td>
-                    
-                    <td class="totals">
-                        <span v-if="earlytotal">Original total : €{{ earlytotal }} </span>
-                        <span v-else>Original total : €{{ total }} </span>
-                        <span v-if="subitemtotal">Subitems total: €{{ subitemtotal }} </span>
-                        <span v-if="earlytotal && subitemtotal">Undiscounted total: €{{ earlytotal + subitemtotal}} </span>
-                        <span v-if="!earlytotal && subitemtotal">Undiscounted total: €{{ total + subitemtotal }} </span>
-                        <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ).toFixed() }}% </span>
-                        <span>Discounted : €{{ (total * discount) - total }} </span>
-                        <strong v-if="earlytotal">Total: €{{subitemtotal + earlytotal}} </strong>
-                        <strong v-else>Total: €{{(total * discount) + subitemtotal }} </strong>
-                            <!-- + (subitemtotal + this.earlytotal) -->
-                    </td>
+                        <template slot="footer">
+                            <td class="checkout-btn-container">
+                                <v-btn v-on:click="gotoCheckout()">Go to checkout</v-btn>
+                            </td>
+
+                            <td class="totals">
+                                <span v-if="earlytotal">Original total : €{{ earlytotal }} </span>
+                                <span v-else>Original total : €{{ total }} </span>
+                                <span v-if="subitemtotal">Subitems total: €{{ subitemtotal }} </span>
+                                <span v-if="earlytotal && subitemtotal">Undiscounted total: €{{ earlytotal + subitemtotal}} </span>
+                                <span v-if="!earlytotal && subitemtotal">Undiscounted total: €{{ total + subitemtotal }} </span>
+                                <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ).toFixed() }}% </span>
+                                <span>Discounted : €{{ (total * discount) - total }} </span>
+                                <strong v-if="earlytotal">Total: €{{subitemtotal + earlytotal}} </strong>
+                                <strong v-else>Total: €{{(total * discount) + subitemtotal }} </strong>
+                                <!-- + (subitemtotal + this.earlytotal) -->
+                            </td>
+                        </template>
+                    </v-data-table>
                 </template>
-				</v-data-table>
-            </template>
 
-            <v-card class="events">
+                <v-card class="events">
 
-                <v-container xs12>
-                    <v-layout row wrap>
-                        <v-layout column>
-                            <v-flex v-for="product in products">
-                                <v-card class="blue--text">
-                                    <div class="product-info-container">
-                                        <div class="product-info">
-                                            <div class="product-name"> 
-                                                {{ product.name }}   
-                                                <span v-if="product.earlyRate && earlyRates" class="early-notification">Early rate: €{{ product.priceearly }}!</span>
-                                                <span v-else-if="product.endofearly && product.selectedearly" class="early-notification  multiple-bookings">
-                                                    Early discount rates are no longer applicable.
-                                                </span>
-                                                <span v-else-if="product.selectedearly" class="early-notification">Early discount rates have been applied at: €{{
-                                                    product.priceearly }}!</span>
+                    <v-container xs12>
+                        <v-layout row wrap>
+                            <v-layout column>
+                                <v-flex v-for="product in products">
+                                    <v-card class="blue--text">
+                                        <div class="product-info-container">
+                                            <div class="product-info">
+                                                <div class="product-name">
+                                                    {{ product.name }}
+                                                    <span v-if="product.earlyRate && earlyRates" class="early-notification">Early rate:
+                                                        €{{ product.priceearly }}!</span>
+                                                    <span v-else-if="product.endofearly && product.selectedearly" class="early-notification  multiple-bookings">
+                                                        Early discount rates are no longer applicable.
+                                                    </span>
+                                                    <span v-else-if="product.selectedearly" class="early-notification">Early discount
+                                                        rates have been applied at: €{{
+                                                        product.priceearly }}!</span>
+                                                </div>
+
+                                                <!-- <div v-if='product.earlyRate && earlyRates || product.selectedearly'>
+                                                                <div class="product-price" v-if="product.tables">
+                                                                    €{{ product.tables.priceearly}}
+                                                                </div>
+                                                                <div class="product-price" v-else>
+                                                                    €{{ product.priceearly }}
+                                                                </div>
+                                                                
+                                                            </div> -->
+                                                <div class="price-container">
+                                                    <div class="product-price" v-if="product.tables">
+                                                        €{{ product.tables.price }}
+                                                    </div>
+                                                    <div class="product-price" v-else>
+                                                        €{{ product.price }}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            
-                                            <!-- <div v-if='product.earlyRate && earlyRates || product.selectedearly'>
-                                                <div class="product-price" v-if="product.tables">
-                                                    €{{ product.tables.priceearly}}
+                                            <div class="attendance" v-if="product.incart > 0">
+                                                <div class="attendance schedules">
+                                                    <i class="fa fa-calendar-o"></i> Additional schedules:
+                                                    <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')"
+                                                        v-if="product.tables.schedules.quantity > 0">
+                                                    </i>
+                                                    <i class="fa fa-minus-square smaller hidden" v-else></i>
+                                                    <span>{{ product.tables.schedules.quantity }}</span>
+                                                    <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.schedules, 'schedules')"></i>
                                                 </div>
-                                                <div class="product-price" v-else>
-                                                    €{{ product.priceearly }}
+                                                <div class="attendance additional-people">
+                                                    <i class="fa fa-id-card"></i> </i> Additional people:
+                                                    <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.additionalPeople)"
+                                                        v-if="product.tables.additionalPeople.quantity > 0">
+                                                    </i>
+                                                    <i class="fa fa-minus-square smaller hidden" v-else></i>
+                                                    <span> {{ product.tables.additionalPeople.quantity }} </span>
+                                                    <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.additionalPeople)"></i>
                                                 </div>
-                                                
-                                            </div> -->
-                                            <div class="price-container">
-                                                <div class="product-price" v-if="product.tables">
-                                                    €{{ product.tables.price }}
+                                            </div>
+                                            <div class="sponsorship-box" v-if="product.incart > 0">
+                                                <span class="sponsorship-intro">Sponsorship packages:</span>
+                                                <div class="sponsorship-container">
+
+                                                    <v-btn light class="platinum sponsorship" v-on:click="addSubItem(product, product.tables.sponsorships.platinum)"
+                                                        v-if="product.tables.sponsorships.platinum.quantity == 0">Platinum: {{
+                                                        product.tables.sponsorships.platinum.price }}</v-btn>
+                                                    <v-btn class="platinum-pressed sponsorship-pressed sponsorship light" v-on:click="removeSubItem(product,product.tables.sponsorships.platinum)"
+                                                        v-else>Platinum: {{ product.tables.sponsorships.platinum.price }}</v-btn>
+
+                                                    <v-btn light class="gold sponsorship light" v-on:click="addSubItem(product, product.tables.sponsorships.gold)"
+                                                        v-if="product.tables.sponsorships.gold.quantity == 0">Gold: {{
+                                                        product.tables.sponsorships.gold.price }}</v-btn>
+                                                    <v-btn class="gold-pressed sponsorship-pressed sponsorship light" v-on:click="removeSubItem(product,product.tables.sponsorships.gold)"
+                                                        v-else>Gold: {{ product.tables.sponsorships.gold.price }}</v-btn>
+
+                                                    <v-btn light class="silver sponsorship" v-on:click="addSubItem(product, product.tables.sponsorships.silver)"
+                                                        v-if="product.tables.sponsorships.silver.quantity == 0">Silver:
+                                                        {{ product.tables.sponsorships.silver.price }}</v-btn>
+                                                    <v-btn class="silver-pressed sponsorship-pressed sponsorship light" v-on:click="removeSubItem(product,product.tables.sponsorships.silver)"
+                                                        v-else>Silver: {{ product.tables.sponsorships.silver.price }}</v-btn>
+
+                                                    <i class="fa fa-question-circle"></i>
                                                 </div>
-                                                <div class="product-price" v-else>
-                                                    €{{ product.price }}
-                                                </div>    
+
                                             </div>
                                         </div>
-                                        <div class="attendance" v-if="product.incart > 0">
-                                            <div class="attendance schedules">
-                                                <i class="fa fa-calendar-o"></i> Additional schedules: 
-                                                <i class="fa fa-minus-square smaller" 
-                                                    v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')" 
-                                                    v-if="product.tables.schedules.quantity > 0">
-                                                </i> 
-                                                <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                <span>{{ product.tables.schedules.quantity }}</span> 
-                                                <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.schedules, 'schedules')"></i>
-                                            </div>
-                                            <div class="attendance additional-people">
-                                                <i class="fa fa-id-card"></i> </i> Additional people: 
-                                                <i class="fa fa-minus-square smaller" 
-                                                    v-on:click="removeSubItem(product, product.tables.additionalPeople)" 
-                                                    v-if="product.tables.additionalPeople.quantity > 0">
-                                                </i>
-                                                <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                <span> {{ product.tables.additionalPeople.quantity }} </span> 
-                                                <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.additionalPeople)"></i>
-                                            </div>                                         
-                                        </div>
-                                        <div class="sponsorship-box" v-if="product.incart > 0">
-                                            <span class="sponsorship-intro">Sponsorship packages:</span>
-                                            <div class="sponsorship-container">
+                                        <v-card-actions>
+                                            <v-btn class="add-to-package" v-on:click="addToCart(product, product.tables)" v-if="!product.incart">Add
+                                                to package</v-btn>
+                                            <v-btn class="add-to-package remove-from-package" v-on:click="absoluteRemoveFromCart(product)"
+                                                v-if="product.incart">Remove</v-btn>
+                                        </v-card-actions>
+                                    </v-card>
 
-                                                <v-btn light class="platinum sponsorship" 
-                                                    v-on:click="addSubItem(product, product.tables.sponsorships.platinum)" 
-                                                    v-if="product.tables.sponsorships.platinum.quantity == 0">Platinum: {{ product.tables.sponsorships.platinum.price }}</v-btn>
-                                                <v-btn class="platinum-pressed sponsorship-pressed sponsorship light" 
-                                                    v-on:click="removeSubItem(product,product.tables.sponsorships.platinum)"
-                                                    v-else>Platinum: {{ product.tables.sponsorships.platinum.price }}</v-btn>
-
-                                                <v-btn light class="gold sponsorship light"
-                                                    v-on:click="addSubItem(product, product.tables.sponsorships.gold)"
-                                                    v-if="product.tables.sponsorships.gold.quantity == 0">Gold: {{ product.tables.sponsorships.gold.price }}</v-btn>
-                                                <v-btn class="gold-pressed sponsorship-pressed sponsorship light" 
-                                                    v-on:click="removeSubItem(product,product.tables.sponsorships.gold)"
-                                                    v-else>Gold: {{ product.tables.sponsorships.gold.price }}</v-btn>
-
-                                                <v-btn light class="silver sponsorship" 
-                                                    v-on:click="addSubItem(product, product.tables.sponsorships.silver)" 
-                                                    v-if="product.tables.sponsorships.silver.quantity == 0">Silver:
-                                                    {{ product.tables.sponsorships.silver.price }}</v-btn>
-                                                <v-btn class="silver-pressed sponsorship-pressed sponsorship light" 
-                                                    v-on:click="removeSubItem(product,product.tables.sponsorships.silver)"
-                                                    v-else>Silver: {{ product.tables.sponsorships.silver.price }}</v-btn>
-
-                                                <i class="fa fa-question-circle"></i>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                   <v-card-actions>
-                                        <v-btn class="add-to-package" v-on:click="addToCart(product, product.tables)" v-if="!product.incart">Add to package</v-btn>
-                                        <v-btn class="add-to-package remove-from-package" v-on:click="absoluteRemoveFromCart(product)" v-if="product.incart">Remove</v-btn>
-                                   </v-card-actions>
-                                </v-card>
-
-                            </v-flex>
+                                </v-flex>
+                            </v-layout>
                         </v-layout>
-                    </v-layout>
-    
-                </v-container>
-            </v-card>
+
+                    </v-container>
+                </v-card>
+            </div>
+            <div class="checkout" id="checkout">
+                <template class="checkout" v-if="cart.length > 0">
+                    <v-data-table :headers="headers" :items="cart">
+
+                        <template slot="items" slot-scope="props">
+                            <tr>
+                                <td class="name">{{props.item.name}} <br /> <sub>(includes 1 schedule)</sub> </td>
+                                <td class="price">{{props.item.price}}€</td>
+                                <td class="qty"><i class="fa fa-plus-square smaller"></i> {{props.item.quantity}}<i class="fa fa-minus-square smaller"></i>
+                                </td>
+                                <td class="sub-total">{{props.item.price * props.item.quantity}}€</td>
+                                <td class="item-total">{{props.item.price * props.item.quantity * discount}}€</td>
+                                <td class="discount">{{((props.item.price * props.item.quantity) * discount) - (props.item.price *
+                                    props.item.quantity)}}€</td>
+
+                                <!-- * discount -->
+                                <td>
+                                    <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
+                                </td>
+                            </tr>
+                            <tr v-if="props.item.schedules.quantity > 0">
+                                <td>{{ props.item.schedules.name }}<br /> <sub>(max. 1 per table)</sub></td>
+                                <td>{{ props.item.schedules.price }}€</td>
+                                <td class="qty">{{ props.item.schedules.quantity }}</td>
+                                <td>{{ props.item.schedules.price * props.item.schedules.quantity }}€</td>
+                                <td>{{ props.item.schedules.price * props.item.schedules.quantity - 0 }}€</td>
+                                <td>0€</td>
+                                <td></td>
+                            </tr>
+                            <tr v-if="props.item.additionalPeople.quantity > 0">
+                                <td>{{ props.item.additionalPeople.name }}</td>
+                                <td>{{ props.item.additionalPeople.price }}€</td>
+                                <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
+                                <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}€</td>
+                                <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}€</td>
+                                <td>0€</td>
+                                <td></td>
+                            </tr>
+
+                            <tr v-if="props.item.sponsorships.platinum.quantity > 0">
+                                <td> {{ props.item.sponsorships.platinum.name }} </td>
+                                <td> {{ props.item.sponsorships.platinum.price }}€ </td>
+                                <td> {{ props.item.sponsorships.platinum.quantity }} </td>
+                                <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
+                                <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
+                                <td> 0€ </td>
+                                <td></td>
+                            </tr>
+
+                            <tr v-if="props.item.sponsorships.gold.quantity > 0">
+                                <td> {{ props.item.sponsorships.gold.name }} </td>
+                                <td> {{ props.item.sponsorships.gold.price }}€ </td>
+                                <td> {{ props.item.sponsorships.gold.quantity }} </td>
+                                <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}€ </td>
+                                <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}€ </td>
+                                <td> 0€ </td>
+                                <td></td>
+                            </tr>
+
+                            <tr v-if="props.item.sponsorships.silver.quantity > 0">
+                                <td> {{ props.item.sponsorships.silver.name }} </td>
+                                <td> {{ props.item.sponsorships.silver.price }}€ </td>
+                                <td> {{ props.item.sponsorships.silver.quantity }} </td>
+                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
+                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
+                                <td> 0€ </td>
+                                <td></td>
+                            </tr>
+                        </template>
+
+                        <template slot="footer">
+                            <td class="checkout-btn-container">
+                                <v-btn v-on:click="gotoCheckout()">Go to checkout</v-btn>
+                            </td>
+
+                            <td class="totals">
+                                <span v-if="earlytotal">Original total : €{{ earlytotal }} </span>
+                                <span v-else>Original total : €{{ total }} </span>
+                                <span v-if="subitemtotal">Subitems total: €{{ subitemtotal }} </span>
+                                <span v-if="earlytotal && subitemtotal">Undiscounted total: €{{ earlytotal + subitemtotal}} </span>
+                                <span v-if="!earlytotal && subitemtotal">Undiscounted total: €{{ total + subitemtotal }} </span>
+                                <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ).toFixed() }}% </span>
+                                <span>Discounted : €{{ (total * discount) - total }} </span>
+                                <strong v-if="earlytotal">Total: €{{subitemtotal + earlytotal}} </strong>
+                                <strong v-else>Total: €{{(total * discount) + subitemtotal }} </strong>
+                                <!-- + (subitemtotal + this.earlytotal) -->
+                            </td>
+                        </template>
+                    </v-data-table>
+                </template>
+            </div>
         </div>
         
     </div>
-    <div class="checkout" id="checkout">
-        This works!
-    </div>
+    
     <!-- all our custom functions come from here -->
     <script type="text/javascript" src="index.js"></script> 
 

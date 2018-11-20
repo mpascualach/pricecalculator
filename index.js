@@ -299,6 +299,7 @@ var vue = new Vue({
         limitReached: false,
         earlyRates: true,
         checkout: false,
+        checkoutscreen: {},
         currentDate: new Date(),
         fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(),
         fixer: {}
@@ -461,8 +462,10 @@ var vue = new Vue({
             }
         },
         gotoCheckout(){
+            this.checkoutScreen = Object.assign({}, this.cart);
             document.getElementById("main-wrapper").style.display = "none";
             document.getElementById("checkout").style.display = "block";
+            console.log(this.checkoutScreen)
         }
     },
     beforeMount(){
