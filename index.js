@@ -34,6 +34,7 @@ var vue = new Vue({
             incart: 0,
             quantity: 0,
             subtotal: 0,
+            boothselected: false,
             tables: {
                 id: 1,
                 name: "ANZA Table",
@@ -55,6 +56,7 @@ var vue = new Vue({
                     price: 990
                 },
                 booths: {
+                    quantity: 0,
                     large12: {
                         id: 1,
                         name: "ANZA Exhibition Booth 12m²",
@@ -135,6 +137,7 @@ var vue = new Vue({
             incart: 0,
             quantity: 0,
             subtotal: 0,
+            boothselected: false,
             tables: {
                 id: 2,
                 name: "Berlin Table",
@@ -154,6 +157,51 @@ var vue = new Vue({
                     name: "Berlin Additional Person",
                     quantity: 0,
                     price: 990
+                },
+                booths: {
+                    quantity: 0,
+                    large12: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 12m²",
+                        quantity: 0,
+                        price: 12000,
+                    },
+                    large10: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 10m²",
+                        quantity: 0,
+                        price: 9000,
+                    },
+                    medium8: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 8m²",
+                        quantity: 0,
+                        price: 8000,
+                    },
+                    medium6: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 6m²",
+                        quantity: 0,
+                        price: 6000,
+                    },
+                    std5: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 4.5m²",
+                        quantity: 0,
+                        price: 5500,
+                    },
+                    std4: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 4m²",
+                        quantity: 0,
+                        price: 5000,
+                    },
+                    std3: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 3m²",
+                        quantity: 0,
+                        price: 4400,
+                    }
                 },
                 sponsorships: {
                     platinum: {
@@ -193,6 +241,7 @@ var vue = new Vue({
             incart: 0,
             quantity: 0,
             subtotal: 0,
+            boothselected: false,
             tables: {
                 id: 2,
                 name: "Beijing Table",
@@ -214,6 +263,51 @@ var vue = new Vue({
                     discount: 1,
                     quantity: 0,
                     price: 990
+                },
+                booths: {
+                    quantity: 0,
+                    large12: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 12m²",
+                        quantity: 0,
+                        price: 12000,
+                    },
+                    large10: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 10m²",
+                        quantity: 0,
+                        price: 9000,
+                    },
+                    medium8: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 8m²",
+                        quantity: 0,
+                        price: 8000,
+                    },
+                    medium6: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 6m²",
+                        quantity: 0,
+                        price: 6000,
+                    },
+                    std5: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 4.5m²",
+                        quantity: 0,
+                        price: 5500,
+                    },
+                    std4: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 4m²",
+                        quantity: 0,
+                        price: 5000,
+                    },
+                    std3: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 3m²",
+                        quantity: 0,
+                        price: 4400,
+                    }
                 },
                 sponsorships: {
                     platinum: {
@@ -252,6 +346,7 @@ var vue = new Vue({
             incart: 0,
             quantity: 0,
             subtotal: 0,
+            boothselected: false,
             tables: {
                 id: 2,
                 name: "Miami Table",
@@ -273,6 +368,51 @@ var vue = new Vue({
                     discount: 0,
                     quantity: 0,
                     price: 990
+                },
+                booths: {
+                    quantity: 0,
+                    large12: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 12m²",
+                        quantity: 0,
+                        price: 12000,
+                    },
+                    large10: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 10m²",
+                        quantity: 0,
+                        price: 9000,
+                    },
+                    medium8: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 8m²",
+                        quantity: 0,
+                        price: 8000,
+                    },
+                    medium6: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 6m²",
+                        quantity: 0,
+                        price: 6000,
+                    },
+                    std5: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 4.5m²",
+                        quantity: 0,
+                        price: 5500,
+                    },
+                    std4: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 4m²",
+                        quantity: 0,
+                        price: 5000,
+                    },
+                    std3: {
+                        id: 1,
+                        name: "ANZA Exhibition Booth 3m²",
+                        quantity: 0,
+                        price: 4400,
+                    }
                 },
                 sponsorships: {
                     platinum: {
@@ -496,7 +636,7 @@ var vue = new Vue({
             this.subitemtotal -= subitem.price;
             if ( selector == 'schedules' ){
                 this.cart.forEach(m => {
-                    if (m.id == product.id) {
+                    if ( m.id == product.id ) {
                         m.quantity = Math.floor( (subitem.quantity / 2 )+1 );
                         if ( subitem.quantity == 1 || subitem.quantity == 0 ) m.quantity = 1;
                         if ( subitem.quantity !== 0 ) this.subitemtotal -= m.price;

@@ -306,4 +306,12 @@ button.booths.booths-activator.v-btn.theme--light {
     display: flex;
     flex-direction: column;
     margin: 2%;
+    width: 200px;
+    justify-content: space-around;
+}
+
+.v-card__text.booth-choice-container {
+    height: 400px;
+    justify-content: space-between;
+    margin-bottom: 6%;
 }

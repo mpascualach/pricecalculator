@@ -291,8 +291,13 @@
                                                                             v-on:click="addSubItem(product, product.tables.booths.std5)">
                                                                             4.5m²
                                                                         </v-btn>
-                                                                        <v-btn>
+                                                                        <v-btn v-if="product.tables.booths.std4" 
+                                                                            v-on:click="addSubItem(product, product.tables.booths.std4)">
                                                                             4m²
+                                                                        </v-btn>
+                                                                        <v-btn v-if="product.tables.booths.std4" 
+                                                                            v-on:click="addSubItem(product, product.tables.booths.std4)">
+                                                                            3m²
                                                                         </v-btn>
                                                                     </div>
                                                                 </div>
