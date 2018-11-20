@@ -630,6 +630,9 @@ var vue = new Vue({
                     }
                 });
             }
+            if (selector == 'booths'){
+                product.boothselected = true;
+            }
         },
         removeSubItem: function (product, subitem, selector) {
             subitem.quantity--;

@@ -246,7 +246,8 @@
                                             <template v-if="product.incart > 0">
                                                 <v-layout row justify-center>
                                                     <v-dialog v-model="boothModal" persistent max-width="600">
-                                                        <v-btn class="booths booths-activator" slot="activator">Exhibition booths</v-btn>
+                                                        <v-btn class="booths booths-activator" slot="activator" v-if="!product.boothselected">Exhibition booths</v-btn>
+                                                        <v-btn class="booths booths-activated" v-else>Exibition booth selected!</v-btn>
                                                         <v-card class="booths-table">
                                                             <v-card-title class="headline">Choose your exhibition booth!</v-card-title>
                                                             <v-card-text class="booth-choice-container">
