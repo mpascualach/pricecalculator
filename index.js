@@ -55,6 +55,11 @@ var vue = new Vue({
                     price: 990
                 },
             },
+            sponsorships: {
+                platinum: 22000,
+                gold: 14000,
+                silver: 9000
+            },
             additional: []
         },
         {
@@ -91,6 +96,11 @@ var vue = new Vue({
                     quantity: 0,
                     price: 990
                 },
+            },
+            sponsorships: {
+                platinum: 22000,
+                gold: 16000,
+                silver: 10000
             },
             additional: []
         },
@@ -131,6 +141,11 @@ var vue = new Vue({
                     price: 990
                 },
             },
+            sponsorships: {
+                platinum: 16000,
+                gold: 11000,
+                silver: 8000
+            },
             additional: []
         },
         {
@@ -169,6 +184,11 @@ var vue = new Vue({
                     quantity: 0,
                     price: 990
                 },
+            },
+            sponsorships: {
+                platinum: 16000,
+                gold: 11000,
+                silver: 8000
             },
             additional: []
         }],

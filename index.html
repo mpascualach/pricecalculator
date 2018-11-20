@@ -117,13 +117,16 @@
                                                 </div>
                                                 
                                             </div> -->
-                                            <div>
+                                            <div class="price-container">
                                                 <div class="product-price" v-if="product.tables">
                                                     €{{ product.tables.price }}
                                                 </div>
                                                 <div class="product-price" v-else>
                                                     €{{ product.price }}
                                                 </div>    
+                                            </div>
+                                            <div class="sponsorship-container">
+                                                
                                             </div>
                                         </div>
                                         <div class="attendance" v-if="product.incart > 0">
