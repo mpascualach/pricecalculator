@@ -45,6 +45,16 @@ body {
     border-collapse: collapse;
 }
 
+button.v-btn.theme--light {
+    margin: 2px;
+    border-radius: 15px;
+    background-color: transparent;
+}
+
+.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
+    background-color: unset;
+}
+
 table.v-table tbody td:first-child, table.v-table tbody td:not(:first-child), table.v-table tbody th:first-child, table.v-table tbody th:not(:first-child), table.v-table thead td:first-child, table.v-table thead td:not(:first-child), table.v-table thead th:first-child, table.v-table thead th:not(:first-child) {
     padding: 0 24px;
     border: 1px solid #eef0f3;
@@ -81,6 +91,11 @@ th.column.text-xs-left:first-child {
     background-color: transparent !important;
     border: 0px transparent !important;
     box-shadow: none !important;
+}
+
+.remove-from-package {
+    position: relative;
+    right: 10%;
 }
 
 .v-table__overflow {
@@ -225,11 +240,7 @@ td.checkout-btn-container > button {
     margin-top: 2%;
 }
 
-button.v-btn.theme--light {
-    margin: 2px;
-    border-radius: 15px;
-    background-color: white!important;
-}
+
 
 .v-btn {
     padding: 0 10px;
@@ -237,15 +248,35 @@ button.v-btn.theme--light {
 
 button.platinum.v-btn.theme--light {
     border: 2px solid #E5E4E2 !important;
-    color: #e5e4e2 !important;
+    /* color: #e5e4e2 !important; */
 }
 
 button.gold.v-btn.theme--light {
     border: 2px solid #D4AF37 !important;
-    color: #D4AF37 !important;
+    /* color: #D4AF37 !important; */
 }
 
 button.silver.v-btn.theme--light {
     border: 2px solid #C0C0C0 !important;
-    color: #C0C0C0 !important;
+    /* color: #C0C0C0 !important; */
+}
+
+.pressed {
+    color: white!important;
+}
+
+.platinum-pressed {
+    background-color: #E5E4E2 !important;
+}
+
+.gold-pressed {
+    background-color: #D4AF37 !important;
+}
+
+.silver-pressed {
+    background-color: #C0C0C0 !important;
+}
+
+.theme--light.v-btn {
+    color: white;
 }

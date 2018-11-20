@@ -54,25 +54,25 @@ var vue = new Vue({
                     quantity: 0,
                     price: 990
                 },
-            },
-            sponsorships: {
-                platinum: {
-                    id: 1,
-                    name: "ANZA Platinum Sponsorship Package",
-                    price: 22000,
-                    qty: 0,
-                },
-                gold: {
-                    id: 1,
-                    name: "ANZA Gold Sponsorship Package",
-                    price: 14000,
-                    qty: 0,
-                },
-                silver: {
-                    id: 1,
-                    name: "ANZA Silver Sponsorship Package",
-                    price: 9000,
-                    qty: 0,
+                sponsorships: {
+                    platinum: {
+                        id: 1,
+                        name: "ANZA Platinum Sponsorship Package",
+                        price: 22000,
+                        quantity: 0,
+                    },
+                    gold: {
+                        id: 1,
+                        name: "ANZA Gold Sponsorship Package",
+                        price: 14000,
+                        quantity: 0,
+                    },
+                    silver: {
+                        id: 1,
+                        name: "ANZA Silver Sponsorship Package",
+                        price: 9000,
+                        quantity: 0,
+                    },
                 },
             },
             additional: []
@@ -297,10 +297,11 @@ var vue = new Vue({
         saved: 0,
         regularWorkshops: 0,
         limitReached: false,
-        earlyRates: false,
+        earlyRates: true,
         checkout: false,
         currentDate: new Date(),
         fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(),
+        fixer: {}
     },
     methods: {
         addToCart: function (product, subitem) {
@@ -465,11 +466,14 @@ var vue = new Vue({
         }
     },
     beforeMount(){
-        this.earlyRates = true;
         this.products.forEach(m => {
             if ( this.fullDate < m.earlybirdends ){
                 m.earlyRate = true;
             }
+        });
+        axios.get('http://data.fixer.io/api/latest?access_key=0045f1e6f69eedc5c36ccfa9b93d821b')
+        .then(response => {
+            this.fixer = response.data;
         });
     }
 }).$mount('#vue');

@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -47,26 +48,53 @@
                         <td><v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn></td>
                     </tr>
                     <tr v-if="props.item.schedules.quantity > 0">
-                        <td>{{props.item.schedules.name}}<br /> <sub>(max. 1 per table)</sub></td>
-                        <td>{{props.item.schedules.price}}€</td>
-                        <td class="qty">{{props.item.schedules.quantity}}</td>
-                        <td>{{props.item.schedules.price * props.item.schedules.quantity}}€</td>
-                        <td>{{props.item.schedules.price * props.item.schedules.quantity - 0}}€</td>
+                        <td>{{ props.item.schedules.name }}<br /> <sub>(max. 1 per table)</sub></td>
+                        <td>{{ props.item.schedules.price }}€</td>
+                        <td class="qty">{{ props.item.schedules.quantity }}</td>
+                        <td>{{ props.item.schedules.price * props.item.schedules.quantity }}€</td>
+                        <td>{{ props.item.schedules.price * props.item.schedules.quantity - 0 }}€</td>
                         <td>0€</td>
                         <td></td>
                     </tr>
                     <tr v-if="props.item.additionalPeople.quantity > 0">
-                        <td class=>{{props.item.additionalPeople.name}}</td>
-                        <td>{{props.item.additionalPeople.price}}€</td>
-                        <td class="qty">{{props.item.additionalPeople.quantity}}</td>
-                        <td>{{props.item.additionalPeople.price * props.item.additionalPeople.quantity}}€</td>
-                        <td>{{props.item.additionalPeople.price * props.item.additionalPeople.quantity}}€</td>
+                        <td>{{ props.item.additionalPeople.name }}</td>
+                        <td>{{ props.item.additionalPeople.price }}€</td>
+                        <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
+                        <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}€</td>
+                        <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}€</td>
                         <td>0€</td>
                         <td></td>
                     </tr>
-                        <!-- <tr v-if="props.item.additional.length">
-                        test
-                    </tr> -->
+
+                    <tr v-if="props.item.sponsorships.platinum.quantity > 0">
+                        <td> {{ props.item.sponsorships.platinum.name }} </td>
+                        <td> {{ props.item.sponsorships.platinum.price }}€ </td>
+                        <td> {{ props.item.sponsorships.platinum.quantity }} </td>
+                        <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
+                        <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
+                        <td> 0€ </td>
+                        <td></td>
+                    </tr>
+
+                    <tr v-if="props.item.sponsorships.gold.quantity > 0">
+                        <td> {{ props.item.sponsorships.gold.name }} </td>
+                        <td> {{ props.item.sponsorships.gold.price }}€ </td>
+                        <td> {{ props.item.sponsorships.gold.quantity }} </td>
+                        <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}€ </td>
+                        <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}€ </td>
+                        <td> 0€ </td>
+                        <td></td>
+                    </tr>
+
+                    <tr v-if="props.item.sponsorships.silver.quantity > 0">
+                        <td> {{ props.item.sponsorships.silver.name }} </td>
+                        <td> {{ props.item.sponsorships.silver.price }}€ </td>
+                        <td> {{ props.item.sponsorships.silver.quantity }} </td>
+                        <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
+                        <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
+                        <td> 0€ </td>
+                        <td></td>
+                    </tr>
                 </template>    
 
                 <template slot="footer">
@@ -152,9 +180,29 @@
                                         <div class="sponsorship-box" v-if="product.incart > 0">
                                             <span class="sponsorship-intro">Sponsorship packages:</span>
                                             <div class="sponsorship-container">
-                                                <v-btn class="platinum">Platinum: {{ product.sponsorships.platinum}}</v-btn>
-                                                <v-btn class="gold">Gold: {{ product.sponsorships.gold}}</v-btn>
-                                                <v-btn class="silver">Silver: {{ product.sponsorships.silver}}</v-btn>
+
+                                                <v-btn light class="platinum sponsorship" 
+                                                    v-on:click="addSubItem(product, product.tables.sponsorships.platinum)" 
+                                                    v-if="product.tables.sponsorships.platinum.quantity == 0">Platinum: {{ product.tables.sponsorships.platinum.price }}</v-btn>
+                                                <v-btn class="platinum-pressed sponsorship-pressed sponsorship light" 
+                                                    v-on:click="removeSubItem(product,product.tables.sponsorships.platinum)"
+                                                    v-else>Platinum: {{ product.tables.sponsorships.platinum.price }}</v-btn>
+
+                                                <v-btn light class="gold sponsorship light"
+                                                    v-on:click="addSubItem(product, product.tables.sponsorships.gold)"
+                                                    v-if="product.tables.sponsorships.gold.quantity == 0">Gold: {{ product.tables.sponsorships.gold.price }}</v-btn>
+                                                <v-btn class="gold-pressed sponsorship-pressed sponsorship light" 
+                                                    v-on:click="removeSubItem(product,product.tables.sponsorships.gold)"
+                                                    v-else>Gold: {{ product.tables.sponsorships.gold.price }}</v-btn>
+
+                                                <v-btn light class="silver sponsorship" 
+                                                    v-on:click="addSubItem(product, product.tables.sponsorships.silver)" 
+                                                    v-if="product.tables.sponsorships.silver.quantity == 0">Silver:
+                                                    {{ product.tables.sponsorships.silver.price }}</v-btn>
+                                                <v-btn class="silver-pressed sponsorship-pressed sponsorship light" 
+                                                    v-on:click="removeSubItem(product,product.tables.sponsorships.silver)"
+                                                    v-else>Silver: {{ product.tables.sponsorships.silver.price }}</v-btn>
+
                                                 <i class="fa fa-question-circle"></i>
                                             </div>
                                             
@@ -162,7 +210,7 @@
                                     </div>
                                    <v-card-actions>
                                         <v-btn class="add-to-package" v-on:click="addToCart(product, product.tables)" v-if="!product.incart">Add to package</v-btn>
-                                        <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(product)" v-if="product.incart">Remove</v-btn>
+                                        <v-btn class="add-to-package remove-from-package" v-on:click="absoluteRemoveFromCart(product)" v-if="product.incart">Remove</v-btn>
                                    </v-card-actions>
                                 </v-card>
 
