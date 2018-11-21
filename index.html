@@ -30,10 +30,6 @@
             <img class="icef-pricer-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/471364/icef_logo-min-12.png" />
         </div>
         <div id="vue">
-            <label class="switch">
-                <input type="checkbox" id="modeSelector" v-on:click="changeMode()">
-                <span class="slider round"></span>
-            </label>
             <div class="calculator" id="main-wrapper">
                 <template class="cart" v-if="cart.length > 0">
                     <v-data-table :headers="headers" :items="cart">

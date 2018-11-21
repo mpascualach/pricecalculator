@@ -655,9 +655,6 @@ var vue = new Vue({
             document.getElementById("main-wrapper").style.display = "none";
             document.getElementById("checkout").style.display = "block";
             console.log(this.checkoutScreen)
-        },
-        changeMode(){
-            this.attendBooths = !this.attendBooths;
         }
     },
     beforeMount(){
