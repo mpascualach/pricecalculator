@@ -34,6 +34,7 @@ var vue = new Vue({
             incart: 0,
             quantity: 0,
             subtotal: 0,
+            selectBoothBoolean: false,
             boothselected: false,
             tables: {
                 id: 1,
@@ -57,6 +58,10 @@ var vue = new Vue({
                 },
                 booths: {
                     quantity: 0,
+                    booths: true,
+                    name: '',
+                    id: 1,
+                    price: 0, //to be changed later
                     large12: {
                         id: 1,
                         name: "ANZA Exhibition Booth 12m²",
@@ -159,7 +164,10 @@ var vue = new Vue({
                     price: 990
                 },
                 booths: {
+                    id: 1,
                     quantity: 0,
+                    price: 0,
+                    name: 0,
                     large12: {
                         id: 1,
                         name: "ANZA Exhibition Booth 12m²",
@@ -494,7 +502,7 @@ var vue = new Vue({
         fixer: {}
     },
     methods: {
-        addToCart: function (product, subitem) {
+        addToCart: function (product, subitem, selector) {
             var cartitem = Object.assign({}, subitem); //make copy of product
             this.regularWorkshops++;
             this.earlyRates = false;
@@ -655,6 +663,13 @@ var vue = new Vue({
             document.getElementById("main-wrapper").style.display = "none";
             document.getElementById("checkout").style.display = "block";
             console.log(this.checkoutScreen)
+        },
+        changeMode(){
+            this.attendBooths = !this.attendBooths;
+        },
+        showBoothOptions(product){
+            console.log(product);
+            product.selectBoothBoolean = true;
         }
     },
     beforeMount(){

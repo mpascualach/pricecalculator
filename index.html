@@ -23,13 +23,19 @@
 <body>
     <div class="main-wrapper">
         
-        <!-- <div class="header">
-            <h1>Vue Shopping Cart</h1>
-        </div> -->
-        <div class="header">
-            <img class="icef-pricer-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/471364/icef_logo-min-12.png" />
-        </div>
         <div id="vue">
+            <div class="header">
+				<img class="icef-pricer-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/471364/icef_logo-min-12.png" />
+				<div class="switch-container">
+					<div class="switch-label">Attend workshops</div>
+					<label class="switch">
+						<input type="checkbox" id="modeSelector" v-on:click="changeMode()">
+						<span class="slider round"></span>
+					</label>
+					<div class="switch-label">Exhibition workshops</div>
+				</div>
+            </div>
+            
             <div class="calculator" id="main-wrapper">
                 <template class="cart" v-if="cart.length > 0">
                     <v-data-table :headers="headers" :items="cart">
@@ -49,15 +55,15 @@
                                 </td>
                             </tr>
 
-                            <tr v-if="props.item.booths.large12.quantity > 0">
-                                <td>{{ props.item.booths.large12.name }}</td>
-                                <td>{{ props.item.booths.large12.price }}€</td>
-                                <td class="qty">{{ props.item.booths.large12.quantity }}</td>
-                                <td>{{ props.item.booths.large12.price * props.item.booths.large12.quantity }}€</td>
-                                <td>{{ props.item.booths.large12.price * props.item.booths.large12.quantity }}€</td>
+                            <tr v-if="props.item.booths.quantity > 0">
+                                <td>{{ props.item.booths.name }}</td>
+                                <td>{{ props.item.booths.price }}€</td>
+                                <td class="qty">{{ props.item.booths.quantity }}</td>
+                                <td>{{ props.item.booths.price * props.item.booths.quantity }}€</td>
+                                <td>{{ props.item.booths.price * props.item.booths.quantity }}€</td>
                                 <td>0€</td>
                                 <td>
-                                    <v-btn class="add-to-package" v-on:click="removeSubItem( props.item, props.item.booths.large12, 'booths' )">REMOVE</v-btn>
+                                    <v-btn class="add-to-package" v-on:click="removeSubItem(props.item, props.item.booths.large12, 'booths')">REMOVE</v-btn>
                                 </td>
                             </tr>
 
@@ -189,76 +195,126 @@
                                                     <i class="fa fa-question-circle"></i>
                                                 </div>
 
-                                            </div>
+											</div>
+											
+											<v-card v-if="product.selectBoothBoolean" class="booths-table">
+													<v-card-text class="booth-choice-container">
+														<div class="booth-choice">
+															<div class="booth-category">
+																Large:
+															</div>
+															<div class="booth-buttons">
+																<v-btn v-if="product.tables.booths.large12" v-on:click="addToCart(product, product.tables.booths.large12, 'booths')"
+																	@click="boothModal = false">
+																	12m²
+																</v-btn>
+																<v-btn v-if="product.tables.booths.large10" v-on:click="addToCart(product, product.tables.booths.large10, 'booths')">
+																	10m²
+																</v-btn>
+															</div>
+														</div>
+														<div class="booth-choice">
+															<div class="booth-category">
+																Medium:
+															</div>
+															<div class="booth-buttons">
+																<v-btn v-if="product.tables.booths.medium8" v-on:click="addToCart(product, product.tables.booths.medium8, 'booths')">
+																	8m²
+																</v-btn>
+																<v-btn v-if="product.tables.booths.medium6" v-on:click="addToCart(product, product.tables.booths.medium6, 'booths')">
+																	6m²
+																</v-btn>
+															</div>
+														</div>
+														<div class="booth-choice">
+															<div class="booth-category">
+																Small:
+															</div>
+
+															<div class="booth-buttons">
+																<v-btn v-if="product.tables.booths.std5" v-on:click="addToCart(product, product.tables.booths.std5, 'booths')">
+																	4.5m²
+																</v-btn>
+																<v-btn v-if="product.tables.booths.std4" v-on:click="addToCart(product, product.tables.booths.std4, 'booths')">
+																	4m²
+																</v-btn>
+																<v-btn v-if="product.tables.booths.std4" v-on:click="addToCart(product, product.tables.booths.std4, 'booths')">
+																	3m²
+																</v-btn>
+															</div>
+														</div>
+													</v-card-text>
+												</v-card>
 
                                         </div>
 
                                         <v-card-actions v-if="!product.incart">
-                                            <v-btn v-if="!attendBooths" v-on:click="addToCart(product, product.tables)"> Add to package </v-btn>
+											<v-btn v-if="!attendBooths" v-on:click="addToCart(product, product.tables, 'tables')"> Add to package </v-btn>
+											<v-btn class="booths booths-activator" v-on:click="showBoothOptions(product)" v-else>Exhibition booths</v-btn>
 
-                                            <template v-if="attendBooths">
+                                            <!-- <template v-if="attendBooths">
                                                 <v-layout row justify-center>
                                                     <v-dialog v-model="boothModal" persistent max-width="600">
                                                         <v-btn class="booths booths-activator" slot="activator">Exhibition booths</v-btn>
-                                                        <v-card class="booths-table">
-                                                            <v-card-title class="headline">Choose your exhibition booth!</v-card-title>
-                                                            <v-card-text class="booth-choice-container">
-                                                                <div class="booth-choice">
-                                                                    <div class="booth-category">
-                                                                        Large:
-                                                                    </div>
-                                                                    <div class="booth-buttons">
-                                                                        <v-btn v-if="product.tables.booths.large12" v-on:click="addSubItem(product, product.tables.booths.large12)"
-                                                                            @click="boothModal = false">
-                                                                            12m²
-                                                                        </v-btn>
-                                                                        <v-btn v-if="product.tables.booths.large10" v-on:click="addSubItem(product, product.tables.booths.large10)">
-                                                                            10m²
-                                                                        </v-btn>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="booth-choice">
-                                                                    <div class="booth-category">
-                                                                        Medium:
-                                                                    </div>
-                                                                    <div class="booth-buttons">
-                                                                        <v-btn v-if="product.tables.booths.medium8" v-on:click="addSubItem(product, product.tables.booths.medium8)">
-                                                                            8m²
-                                                                        </v-btn>
-                                                                        <v-btn v-if="product.tables.booths.medium6" v-on:click="addSubItem(product, product.tables.booths.medium6)">
-                                                                            6m²
-                                                                        </v-btn>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="booth-choice">
-                                                                    <div class="booth-category">
-                                                                        Small:
-                                                                    </div>
-
-                                                                    <div class="booth-buttons">
-                                                                        <v-btn v-if="product.tables.booths.std5" v-on:click="addSubItem(product, product.tables.booths.std5)">
-                                                                            4.5m²
-                                                                        </v-btn>
-                                                                        <v-btn v-if="product.tables.booths.std4" v-on:click="addSubItem(product, product.tables.booths.std4)">
-                                                                            4m²
-                                                                        </v-btn>
-                                                                        <v-btn v-if="product.tables.booths.std4" v-on:click="addSubItem(product, product.tables.booths.std4)">
-                                                                            3m²
-                                                                        </v-btn>
-                                                                    </div>
-                                                                </div>
-                                                            </v-card-text>
-                                                        </v-card>
+														<v-card class="booths-table">
+																<v-card-title class="headline">Choose your exhibition booth!</v-card-title>
+																<v-card-text class="booth-choice-container">
+																	<div class="booth-choice">
+																		<div class="booth-category">
+																			Large:
+																		</div>
+																		<div class="booth-buttons">
+																			<v-btn v-if="product.tables.booths.large12" v-on:click="addToCart(product, product.tables.booths.large12, 'booths')"
+																				@click="boothModal = false">
+																				12m²
+																			</v-btn>
+																			<v-btn v-if="product.tables.booths.large10" v-on:click="addToCart(product, product.tables.booths.large10, 'booths')">
+																				10m²
+																			</v-btn>
+																		</div>
+																	</div>
+																	<div class="booth-choice">
+																		<div class="booth-category">
+																			Medium:
+																		</div>
+																		<div class="booth-buttons">
+																			<v-btn v-if="product.tables.booths.medium8" v-on:click="addToCart(product, product.tables.booths.medium8, 'booths')">
+																				8m²
+																			</v-btn>
+																			<v-btn v-if="product.tables.booths.medium6" v-on:click="addToCart(product, product.tables.booths.medium6, 'booths')">
+																				6m²
+																			</v-btn>
+																		</div>
+																	</div>
+																	<div class="booth-choice">
+																		<div class="booth-category">
+																			Small:
+																		</div>
+			
+																		<div class="booth-buttons">
+																			<v-btn v-if="product.tables.booths.std5" v-on:click="addToCart(product, product.tables.booths.std5, 'booths')">
+																				4.5m²
+																			</v-btn>
+																			<v-btn v-if="product.tables.booths.std4" v-on:click="addToCart(product, product.tables.booths.std4, 'booths')">
+																				4m²
+																			</v-btn>
+																			<v-btn v-if="product.tables.booths.std4" v-on:click="addToCart(product, product.tables.booths.std4, 'booths')">
+																				3m²
+																			</v-btn>
+																		</div>
+																	</div>
+																</v-card-text>
+															</v-card>
                                                     </v-dialog>
                                                 </v-layout>
-                                            </template>
+                                            </template> -->
 
                                         </v-card-actions>
    
                                         <v-card-actions v-if="product.incart">
                                             <v-btn class="add-to-package remove-from-package" v-on:click="absoluteRemoveFromCart(product)" v-if="product.incart">Remove</v-btn>
                                         </v-card-actions>
-                                        
+                                    
                                     </v-card>
 
                                 </v-flex>
