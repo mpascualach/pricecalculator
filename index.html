@@ -41,7 +41,7 @@
                     <v-data-table :headers="headers" :items="cart">
 
                         <template slot="items" slot-scope="props">
-                            <tr>
+                            <tr v-if="!props.item.booths">
                                 <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                 <td class="price">{{ props.item.price }}€</td>
                                 <td class="qty"><i class="fa fa-plus-square smaller"></i> {{ props.item.quantity }}<i class="fa fa-minus-square smaller"></i>
@@ -55,15 +55,15 @@
                                 </td>
                             </tr>
 
-                            <tr v-if="props.item.booths.quantity > 0">
-                                <td>{{ props.item.booths.name }}</td>
-                                <td>{{ props.item.booths.price }}€</td>
-                                <td class="qty">{{ props.item.booths.quantity }}</td>
-                                <td>{{ props.item.booths.price * props.item.booths.quantity }}€</td>
-                                <td>{{ props.item.booths.price * props.item.booths.quantity }}€</td>
+                            <tr v-else>
+                                <td>{{ props.item.name }}</td>
+                                <td>{{ props.item.price }}€</td>
+                                <td class="qty">{{ props.item.quantity }}</td>
+                                <td>{{ props.item.price * props.item.quantity }}€</td>
+                                <td>{{ props.item.price * props.item.quantity }}€</td>
                                 <td>0€</td>
                                 <td>
-                                    <v-btn class="add-to-package" v-on:click="removeSubItem(props.item, props.item.booths.large12, 'booths')">REMOVE</v-btn>
+                                    <v-btn class="add-to-package">REMOVE</v-btn>
                                 </td>
                             </tr>
 
@@ -204,11 +204,11 @@
 																Large:
 															</div>
 															<div class="booth-buttons">
-																<v-btn v-if="product.tables.booths.large12" v-on:click="addToCart(product, product.tables.booths.large12, 'booths')"
+																<v-btn v-if="product.booths.large12" v-on:click="addToCart(product, product.booths.large12, 'booths')"
 																	@click="boothModal = false">
 																	12m²
 																</v-btn>
-																<v-btn v-if="product.tables.booths.large10" v-on:click="addToCart(product, product.tables.booths.large10, 'booths')">
+																<v-btn v-if="product.booths.large10" v-on:click="addToCart(product, product.booths.large10, 'booths')">
 																	10m²
 																</v-btn>
 															</div>
@@ -218,10 +218,10 @@
 																Medium:
 															</div>
 															<div class="booth-buttons">
-																<v-btn v-if="product.tables.booths.medium8" v-on:click="addToCart(product, product.tables.booths.medium8, 'booths')">
+																<v-btn v-if="product.booths.medium8" v-on:click="addToCart(product, product.booths.medium8, 'booths')">
 																	8m²
 																</v-btn>
-																<v-btn v-if="product.tables.booths.medium6" v-on:click="addToCart(product, product.tables.booths.medium6, 'booths')">
+																<v-btn v-if="product.booths.medium6" v-on:click="addToCart(product, product.booths.medium6, 'booths')">
 																	6m²
 																</v-btn>
 															</div>
@@ -232,13 +232,13 @@
 															</div>
 
 															<div class="booth-buttons">
-																<v-btn v-if="product.tables.booths.std5" v-on:click="addToCart(product, product.tables.booths.std5, 'booths')">
+																<v-btn v-if="product.booths.std5" v-on:click="addToCart(product, product.booths.std5, 'booths')">
 																	4.5m²
 																</v-btn>
-																<v-btn v-if="product.tables.booths.std4" v-on:click="addToCart(product, product.tables.booths.std4, 'booths')">
+																<v-btn v-if="product.booths.std4" v-on:click="addToCart(product, product.booths.std4, 'booths')">
 																	4m²
 																</v-btn>
-																<v-btn v-if="product.tables.booths.std4" v-on:click="addToCart(product, product.tables.booths.std4, 'booths')">
+																<v-btn v-if="product.booths.std4" v-on:click="addToCart(product, product.booths.std4, 'booths')">
 																	3m²
 																</v-btn>
 															</div>
