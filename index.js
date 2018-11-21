@@ -503,14 +503,13 @@ var vue = new Vue({
     },
     methods: {
         addToCart: function (product, subitem, selector) {
-            if (selector == 'booths'){
+            if (selector && selector == 'booths'){
                 product.booths.booths = true;
                 product.booths.quantity++;
                 product.booths.name = subitem.name;
                 product.booths.price = subitem.price;
                 var cartitem = Object.assign({}, product.booths);
                 console.log(cartitem)
-                this.cart.push(cartitem);
             }
             else {
                 var cartitem = Object.assign({}, subitem); //make copy of product
