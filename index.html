@@ -250,7 +250,7 @@
 
                                         <v-card-actions v-if="!product.incart">
 											<v-btn v-if="!attendBooths" v-on:click="addToCart(product, product.tables, 'tables')"> Add to package </v-btn>
-											<v-btn class="booths booths-activator" v-on:click="showBoothOptions(product)" v-else>Exhibition booths</v-btn>
+											<v-btn class="booths booths-activator" v-on:click="showBoothOptions(product)" v-if="attendBooths && !product.selectBoothBoolean">Exhibition booths</v-btn>
 
                                             <!-- <template v-if="attendBooths">
                                                 <v-layout row justify-center>

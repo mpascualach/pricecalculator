@@ -288,20 +288,20 @@ button.silver.v-btn.theme--light {
 }
 
 .booths-table.v-card.theme--light {
-    flex-direction: column;
     align-items: center;
     width: 100%;
 }
 
 .v-card__text.booth-choice-container {
+    width: 100%;
+    margin-bottom: 6%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .booth-choice {
     display: flex;
     align-items: center;
+    margin-right: 25%;
 }
 
 button.booths.booths-activator.v-btn.theme--light {
@@ -312,12 +312,11 @@ button.booths.booths-activator.v-btn.theme--light {
     display: flex;
     flex-direction: column;
     margin: 2%;
-    width: 200px;
+    width: 40px;
     justify-content: space-around;
 }
 
 .v-card__text.booth-choice-container {
-    height: 400px;
     justify-content: space-between;
     margin-bottom: 6%;
 }
