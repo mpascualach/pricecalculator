@@ -396,3 +396,10 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+button.work-and-travel.v-btn.theme--light {
+    font-size: 11px;
+    position: absolute;
+    right: -15;
+    bottom: 5;
+}

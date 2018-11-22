@@ -36,6 +36,7 @@ var vue = new Vue({
             subtotal: 0,
             selectBoothBoolean: false,
             boothselected: false,
+            workandtravel: true,
             tables: {
                 id: 1,
                 name: "ANZA Table",
@@ -127,323 +128,324 @@ var vue = new Vue({
                 }
             },
             additional: []
-        // },
-        // {
-        //     id: 2,
-        //     name: "Berlin",
-        //     priceearly: 3900,
-        //     selectedearly: false,
-        //     endofearly: false,
-        //     price: 4400,
-        //     currency: "EUR",
-        //     description: "Berlin Workshop description text goes here",
-        //     earlybirdends: 20190311,
-        //     earlyRate: false,
-        //     incart: 0,
-        //     quantity: 0,
-        //     subtotal: 0,
-        //     boothselected: false,
-        //     tables: {
-        //         id: 2,
-        //         name: "Berlin Table",
-        //         discount: 1,
-        //         price: 4400,
-        //         originalprice: 4400,
-        //         priceearly: 3900,
-        //         quantity: 0,
-        //         schedules: {
-        //             id: 2,
-        //             name: "Berlin Additional Schedule",
-        //             quantity: 0,
-        //             price: 2400
-        //         },
-        //         additionalPeople: {
-        //             id: 2,
-        //             name: "Berlin Additional Person",
-        //             quantity: 0,
-        //             price: 990
-        //         },
-        //         booths: {
-        //             id: 1,
-        //             quantity: 0,
-        //             price: 0,
-        //             name: 0,
-        //             large12: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 12m²",
-        //                 quantity: 0,
-        //                 price: 12000,
-        //             },
-        //             large10: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 10m²",
-        //                 quantity: 0,
-        //                 price: 9000,
-        //             },
-        //             medium8: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 8m²",
-        //                 quantity: 0,
-        //                 price: 8000,
-        //             },
-        //             medium6: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 6m²",
-        //                 quantity: 0,
-        //                 price: 6000,
-        //             },
-        //             std5: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 4.5m²",
-        //                 quantity: 0,
-        //                 price: 5500,
-        //             },
-        //             std4: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 4m²",
-        //                 quantity: 0,
-        //                 price: 5000,
-        //             },
-        //             std3: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 3m²",
-        //                 quantity: 0,
-        //                 price: 4400,
-        //             }
-        //         },
-        //         sponsorships: {
-        //             platinum: {
-        //                 id: 1,
-        //                 name: "Berlin Platinum Sponsorship Package",
-        //                 price: 22000,
-        //                 qty: 0,
-        //             },
-        //             gold: {
-        //                 id: 1,
-        //                 name: "Berlin Gold Sponsorship Package",
-        //                 price: 16000,
-        //                 qty: 0,
-        //             },
-        //             silver: {
-        //                 id: 1,
-        //                 name: "Berlin Silver Sponsorship Package",
-        //                 price: 10000,
-        //                 qty: 0,
-        //             },
-        //         },
-        //     },
-            
-        //     additional: []
-        // },
-        // {
-        //     id: 3,
-        //     name: "Beijing",
-        //     price: 4400,
-        //     priceearly: 3900,
-        //     selectedearly: false,
-        //     endofearly: false,
-        //     currency: "EUR",
-        //     description: "Beijing Workshop description text goes here",
-        //     earlybirdends: 20190311,
-        //     earlyRate: false,
-        //     incart: 0,
-        //     quantity: 0,
-        //     subtotal: 0,
-        //     boothselected: false,
-        //     tables: {
-        //         id: 2,
-        //         name: "Beijing Table",
-        //         discount: 1,
-        //         price: 4400,
-        //         originalprice: 4400,
-        //         priceearly: 3900,
-        //         quantity: 0,
-        //         schedules: {
-        //             id: 2,
-        //             name: "Beijing Additional Schedule",
-        //             discount: 1,
-        //             quantity: 0,
-        //             price: 2400
-        //         },
-        //         additionalPeople: {
-        //             id: 2,
-        //             name: "Beijing Additional Person",
-        //             discount: 1,
-        //             quantity: 0,
-        //             price: 990
-        //         },
-        //         booths: {
-        //             quantity: 0,
-        //             large12: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 12m²",
-        //                 quantity: 0,
-        //                 price: 12000,
-        //             },
-        //             large10: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 10m²",
-        //                 quantity: 0,
-        //                 price: 9000,
-        //             },
-        //             medium8: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 8m²",
-        //                 quantity: 0,
-        //                 price: 8000,
-        //             },
-        //             medium6: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 6m²",
-        //                 quantity: 0,
-        //                 price: 6000,
-        //             },
-        //             std5: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 4.5m²",
-        //                 quantity: 0,
-        //                 price: 5500,
-        //             },
-        //             std4: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 4m²",
-        //                 quantity: 0,
-        //                 price: 5000,
-        //             },
-        //             std3: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 3m²",
-        //                 quantity: 0,
-        //                 price: 4400,
-        //             }
-        //         },
-        //         sponsorships: {
-        //             platinum: {
-        //                 id: 1,
-        //                 name: "Beijing Platinum Sponsorship Package",
-        //                 price: 16000,
-        //                 qty: 0,
-        //             },
-        //             gold: {
-        //                 id: 1,
-        //                 name: "Beijing Gold Sponsorship Package",
-        //                 price: 11000,
-        //                 qty: 0,
-        //             },
-        //             silver: {
-        //                 id: 1,
-        //                 name: "Beijing Silver Sponsorship Package",
-        //                 price: 8000,
-        //                 qty: 0,
-        //             },
-        //         },
-        //     },
-        //     additional: []
-        // },
-        // {
-        //     id: 4,
-        //     name: "Miami",
-        //     price: 6900,
-        //     priceearly: 3900,
-        //     selectedearly: false,
-        //     endofearly: false,
-        //     currency: "AUD",
-        //     description: "Miami Workshop description text goes here",
-        //     earlybirdends: 20180311,
-        //     earlyRate: false,
-        //     incart: 0,
-        //     quantity: 0,
-        //     subtotal: 0,
-        //     boothselected: false,
-        //     tables: {
-        //         id: 2,
-        //         name: "Miami Table",
-		// 		discount: 0,
-        //         price: 4400,
-        //         originalprice: 4400,
-        //         priceearly: 3900,
-        //         quantity: 0,
-        //         schedules: {
-        //             id: 2,
-        //             name: "Miami Additional Schedule",
-        //             discount: 0,
-        //             quantity: 0,
-        //             price: 2400
-        //         },
-        //         additionalPeople: {
-        //             id: 2,
-        //             name: "Miami Additional Person",
-        //             discount: 0,
-        //             quantity: 0,
-        //             price: 990
-        //         },
-        //         booths: {
-        //             quantity: 0,
-        //             large12: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 12m²",
-        //                 quantity: 0,
-        //                 price: 12000,
-        //             },
-        //             large10: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 10m²",
-        //                 quantity: 0,
-        //                 price: 9000,
-        //             },
-        //             medium8: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 8m²",
-        //                 quantity: 0,
-        //                 price: 8000,
-        //             },
-        //             medium6: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 6m²",
-        //                 quantity: 0,
-        //                 price: 6000,
-        //             },
-        //             std5: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 4.5m²",
-        //                 quantity: 0,
-        //                 price: 5500,
-        //             },
-        //             std4: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 4m²",
-        //                 quantity: 0,
-        //                 price: 5000,
-        //             },
-        //             std3: {
-        //                 id: 1,
-        //                 name: "ANZA Exhibition Booth 3m²",
-        //                 quantity: 0,
-        //                 price: 4400,
-        //             }
-        //         },
-        //         sponsorships: {
-        //             platinum: {
-        //                 id: 1,
-        //                 name: "Miami Platinum Sponsorship Package",
-        //                 price: 16000,
-        //                 qty: 0,
-        //             },
-        //             gold: {
-        //                 id: 1,
-        //                 name: "Miami Gold Sponsorship Package",
-        //                 price: 11000,
-        //                 qty: 0,
-        //             },
-        //             silver: {
-        //                 id: 1,
-        //                 name: "Miami Silver Sponsorship Package",
-        //                 price: 8000,
-        //                 qty: 0,
-        //             },
-        //         },
-        //     },
-        //     additional: []
+        },
+        {
+            id: 2,
+            name: "Berlin",
+            priceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            price: 4400,
+            currency: "EUR",
+            description: "Berlin Workshop description text goes here",
+            earlybirdends: 20190311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            boothselected: false,
+            workandtravel: true,
+            tables: {
+                id: 2,
+                name: "Berlin Table",
+                discount: 1,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 2,
+                    name: "Berlin Additional Schedule",
+                    quantity: 0,
+                    price: 2400
+                },
+                additionalPeople: {
+                    id: 2,
+                    name: "Berlin Additional Person",
+                    quantity: 0,
+                    price: 990
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 2,
+                        name: "Berlin Platinum Sponsorship Package",
+                        price: 22000,
+                        qty: 0,
+                    },
+                    gold: {
+                        id: 2,
+                        name: "Berlin Gold Sponsorship Package",
+                        price: 16000,
+                        qty: 0,
+                    },
+                    silver: {
+                        id: 2,
+                        name: "Berlin Silver Sponsorship Package",
+                        price: 10000,
+                        qty: 0,
+                    },
+                },
+            },
+            booths: {
+                id: 2,
+                quantity: 0,
+                price: 0,
+                name: '',
+                large12: {
+                    id: 2,
+                    name: "ANZA Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 12000,
+                },
+                large10: {
+                    id: 2,
+                    name: "ANZA Exhibition Booth 10m²",
+                    quantity: 0,
+                    price: 9000,
+                },
+                medium8: {
+                    id: 2,
+                    name: "ANZA Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 8000,
+                },
+                medium6: {
+                    id: 2,
+                    name: "ANZA Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 6000,
+                },
+                std5: {
+                    id: 2,
+                    name: "ANZA Exhibition Booth 4.5m²",
+                    quantity: 0,
+                    price: 5500,
+                },
+                std4: {
+                    id: 2,
+                    name: "ANZA Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 5000,
+                },
+                std3: {
+                    id: 2,
+                    name: "ANZA Exhibition Booth 3m²",
+                    quantity: 0,
+                    price: 4400,
+                }
+            },
+            additional: []
+        },
+        {
+            id: 3,
+            name: "Beijing",
+            price: 4400,
+            priceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "Beijing Workshop description text goes here",
+            earlybirdends: 20190311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            boothselected: false,
+            workandtravel: true,
+            tables: {
+                id: 3,
+                name: "Beijing Table",
+                discount: 1,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 3,
+                    name: "Beijing Additional Schedule",
+                    discount: 1,
+                    quantity: 0,
+                    price: 2400
+                },
+                additionalPeople: {
+                    id: 3,
+                    name: "Beijing Additional Person",
+                    discount: 1,
+                    quantity: 0,
+                    price: 990
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 3,
+                        name: "Beijing Platinum Sponsorship Package",
+                        price: 16000,
+                        qty: 0,
+                    },
+                    gold: {
+                        id: 3,
+                        name: "Beijing Gold Sponsorship Package",
+                        price: 11000,
+                        qty: 0,
+                    },
+                    silver: {
+                        id: 3,
+                        name: "Beijing Silver Sponsorship Package",
+                        price: 8000,
+                        qty: 0,
+                    },
+                },
+            },
+            booths: {
+                quantity: 0,
+                large12: {
+                    id: 3,
+                    name: "ANZA Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 12000,
+                },
+                large10: {
+                    id: 3,
+                    name: "ANZA Exhibition Booth 10m²",
+                    quantity: 0,
+                    price: 9000,
+                },
+                medium8: {
+                    id: 3,
+                    name: "ANZA Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 8000,
+                },
+                medium6: {
+                    id: 3,
+                    name: "ANZA Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 6000,
+                },
+                std5: {
+                    id: 3,
+                    name: "ANZA Exhibition Booth 4.5m²",
+                    quantity: 0,
+                    price: 5500,
+                },
+                std4: {
+                    id: 3,
+                    name: "ANZA Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 5000,
+                },
+                std3: {
+                    id: 3,
+                    name: "ANZA Exhibition Booth 3m²",
+                    quantity: 0,
+                    price: 4400,
+                }
+            },
+            additional: []
+        },
+        {
+            id: 4,
+            name: "Miami",
+            price: 6900,
+            priceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "AUD",
+            description: "Miami Workshop description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            boothselected: false,
+            tables: {
+                id: 4,
+                name: "Miami Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 4,
+                    name: "Miami Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400
+                },
+                additionalPeople: {
+                    id: 4,
+                    name: "Miami Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990
+                },
+                booths: {
+                    quantity: 0,
+                    large12: {
+                        id: 4,
+                        name: "ANZA Exhibition Booth 12m²",
+                        quantity: 0,
+                        price: 12000,
+                    },
+                    large10: {
+                        id: 4,
+                        name: "ANZA Exhibition Booth 10m²",
+                        quantity: 0,
+                        price: 9000,
+                    },
+                    medium8: {
+                        id: 4,
+                        name: "ANZA Exhibition Booth 8m²",
+                        quantity: 0,
+                        price: 8000,
+                    },
+                    medium6: {
+                        id: 4,
+                        name: "ANZA Exhibition Booth 6m²",
+                        quantity: 0,
+                        price: 6000,
+                    },
+                    std5: {
+                        id: 4,
+                        name: "ANZA Exhibition Booth 4.5m²",
+                        quantity: 0,
+                        price: 5500,
+                    },
+                    std4: {
+                        id: 4,
+                        name: "ANZA Exhibition Booth 4m²",
+                        quantity: 0,
+                        price: 5000,
+                    },
+                    std3: {
+                        id: 4,
+                        name: "ANZA Exhibition Booth 3m²",
+                        quantity: 0,
+                        price: 4400,
+                    }
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 4,
+                        name: "Miami Platinum Sponsorship Package",
+                        price: 16000,
+                        qty: 0,
+                    },
+                    gold: {
+                        id: 4,
+                        name: "Miami Gold Sponsorship Package",
+                        price: 11000,
+                        qty: 0,
+                    },
+                    silver: {
+                        id: 4,
+                        name: "Miami Silver Sponsorship Package",
+                        price: 8000,
+                        qty: 0,
+                    },
+                },
+            },
+            additional: []
         }],
         addons: [
             {
@@ -495,7 +497,7 @@ var vue = new Vue({
         checkoutscreen: {},
         choiceModal: false,
         boothModal: false,
-        accountType: 'educator', //can also be 'service provider' and 'work and travel'
+        accountType: 'work_and_travel', //can also be 'service_provider' and 'work_and_travel'
         attendBooths: false,
         currentDate: new Date(),
         fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(),
@@ -503,18 +505,19 @@ var vue = new Vue({
     },
     methods: {
         addToCart: function (product, subitem, selector) {
+            let cartitem;
             if (selector && selector == 'booths'){
                 product.booths.booths = true;
                 product.booths.quantity++;
                 product.booths.name = subitem.name;
                 product.booths.price = subitem.price;
-                var cartitem = Object.assign({}, product.booths);
+                cartitem = Object.assign({}, product.booths);
                 this.cart.push(cartitem);
                 console.log("Cart: ", this.cart);
                 console.log(cartitem)
             }
             else {
-                var cartitem = Object.assign({}, subitem); //make copy of product
+                cartitem = Object.assign({}, subitem); //make copy of product
                 this.regularWorkshops++;
                 this.earlyRates = false;
                 this.cart.push(cartitem); //push copy of product into cart
