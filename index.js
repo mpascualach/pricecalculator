@@ -80,6 +80,88 @@ var vue = new Vue({
                 marketing_and_sponsorships: [
                     {
                         id: 1,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [
+                            {
+                                name: 'Inside cover',
+                                price: 2000
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2900
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1700
+                            },
+                            {
+                                name: 'Half page',
+                                price: 1100
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Lift doors',
+                                price: 6000
+                            },
+                            {
+                                name: 'Intro-Point Sponsorship',
+                                price: 2200
+                            },
+                            {
+                                name: 'Advertising Panel',
+                                price: 1600
+                            },
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1200
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Merchandise Sponsorship",
+                        types: [
+                            {
+                                name: 'Note pads',
+                                price: 2000
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2000
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 2200
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2000
+                            },
+                            {
+                                name: 'Catalogue USB Memory cards',
+                                price: 2900
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 6500
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
                         name: "Hospitality Sponsorship",
                         types: [
                             {
@@ -101,8 +183,57 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        
-                    }
+                        id: 1,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Internet hub',
+                                price: 3000
+                            },
+                            {
+                                name: 'Wireless internet service',
+                                price: 2000
+                            },
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 4000
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5000
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 5400
+                            },
+                            {
+                                name: 'Registration - agents',
+                                price: 3500
+                            },
+                            {
+                                name: 'Registration - providers',
+                                price: 3500
+                            },
+                            {
+                                name: 'Registration - both',
+                                price: 3500
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Presentations",
+                        types: [
+                            {
+                                name: '50 minute slot',
+                                price: 690
+                            },
+                            {
+                                name: '25 minute slot',
+                                price: 490
+                            },
+                        ]
+                    },
                 ]
             },
             booths: {

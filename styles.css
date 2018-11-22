@@ -408,3 +408,8 @@ button.work-and-travel.v-btn.theme--light {
     width: 100%;
     flex-direction: column;
 }
+
+button.add-to-package.remove-from-package.v-btn.theme--light {
+    position: absolute;
+    top: 20;
+}
