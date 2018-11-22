@@ -509,6 +509,8 @@ var vue = new Vue({
                 product.booths.name = subitem.name;
                 product.booths.price = subitem.price;
                 var cartitem = Object.assign({}, product.booths);
+                this.cart.push(cartitem);
+                console.log("Cart: ", this.cart);
                 console.log(cartitem)
             }
             else {
