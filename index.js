@@ -972,7 +972,8 @@ var vue = new Vue({
                         qty: 0,
                     },
                 },
-                marketing_and_sponsorships: [{
+                marketing_and_sponsorships: [
+                    {
                         id: 1,
                         name: 'Advertisement in Educator/Agent Catalogue',
                         types: [{
