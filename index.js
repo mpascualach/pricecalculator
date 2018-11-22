@@ -296,7 +296,10 @@ var vue = new Vue({
                 },
             },
             booths: {
+                id: 3,
                 quantity: 0,
+                price: 0,
+                name: '',
                 large12: {
                     id: 3,
                     name: "ANZA Exhibition Booth 12m²",
@@ -379,51 +382,6 @@ var vue = new Vue({
                     quantity: 0,
                     price: 990
                 },
-                booths: {
-                    quantity: 0,
-                    large12: {
-                        id: 4,
-                        name: "ANZA Exhibition Booth 12m²",
-                        quantity: 0,
-                        price: 12000,
-                    },
-                    large10: {
-                        id: 4,
-                        name: "ANZA Exhibition Booth 10m²",
-                        quantity: 0,
-                        price: 9000,
-                    },
-                    medium8: {
-                        id: 4,
-                        name: "ANZA Exhibition Booth 8m²",
-                        quantity: 0,
-                        price: 8000,
-                    },
-                    medium6: {
-                        id: 4,
-                        name: "ANZA Exhibition Booth 6m²",
-                        quantity: 0,
-                        price: 6000,
-                    },
-                    std5: {
-                        id: 4,
-                        name: "ANZA Exhibition Booth 4.5m²",
-                        quantity: 0,
-                        price: 5500,
-                    },
-                    std4: {
-                        id: 4,
-                        name: "ANZA Exhibition Booth 4m²",
-                        quantity: 0,
-                        price: 5000,
-                    },
-                    std3: {
-                        id: 4,
-                        name: "ANZA Exhibition Booth 3m²",
-                        quantity: 0,
-                        price: 4400,
-                    }
-                },
                 sponsorships: {
                     platinum: {
                         id: 4,
@@ -444,6 +402,51 @@ var vue = new Vue({
                         qty: 0,
                     },
                 },
+            },
+            booths: {
+                quantity: 0,
+                large12: {
+                    id: 4,
+                    name: "ANZA Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 12000,
+                },
+                large10: {
+                    id: 4,
+                    name: "ANZA Exhibition Booth 10m²",
+                    quantity: 0,
+                    price: 9000,
+                },
+                medium8: {
+                    id: 4,
+                    name: "ANZA Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 8000,
+                },
+                medium6: {
+                    id: 4,
+                    name: "ANZA Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 6000,
+                },
+                std5: {
+                    id: 4,
+                    name: "ANZA Exhibition Booth 4.5m²",
+                    quantity: 0,
+                    price: 5500,
+                },
+                std4: {
+                    id: 4,
+                    name: "ANZA Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 5000,
+                },
+                std3: {
+                    id: 4,
+                    name: "ANZA Exhibition Booth 3m²",
+                    quantity: 0,
+                    price: 4400,
+                }
             },
             additional: []
         }],
@@ -497,7 +500,7 @@ var vue = new Vue({
         checkoutscreen: {},
         choiceModal: false,
         boothModal: false,
-        accountType: 'work_and_travel', //can also be 'service_provider' and 'work_and_travel'
+        accountType: 'educator', //can also be 'service_provider' and 'work_and_travel'
         attendBooths: false,
         currentDate: new Date(),
         fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(),
