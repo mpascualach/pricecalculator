@@ -422,9 +422,11 @@ button.marketing-choice.v-btn.theme--light {
 }
 
 .advert-section {
-    margin-left: 27%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .v-dialog.v-dialog--active {
-    width: 300px;
+    width: 350px;
 }

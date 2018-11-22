@@ -1274,6 +1274,23 @@ var vue = new Vue({
                         advert: true
                     }
                 ]
+            },
+            {
+                type: 'Package - 20% discount',
+                choices: [
+                    {
+                        name: 'Adverts - Skyscraper & Rectangle',
+                        price: 1160,
+                        quantity: 0,
+                        advert: true
+                    },
+                    {
+                        name: 'Full Package',
+                        price: 1160,
+                        quantity: 0,
+                        advert: true
+                    },
+                ] 
             }
         ],
         total: 0,
