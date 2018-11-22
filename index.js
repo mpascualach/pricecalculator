@@ -127,6 +127,24 @@ var vue = new Vue({
                     price: 4400,
                 }
             },
+            work_and_travel: {
+                id: 1,
+                name: "ANZA Work and Travel",
+                price: 6900,
+                quantity: 0,
+                schedules: {
+                    id: 1,
+                    name: "ANZA Work and Travel Schedule",
+                    quantity: 0,
+                    price: 2400,
+                },
+                additionalPeople: {
+                    id: 1,
+                    name: "ANZA Work and Travel Additional Person",
+                    quantity: 0,
+                    price: 900,
+                },
+            },
             additional: []
         },
         {
@@ -193,43 +211,43 @@ var vue = new Vue({
                 name: '',
                 large12: {
                     id: 2,
-                    name: "ANZA Exhibition Booth 12m²",
+                    name: "Berlin Exhibition Booth 12m²",
                     quantity: 0,
                     price: 12000,
                 },
                 large10: {
                     id: 2,
-                    name: "ANZA Exhibition Booth 10m²",
+                    name: "Berlin Exhibition Booth 10m²",
                     quantity: 0,
                     price: 9000,
                 },
                 medium8: {
                     id: 2,
-                    name: "ANZA Exhibition Booth 8m²",
+                    name: "Berlin Exhibition Booth 8m²",
                     quantity: 0,
                     price: 8000,
                 },
                 medium6: {
                     id: 2,
-                    name: "ANZA Exhibition Booth 6m²",
+                    name: "Berlin Exhibition Booth 6m²",
                     quantity: 0,
                     price: 6000,
                 },
                 std5: {
                     id: 2,
-                    name: "ANZA Exhibition Booth 4.5m²",
+                    name: "Berlin Exhibition Booth 4.5m²",
                     quantity: 0,
                     price: 5500,
                 },
                 std4: {
                     id: 2,
-                    name: "ANZA Exhibition Booth 4m²",
+                    name: "Berlin Exhibition Booth 4m²",
                     quantity: 0,
                     price: 5000,
                 },
                 std3: {
                     id: 2,
-                    name: "ANZA Exhibition Booth 3m²",
+                    name: "Berlin Exhibition Booth 3m²",
                     quantity: 0,
                     price: 4400,
                 }
@@ -251,7 +269,7 @@ var vue = new Vue({
             quantity: 0,
             subtotal: 0,
             boothselected: false,
-            workandtravel: true,
+            workandtravel: false,
             tables: {
                 id: 3,
                 name: "Beijing Table",
@@ -302,43 +320,43 @@ var vue = new Vue({
                 name: '',
                 large12: {
                     id: 3,
-                    name: "ANZA Exhibition Booth 12m²",
+                    name: "Beijing Exhibition Booth 12m²",
                     quantity: 0,
                     price: 12000,
                 },
                 large10: {
                     id: 3,
-                    name: "ANZA Exhibition Booth 10m²",
+                    name: "Beijing Exhibition Booth 10m²",
                     quantity: 0,
                     price: 9000,
                 },
                 medium8: {
                     id: 3,
-                    name: "ANZA Exhibition Booth 8m²",
+                    name: "Beijing Exhibition Booth 8m²",
                     quantity: 0,
                     price: 8000,
                 },
                 medium6: {
                     id: 3,
-                    name: "ANZA Exhibition Booth 6m²",
+                    name: "Beijing Exhibition Booth 6m²",
                     quantity: 0,
                     price: 6000,
                 },
                 std5: {
                     id: 3,
-                    name: "ANZA Exhibition Booth 4.5m²",
+                    name: "Beijing Exhibition Booth 4.5m²",
                     quantity: 0,
                     price: 5500,
                 },
                 std4: {
                     id: 3,
-                    name: "ANZA Exhibition Booth 4m²",
+                    name: "Beijing Exhibition Booth 4m²",
                     quantity: 0,
                     price: 5000,
                 },
                 std3: {
                     id: 3,
-                    name: "ANZA Exhibition Booth 3m²",
+                    name: "Beijing Exhibition Booth 3m²",
                     quantity: 0,
                     price: 4400,
                 }
@@ -360,6 +378,7 @@ var vue = new Vue({
             quantity: 0,
             subtotal: 0,
             boothselected: false,
+            workandtravel: false,
             tables: {
                 id: 4,
                 name: "Miami Table",
@@ -407,49 +426,46 @@ var vue = new Vue({
                 quantity: 0,
                 large12: {
                     id: 4,
-                    name: "ANZA Exhibition Booth 12m²",
+                    name: "Miami Exhibition Booth 12m²",
                     quantity: 0,
                     price: 12000,
                 },
                 large10: {
                     id: 4,
-                    name: "ANZA Exhibition Booth 10m²",
+                    name: "Miami Exhibition Booth 10m²",
                     quantity: 0,
                     price: 9000,
                 },
                 medium8: {
                     id: 4,
-                    name: "ANZA Exhibition Booth 8m²",
+                    name: "Miami Exhibition Booth 8m²",
                     quantity: 0,
                     price: 8000,
                 },
                 medium6: {
                     id: 4,
-                    name: "ANZA Exhibition Booth 6m²",
+                    name: "Miami Exhibition Booth 6m²",
                     quantity: 0,
                     price: 6000,
                 },
                 std5: {
                     id: 4,
-                    name: "ANZA Exhibition Booth 4.5m²",
+                    name: "Miami Exhibition Booth 4.5m²",
                     quantity: 0,
                     price: 5500,
                 },
                 std4: {
                     id: 4,
-                    name: "ANZA Exhibition Booth 4m²",
+                    name: "Miami Exhibition Booth 4m²",
                     quantity: 0,
                     price: 5000,
                 },
                 std3: {
                     id: 4,
-                    name: "ANZA Exhibition Booth 3m²",
+                    name: "Miami Exhibition Booth 3m²",
                     quantity: 0,
                     price: 4400,
                 }
-            },
-            work_and_travel_tables: {
-
             },
             additional: []
         }],
@@ -501,13 +517,14 @@ var vue = new Vue({
         earlyRates: true,
         checkout: false,
         checkoutscreen: {},
+        advertModal: false,
         choiceModal: false,
         boothModal: false,
-        accountType: 'educator', //can also be 'service_provider' and 'work_and_travel'
-        attendBooths: false,
-        currentDate: new Date(),
-        fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(),
-        fixer: {}
+        accountType: 'work_and_travel', //can also be 'service_provider' and 'work_and_travel'
+        attendBooths: false, //determines whether the user is buying an exhibition booth or another fo
+        currentDate: new Date(), //current date
+        fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(), //to determine whether early bird rates apply - collating YY/MM/DD format dates as a single number
+        fixer: {} //with regards to fixer.io
     },
     methods: {
         addToCart: function (product, subitem, selector) {
@@ -527,7 +544,7 @@ var vue = new Vue({
                 this.regularWorkshops++;
                 this.earlyRates = false;
                 this.cart.push(cartitem); //push copy of product into cart
-                if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+                if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops && selector !== 'work_and_travel'){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
                     cartitem.selectedearly = true;
                     product.selectedearly = true;
                     cartitem.price = subitem.priceearly; 
