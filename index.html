@@ -81,7 +81,7 @@
                                 </td>
                             </tr>
 
-                            <!-- <tr v-if="!props.item.booths && !props.workandtravel && props.item.schedules.quantity > 0">
+                            <tr v-if="!props.item.booths && !props.workandtravel && props.item.schedules.quantity > 0">
                                 <td>{{ props.item.schedules.name }}<br /> <sub>(max. 1 per table)</sub></td>
                                 <td>{{ props.item.schedules.price }}€</td>
                                 <td class="qty">{{ props.item.schedules.quantity }}</td>
@@ -101,7 +101,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.workandtravel && props.item.sponsorships.silver.quantity > 0">
+                            <!-- <tr v-if="!props.item.booths && !props.workandtravel && props.item.sponsorships.silver.quantity > 0">
                                 <td> {{ props.item.sponsorships.silver.name }} </td>
                                 <td> {{ props.item.sponsorships.silver.price }}€ </td>
                                 <td> {{ props.item.sponsorships.silver.quantity }} </td>
@@ -293,11 +293,13 @@
             <template>
                 <v-layout row justify-center>
                     <v-dialog v-model="advertModal" max-width="600">
-                        <v-btn class="adverts adverts-activator" slot="activator">Exhibition booths</v-btn>
+                        <v-btn class="adverts adverts-activator" slot="activator">Adverts</v-btn>
                         <v-card class="adverts-table">
-                            <v-card-title class="headline">Choose your exhibition booth!</v-card-title>
+                            <!-- <v-card-title class="headline">Choose your exhibition booth!</v-card-title> -->
                             <v-card-text class="advert-choice-container">
-
+                                <div class="advert-choice" v-for="advert in adverts">
+                                    
+                                </div>
                             </v-card-text>
                         </v-card>
                     </v-dialog>

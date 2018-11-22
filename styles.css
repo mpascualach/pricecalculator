@@ -403,3 +403,8 @@ button.work-and-travel.v-btn.theme--light {
     right: -15;
     bottom: 5;
 }
+
+.adverts-table.v-card.theme--light {
+    width: 100%;
+    flex-direction: column;
+}

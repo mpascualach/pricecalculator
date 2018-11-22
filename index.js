@@ -77,6 +77,15 @@ var vue = new Vue({
                         quantity: 0,
                     },
                 },
+                marketing_and_sponsorships: [
+                    {
+                        id: 1,
+                        name: "ANZA Hospitality Sponsorship",
+                        types: [
+                            
+                        ]
+                    }
+                ]
             },
             booths: {
                 id: 1,
@@ -507,6 +516,35 @@ var vue = new Vue({
             },
         ], 
         cart: [], //it starts empty
+        adverts: [
+            {
+                type: 'Adverts',
+                choices: [
+                    {
+                        name: 'Skyscraper',
+                        price: 975,
+                        //possible description?
+                    },
+                    {
+                        name: 'Rectangle',
+                        price: 475,
+                    }
+                ]
+            },
+            {
+                type: 'eNewsletter Banner',
+                choices: [
+                    {
+                        name: 'Middle Ad',
+                        price: 695
+                    },
+                    {
+                        name: 'Opening Ad',
+                        price: 1245
+                    }
+                ]
+            }
+        ],
         total: 0,
         subitemtotal: 0,
         earlytotal: 0,
