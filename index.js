@@ -448,6 +448,9 @@ var vue = new Vue({
                     price: 4400,
                 }
             },
+            work_and_travel_tables: {
+
+            },
             additional: []
         }],
         addons: [
@@ -516,8 +519,8 @@ var vue = new Vue({
                 product.booths.price = subitem.price;
                 cartitem = Object.assign({}, product.booths);
                 this.cart.push(cartitem);
+                this.total += cartitem.price;
                 console.log("Cart: ", this.cart);
-                console.log(cartitem)
             }
             else {
                 cartitem = Object.assign({}, subitem); //make copy of product
@@ -525,20 +528,19 @@ var vue = new Vue({
                 this.earlyRates = false;
                 this.cart.push(cartitem); //push copy of product into cart
                 if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
-                        cartitem.selectedearly = true;
-                        product.selectedearly = true;
-                        cartitem.price = subitem.priceearly; 
-                        this.earlytotal += cartitem.price;
+                    cartitem.selectedearly = true;
+                    product.selectedearly = true;
+                    cartitem.price = subitem.priceearly; 
+                    this.earlytotal += cartitem.price;
                 } else {
                     this.earlytotal = 0;
                     cartitem.price = subitem.price;
-                    if (this.regularWorkshops > 1){
+                    if (this.regularWorkshops > 1) {
                         this.products.forEach(m => {
                             if (m.selectedearly) m.endofearly = true;
-                            console.log(m)
+                            console.log(m);
                         });
                     }
-                    
                 } //log price of subitem and assign it to copy's price
                 this.total += cartitem.price;
                 product.incart++;

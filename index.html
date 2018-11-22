@@ -49,13 +49,13 @@
                                 <td class="sub-total">{{ props.item.price * props.item.quantity }}€</td>
                                 <td class="item-total">{{ props.item.price * props.item.quantity * discount }}€</td>
                                 <td class="discount">{{ ( (props.item.price * props.item.quantity) * discount ) - (props.item.price * props.item.quantity) }}€</td>
-                                <!-- * discount -->
                                 <td>
-                                    <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
+                                    <v-btn class="add-to-package" 
+                                    v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                 </td>
                             </tr>
-                            <!-- either/or for tables or booths -->
-                            <tr v-else>
+
+                            <tr v-else> 
                                 <td>{{ props.item.name }}</td>
                                 <td>{{ props.item.price }}€</td>
                                 <td class="qty">{{ props.item.quantity }}</td>
@@ -67,7 +67,7 @@
                                 </td>
                             </tr>
 
-                            <tr v-if="props.item.schedules.quantity > 0">
+                            <tr v-if="!props.item.booths && props.item.schedules.quantity > 0">
                                 <td>{{ props.item.schedules.name }}<br /> <sub>(max. 1 per table)</sub></td>
                                 <td>{{ props.item.schedules.price }}€</td>
                                 <td class="qty">{{ props.item.schedules.quantity }}</td>
@@ -77,7 +77,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="props.item.additionalPeople.quantity > 0">
+                            <tr v-if="!props.item.booths && props.item.additionalPeople.quantity > 0">
                                 <td>{{ props.item.additionalPeople.name }}</td>
                                 <td>{{ props.item.additionalPeople.price }}€</td>
                                 <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
@@ -87,7 +87,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="props.item.sponsorships.silver.quantity > 0">
+                            <tr v-if="!props.item.booths && props.item.sponsorships.silver.quantity > 0">
                                 <td> {{ props.item.sponsorships.silver.name }} </td>
                                 <td> {{ props.item.sponsorships.silver.price }}€ </td>
                                 <td> {{ props.item.sponsorships.silver.quantity }} </td>
@@ -95,8 +95,7 @@
                                 <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
                                 <td> 0€ </td>
                                 <td></td>
-                            </tr>
-
+                            </tr> 
                         </template>
 
                         <template slot="footer">
@@ -114,7 +113,7 @@
                                 <span>Discounted : €{{ (total * discount) - total }} </span>
                                 <strong v-if="earlytotal">Total: €{{subitemtotal + earlytotal}} </strong>
                                 <strong v-else>Total: €{{(total * discount) + subitemtotal }} </strong>
-                                <!-- + (subitemtotal + this.earlytotal) -->
+
                             </td>
                         </template>
                     </v-data-table>
@@ -197,7 +196,7 @@
 
 											</div>
 											
-											<v-card v-if="product.selectBoothBoolean" class="booths-table">
+											<v-card v-if="product.selectBoothBoolean && attendBooths" class="booths-table">
 													<v-card-text class="booth-choice-container">
 														<div class="booth-choice">
 															<div class="booth-category">
