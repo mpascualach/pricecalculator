@@ -406,10 +406,25 @@ button.work-and-travel.v-btn.theme--light {
 
 .adverts-table.v-card.theme--light {
     width: 100%;
-    flex-direction: column;
 }
 
 button.add-to-package.remove-from-package.v-btn.theme--light {
     position: absolute;
     top: 20;
+}
+
+ul.v-expansion-panel.marketing-and-sponsorship-items.theme--light {
+    width: 103%;
+}
+
+button.marketing-choice.v-btn.theme--light {
+    margin: 10px;
+}
+
+.advert-section {
+    margin-left: 27%;
+}
+
+.v-dialog.v-dialog--active {
+    width: 300px;
 }

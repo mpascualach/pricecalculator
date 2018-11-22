@@ -391,6 +391,188 @@ var vue = new Vue({
                         qty: 0,
                     },
                 },
+                marketing_and_sponsorships: [
+                    {
+                        id: 1,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 1100,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Display advertising",
+                        types: [{
+                                name: 'Lift doors',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Intro-Point Sponsorship',
+                                price: 2200,
+                                quantity: 0,
+                            },
+                            {
+                                name: 'Advertising Panel',
+                                price: 1600,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1200,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Catalogue USB Memory cards',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 6500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Hospitality Sponsorship",
+                        types: [{
+                                name: 'Coffee & tea break',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 9000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Services Sponsorship",
+                        types: [{
+                                name: 'Internet hub',
+                                price: 3000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Wireless internet service',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - agents',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - providers',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - both',
+                                price: 3500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Presentations",
+                        types: [{
+                                name: '50 minute slot',
+                                price: 690,
+                                quantity: 0
+                            },
+                            {
+                                name: '25 minute slot',
+                                price: 490,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                ]
             },
             booths: {
                 id: 2,
@@ -500,6 +682,187 @@ var vue = new Vue({
                         qty: 0,
                     },
                 },
+                marketing_and_sponsorships: [{
+                        id: 1,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 1100,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Display advertising",
+                        types: [{
+                                name: 'Lift doors',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Intro-Point Sponsorship',
+                                price: 2200,
+                                quantity: 0,
+                            },
+                            {
+                                name: 'Advertising Panel',
+                                price: 1600,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1200,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Catalogue USB Memory cards',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 6500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Hospitality Sponsorship",
+                        types: [{
+                                name: 'Coffee & tea break',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 9000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Services Sponsorship",
+                        types: [{
+                                name: 'Internet hub',
+                                price: 3000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Wireless internet service',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - agents',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - providers',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - both',
+                                price: 3500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Presentations",
+                        types: [{
+                                name: '50 minute slot',
+                                price: 690,
+                                quantity: 0
+                            },
+                            {
+                                name: '25 minute slot',
+                                price: 490,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                ]
             },
             booths: {
                 id: 3,
@@ -609,6 +972,187 @@ var vue = new Vue({
                         qty: 0,
                     },
                 },
+                marketing_and_sponsorships: [{
+                        id: 1,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 1100,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Display advertising",
+                        types: [{
+                                name: 'Lift doors',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Intro-Point Sponsorship',
+                                price: 2200,
+                                quantity: 0,
+                            },
+                            {
+                                name: 'Advertising Panel',
+                                price: 1600,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1200,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Catalogue USB Memory cards',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 6500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Hospitality Sponsorship",
+                        types: [{
+                                name: 'Coffee & tea break',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 9000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Services Sponsorship",
+                        types: [{
+                                name: 'Internet hub',
+                                price: 3000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Wireless internet service',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - agents',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - providers',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - both',
+                                price: 3500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Presentations",
+                        types: [{
+                                name: '50 minute slot',
+                                price: 690,
+                                quantity: 0
+                            },
+                            {
+                                name: '25 minute slot',
+                                price: 490,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                ]
             },
             booths: {
                 quantity: 0,
@@ -702,11 +1246,15 @@ var vue = new Vue({
                     {
                         name: 'Skyscraper',
                         price: 975,
+                        quantity: 0,
+                        advert: true
                         //possible description?
                     },
                     {
                         name: 'Rectangle',
                         price: 475,
+                        quantity: 0,
+                        advert: true
                     }
                 ]
             },
@@ -715,11 +1263,15 @@ var vue = new Vue({
                 choices: [
                     {
                         name: 'Middle Ad',
-                        price: 695
+                        price: 695,
+                        quantity: 0,
+                        advert: true
                     },
                     {
                         name: 'Opening Ad',
-                        price: 1245
+                        price: 1245,
+                        quantity: 0,
+                        advert: true
                     }
                 ]
             }
@@ -746,7 +1298,7 @@ var vue = new Vue({
     methods: {
         addToCart: function (product, subitem, selector) {
             let cartitem;
-            if (selector && selector == 'booths'){
+            if (selector && selector == 'booths') {
                 product.booths.booths = true;
                 product.booths.quantity++;
                 product.booths.name = subitem.name;
@@ -755,6 +1307,12 @@ var vue = new Vue({
                 this.cart.push(cartitem);
                 this.total += cartitem.price;
                 console.log("Cart: ", this.cart);
+            }
+            else if (selector == 'adverts'){
+                cartitem = Object.assign({}, subitem);
+                cartitem.quantity++;
+                this.cart.push(cartitem);
+                this.total += cartitem.price;
             }
             else {
                 cartitem = Object.assign({}, subitem); //make copy of product

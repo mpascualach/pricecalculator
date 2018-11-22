@@ -41,7 +41,7 @@
                     <v-data-table :headers="headers" :items="cart">
 
                         <template slot="items" slot-scope="props">
-                            <tr v-if="!props.item.booths && !props.item.workandtravel">
+                            <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert">
                                 <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                 <td class="price">{{ props.item.price }}€</td>
                                 <td class="qty"><i class="fa fa-plus-square smaller"></i> {{ props.item.quantity }}<i class="fa fa-minus-square smaller"></i>
@@ -55,7 +55,19 @@
                                 </td>
                             </tr>
 
-                            <tr v-else-if="props.item.booths"> 
+                            <tr v-else-if="props.item.booths && !props.item.advert"> 
+                                <td>{{ props.item.name }}</td>
+                                <td>{{ props.item.price }}€</td>
+                                <td class="qty">{{ props.item.quantity }}</td>
+                                <td>{{ props.item.price * props.item.quantity }}€</td>
+                                <td>{{ props.item.price * props.item.quantity }}€</td>
+                                <td>0€</td>
+                                <td>
+                                    <v-btn class="add-to-package">REMOVE</v-btn>
+                                </td>
+                            </tr>
+
+                            <tr v-if="props.item.advert"> 
                                 <td>{{ props.item.name }}</td>
                                 <td>{{ props.item.price }}€</td>
                                 <td class="qty">{{ props.item.quantity }}</td>
@@ -81,7 +93,7 @@
                                 </td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.workandtravel && props.item.schedules.quantity > 0">
+                            <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && props.item.schedules.quantity > 0">
                                 <td>{{ props.item.schedules.name }}<br /> <sub>(max. 1 per table)</sub></td>
                                 <td>{{ props.item.schedules.price }}€</td>
                                 <td class="qty">{{ props.item.schedules.quantity }}</td>
@@ -91,7 +103,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.workandtravel && props.item.additionalPeople.quantity > 0">
+                            <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && props.item.additionalPeople.quantity > 0">
                                 <td>{{ props.item.additionalPeople.name }}</td>
                                 <td>{{ props.item.additionalPeople.price }}€</td>
                                 <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
@@ -101,7 +113,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.workandtravel && props.item.sponsorships.platinum.quantity > 0">
+                            <tr v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.platinum.quantity > 0">
                                 <td> {{ props.item.sponsorships.platinum.name }} </td>
                                 <td> {{ props.item.sponsorships.platinum.price }}€ </td>
                                 <td> {{ props.item.sponsorships.platinum.quantity }} </td>
@@ -111,7 +123,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.workandtravel && props.item.sponsorships.gold.quantity > 0">
+                            <tr v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.gold.quantity > 0">
                                 <td> {{ props.item.sponsorships.gold.name }} </td>
                                 <td> {{ props.item.sponsorships.gold.price }}€ </td>
                                 <td> {{ props.item.sponsorships.gold.quantity }} </td>
@@ -121,7 +133,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.workandtravel && props.item.sponsorships.silver.quantity > 0">
+                            <tr v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.silver.quantity > 0">
                                 <td> {{ props.item.sponsorships.silver.name }} </td>
                                 <td> {{ props.item.sponsorships.silver.price }}€ </td>
                                 <td> {{ props.item.sponsorships.silver.quantity }} </td>
@@ -129,7 +141,7 @@
                                 <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
                                 <td> 0€ </td>
                                 <td></td>
-                            </tr>
+                            </tr> 
                             
                             <!-- <template v-for="type in props.item.marketing_and_sponsorships.types">
                                 <tr  v-if="type.quantity > 0">
@@ -241,11 +253,11 @@
                                                 </div>
 
                                                 <template>
-                                                    <v-expansion-panel>
+                                                    <v-expansion-panel class="marketing-and-sponsorship-items">
                                                         <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships">
                                                             <div slot="header">{{ item.name }}</div>
                                                             <v-card v-for="type in item.types">
-                                                                <v-btn v-on:click="addSubItem(product, type)">{{ type.name }}</v-btn>
+                                                                <v-btn class="marketing-choice" v-on:click="addSubItem(product, type)">{{ type.name }}</v-btn>
                                                             </v-card>
                                                         </v-expansion-panel-content>
                                                     </v-expansion-panel>
@@ -337,13 +349,18 @@
             </div>
             <template>
                 <v-layout row justify-center>
-                    <v-dialog v-model="advertModal" max-width="600">
+                    <v-dialog v-model="advertModal" max-width="600" class="advert-dialog">
                         <v-btn class="adverts adverts-activator" slot="activator">Adverts</v-btn>
                         <v-card class="adverts-table">
                             <!-- <v-card-title class="headline">Choose your exhibition booth!</v-card-title> -->
                             <v-card-text class="advert-choice-container">
-                                <div class="advert-choice" v-for="advert in adverts">
-                                    
+                                <div class="advert-section" v-for="advert in adverts">
+                                    <v-card-title> {{ advert.type }} </v-card-title>
+                                    <div class="advert-choice" v-for="choice in advert.choices">
+                                        <v-btn v-on:click="addToCart('', choice, 'adverts')">
+                                            {{ choice.name }}
+                                        </v-btn>
+                                    </div>
                                 </div>
                             </v-card-text>
                         </v-card>
