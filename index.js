@@ -80,10 +80,28 @@ var vue = new Vue({
                 marketing_and_sponsorships: [
                     {
                         id: 1,
-                        name: "ANZA Hospitality Sponsorship",
+                        name: "Hospitality Sponsorship",
                         types: [
-                            
+                            {
+                                name: 'Coffee & tea break',
+                                price: 4000
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 4000
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 6000
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 9000
+                            }
                         ]
+                    },
+                    {
+                        
                     }
                 ]
             },
@@ -558,7 +576,7 @@ var vue = new Vue({
         advertModal: false,
         choiceModal: false,
         boothModal: false,
-        accountType: 'work_and_travel', //can also be 'service_provider' and 'work_and_travel'
+        accountType: 'educator', //can also be 'service_provider' and 'work_and_travel'
         attendBooths: false, //determines whether the user is buying an exhibition booth or another fo
         currentDate: new Date(), //current date
         fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(), //to determine whether early bird rates apply - collating YY/MM/DD format dates as a single number

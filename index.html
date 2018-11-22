@@ -208,7 +208,20 @@
                                                     <i class="fa fa-question-circle"></i>
                                                 </div>
 
-											</div>
+                                                <template>
+                                                    <v-expansion-panel>
+                                                        <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships">
+                                                            <div slot="header">{{item.name}}</div>
+                                                            <v-card v-for="type in item.types">
+                                                                <v-btn>{{type.name}}</v-btn>
+                                                            </v-card>
+                                                        </v-expansion-panel-content>
+                                                    </v-expansion-panel>
+                                                </template>
+
+                                            </div>
+                                            
+                                            
 											
 											<v-card v-if="product.selectBoothBoolean && attendBooths" class="booths-table">
                                                 <v-card-text class="booth-choice-container">
