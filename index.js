@@ -269,50 +269,57 @@ var vue = new Vue({
             booths: {
                 id: 1,
                 quantity: 0,
-                booths: false,
+                price: 0,
                 name: '',
-                price: 0, //to be changed later
+                description: '',
                 large12: {
-                    id: 1,
+                    id: 3,
                     name: "ANZA Exhibition Booth 12m²",
                     quantity: 0,
                     price: 12000,
+                    description: "Includes 2 people & 2 schedules"
                 },
                 large10: {
-                    id: 1,
+                    id: 3,
                     name: "ANZA Exhibition Booth 10m²",
                     quantity: 0,
                     price: 9000,
+                    description: "Includes 2 people & 2 schedules"
                 },
                 medium8: {
-                    id: 1,
+                    id: 3,
                     name: "ANZA Exhibition Booth 8m²",
                     quantity: 0,
                     price: 8000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 medium6: {
-                    id: 1,
+                    id: 3,
                     name: "ANZA Exhibition Booth 6m²",
                     quantity: 0,
                     price: 6000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std5: {
-                    id: 1,
+                    id: 3,
                     name: "ANZA Exhibition Booth 4.5m²",
                     quantity: 0,
                     price: 5500,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std4: {
-                    id: 1,
+                    id: 3,
                     name: "ANZA Exhibition Booth 4m²",
                     quantity: 0,
                     price: 5000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std3: {
-                    id: 1,
+                    id: 3,
                     name: "ANZA Exhibition Booth 3m²",
                     quantity: 0,
                     price: 4400,
+                    description: "Includes 1 people & 1 schedule"
                 }
             },
             work_and_travel: {
@@ -393,7 +400,7 @@ var vue = new Vue({
                 },
                 marketing_and_sponsorships: [
                     {
-                        id: 1,
+                        id: 2,
                         name: 'Advertisement in Educator/Agent Catalogue',
                         types: [{
                                 name: 'Inside cover',
@@ -418,7 +425,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 2,
                         name: "Display advertising",
                         types: [{
                                 name: 'Lift doors',
@@ -443,7 +450,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 2,
                         name: "Merchandise Sponsorship",
                         types: [{
                                 name: 'Note pads',
@@ -513,7 +520,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 2,
                         name: "Services Sponsorship",
                         types: [{
                                 name: 'Internet hub',
@@ -558,7 +565,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 2,
                         name: "Presentations",
                         types: [{
                                 name: '50 minute slot',
@@ -579,47 +586,55 @@ var vue = new Vue({
                 quantity: 0,
                 price: 0,
                 name: '',
+                description: '',
                 large12: {
                     id: 2,
                     name: "Berlin Exhibition Booth 12m²",
                     quantity: 0,
                     price: 12000,
+                    description: "Includes 2 people & 2 schedules"
                 },
                 large10: {
                     id: 2,
                     name: "Berlin Exhibition Booth 10m²",
                     quantity: 0,
                     price: 9000,
+                    description: "Includes 2 people & 2 schedules"
                 },
                 medium8: {
                     id: 2,
                     name: "Berlin Exhibition Booth 8m²",
                     quantity: 0,
                     price: 8000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 medium6: {
                     id: 2,
                     name: "Berlin Exhibition Booth 6m²",
                     quantity: 0,
                     price: 6000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std5: {
                     id: 2,
                     name: "Berlin Exhibition Booth 4.5m²",
                     quantity: 0,
                     price: 5500,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std4: {
                     id: 2,
                     name: "Berlin Exhibition Booth 4m²",
                     quantity: 0,
                     price: 5000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std3: {
                     id: 2,
                     name: "Berlin Exhibition Booth 3m²",
                     quantity: 0,
                     price: 4400,
+                    description: "Includes 1 people & 1 schedule"
                 }
             },
             additional: []
@@ -682,8 +697,9 @@ var vue = new Vue({
                         qty: 0,
                     },
                 },
-                marketing_and_sponsorships: [{
-                        id: 1,
+                marketing_and_sponsorships: [
+                    {
+                        id: 3,
                         name: 'Advertisement in Educator/Agent Catalogue',
                         types: [{
                                 name: 'Inside cover',
@@ -708,7 +724,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 3,
                         name: "Display advertising",
                         types: [{
                                 name: 'Lift doors',
@@ -733,7 +749,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 3,
                         name: "Merchandise Sponsorship",
                         types: [{
                                 name: 'Note pads',
@@ -778,7 +794,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 3,
                         name: "Hospitality Sponsorship",
                         types: [{
                                 name: 'Coffee & tea break',
@@ -803,7 +819,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 3,
                         name: "Services Sponsorship",
                         types: [{
                                 name: 'Internet hub',
@@ -848,7 +864,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 3,
                         name: "Presentations",
                         types: [{
                                 name: '50 minute slot',
@@ -869,47 +885,55 @@ var vue = new Vue({
                 quantity: 0,
                 price: 0,
                 name: '',
+                description: '',
                 large12: {
                     id: 3,
                     name: "Beijing Exhibition Booth 12m²",
                     quantity: 0,
                     price: 12000,
+                    description: "Includes 2 people & 2 schedules"
                 },
                 large10: {
                     id: 3,
                     name: "Beijing Exhibition Booth 10m²",
                     quantity: 0,
                     price: 9000,
+                    description: "Includes 2 people & 2 schedules"
                 },
                 medium8: {
                     id: 3,
                     name: "Beijing Exhibition Booth 8m²",
                     quantity: 0,
                     price: 8000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 medium6: {
                     id: 3,
                     name: "Beijing Exhibition Booth 6m²",
                     quantity: 0,
                     price: 6000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std5: {
                     id: 3,
                     name: "Beijing Exhibition Booth 4.5m²",
                     quantity: 0,
                     price: 5500,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std4: {
                     id: 3,
                     name: "Beijing Exhibition Booth 4m²",
                     quantity: 0,
                     price: 5000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std3: {
                     id: 3,
                     name: "Beijing Exhibition Booth 3m²",
                     quantity: 0,
                     price: 4400,
+                    description: "Includes 1 people & 1 schedule"
                 }
             },
             additional: []
@@ -974,7 +998,7 @@ var vue = new Vue({
                 },
                 marketing_and_sponsorships: [
                     {
-                        id: 1,
+                        id: 4,
                         name: 'Advertisement in Educator/Agent Catalogue',
                         types: [{
                                 name: 'Inside cover',
@@ -999,7 +1023,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 4,
                         name: "Display advertising",
                         types: [{
                                 name: 'Lift doors',
@@ -1024,7 +1048,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 4,
                         name: "Merchandise Sponsorship",
                         types: [{
                                 name: 'Note pads',
@@ -1069,7 +1093,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 4,
                         name: "Hospitality Sponsorship",
                         types: [{
                                 name: 'Coffee & tea break',
@@ -1094,7 +1118,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 4,
                         name: "Services Sponsorship",
                         types: [{
                                 name: 'Internet hub',
@@ -1139,7 +1163,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 4,
                         name: "Presentations",
                         types: [{
                                 name: '50 minute slot',
@@ -1156,48 +1180,59 @@ var vue = new Vue({
                 ]
             },
             booths: {
+                id: 4,
                 quantity: 0,
+                price: 0,
+                name: '',
+                description: '',
                 large12: {
                     id: 4,
                     name: "Miami Exhibition Booth 12m²",
                     quantity: 0,
                     price: 12000,
+                    description: "Includes 2 people & 2 schedules"
                 },
                 large10: {
                     id: 4,
                     name: "Miami Exhibition Booth 10m²",
                     quantity: 0,
                     price: 9000,
+                    description: "Includes 2 people & 2 schedules"
                 },
                 medium8: {
                     id: 4,
                     name: "Miami Exhibition Booth 8m²",
                     quantity: 0,
                     price: 8000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 medium6: {
                     id: 4,
                     name: "Miami Exhibition Booth 6m²",
                     quantity: 0,
                     price: 6000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std5: {
                     id: 4,
                     name: "Miami Exhibition Booth 4.5m²",
                     quantity: 0,
                     price: 5500,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std4: {
                     id: 4,
                     name: "Miami Exhibition Booth 4m²",
                     quantity: 0,
                     price: 5000,
+                    description: "Includes 1 people & 1 schedule"
                 },
                 std3: {
                     id: 4,
                     name: "Miami Exhibition Booth 3m²",
                     quantity: 0,
                     price: 4400,
+                    description: "Includes 1 people & 1 schedule"
                 }
             },
             additional: []
@@ -1459,6 +1494,7 @@ var vue = new Vue({
                 this.limitReached = true;
                 return;
             }
+            if ( selector == 'marketing' ) console.log(subitem);
             subitem.quantity++;
             this.subitemtotal += subitem.price;
             if ( selector == 'schedules' && subitem.quantity > 1 ){

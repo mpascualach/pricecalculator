@@ -142,19 +142,19 @@
                                 <td> 0€ </td>
                                 <td></td>
                             </tr>
-                            
-                                <tr v-for="type in props.item.marketing_and_sponsorships.types" v-if="type.quantity > 0">
-                                    <td> {{ type.name }} </td>
-                                    <td> {{ type.price }}€ </td>
-                                    <td> {{ type.quantity }} </td>
-                                    <td> {{ type.price * type.quantity }}€ </td>
-                                    <td> {{ type.price * type.quantity }}€ </td>
-                                    <td> 0€ </td>
-                                    <td></td>
-                                </tr>
 
                             <!-- the below row yields the following error message - cannot find 'tag' of undefined -->
                             
+                            <!-- <tr v-for="type in props.item.marketing_and_sponsorships.types" v-if="type.quantity > 0">
+                                <td> {{ type.name }} </td>
+                                <td> {{ type.price }}€ </td>
+                                <td> {{ type.quantity }} </td>
+                                <td> {{ type.price * type.quantity }}€ </td>
+                                <td> {{ type.price * type.quantity }}€ </td>
+                                <td> 0€ </td>
+                                <td></td>
+                            </tr> -->
+
                             <!-- <template v-for="type in props.item.marketing_and_sponsorships.types">
                                 <tr  v-if="type.quantity > 0">
                                     <td> {{ type.name }} </td>
@@ -269,7 +269,10 @@
                                                         <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships">
                                                             <div slot="header">{{ item.name }}</div>
                                                             <v-card v-for="type in item.types">
-                                                                <v-btn class="marketing-choice" v-on:click="addSubItem(product, type)">{{ type.name }}</v-btn>
+                                                                <v-btn class="marketing-choice" 
+                                                                    v-on:click="addSubItem(product, type, 'marketing')">
+                                                                    {{ type.name }}
+                                                                </v-btn>
                                                             </v-card>
                                                         </v-expansion-panel-content>
                                                     </v-expansion-panel>
