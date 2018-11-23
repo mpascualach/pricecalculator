@@ -144,16 +144,30 @@
                             </tr>
 
                             <!-- the below row yields the following error message - cannot find 'tag' of undefined -->
-                            
-                            <tr v-for="type in props.item.marketing_and_sponsorships.types" v-if="type.quantity > 0">
-                                <td> {{ type.name }} </td>
-                                <td> {{ type.price }}€ </td>
-                                <td> {{ type.quantity }} </td>
-                                <td> {{ type.price * type.quantity }}€ </td>
-                                <td> {{ type.price * type.quantity }}€ </td>
+
+                            <tr v-if="props.item.marketing_and_sponsorships[0].quantity">
+                                <td> {{ props.item.sponsorships.silver.name }} </td>
+                                <td> {{ props.item.sponsorships.silver.price }}€ </td>
+                                <td> {{ props.item.sponsorships.silver.quantity }} </td>
+                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
+                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
                                 <td> 0€ </td>
                                 <td></td>
                             </tr>
+                            
+                            <template v-for="item in props.item.marketing_and_sponsorships">
+                                <template v-for="type in item.types">
+                                    <tr v-if="type.quantity > 0">
+                                        <td> {{ type.name }} </td>
+                                        <td> {{ type.price }}€ </td>
+                                        <td> {{ type.quantity }} </td>
+                                        <td> {{ type.price * type.quantity }}€ </td>
+                                        <td> {{ type.price * type.quantity }}€ </td>
+                                        <td> 0€ </td>
+                                        <td></td>
+                                    </tr>
+                                </template>
+                            </template>
 
                             <!-- <template v-for="type in props.item.marketing_and_sponsorships.types">
                                 <tr  v-if="type.quantity > 0">
@@ -221,7 +235,8 @@
                                             <div class="attendance" v-if="product.incart > 0">
                                                 <div class="attendance schedules">
                                                     <i class="fa fa-calendar-o"></i> Additional schedules:
-                                                    <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')"
+                                                    <i class="fa fa-minus-square smaller" 
+                                                        v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')"
                                                         v-if="product.tables.schedules.quantity > 0">
                                                     </i>
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
@@ -350,7 +365,11 @@
                                         </v-card-actions>
    
                                         <v-card-actions v-if="product.incart">
-                                            <v-btn class="add-to-package remove-from-package" v-on:click="absoluteRemoveFromCart(product)" v-if="product.incart">Remove</v-btn>
+                                            <v-btn class="add-to-package remove-from-package" 
+                                                v-on:click="absoluteRemoveFromCart(product)" 
+                                                v-if="product.incart">
+                                                Remove
+                                            </v-btn>
                                         </v-card-actions>
                                     
                                     </v-card>

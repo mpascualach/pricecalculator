@@ -1494,7 +1494,7 @@ var vue = new Vue({
                 this.limitReached = true;
                 return;
             }
-            if ( selector == 'marketing' ) console.log(subitem);
+            if ( selector == 'marketing' ) console.log(this.cart);
             subitem.quantity++;
             this.subitemtotal += subitem.price;
             if ( selector == 'schedules' && subitem.quantity > 1 ){
