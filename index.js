@@ -348,8 +348,7 @@ var vue = new Vue({
                 tier: '',
                 name: '',
                 price: 0,
-                quantity: 0,
-                sponsorshipSelected: false
+                quantity: 0
             },
             additional: []
         // },
