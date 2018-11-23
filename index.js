@@ -349,6 +349,7 @@ var vue = new Vue({
                 name: '',
                 price: 0,
                 quantity: 0,
+                sponsorshipSelected: false
             },
             additional: []
         // },

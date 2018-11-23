@@ -437,8 +437,17 @@ button.marketing-choice.v-btn.theme--light {
     align-items: center;
 }
 
+.v-card__title.advert-title {
+    color: #2196f3;
+    font-size: 18px;
+}
+
+.v-card__text.advert-choice-container {
+    padding-bottom: 27px;
+}
+
 .v-dialog.v-dialog--active {
-    width: 350px;
+    width: 400px;
 }
 
 .sponsorship-type {

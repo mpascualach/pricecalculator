@@ -42,6 +42,32 @@
 
                         <template slot="items" slot-scope="props">
                             <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert">
+                                <template v-if="props.item.sponsorshipSelected">
+                                    <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
+                                    <td class="price">{{ props.item.price }}€</td>
+                                    <td class="qty"><i class="fa fa-plus-square smaller"></i> {{ props.item.quantity }}<i class="fa fa-minus-square smaller"></i>
+                                    </td>
+                                    <td class="sub-total">{{ props.item.price * props.item.quantity }}€</td>
+                                    <td class="item-total">{{ props.item.price * props.item.quantity * discount }}€</td>
+                                    <td class="discount">{{ ( (props.item.price * props.item.quantity) * discount ) - (props.item.price *
+                                        props.item.quantity) }}€</td>
+                                    <td>
+                                        <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
+                                    </td>
+                                </template>
+                                <template v-else>
+                                    <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
+                                    <td class="price">{{ props.item.price }}€</td>
+                                    <td class="qty"><i class="fa fa-plus-square smaller"></i> {{ props.item.quantity }}<i class="fa fa-minus-square smaller"></i>
+                                    </td>
+                                    <td class="sub-total">{{ props.item.price * props.item.quantity }}€</td>
+                                    <td class="item-total">{{ props.item.price * props.item.quantity * discount }}€</td>
+                                    <td class="discount">{{ ( (props.item.price * props.item.quantity) * discount ) - (props.item.price *
+                                        props.item.quantity) }}€</td>
+                                    <td>
+                                        <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
+                                    </td>
+                                </template>
                                 <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                 <td class="price">{{ props.item.price }}€</td>
                                 <td class="qty"><i class="fa fa-plus-square smaller"></i> {{ props.item.quantity }}<i class="fa fa-minus-square smaller"></i>
@@ -381,10 +407,10 @@
                             <!-- <v-card-title class="headline">Choose your exhibition booth!</v-card-title> -->
                             <v-card-text class="advert-choice-container">
                                 <div class="advert-section" v-for="advert in adverts">
-                                    <v-card-title> {{ advert.type }} </v-card-title>
+                                    <v-card-title class="advert-title"> {{ advert.type }} </v-card-title>
                                     <div class="advert-choice" v-for="choice in advert.choices">
                                         <v-btn v-on:click="addToCart('', choice, 'adverts')">
-                                            {{ choice.name }}
+                                            {{ choice.name  }} : €{{ choice.price }}
                                         </v-btn>
                                     </div>
                                 </div>
