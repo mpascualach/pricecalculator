@@ -36,6 +36,7 @@ var vue = new Vue({
             subtotal: 0,
             selectBoothBoolean: false,
             boothselected: false,
+            sponsorshipSelected: false,
             workandtravel: true,
             tables: {
                 id: 1,
@@ -63,18 +64,21 @@ var vue = new Vue({
                         name: "ANZA Platinum Sponsorship Package",
                         price: 22000,
                         quantity: 0,
+                        sponsorshipPackage: true
                     },
                     gold: {
                         id: 1,
                         name: "ANZA Gold Sponsorship Package",
                         price: 14000,
                         quantity: 0,
+                        sponsorshipPackage: true
                     },
                     silver: {
                         id: 1,
                         name: "ANZA Silver Sponsorship Package",
                         price: 9000,
                         quantity: 0,
+                        sponsorshipPackage: true
                     },
                 },
                 marketing_and_sponsorships: [
@@ -85,7 +89,7 @@ var vue = new Vue({
                             {
                                 name: 'Inside cover',
                                 price: 2000,
-                                quantity: 0
+                                quantity: 0,
                             },
                             {
                                 name: 'Outside cover',
@@ -1095,7 +1099,8 @@ var vue = new Vue({
         //             {
         //                 id: 4,
         //                 name: "Hospitality Sponsorship",
-        //                 types: [{
+        //                 types: [
+                                // {
         //                         name: 'Coffee & tea break',
         //                         price: 4000,
         //                         quantity: 0
@@ -1494,7 +1499,7 @@ var vue = new Vue({
                 this.limitReached = true;
                 return;
             }
-            if ( selector == 'marketing' ) console.log(this.cart);
+            if (selector == 'marketing') subitem.name = product.name + " " + subitem.name;
             subitem.quantity++;
             this.subitemtotal += subitem.price;
             if ( selector == 'schedules' && subitem.quantity > 1 ){

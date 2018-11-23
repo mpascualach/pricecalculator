@@ -430,3 +430,7 @@ button.marketing-choice.v-btn.theme--light {
 .v-dialog.v-dialog--active {
     width: 350px;
 }
+
+.sponsorship-type {
+    justify-content: start!important;
+}
