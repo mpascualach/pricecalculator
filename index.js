@@ -36,7 +36,6 @@ var vue = new Vue({
             subtotal: 0,
             selectBoothBoolean: false,
             boothselected: false,
-            sponsorshipPackageSelected: false,
             workandtravel: true,
             tables: {
                 id: 1,
@@ -46,6 +45,7 @@ var vue = new Vue({
                 originalprice: 6900,
                 priceearly: 5600,
                 quantity: 0,
+                sponsorshipPackageSelected: false,
                 schedules: {
                     id: 1,
                     name: "ANZA Additional Schedule",
@@ -80,6 +80,12 @@ var vue = new Vue({
                         quantity: 0,
                         sponsorshipPackage: true
                     },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
                 },
                 marketing_and_sponsorships: [
                     {
@@ -343,12 +349,6 @@ var vue = new Vue({
                     quantity: 0,
                     price: 900,
                 },
-            },
-            sponsorship_package: {
-                tier: '',
-                name: '',
-                price: 0,
-                quantity: 0
             },
             additional: []
         // },
@@ -1507,31 +1507,42 @@ var vue = new Vue({
             }
             if (selector == 'marketing') subitem.name = product.name + " " + subitem.name;
             else if (selector == 'sponsorship_package'){
-                if (!product.sponsorshipPackageSelected) {
-                    product.sponsorshipPackageSelected = true;
-                }
-                else {
-                    for (let i = 0; i < this.cart.length; i++){
-                        let item = this.cart[i];
-                        if (item.id == product.id){
-                            if (item.sponsorships.platinum.quantity > 0){
-                                item.sponsorships.platinum.quantity = 0;
-                                product.tables.sponsorships.platinum.quantity = 0;
-                                this.subitemtotal -= item.sponsorships.platinum.price;
-                            }
-                            else if (item.sponsorships.gold.quantity > 0){
-                                item.sponsorships.gold.quantity = 0;
-                                product.tables.sponsorships.gold.quantity = 0;
-                                this.subitemtotal -= item.sponsorships.gold.price;
-                            }
-                            else if (item.sponsorships.silver.quantity > 0){
-                                item.sponsorships.silver.quantity = 0;
-                                product.tables.sponsorships.silver.quantity = 0;
-                                this.subitemtotal -= item.sponsorships.silver.price;
-                            }
-                        }
+                this.cart.forEach(m => {
+                    if (m.id == product.id){
+                        m.sponsorshipPackageSelected = true;
+                        m.sponsorship_package.name = subitem.name;
+                        m.sponsorship_package.price = subitem.price;
+                        m.sponsorship_package.quantity = subitem.quantity + 1;
+                        this.total -=  m.price;
+                        this.earlytotal = 0;
                     }
-                }
+                });
+                
+                // if (!product.sponsorshipPackageSelected) {
+                //     product.sponsorshipPackageSelected = true;
+                // }
+                // else {
+                //     for (let i = 0; i < this.cart.length; i++){
+                //         let item = this.cart[i];
+                //         if (item.id == product.id){
+                //             if (item.sponsorships.platinum.quantity > 0){
+                //                 item.sponsorships.platinum.quantity = 0;
+                //                 product.tables.sponsorships.platinum.quantity = 0;
+                //                 this.subitemtotal -= item.sponsorships.platinum.price;
+                //             }
+                //             else if (item.sponsorships.gold.quantity > 0){
+                //                 item.sponsorships.gold.quantity = 0;
+                //                 product.tables.sponsorships.gold.quantity = 0;
+                //                 this.subitemtotal -= item.sponsorships.gold.price;
+                //             }
+                //             else if (item.sponsorships.silver.quantity > 0){
+                //                 item.sponsorships.silver.quantity = 0;
+                //                 product.tables.sponsorships.silver.quantity = 0;
+                //                 this.subitemtotal -= item.sponsorships.silver.price;
+                //             }
+                //         }
+                //     }
+                // }
             }
             this.subitemtotal += subitem.price;
             subitem.quantity++;

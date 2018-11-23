@@ -142,7 +142,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr class="sponsorship-platinum" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.platinum.quantity > 0">
+                            <!-- <tr class="sponsorship-platinum" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.platinum.quantity > 0">
                                 <td> {{ props.item.sponsorships.platinum.name }} </td>
                                 <td> {{ props.item.sponsorships.platinum.price }}€ </td>
                                 <td> {{ props.item.sponsorships.platinum.quantity }} </td>
@@ -150,9 +150,9 @@
                                 <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
                                 <td> 0€ </td>
                                 <td></td>
-                            </tr>
+                            </tr> -->
 
-                            <tr class="sponsorship-gold" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.gold.quantity > 0">
+                            <!-- <tr class="sponsorship-gold" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.gold.quantity > 0">
                                 <td> {{ props.item.sponsorships.gold.name }} </td>
                                 <td> {{ props.item.sponsorships.gold.price }}€ </td>
                                 <td> {{ props.item.sponsorships.gold.quantity }} </td>
@@ -170,9 +170,7 @@
                                 <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
                                 <td> 0€ </td>
                                 <td></td>
-                            </tr>
-
-                            <!-- the below row yields the following error message - cannot find 'tag' of undefined -->
+                            </tr> -->
 
                             <tr v-if="props.item.marketing_and_sponsorships[0].quantity">
                                 <td> {{ props.item.sponsorships.silver.name }} </td>
@@ -182,7 +180,7 @@
                                 <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
                                 <td> 0€ </td>
                                 <td></td>
-                            </tr>
+                            </tr> 
                             
                             <template v-for="item in props.item.marketing_and_sponsorships">
                                 <template v-for="type in item.types">
@@ -316,8 +314,6 @@
 
                                             </div>
                                             
-                                            
-											
 											<v-card v-if="product.selectBoothBoolean && attendBooths" class="booths-table">
                                                 <v-card-text class="booth-choice-container">
                                                     <div class="booth-choice">
