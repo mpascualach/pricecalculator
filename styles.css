@@ -246,7 +246,17 @@ td.checkout-btn-container > button {
     margin-top: 2%;
 }
 
+.sponsorship-platinum > td {
+    background-color: #E5E4E2;
+}
 
+.sponsorship-gold > td {
+    background-color: #D4AF37;
+}
+
+.sponsorship-silver > td {
+    background-color: #f5f5f5;
+}
 
 .v-btn {
     padding: 0 10px;
@@ -271,7 +281,7 @@ button.silver.v-btn.theme--light {
     color: white!important;
 }
 
-.platinum-pressed {
+/* .platinum-pressed {
     background-color: #E5E4E2 !important;
 }
 
@@ -281,7 +291,7 @@ button.silver.v-btn.theme--light {
 
 .silver-pressed {
     background-color: #C0C0C0 !important;
-}
+} */
 
 .theme--light.v-btn {
     color: white;

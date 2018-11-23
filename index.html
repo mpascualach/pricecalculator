@@ -113,7 +113,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.platinum.quantity > 0">
+                            <tr class="sponsorship-platinum" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.platinum.quantity > 0">
                                 <td> {{ props.item.sponsorships.platinum.name }} </td>
                                 <td> {{ props.item.sponsorships.platinum.price }}€ </td>
                                 <td> {{ props.item.sponsorships.platinum.quantity }} </td>
@@ -123,7 +123,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.gold.quantity > 0">
+                            <tr class="sponsorship-gold" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.gold.quantity > 0">
                                 <td> {{ props.item.sponsorships.gold.name }} </td>
                                 <td> {{ props.item.sponsorships.gold.price }}€ </td>
                                 <td> {{ props.item.sponsorships.gold.quantity }} </td>
@@ -133,7 +133,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.silver.quantity > 0">
+                            <tr class="sponsorship-silver" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.silver.quantity > 0">
                                 <td> {{ props.item.sponsorships.silver.name }} </td>
                                 <td> {{ props.item.sponsorships.silver.price }}€ </td>
                                 <td> {{ props.item.sponsorships.silver.quantity }} </td>
@@ -255,13 +255,13 @@
                                                         v-on:click="removeSubItem(product,product.tables.sponsorships.platinum)"
                                                         v-else>Platinum: {{ product.tables.sponsorships.platinum.price }}</v-btn>
 
-                                                    <v-btn light class="gold sponsorship light" v-on:click="addSubItem(product, product.tables.sponsorships.gold)"
+                                                    <v-btn light class="gold sponsorship light" v-on:click="addSubItem(product, product.tables.sponsorships.gold, 'sponsorship_package')"
                                                         v-if="product.tables.sponsorships.gold.quantity == 0">
                                                         Gold: {{ product.tables.sponsorships.gold.price }}</v-btn>
                                                     <v-btn class="gold-pressed sponsorship-pressed sponsorship light" v-on:click="removeSubItem(product,product.tables.sponsorships.gold)"
                                                         v-else>Gold: {{ product.tables.sponsorships.gold.price }}</v-btn>
 
-                                                    <v-btn light class="silver sponsorship" v-on:click="addSubItem(product, product.tables.sponsorships.silver)"
+                                                    <v-btn light class="silver sponsorship" v-on:click="addSubItem(product, product.tables.sponsorships.silver, 'sponsorship_package')"
                                                         v-if="product.tables.sponsorships.silver.quantity == 0">
                                                         Silver: {{ product.tables.sponsorships.silver.price }}</v-btn>
                                                     <v-btn class="silver-pressed sponsorship-pressed sponsorship light" v-on:click="removeSubItem(product,product.tables.sponsorships.silver)"

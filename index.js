@@ -36,7 +36,7 @@ var vue = new Vue({
             subtotal: 0,
             selectBoothBoolean: false,
             boothselected: false,
-            sponsorshipSelected: false,
+            sponsorshipPackageSelected: false,
             workandtravel: true,
             tables: {
                 id: 1,
@@ -345,902 +345,902 @@ var vue = new Vue({
                 },
             },
             additional: []
-        // },
-        // {
-        //     id: 2,
-        //     name: "Berlin",
-        //     priceearly: 3900,
-        //     selectedearly: false,
-        //     endofearly: false,
-        //     price: 4400,
-        //     currency: "EUR",
-        //     description: "Berlin Workshop description text goes here",
-        //     earlybirdends: 20190311,
-        //     earlyRate: false,
-        //     incart: 0,
-        //     quantity: 0,
-        //     subtotal: 0,
-        //     boothselected: false,
-        //     workandtravel: true,
-        //     tables: {
-        //         id: 2,
-        //         name: "Berlin Table",
-        //         discount: 1,
-        //         price: 4400,
-        //         originalprice: 4400,
-        //         priceearly: 3900,
-        //         quantity: 0,
-        //         schedules: {
-        //             id: 2,
-        //             name: "Berlin Additional Schedule",
-        //             quantity: 0,
-        //             price: 2400
-        //         },
-        //         additionalPeople: {
-        //             id: 2,
-        //             name: "Berlin Additional Person",
-        //             quantity: 0,
-        //             price: 990
-        //         },
-        //         sponsorships: {
-        //             platinum: {
-        //                 id: 2,
-        //                 name: "Berlin Platinum Sponsorship Package",
-        //                 price: 22000,
-        //                 qty: 0,
-        //             },
-        //             gold: {
-        //                 id: 2,
-        //                 name: "Berlin Gold Sponsorship Package",
-        //                 price: 16000,
-        //                 qty: 0,
-        //             },
-        //             silver: {
-        //                 id: 2,
-        //                 name: "Berlin Silver Sponsorship Package",
-        //                 price: 10000,
-        //                 qty: 0,
-        //             },
-        //         },
-        //         marketing_and_sponsorships: [
-        //             {
-        //                 id: 2,
-        //                 name: 'Advertisement in Educator/Agent Catalogue',
-        //                 types: [{
-        //                         name: 'Inside cover',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Outside cover',
-        //                         price: 2900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Full page',
-        //                         price: 1700,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Half page',
-        //                         price: 1100,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 2,
-        //                 name: "Display advertising",
-        //                 types: [{
-        //                         name: 'Lift doors',
-        //                         price: 6000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Intro-Point Sponsorship',
-        //                         price: 2200,
-        //                         quantity: 0,
-        //                     },
-        //                     {
-        //                         name: 'Advertising Panel',
-        //                         price: 1600,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Literature Display Rack',
-        //                         price: 1200,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 2,
-        //                 name: "Merchandise Sponsorship",
-        //                 types: [{
-        //                         name: 'Note pads',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Pens',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag insert - paper',
-        //                         price: 900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag insert - paper',
-        //                         price: 2200,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag tags',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Catalogue USB Memory cards',
-        //                         price: 2900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Key card sleeves',
-        //                         price: 3300,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Neck cords',
-        //                         price: 6500,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //             {
-        //                 id: 1,
-        //                 name: "Hospitality Sponsorship",
-        //                 types: [{
-        //                         name: 'Coffee & tea break',
-        //                         price: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Lunch',
-        //                         price: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Welcome reception',
-        //                         price: 6000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Dinner reception',
-        //                         price: 9000,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 2,
-        //                 name: "Services Sponsorship",
-        //                 types: [{
-        //                         name: 'Internet hub',
-        //                         price: 3000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Wireless internet service',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent hotel room drop',
-        //                         price: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent lounge - dedicated room',
-        //                         price: 5000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent lounge - dedicated area',
-        //                         price: 5400,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Registration - agents',
-        //                         price: 3500,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Registration - providers',
-        //                         price: 3500,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Registration - both',
-        //                         price: 3500,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //             {
-        //                 id: 2,
-        //                 name: "Presentations",
-        //                 types: [{
-        //                         name: '50 minute slot',
-        //                         price: 690,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: '25 minute slot',
-        //                         price: 490,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //         ]
-        //     },
-        //     booths: {
-        //         id: 2,
-        //         quantity: 0,
-        //         price: 0,
-        //         name: '',
-        //         description: '',
-        //         large12: {
-        //             id: 2,
-        //             name: "Berlin Exhibition Booth 12m²",
-        //             quantity: 0,
-        //             price: 12000,
-        //             description: "Includes 2 people & 2 schedules"
-        //         },
-        //         large10: {
-        //             id: 2,
-        //             name: "Berlin Exhibition Booth 10m²",
-        //             quantity: 0,
-        //             price: 9000,
-        //             description: "Includes 2 people & 2 schedules"
-        //         },
-        //         medium8: {
-        //             id: 2,
-        //             name: "Berlin Exhibition Booth 8m²",
-        //             quantity: 0,
-        //             price: 8000,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         medium6: {
-        //             id: 2,
-        //             name: "Berlin Exhibition Booth 6m²",
-        //             quantity: 0,
-        //             price: 6000,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std5: {
-        //             id: 2,
-        //             name: "Berlin Exhibition Booth 4.5m²",
-        //             quantity: 0,
-        //             price: 5500,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std4: {
-        //             id: 2,
-        //             name: "Berlin Exhibition Booth 4m²",
-        //             quantity: 0,
-        //             price: 5000,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std3: {
-        //             id: 2,
-        //             name: "Berlin Exhibition Booth 3m²",
-        //             quantity: 0,
-        //             price: 4400,
-        //             description: "Includes 1 people & 1 schedule"
-        //         }
-        //     },
-        //     additional: []
-        // },
-        // {
-        //     id: 3,
-        //     name: "Beijing",
-        //     price: 4400,
-        //     priceearly: 3900,
-        //     selectedearly: false,
-        //     endofearly: false,
-        //     currency: "EUR",
-        //     description: "Beijing Workshop description text goes here",
-        //     earlybirdends: 20190311,
-        //     earlyRate: false,
-        //     incart: 0,
-        //     quantity: 0,
-        //     subtotal: 0,
-        //     boothselected: false,
-        //     workandtravel: false,
-        //     tables: {
-        //         id: 3,
-        //         name: "Beijing Table",
-        //         discount: 1,
-        //         price: 4400,
-        //         originalprice: 4400,
-        //         priceearly: 3900,
-        //         quantity: 0,
-        //         schedules: {
-        //             id: 3,
-        //             name: "Beijing Additional Schedule",
-        //             discount: 1,
-        //             quantity: 0,
-        //             price: 2400
-        //         },
-        //         additionalPeople: {
-        //             id: 3,
-        //             name: "Beijing Additional Person",
-        //             discount: 1,
-        //             quantity: 0,
-        //             price: 990
-        //         },
-        //         sponsorships: {
-        //             platinum: {
-        //                 id: 3,
-        //                 name: "Beijing Platinum Sponsorship Package",
-        //                 price: 16000,
-        //                 qty: 0,
-        //             },
-        //             gold: {
-        //                 id: 3,
-        //                 name: "Beijing Gold Sponsorship Package",
-        //                 price: 11000,
-        //                 qty: 0,
-        //             },
-        //             silver: {
-        //                 id: 3,
-        //                 name: "Beijing Silver Sponsorship Package",
-        //                 price: 8000,
-        //                 qty: 0,
-        //             },
-        //         },
-        //         marketing_and_sponsorships: [
-        //             {
-        //                 id: 3,
-        //                 name: 'Advertisement in Educator/Agent Catalogue',
-        //                 types: [{
-        //                         name: 'Inside cover',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Outside cover',
-        //                         price: 2900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Full page',
-        //                         price: 1700,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Half page',
-        //                         price: 1100,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 3,
-        //                 name: "Display advertising",
-        //                 types: [{
-        //                         name: 'Lift doors',
-        //                         price: 6000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Intro-Point Sponsorship',
-        //                         price: 2200,
-        //                         quantity: 0,
-        //                     },
-        //                     {
-        //                         name: 'Advertising Panel',
-        //                         price: 1600,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Literature Display Rack',
-        //                         price: 1200,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 3,
-        //                 name: "Merchandise Sponsorship",
-        //                 types: [{
-        //                         name: 'Note pads',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Pens',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag insert - paper',
-        //                         price: 900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag insert - paper',
-        //                         price: 2200,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag tags',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Catalogue USB Memory cards',
-        //                         price: 2900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Key card sleeves',
-        //                         price: 3300,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Neck cords',
-        //                         price: 6500,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //             {
-        //                 id: 3,
-        //                 name: "Hospitality Sponsorship",
-        //                 types: [{
-        //                         name: 'Coffee & tea break',
-        //                         price: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Lunch',
-        //                         price: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Welcome reception',
-        //                         price: 6000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Dinner reception',
-        //                         price: 9000,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 3,
-        //                 name: "Services Sponsorship",
-        //                 types: [{
-        //                         name: 'Internet hub',
-        //                         price: 3000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Wireless internet service',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent hotel room drop',
-        //                         price: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent lounge - dedicated room',
-        //                         price: 5000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent lounge - dedicated area',
-        //                         price: 5400,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Registration - agents',
-        //                         price: 3500,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Registration - providers',
-        //                         price: 3500,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Registration - both',
-        //                         price: 3500,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //             {
-        //                 id: 3,
-        //                 name: "Presentations",
-        //                 types: [{
-        //                         name: '50 minute slot',
-        //                         price: 690,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: '25 minute slot',
-        //                         price: 490,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //         ]
-        //     },
-        //     booths: {
-        //         id: 3,
-        //         quantity: 0,
-        //         price: 0,
-        //         name: '',
-        //         description: '',
-        //         large12: {
-        //             id: 3,
-        //             name: "Beijing Exhibition Booth 12m²",
-        //             quantity: 0,
-        //             price: 12000,
-        //             description: "Includes 2 people & 2 schedules"
-        //         },
-        //         large10: {
-        //             id: 3,
-        //             name: "Beijing Exhibition Booth 10m²",
-        //             quantity: 0,
-        //             price: 9000,
-        //             description: "Includes 2 people & 2 schedules"
-        //         },
-        //         medium8: {
-        //             id: 3,
-        //             name: "Beijing Exhibition Booth 8m²",
-        //             quantity: 0,
-        //             price: 8000,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         medium6: {
-        //             id: 3,
-        //             name: "Beijing Exhibition Booth 6m²",
-        //             quantity: 0,
-        //             price: 6000,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std5: {
-        //             id: 3,
-        //             name: "Beijing Exhibition Booth 4.5m²",
-        //             quantity: 0,
-        //             price: 5500,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std4: {
-        //             id: 3,
-        //             name: "Beijing Exhibition Booth 4m²",
-        //             quantity: 0,
-        //             price: 5000,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std3: {
-        //             id: 3,
-        //             name: "Beijing Exhibition Booth 3m²",
-        //             quantity: 0,
-        //             price: 4400,
-        //             description: "Includes 1 people & 1 schedule"
-        //         }
-        //     },
-        //     additional: []
-        // },
-        // {
-        //     id: 4,
-        //     name: "Miami",
-        //     price: 6900,
-        //     priceearly: 3900,
-        //     selectedearly: false,
-        //     endofearly: false,
-        //     currency: "AUD",
-        //     description: "Miami Workshop description text goes here",
-        //     earlybirdends: 20180311,
-        //     earlyRate: false,
-        //     incart: 0,
-        //     quantity: 0,
-        //     subtotal: 0,
-        //     boothselected: false,
-        //     workandtravel: false,
-        //     tables: {
-        //         id: 4,
-        //         name: "Miami Table",
-		// 		discount: 0,
-        //         price: 4400,
-        //         originalprice: 4400,
-        //         priceearly: 3900,
-        //         quantity: 0,
-        //         schedules: {
-        //             id: 4,
-        //             name: "Miami Additional Schedule",
-        //             discount: 0,
-        //             quantity: 0,
-        //             price: 2400
-        //         },
-        //         additionalPeople: {
-        //             id: 4,
-        //             name: "Miami Additional Person",
-        //             discount: 0,
-        //             quantity: 0,
-        //             price: 990
-        //         },
-        //         sponsorships: {
-        //             platinum: {
-        //                 id: 4,
-        //                 name: "Miami Platinum Sponsorship Package",
-        //                 price: 16000,
-        //                 qty: 0,
-        //             },
-        //             gold: {
-        //                 id: 4,
-        //                 name: "Miami Gold Sponsorship Package",
-        //                 price: 11000,
-        //                 qty: 0,
-        //             },
-        //             silver: {
-        //                 id: 4,
-        //                 name: "Miami Silver Sponsorship Package",
-        //                 price: 8000,
-        //                 qty: 0,
-        //             },
-        //         },
-        //         marketing_and_sponsorships: [
-        //             {
-        //                 id: 4,
-        //                 name: 'Advertisement in Educator/Agent Catalogue',
-        //                 types: [{
-        //                         name: 'Inside cover',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Outside cover',
-        //                         price: 2900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Full page',
-        //                         price: 1700,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Half page',
-        //                         price: 1100,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 4,
-        //                 name: "Display advertising",
-        //                 types: [{
-        //                         name: 'Lift doors',
-        //                         price: 6000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Intro-Point Sponsorship',
-        //                         price: 2200,
-        //                         quantity: 0,
-        //                     },
-        //                     {
-        //                         name: 'Advertising Panel',
-        //                         price: 1600,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Literature Display Rack',
-        //                         price: 1200,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 4,
-        //                 name: "Merchandise Sponsorship",
-        //                 types: [{
-        //                         name: 'Note pads',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Pens',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag insert - paper',
-        //                         price: 900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag insert - paper',
-        //                         price: 2200,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag tags',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Catalogue USB Memory cards',
-        //                         price: 2900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Key card sleeves',
-        //                         price: 3300,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Neck cords',
-        //                         price: 6500,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //             {
-        //                 id: 4,
-        //                 name: "Hospitality Sponsorship",
-        //                 types: [
-                                // {
-        //                         name: 'Coffee & tea break',
-        //                         price: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Lunch',
-        //                         price: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Welcome reception',
-        //                         price: 6000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Dinner reception',
-        //                         price: 9000,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 4,
-        //                 name: "Services Sponsorship",
-        //                 types: [{
-        //                         name: 'Internet hub',
-        //                         price: 3000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Wireless internet service',
-        //                         price: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent hotel room drop',
-        //                         price: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent lounge - dedicated room',
-        //                         price: 5000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent lounge - dedicated area',
-        //                         price: 5400,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Registration - agents',
-        //                         price: 3500,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Registration - providers',
-        //                         price: 3500,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Registration - both',
-        //                         price: 3500,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //             {
-        //                 id: 4,
-        //                 name: "Presentations",
-        //                 types: [{
-        //                         name: '50 minute slot',
-        //                         price: 690,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: '25 minute slot',
-        //                         price: 490,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //         ]
-        //     },
-        //     booths: {
-        //         id: 4,
-        //         quantity: 0,
-        //         price: 0,
-        //         name: '',
-        //         description: '',
-        //         large12: {
-        //             id: 4,
-        //             name: "Miami Exhibition Booth 12m²",
-        //             quantity: 0,
-        //             price: 12000,
-        //             description: "Includes 2 people & 2 schedules"
-        //         },
-        //         large10: {
-        //             id: 4,
-        //             name: "Miami Exhibition Booth 10m²",
-        //             quantity: 0,
-        //             price: 9000,
-        //             description: "Includes 2 people & 2 schedules"
-        //         },
-        //         medium8: {
-        //             id: 4,
-        //             name: "Miami Exhibition Booth 8m²",
-        //             quantity: 0,
-        //             price: 8000,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         medium6: {
-        //             id: 4,
-        //             name: "Miami Exhibition Booth 6m²",
-        //             quantity: 0,
-        //             price: 6000,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std5: {
-        //             id: 4,
-        //             name: "Miami Exhibition Booth 4.5m²",
-        //             quantity: 0,
-        //             price: 5500,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std4: {
-        //             id: 4,
-        //             name: "Miami Exhibition Booth 4m²",
-        //             quantity: 0,
-        //             price: 5000,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std3: {
-        //             id: 4,
-        //             name: "Miami Exhibition Booth 3m²",
-        //             quantity: 0,
-        //             price: 4400,
-        //             description: "Includes 1 people & 1 schedule"
-        //         }
-        //     },
-        //     additional: []
+        },
+        {
+            id: 2,
+            name: "Berlin",
+            priceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            price: 4400,
+            currency: "EUR",
+            description: "Berlin Workshop description text goes here",
+            earlybirdends: 20190311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            boothselected: false,
+            workandtravel: true,
+            tables: {
+                id: 2,
+                name: "Berlin Table",
+                discount: 1,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 2,
+                    name: "Berlin Additional Schedule",
+                    quantity: 0,
+                    price: 2400
+                },
+                additionalPeople: {
+                    id: 2,
+                    name: "Berlin Additional Person",
+                    quantity: 0,
+                    price: 990
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 2,
+                        name: "Berlin Platinum Sponsorship Package",
+                        price: 22000,
+                        qty: 0,
+                    },
+                    gold: {
+                        id: 2,
+                        name: "Berlin Gold Sponsorship Package",
+                        price: 16000,
+                        qty: 0,
+                    },
+                    silver: {
+                        id: 2,
+                        name: "Berlin Silver Sponsorship Package",
+                        price: 10000,
+                        qty: 0,
+                    },
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 2,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 1100,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        name: "Display advertising",
+                        types: [{
+                                name: 'Lift doors',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Intro-Point Sponsorship',
+                                price: 2200,
+                                quantity: 0,
+                            },
+                            {
+                                name: 'Advertising Panel',
+                                price: 1600,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1200,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Catalogue USB Memory cards',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 6500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Hospitality Sponsorship",
+                        types: [{
+                                name: 'Coffee & tea break',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 9000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        name: "Services Sponsorship",
+                        types: [{
+                                name: 'Internet hub',
+                                price: 3000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Wireless internet service',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - agents',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - providers',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - both',
+                                price: 3500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 2,
+                        name: "Presentations",
+                        types: [{
+                                name: '50 minute slot',
+                                price: 690,
+                                quantity: 0
+                            },
+                            {
+                                name: '25 minute slot',
+                                price: 490,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                ]
+            },
+            booths: {
+                id: 2,
+                quantity: 0,
+                price: 0,
+                name: '',
+                description: '',
+                large12: {
+                    id: 2,
+                    name: "Berlin Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 12000,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                large10: {
+                    id: 2,
+                    name: "Berlin Exhibition Booth 10m²",
+                    quantity: 0,
+                    price: 9000,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 2,
+                    name: "Berlin Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 8000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 2,
+                    name: "Berlin Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 6000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std5: {
+                    id: 2,
+                    name: "Berlin Exhibition Booth 4.5m²",
+                    quantity: 0,
+                    price: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 2,
+                    name: "Berlin Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 5000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std3: {
+                    id: 2,
+                    name: "Berlin Exhibition Booth 3m²",
+                    quantity: 0,
+                    price: 4400,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
+            additional: []
+        },
+        {
+            id: 3,
+            name: "Beijing",
+            price: 4400,
+            priceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "Beijing Workshop description text goes here",
+            earlybirdends: 20190311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            boothselected: false,
+            workandtravel: false,
+            tables: {
+                id: 3,
+                name: "Beijing Table",
+                discount: 1,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 3,
+                    name: "Beijing Additional Schedule",
+                    discount: 1,
+                    quantity: 0,
+                    price: 2400
+                },
+                additionalPeople: {
+                    id: 3,
+                    name: "Beijing Additional Person",
+                    discount: 1,
+                    quantity: 0,
+                    price: 990
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 3,
+                        name: "Beijing Platinum Sponsorship Package",
+                        price: 16000,
+                        qty: 0,
+                    },
+                    gold: {
+                        id: 3,
+                        name: "Beijing Gold Sponsorship Package",
+                        price: 11000,
+                        qty: 0,
+                    },
+                    silver: {
+                        id: 3,
+                        name: "Beijing Silver Sponsorship Package",
+                        price: 8000,
+                        qty: 0,
+                    },
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 3,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 1100,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        name: "Display advertising",
+                        types: [{
+                                name: 'Lift doors',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Intro-Point Sponsorship',
+                                price: 2200,
+                                quantity: 0,
+                            },
+                            {
+                                name: 'Advertising Panel',
+                                price: 1600,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1200,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Catalogue USB Memory cards',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 6500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 3,
+                        name: "Hospitality Sponsorship",
+                        types: [{
+                                name: 'Coffee & tea break',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 9000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        name: "Services Sponsorship",
+                        types: [{
+                                name: 'Internet hub',
+                                price: 3000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Wireless internet service',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - agents',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - providers',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - both',
+                                price: 3500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 3,
+                        name: "Presentations",
+                        types: [{
+                                name: '50 minute slot',
+                                price: 690,
+                                quantity: 0
+                            },
+                            {
+                                name: '25 minute slot',
+                                price: 490,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                ]
+            },
+            booths: {
+                id: 3,
+                quantity: 0,
+                price: 0,
+                name: '',
+                description: '',
+                large12: {
+                    id: 3,
+                    name: "Beijing Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 12000,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                large10: {
+                    id: 3,
+                    name: "Beijing Exhibition Booth 10m²",
+                    quantity: 0,
+                    price: 9000,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 3,
+                    name: "Beijing Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 8000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 3,
+                    name: "Beijing Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 6000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std5: {
+                    id: 3,
+                    name: "Beijing Exhibition Booth 4.5m²",
+                    quantity: 0,
+                    price: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 3,
+                    name: "Beijing Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 5000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std3: {
+                    id: 3,
+                    name: "Beijing Exhibition Booth 3m²",
+                    quantity: 0,
+                    price: 4400,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
+            additional: []
+        },
+        {
+            id: 4,
+            name: "Miami",
+            price: 6900,
+            priceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "AUD",
+            description: "Miami Workshop description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            boothselected: false,
+            workandtravel: false,
+            tables: {
+                id: 4,
+                name: "Miami Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 4,
+                    name: "Miami Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400
+                },
+                additionalPeople: {
+                    id: 4,
+                    name: "Miami Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 4,
+                        name: "Miami Platinum Sponsorship Package",
+                        price: 16000,
+                        qty: 0,
+                    },
+                    gold: {
+                        id: 4,
+                        name: "Miami Gold Sponsorship Package",
+                        price: 11000,
+                        qty: 0,
+                    },
+                    silver: {
+                        id: 4,
+                        name: "Miami Silver Sponsorship Package",
+                        price: 8000,
+                        qty: 0,
+                    },
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 4,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 1100,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        name: "Display advertising",
+                        types: [{
+                                name: 'Lift doors',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Intro-Point Sponsorship',
+                                price: 2200,
+                                quantity: 0,
+                            },
+                            {
+                                name: 'Advertising Panel',
+                                price: 1600,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1200,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Catalogue USB Memory cards',
+                                price: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 6500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 4,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 9000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        name: "Services Sponsorship",
+                        types: [{
+                                name: 'Internet hub',
+                                price: 3000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Wireless internet service',
+                                price: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - agents',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - providers',
+                                price: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Registration - both',
+                                price: 3500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 4,
+                        name: "Presentations",
+                        types: [{
+                                name: '50 minute slot',
+                                price: 690,
+                                quantity: 0
+                            },
+                            {
+                                name: '25 minute slot',
+                                price: 490,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                ]
+            },
+            booths: {
+                id: 4,
+                quantity: 0,
+                price: 0,
+                name: '',
+                description: '',
+                large12: {
+                    id: 4,
+                    name: "Miami Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 12000,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                large10: {
+                    id: 4,
+                    name: "Miami Exhibition Booth 10m²",
+                    quantity: 0,
+                    price: 9000,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 4,
+                    name: "Miami Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 8000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 4,
+                    name: "Miami Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 6000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std5: {
+                    id: 4,
+                    name: "Miami Exhibition Booth 4.5m²",
+                    quantity: 0,
+                    price: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 4,
+                    name: "Miami Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 5000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std3: {
+                    id: 4,
+                    name: "Miami Exhibition Booth 3m²",
+                    quantity: 0,
+                    price: 4400,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
+            additional: []
         }],
         addons: [
             {
@@ -1500,8 +1500,35 @@ var vue = new Vue({
                 return;
             }
             if (selector == 'marketing') subitem.name = product.name + " " + subitem.name;
-            subitem.quantity++;
+            else if (selector == 'sponsorship_package'){
+                if (!product.sponsorshipPackageSelected) {
+                    product.sponsorshipPackageSelected = true;
+                }
+                else {
+                    for (let i = 0; i < this.cart.length; i++){
+                        let item = this.cart[i];
+                        if (item.id == product.id){
+                            if (item.sponsorships.platinum.quantity > 0){
+                                item.sponsorships.platinum.quantity = 0;
+                                product.tables.sponsorships.platinum.quantity = 0;
+                                this.subitemtotal -= item.sponsorships.platinum.price;
+                            }
+                            else if (item.sponsorships.gold.quantity > 0){
+                                item.sponsorships.gold.quantity = 0;
+                                product.tables.sponsorships.gold.quantity = 0;
+                                this.subitemtotal -= item.sponsorships.gold.price;
+                            }
+                            else if (item.sponsorships.silver.quantity > 0){
+                                item.sponsorships.silver.quantity = 0;
+                                product.tables.sponsorships.silver.quantity = 0;
+                                this.subitemtotal -= item.sponsorships.silver.price;
+                            }
+                        }
+                    }
+                }
+            }
             this.subitemtotal += subitem.price;
+            subitem.quantity++;
             if ( selector == 'schedules' && subitem.quantity > 1 ){
                 this.cart.forEach(m => {
                     if (m.id == product.id){
