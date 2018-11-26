@@ -13,7 +13,7 @@ const numberFormats = {
     }
 };
 
-import * as products from 'products';
+// import * as products from 'products';
 
 const i18n = new VueI18n({
     numberFormats
@@ -1332,13 +1332,13 @@ var vue = new Vue({
                             {
                                 name: 'Registration - providers',
                                 price: 3500,
-                                originalprice: 2400,
+                                originalprice: 3500,
                                 quantity: 0
                             },
                             {
                                 name: 'Registration - both',
                                 price: 3500,
-                                originalprice: 2400,
+                                originalprice: 3500,
                                 quantity: 0
                             },
                         ]
@@ -1349,13 +1349,13 @@ var vue = new Vue({
                         types: [{
                                 name: '50 minute slot',
                                 price: 690,
-                                originalprice: 2400,
+                                originalprice: 3500,
                                 quantity: 0
                             },
                             {
                                 name: '25 minute slot',
                                 price: 490,
-                                originalprice: 2400,
+                                originalprice: 3500,
                                 quantity: 0
                             },
                         ]
@@ -1373,7 +1373,7 @@ var vue = new Vue({
                     name: "Miami Exhibition Booth 12m²",
                     quantity: 0,
                     price: 12000,
-                    originalprice: 2400,
+                    originalprice: 12000,
                     description: "Includes 2 people & 2 schedules"
                 },
                 large10: {
@@ -1381,7 +1381,7 @@ var vue = new Vue({
                     name: "Miami Exhibition Booth 10m²",
                     quantity: 0,
                     price: 9000,
-                    originalprice: 2400,
+                    originalprice: 9000,
                     description: "Includes 2 people & 2 schedules"
                 },
                 medium8: {
@@ -1389,7 +1389,7 @@ var vue = new Vue({
                     name: "Miami Exhibition Booth 8m²",
                     quantity: 0,
                     price: 8000,
-                    originalprice: 2400,
+                    originalprice: 8000,
                     description: "Includes 1 people & 1 schedule"
                 },
                 medium6: {
@@ -1397,7 +1397,7 @@ var vue = new Vue({
                     name: "Miami Exhibition Booth 6m²",
                     quantity: 0,
                     price: 6000,
-                    originalprice: 2400,
+                    originalprice: 6000,
                     description: "Includes 1 people & 1 schedule"
                 },
                 std5: {
@@ -1405,7 +1405,7 @@ var vue = new Vue({
                     name: "Miami Exhibition Booth 4.5m²",
                     quantity: 0,
                     price: 5500,
-                    originalprice: 2400,
+                    originalprice: 5500,
                     description: "Includes 1 people & 1 schedule"
                 },
                 std4: {
@@ -1413,7 +1413,7 @@ var vue = new Vue({
                     name: "Miami Exhibition Booth 4m²",
                     quantity: 0,
                     price: 5000,
-                    originalprice: 2400,
+                    originalprice: 5000,
                     description: "Includes 1 people & 1 schedule"
                 },
                 std3: {
@@ -1421,7 +1421,7 @@ var vue = new Vue({
                     name: "Miami Exhibition Booth 3m²",
                     quantity: 0,
                     price: 4400,
-                    originalprice: 2400,
+                    originalprice: 4400,
                     description: "Includes 1 people & 1 schedule"
                 }
             },
@@ -1723,32 +1723,6 @@ var vue = new Vue({
                         this.earlytotal = 0;
                     }
                 });
-                
-                // if (!product.sponsorshipPackageSelected) {
-                //     product.sponsorshipPackageSelected = true;
-                // }
-                // else {
-                //     for (let i = 0; i < this.cart.length; i++){
-                //         let item = this.cart[i];
-                //         if (item.id == product.id){
-                //             if (item.sponsorships.platinum.quantity > 0){
-                //                 item.sponsorships.platinum.quantity = 0;
-                //                 product.tables.sponsorships.platinum.quantity = 0;
-                //                 this.subitemtotal -= item.sponsorships.platinum.price;
-                //             }
-                //             else if (item.sponsorships.gold.quantity > 0){
-                //                 item.sponsorships.gold.quantity = 0;
-                //                 product.tables.sponsorships.gold.quantity = 0;
-                //                 this.subitemtotal -= item.sponsorships.gold.price;
-                //             }
-                //             else if (item.sponsorships.silver.quantity > 0){
-                //                 item.sponsorships.silver.quantity = 0;
-                //                 product.tables.sponsorships.silver.quantity = 0;
-                //                 this.subitemtotal -= item.sponsorships.silver.price;
-                //             }
-                //         }
-                //     }
-                // }
             }
             this.subitemtotal += subitem.price;
             subitem.quantity++;
@@ -1791,6 +1765,7 @@ var vue = new Vue({
             product.selectBoothBoolean = true;
         },
         setBaseCurrency(baseCurrency){
+            console.log(baseCurrency)
             switch(baseCurrency){
                 case 'EUR':
                     this.currencySymbol = "€";
@@ -1813,17 +1788,15 @@ var vue = new Vue({
                 this.fixerRates = this.fixer.rates;
                 this.products.forEach(m => {
                     if (this.fullDate < m.earlybirdends) m.earlyRate = true;
+                    m.price = m.originalprice;
+                    m.priceearly = m.originalpriceearly;
+                    m.tables.price = m.tables.originalprice;
+                    m.currencyDisclaimer = '';
                     if (m.currency !== this.fixer.base) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
-                        m.earlyprice = this.fixerRates[m.currency].toFixed(2);
-                        m.price *= this.fixerRates[m.currency].toFixed(2);
-                        m.tables.price *= this.fixerRates[m.currency].toFixed(2);
-                    }
-                    else {
-                        m.price = m.originalprice;
-                        m.priceearly = m.originalpriceearly;
-                        m.tables.price = m.tables.originalprice;
-                        m.currencyDisclaimer = '';
+                        m.earlyprice = (m.originalpriceearly * this.fixerRates[m.currency]).toFixed();
+                        m.price = (m.originalprice * this.fixerRates[m.currency]).toFixed();
+                        m.tables.price = (m.tables.price * this.fixerRates[m.currency]).toFixed();
                     }
                 });
             });

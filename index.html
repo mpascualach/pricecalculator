@@ -218,7 +218,7 @@
                                 <span v-if="subitemtotal">Subitems total: {{ currencySymbol }}{{ subitemtotal }} </span>
                                 <span v-if="earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ earlytotal + subitemtotal}} </span>
                                 <span v-if="!earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ total + subitemtotal }} </span>
-                                <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ).toFixed() }}% </span>
+                                <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ) }}% </span>
                                 <span>Discounted : {{ currencySymbol }}{{ (total * discount) - total }} </span>
                                 <strong v-if="earlytotal">Total: {{ currencySymbol }}{{subitemtotal + earlytotal}} </strong>
                                 <strong v-else>Total: {{ currencySymbol }}{{(total * discount) + subitemtotal }} </strong>
@@ -287,7 +287,7 @@
                                                     <v-btn light class="platinum sponsorship" 
                                                         v-on:click="addSubItem(product, product.tables.sponsorships.platinum, 'sponsorship_package')"
                                                         v-if="product.tables.sponsorships.platinum.quantity == 0">
-                                                        Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price }}</v-btn>
+                                                            Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price }}</v-btn>
                                                     <v-btn class="platinum-pressed sponsorship-pressed sponsorship light" 
                                                         v-on:click="removeSubItem(product,product.tables.sponsorships.platinum)"
                                                         v-else>Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price }}</v-btn>
@@ -300,7 +300,7 @@
 
                                                     <v-btn light class="silver sponsorship" v-on:click="addSubItem(product, product.tables.sponsorships.silver, 'sponsorship_package')"
                                                         v-if="product.tables.sponsorships.silver.quantity == 0">
-                                                        Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price }}</v-btn>
+                                                            Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price }}</v-btn>
                                                     <v-btn class="silver-pressed sponsorship-pressed sponsorship light" v-on:click="removeSubItem(product,product.tables.sponsorships.silver)"
                                                         v-else>Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price }}</v-btn>
 
@@ -315,7 +315,7 @@
                                                                 <v-btn class="marketing-choice" 
                                                                     v-on:click="addSubItem(product, type, 'marketing')">
                                                                     {{ type.name }} :
-                                                                    {{ currencySymbol }}{{ type.price}} 
+                                                                    {{ currencySymbol }}{{ type.price}}
                                                                 </v-btn>
                                                                 <!-- <i class="fa fa-question-circle"></i> -->
                                                             </div>
