@@ -209,6 +209,12 @@ span.schedule-alert {
 .product-name {
     display: flex;
     flex-direction: column;
+    max-width: 30%;
+}
+
+.price-container {
+    position: absolute;
+    left: 33%;
 }
 
 td.totals {
@@ -453,4 +459,8 @@ button.marketing-choice.v-btn.theme--light {
 .sponsorship-type {
     justify-content: start!important;
     margin-left: 6%;
+}
+
+.v-select-list.v-card.theme--light {
+    width: 100%;
 }

@@ -1358,12 +1358,13 @@ var vue = new Vue({
         currentDate: new Date(), //current date
         fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(), //to determine whether early bird rates apply - collating YY/MM/DD format dates as a single number
         fixer: {}, //with regards to fixer.io
-        fixerRates: {}
+        fixerRates: {},
+        allowedCurrencies: ["EUR","GBP","USD","CAD","AUD"]
     },
     methods: {
         addToCart: function (product, subitem, selector) {
             let cartitem;
-            if (selector && selector == 'booths') {
+            if ( selector && selector == 'booths' ) {
                 product.booths.booths = true;
                 product.booths.quantity++;
                 product.booths.name = subitem.name;
@@ -1386,7 +1387,7 @@ var vue = new Vue({
                 this.regularWorkshops++;
                 this.earlyRates = false; //remove possibility of early bird rates from other events in products
                 this.cart.push(cartitem); //push copy of product into cart
-                if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops && selector !== 'work_and_travel'){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+                if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops && selector !== 'work_and_travel' ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
                     cartitem.selectedearly = true;
                     product.selectedearly = true;
                     cartitem.price = subitem.priceearly; 
@@ -1394,10 +1395,9 @@ var vue = new Vue({
                 } else {
                     this.earlytotal = 0;
                     cartitem.price = subitem.price;
-                    if (this.regularWorkshops > 1) {
+                    if ( this.regularWorkshops > 1 ) {
                         this.products.forEach(m => {
-                            if (m.selectedearly) m.endofearly = true;
-                            console.log(m);
+                            if ( m.selectedearly ) m.endofearly = true;
                         });
                     }
                 } //log price of subitem and assign it to copy's price
@@ -1422,10 +1422,10 @@ var vue = new Vue({
                     default:
                         this.discount = 0.73;
                 }
-                if (this.regularWorkshops == 2){
+                if ( this.regularWorkshops == 2 ){
                     this.cart.forEach(m => {
-                        if (m.selectedearly) m.price = m.originalprice;
-                    })
+                        if ( m.selectedearly ) m.price = m.originalprice;
+                    });
                     this.total = this.cart.reduce((a,b)=>a.price + b.price);
                 }
                 subitem.quantity++;
@@ -1434,28 +1434,27 @@ var vue = new Vue({
         },
         absoluteRemoveFromCart: function (product) {
             if (product.tables) {
-                while (product.tables.additionalPeople.quantity > 0){
+                while ( product.tables.additionalPeople.quantity > 0 ){
                     this.subitemtotal -= product.tables.additionalPeople.price;
                     product.tables.additionalPeople.quantity--;
                 }
-                while (product.tables.schedules.quantity > 0){
-                    console.log("Schedule!")
+                while ( product.tables.schedules.quantity > 0 ){
                     this.subitemtotal -= product.tables.schedules.price;
                     product.tables.schedules.quantity--;
                 }
                 product.tables.quantity = 0;
                 product.incart = 0;
             } else {
-                while (product.additionalPeople.quantity > 0){
+                while ( product.additionalPeople.quantity > 0 ){
                     this.subitemtotal -= product.additionalPeople.price;
                     product.additionalPeople.quantity--;
                 }
-                while (product.schedules.quantity > 0){
+                while ( product.schedules.quantity > 0 ){
                     this.subitemtotal -= product.schedules.price;
                     product.schedules.quantity--;
                 }
                 this.products.forEach(m => {
-                    if (m.id == product.id) {
+                    if ( m.id == product.id ) {
                         m.incart = 0;
                         m.tables.quantity = 0;
                     }
@@ -1465,8 +1464,8 @@ var vue = new Vue({
             var position = cartIds.indexOf(product.id);
             let cartEq = this.cart[position];
             console.log("Cartitem: ", this.cart[position]);
-            while (this.cart[position].quantity > 0){ //process by which tables are removed and price deduction is applied step by step
-                if (this.cart[position].selectedearly) this.earlytotal -= cartEq.priceearly;
+            while ( this.cart[position].quantity > 0 ){ //process by which tables are removed and price deduction is applied step by step
+                if ( this.cart[position].selectedearly ) this.earlytotal -= cartEq.priceearly;
                 else this.total -= cartEq.price;
                 this.cart[position].quantity--;
             }
@@ -1475,7 +1474,6 @@ var vue = new Vue({
             switch(this.regularWorkshops){
                 case 0:
                     this.discount = 1;
-                    console.log("No items in cart")
                     this.products.forEach(m => {
                         if (m.selectedearly) m.selectedearly = false;
                         this.earlyRates = true;
@@ -1510,20 +1508,17 @@ var vue = new Vue({
         },
         addTable: function (product) {
             product.quantity++;
-            if (product.selectedearly) this.earlytotal += product.price;
+            if ( product.selectedearly ) this.earlytotal += product.price;
             else this.total += product.price;
-            console.log(product);
             this.total += product.price;
         },
         removeTable: function (cartitem) {
             cartitem.quantity--;
-            if (cartitem.selectedearly) this.earlytotal -= cartitem.price;
+            if ( cartitem.selectedearly ) this.earlytotal -= cartitem.price;
             else this.total -= cartitem.price;
-            console.log(cartitem);
-            if (cartitem.quantity == 0){
+            if ( cartitem.quantity == 0 ){
                 this.products.forEach(m => {
-                    if (m.id == cartitem.id){
-                        console.log(m.name);
+                    if ( m.id == cartitem.id ){
                         this.absoluteRemoveFromCart(m);
                     }
                 });
@@ -1534,10 +1529,10 @@ var vue = new Vue({
                 this.limitReached = true;
                 return;
             }
-            if (selector == 'marketing') subitem.name = product.name + " " + subitem.name;
-            else if (selector == 'sponsorship_package'){
+            if ( selector == 'marketing' ) subitem.name = product.name + " " + subitem.name;
+            else if ( selector == 'sponsorship_package' ){
                 this.cart.forEach(m => {
-                    if (m.id == product.id){
+                    if ( m.id == product.id ){
                         m.sponsorshipPackageSelected = true;
                         m.sponsorship_package.name = subitem.name;
                         m.sponsorship_package.price = subitem.price;
@@ -1606,27 +1601,31 @@ var vue = new Vue({
             this.checkoutScreen = Object.assign({}, this.cart);
             document.getElementById("main-wrapper").style.display = "none";
             document.getElementById("checkout").style.display = "block";
-            console.log(this.checkoutScreen)
         },
         changeMode(){
             this.attendBooths = !this.attendBooths;
         },
         showBoothOptions(product){
-            console.log(product);
             product.selectBoothBoolean = true;
         },
+        changeBaseCurrency(currency){
+
+        }
     },
     beforeMount(){
-        this.products.forEach(m => {
-            if ( this.fullDate < m.earlybirdends ){
-                m.earlyRate = true;
-            }
-        });
+        
         axios.get('http://data.fixer.io/api/latest?access_key=0045f1e6f69eedc5c36ccfa9b93d821b')
         .then(response => {
             this.fixer = response.data;
             this.fixerRates = this.fixer.rates;
-            console.log("Fixer: ", this.fixer);
+            this.products.forEach(m => {
+                if (this.fullDate < m.earlybirdends) m.earlyRate = true;
+                if (m.currency !== this.fixer.base) {
+                    m.currencyDisclaimer = "Converted from " + m.currency;
+                    m.price *= this.fixerRates[m.currency];
+                    m.tables.price *= this.fixerRates[m.currency].toFixed(2);
+                }
+            });
         });
     }
 }).$mount('#vue');
