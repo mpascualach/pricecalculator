@@ -46,9 +46,9 @@
                                     <td class="name">{{ props.item.sponsorship_package.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                     <td class="price">{{ props.item.sponsorship_package.price }}€</td>
                                     <td class="qty">
-                                        <i class="fa fa-plus-square smaller"></i> 
+                                        <i class="fa fa-plus-square smaller" v-on:click="addTable(props.item)"></i> 
                                         {{ props.item.sponsorship_package.quantity }}
-                                        <i class="fa fa-minus-square smaller"></i>
+                                        <i class="fa fa-minus-square smaller" v-on:click="removeTable(props.item)"></i>
                                     </td>
                                     <td class="sub-total">{{ props.item.sponsorship_package.price * props.item.sponsorship_package.quantity }}€</td>
                                     <td class="item-total">{{ props.item.sponsorship_package.price * props.item.sponsorship_package.quantity * discount }}€</td>
@@ -61,7 +61,10 @@
                                 <tr v-else>
                                     <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                     <td class="price">{{ props.item.price }}€</td>
-                                    <td class="qty"><i class="fa fa-plus-square smaller"></i> {{ props.item.quantity }}<i class="fa fa-minus-square smaller"></i>
+                                    <td class="qty">
+                                        <i class="fa fa-plus-square smaller" v-on:click="addTable(props.item)"></i> 
+                                            {{ props.item.quantity }}
+                                        <i class="fa fa-minus-square smaller" v-on:click="removeTable(props.item)"></i>
                                     </td>
                                     <td class="sub-total">{{ props.item.price * props.item.quantity }}€</td>
                                     <td class="item-total">{{ props.item.price * props.item.quantity * discount }}€</td>
@@ -139,9 +142,9 @@
                                 <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}€ </td>
                                 <td> 0€ </td>
                                 <td></td>
-                            </tr> -->
+                            </tr> 
 
-                            <!-- <tr class="sponsorship-gold" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.gold.quantity > 0">
+                            <tr class="sponsorship-gold" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.gold.quantity > 0">
                                 <td> {{ props.item.sponsorships.gold.name }} </td>
                                 <td> {{ props.item.sponsorships.gold.price }}€ </td>
                                 <td> {{ props.item.sponsorships.gold.quantity }} </td>
@@ -159,7 +162,7 @@
                                 <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
                                 <td> 0€ </td>
                                 <td></td>
-                            </tr> -->
+                            </tr>
 
                             <tr v-if="!props.item.advert && props.item.marketing_and_sponsorships[0].quantity">
                                 <td> {{ props.item.sponsorships.silver.name }} </td>
