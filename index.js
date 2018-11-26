@@ -13,6 +13,8 @@ const numberFormats = {
     }
 };
 
+import * as products from 'products';
+
 const i18n = new VueI18n({
     numberFormats
 });
@@ -1530,6 +1532,7 @@ var vue = new Vue({
         advertModal: false,
         choiceModal: false,
         boothModal: false,
+        infoModal: false,
         accountType: 'educator', //can also be 'service_provider' and 'work_and_travel'
         attendBooths: false, //determines whether the user is buying an exhibition booth or another fo
         currentDate: new Date(), //current date
@@ -1788,6 +1791,22 @@ var vue = new Vue({
             product.selectBoothBoolean = true;
         },
         setBaseCurrency(baseCurrency){
+            switch(baseCurrency){
+                case 'EUR':
+                    this.currencySymbol = "€";
+                    break;
+                case 'GBP':
+                    this.currencySymbol = "£";
+                    break;
+                case 'USD':
+                    this.currencySymbol = "$";
+                    break;
+                case 'CAD':
+                    this.currencySymbol = "$";
+                    break;
+                case 'AUD':
+                    this.currencySymbol = "$";
+            }
             axios.get('https://data.fixer.io/api/latest?access_key=2a8bbb1fd33e5a65dc1404de3d7bd38b&base='+baseCurrency)
             .then(response => {
                 this.fixer = response.data;
@@ -1796,8 +1815,8 @@ var vue = new Vue({
                     if (this.fullDate < m.earlybirdends) m.earlyRate = true;
                     if (m.currency !== this.fixer.base) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
-                        m.earlyprice = this.fixerRates[m.currency];
-                        m.price *= this.fixerRates[m.currency];
+                        m.earlyprice = this.fixerRates[m.currency].toFixed(2);
+                        m.price *= this.fixerRates[m.currency].toFixed(2);
                         m.tables.price *= this.fixerRates[m.currency].toFixed(2);
                     }
                     else {
