@@ -1340,6 +1340,7 @@ var vue = new Vue({
         //         ] 
         //     }
         ],
+        cart: [],
         total: 0,
         subitemtotal: 0,
         earlytotal: 0,
