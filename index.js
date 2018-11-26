@@ -1433,13 +1433,26 @@ var vue = new Vue({
         },
         absoluteRemoveFromCart: function (product) {
             if (product.tables) {
-                product.tables.additionalPeople.quantity = 0;
-                product.tables.schedules.quantity = 0;
+                while (product.tables.additionalPeople.quantity > 0){
+                    this.subitemtotal -= product.tables.additionalPeople.price;
+                    product.tables.additionalPeople.quantity--;
+                }
+                while (product.tables.schedules.quantity > 0){
+                    console.log("Schedule!")
+                    this.subitemtotal -= product.tables.schedules.price;
+                    product.tables.schedules.quantity--;
+                }
                 product.tables.quantity = 0;
                 product.incart = 0;
             } else {
-                product.additionalPeople.quantity = 0;
-                product.schedules.quantity = 0;
+                while (product.additionalPeople.quantity > 0){
+                    this.subitemtotal -= product.additionalPeople.price;
+                    product.additionalPeople.quantity--;
+                }
+                while (product.schedules.quantity > 0){
+                    this.subitemtotal -= product.schedules.price;
+                    product.schedules.quantity--;
+                }
                 this.products.forEach(m => {
                     if (m.id == product.id) {
                         m.incart = 0;
@@ -1447,15 +1460,11 @@ var vue = new Vue({
                     }
                 });
             }
-            // if (product.selectedearly) {
-            //     this.total -= product.priceearly;
-            // }
-            // else this.total -= product.price;
             let cartIds = this.cart.map(m => m.id);
             var position = cartIds.indexOf(product.id);
             let cartEq = this.cart[position];
             console.log("Cartitem: ", this.cart[position]);
-            while (this.cart[position].quantity > 0){
+            while (this.cart[position].quantity > 0){ //process by which tables are removed and price deduction is applied step by step
                 if (this.cart[position].selectedearly) this.earlytotal -= cartEq.priceearly;
                 else this.total -= cartEq.price;
                 this.cart[position].quantity--;
@@ -1505,10 +1514,15 @@ var vue = new Vue({
             console.log(product)
             this.total += product.price;
         },
-        removeTable: function (product) {
-            product.quantity--;
-            if (product.quantity == 0){
-                this.absoluteRemoveFromCart(product);
+        removeTable: function (cartitem) {
+            cartitem.quantity--;
+            if (cartitem.quantity == 0){
+                this.products.forEach(m => {
+                    if (m.id == cartitem.id){
+                        console.log(m.name)
+                        this.absoluteRemoveFromCart(m);
+                    }
+                });
             }
             else this.total -= product.price;
         },
