@@ -1433,15 +1433,9 @@ var vue = new Vue({
         },
         absoluteRemoveFromCart: function (product) {
             if (product.tables) {
-                console.log(product.tables)
                 product.tables.additionalPeople.quantity = 0;
                 product.tables.schedules.quantity = 0;
-                console.log(this.total,product.tables.price)
-                while (product.tables.quantity !== 0){
-                    product.tables.quantity--;
-                    if (product.selectedearly) this.earlytotal -= product.tables.earlyprice;
-                    else this.total -= product.tables.price;
-                }
+                product.tables.quantity = 0;
                 product.incart = 0;
             } else {
                 product.additionalPeople.quantity = 0;
@@ -1457,7 +1451,15 @@ var vue = new Vue({
             //     this.total -= product.priceearly;
             // }
             // else this.total -= product.price;
-            var position = this.cart.indexOf(product);
+            let cartIds = this.cart.map(m => m.id);
+            var position = cartIds.indexOf(product.id);
+            let cartEq = this.cart[position];
+            console.log("Cartitem: ", this.cart[position]);
+            while (this.cart[position].quantity > 0){
+                if (this.cart[position].selectedearly) this.earlytotal -= cartEq.priceearly;
+                else this.total -= cartEq.price;
+                this.cart[position].quantity--;
+            }
             this.cart.splice(position, 1);
             this.regularWorkshops--;
             switch(this.regularWorkshops){
