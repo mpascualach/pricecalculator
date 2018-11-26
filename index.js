@@ -351,7 +351,7 @@ var vue = new Vue({
                 },
             },
             additional: []
-        },
+        // },
         // {
         //     id: 2,
         //     name: "Berlin",
@@ -1247,100 +1247,99 @@ var vue = new Vue({
         //         }
         //     },
         //     additional: []
-        // }],
-        // addons: [
-        //     {
-        //         product: "Additional Person",
-        //         price: 1280,
-        //         min: 0,
-        //         max: null,
-        //         description: "Additional attendee without a schedule"
-        //     }
-        // ],
-        // headers:[
-        //     { text: 'Name', value: 'name', sortable: false },
-        //     {
-        //         text: 'Price',
-        //         value: 'price',
-        //         sortable: false,
-        //     },
-        //     {
-        //         text: 'Qty',
-        //         value: 'qty',
-        //         sortable: false
-        //     },
-        //     {
-        //         text: 'SubTotal',
-        //         value: 'subTotal',
-        //         sortable: false
-        //     },
-        //     {
-        //         text: 'Total',
-        //         value: 'total',
-        //         sortable: false
-        //     },
-        //     {
-        //         text: 'Discount',
-        //         value: 'discount',
-        //         sortable: false
-        //     },
-        // ], 
-        // cart: [], //it starts empty
-        // adverts: [
-        //     {
-        //         type: 'Adverts',
-        //         choices: [
-        //             {
-        //                 name: 'Skyscraper',
-        //                 price: 975,
-        //                 quantity: 0,
-        //                 advert: true
-        //                 //possible description?
-        //             },
-        //             {
-        //                 name: 'Rectangle',
-        //                 price: 475,
-        //                 quantity: 0,
-        //                 advert: true
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         type: 'eNewsletter Banner',
-        //         choices: [
-        //             {
-        //                 name: 'Middle Ad',
-        //                 price: 695,
-        //                 quantity: 0,
-        //                 advert: true
-        //             },
-        //             {
-        //                 name: 'Opening Ad',
-        //                 price: 1245,
-        //                 quantity: 0,
-        //                 advert: true
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         type: 'Package - 20% discount',
-        //         choices: [
-        //             {
-        //                 name: 'Adverts - Skyscraper & Rectangle',
-        //                 price: 1160,
-        //                 quantity: 0,
-        //                 advert: true
-        //             },
-        //             {
-        //                 name: 'Full Package',
-        //                 price: 1160,
-        //                 quantity: 0,
-        //                 advert: true
-        //             },
-        //         ] 
-        //     }
+        }],
+        addons: [
+            {
+                product: "Additional Person",
+                price: 1280,
+                min: 0,
+                max: null,
+                description: "Additional attendee without a schedule"
+            }
         ],
-        cart: [],
+        headers:[
+            { text: 'Name', value: 'name', sortable: false },
+            {
+                text: 'Price',
+                value: 'price',
+                sortable: false,
+            },
+            {
+                text: 'Qty',
+                value: 'qty',
+                sortable: false
+            },
+            {
+                text: 'SubTotal',
+                value: 'subTotal',
+                sortable: false
+            },
+            {
+                text: 'Total',
+                value: 'total',
+                sortable: false
+            },
+            {
+                text: 'Discount',
+                value: 'discount',
+                sortable: false
+            },
+        ], 
+        cart: [], //it starts empty
+        adverts: [
+            {
+                type: 'Adverts',
+                choices: [
+                    {
+                        name: 'Skyscraper',
+                        price: 975,
+                        quantity: 0,
+                        advert: true
+                        //possible description?
+                    },
+                    {
+                        name: 'Rectangle',
+                        price: 475,
+                        quantity: 0,
+                        advert: true
+                    }
+                ]
+            },
+            {
+                type: 'eNewsletter Banner',
+                choices: [
+                    {
+                        name: 'Middle Ad',
+                        price: 695,
+                        quantity: 0,
+                        advert: true
+                    },
+                    {
+                        name: 'Opening Ad',
+                        price: 1245,
+                        quantity: 0,
+                        advert: true
+                    }
+                ]
+            },
+            {
+                type: 'Package - 20% discount',
+                choices: [
+                    {
+                        name: 'Adverts - Skyscraper & Rectangle',
+                        price: 1160,
+                        quantity: 0,
+                        advert: true
+                    },
+                    {
+                        name: 'Full Package',
+                        price: 1160,
+                        quantity: 0,
+                        advert: true
+                    },
+                ] 
+            }
+        ],
         total: 0,
         subitemtotal: 0,
         earlytotal: 0,
