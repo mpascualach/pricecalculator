@@ -1374,6 +1374,7 @@ var vue = new Vue({
             }
             else if (selector == 'adverts'){
                 cartitem = Object.assign({}, subitem);
+                console.log(cartitem);
                 cartitem.quantity++;
                 this.cart.push(cartitem);
                 this.total += cartitem.price;

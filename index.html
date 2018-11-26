@@ -97,7 +97,7 @@
                                 </td>
                             </tr>
 
-                            <tr v-else-if="props.item.workandtravel">
+                            <tr v-else-if="props.item.workandtravel && !props.item.advert">
                                 <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                 <td class="price">{{ props.item.price }}€</td>
                                 <td class="qty"><i class="fa fa-plus-square smaller"></i> {{ props.item.quantity }}<i class="fa fa-minus-square smaller"></i>
@@ -121,7 +121,7 @@
                                 <td></td>
                             </tr>
 
-                            <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && props.item.additionalPeople.quantity > 0">
+                            <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && !props.item.advert && props.item.additionalPeople.quantity > 0">
                                 <td>{{ props.item.additionalPeople.name }}</td>
                                 <td>{{ props.item.additionalPeople.price }}€</td>
                                 <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
@@ -131,7 +131,7 @@
                                 <td></td>
                             </tr>
 
-                            <!-- <tr class="sponsorship-platinum" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.platinum.quantity > 0">
+                            <tr class="sponsorship-platinum" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.platinum.quantity > 0">
                                 <td> {{ props.item.sponsorships.platinum.name }} </td>
                                 <td> {{ props.item.sponsorships.platinum.price }}€ </td>
                                 <td> {{ props.item.sponsorships.platinum.quantity }} </td>
@@ -161,7 +161,7 @@
                                 <td></td>
                             </tr> -->
 
-                            <tr v-if="props.item.marketing_and_sponsorships[0].quantity">
+                            <tr v-if="!props.item.advert && props.item.marketing_and_sponsorships[0].quantity">
                                 <td> {{ props.item.sponsorships.silver.name }} </td>
                                 <td> {{ props.item.sponsorships.silver.price }}€ </td>
                                 <td> {{ props.item.sponsorships.silver.quantity }} </td>
@@ -169,19 +169,21 @@
                                 <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}€ </td>
                                 <td> 0€ </td>
                                 <td></td>
-                            </tr> 
+                            </tr>  
                             
-                            <template v-for="item in props.item.marketing_and_sponsorships">
-                                <template v-for="type in item.types">
-                                    <tr v-if="type.quantity > 0">
-                                        <td> {{ type.name }} </td>
-                                        <td> {{ type.price }}€ </td>
-                                        <td> {{ type.quantity }} </td>
-                                        <td> {{ type.price * type.quantity }}€ </td>
-                                        <td> {{ type.price * type.quantity }}€ </td>
-                                        <td> 0€ </td>
-                                        <td></td>
-                                    </tr>
+                            <template v-if="!props.item.advert">
+                                <template v-for="item in props.item.marketing_and_sponsorships">
+                                    <template v-for="type in item.types">
+                                        <tr v-if="type.quantity > 0">
+                                            <td> {{ type.name }} </td>
+                                            <td> {{ type.price }}€ </td>
+                                            <td> {{ type.quantity }} </td>
+                                            <td> {{ type.price * type.quantity }}€ </td>
+                                            <td> {{ type.price * type.quantity }}€ </td>
+                                            <td> 0€ </td>
+                                            <td></td>
+                                        </tr>
+                                    </template>
                                 </template>
                             </template>
 
@@ -266,22 +268,22 @@
                                                     <v-btn light class="platinum sponsorship" 
                                                         v-on:click="addSubItem(product, product.tables.sponsorships.platinum, 'sponsorship_package')"
                                                         v-if="product.tables.sponsorships.platinum.quantity == 0">
-                                                        Platinum: {{ product.tables.sponsorships.platinum.price }}</v-btn>
+                                                        Platinum: €{{ product.tables.sponsorships.platinum.price }}</v-btn>
                                                     <v-btn class="platinum-pressed sponsorship-pressed sponsorship light" 
                                                         v-on:click="removeSubItem(product,product.tables.sponsorships.platinum)"
-                                                        v-else>Platinum: {{ product.tables.sponsorships.platinum.price }}</v-btn>
+                                                        v-else>Platinum: €{{ product.tables.sponsorships.platinum.price }}</v-btn>
 
                                                     <v-btn light class="gold sponsorship light" v-on:click="addSubItem(product, product.tables.sponsorships.gold, 'sponsorship_package')"
                                                         v-if="product.tables.sponsorships.gold.quantity == 0">
-                                                        Gold: {{ product.tables.sponsorships.gold.price }}</v-btn>
+                                                        Gold: €{{ product.tables.sponsorships.gold.price }}</v-btn>
                                                     <v-btn class="gold-pressed sponsorship-pressed sponsorship light" v-on:click="removeSubItem(product,product.tables.sponsorships.gold)"
-                                                        v-else>Gold: {{ product.tables.sponsorships.gold.price }}</v-btn>
+                                                        v-else>Gold: €{{ product.tables.sponsorships.gold.price }}</v-btn>
 
                                                     <v-btn light class="silver sponsorship" v-on:click="addSubItem(product, product.tables.sponsorships.silver, 'sponsorship_package')"
                                                         v-if="product.tables.sponsorships.silver.quantity == 0">
-                                                        Silver: {{ product.tables.sponsorships.silver.price }}</v-btn>
+                                                        Silver: €{{ product.tables.sponsorships.silver.price }}</v-btn>
                                                     <v-btn class="silver-pressed sponsorship-pressed sponsorship light" v-on:click="removeSubItem(product,product.tables.sponsorships.silver)"
-                                                        v-else>Silver: {{ product.tables.sponsorships.silver.price }}</v-btn>
+                                                        v-else>Silver: €{{ product.tables.sponsorships.silver.price }}</v-btn>
 
                                                     <i class="fa fa-question-circle"></i>
                                                 </div>
@@ -290,13 +292,14 @@
                                                     <v-expansion-panel class="marketing-and-sponsorship-items">
                                                         <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships">
                                                             <div slot="header">{{ item.name }}</div>
-                                                            <v-card class="sponsorship-type" v-for="type in item.types">
+                                                            <div class="sponsorship-type" v-for="type in item.types">
                                                                 <v-btn class="marketing-choice" 
                                                                     v-on:click="addSubItem(product, type, 'marketing')">
-                                                                    {{ type.name }} : €{{ type.price}} 
+                                                                    {{ type.name }} :
+                                                                    €{{ type.price}} 
                                                                 </v-btn>
-                                                                <i class="fa fa-question-circle"></i>
-                                                            </v-card>
+                                                                <!-- <i class="fa fa-question-circle"></i> -->
+                                                            </div>
                                                         </v-expansion-panel-content>
                                                     </v-expansion-panel>
                                                 </template>
@@ -361,7 +364,7 @@
                                             <v-btn class="booths booths-activator" 
                                                 v-on:click="showBoothOptions(product)" 
                                                 v-if="attendBooths && !product.selectBoothBoolean">
-                                                Exhibition booths
+                                                Add exhibition booth
                                             </v-btn>
                                             <v-btn class="work-and-travel"
                                                 v-on:click="addToCart(product, product.work_and_travel, 'work_and_travel')" 
@@ -421,60 +424,3 @@
 </body>
 
 </html>
-
-<!-- <template v-if="product.incart > 0">
-    <v-layout row justify-center>
-        <v-dialog v-model="boothModal" persistent max-width="600">
-            <v-btn class="booths booths-activator" slot="activator">Exhibition booths</v-btn>
-            <v-card class="booths-table">
-                <v-card-title class="headline">Choose your exhibition booth!</v-card-title>
-                <v-card-text class="booth-choice-container">
-                    <div class="booth-choice">
-                        <div class="booth-category">
-                            Large:
-                        </div>
-                        <div class="booth-buttons">
-                            <v-btn v-if="product.tables.booths.large12" v-on:click="addSubItem(product, product.tables.booths.large12)"
-                                @click="boothModal = false">
-                                12m²
-                            </v-btn>
-                            <v-btn v-if="product.tables.booths.large10" v-on:click="addSubItem(product, product.tables.booths.large10)">
-                                10m²
-                            </v-btn>
-                        </div>
-                    </div>
-                    <div class="booth-choice">
-                        <div class="booth-category">
-                            Medium:
-                        </div>
-                        <div class="booth-buttons">
-                            <v-btn v-if="product.tables.booths.medium8" v-on:click="addSubItem(product, product.tables.booths.medium8)">
-                                8m²
-                            </v-btn>
-                            <v-btn v-if="product.tables.booths.medium6" v-on:click="addSubItem(product, product.tables.booths.medium6)">
-                                6m²
-                            </v-btn>
-                        </div>
-                    </div>
-                    <div class="booth-choice">
-                        <div class="booth-category">
-                            Small:
-                        </div>
-
-                        <div class="booth-buttons">
-                            <v-btn v-if="product.tables.booths.std5" v-on:click="addSubItem(product, product.tables.booths.std5)">
-                                4.5m²
-                            </v-btn>
-                            <v-btn v-if="product.tables.booths.std4" v-on:click="addSubItem(product, product.tables.booths.std4)">
-                                4m²
-                            </v-btn>
-                            <v-btn v-if="product.tables.booths.std4" v-on:click="addSubItem(product, product.tables.booths.std4)">
-                                3m²
-                            </v-btn>
-                        </div>
-                    </div>
-                </v-card-text>
-            </v-card>
-        </v-dialog>
-    </v-layout>
-</template> -->
