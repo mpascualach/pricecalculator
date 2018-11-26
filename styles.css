@@ -464,3 +464,7 @@ button.marketing-choice.v-btn.theme--light {
 .v-select-list.v-card.theme--light {
     width: 100%;
 }
+
+.v-select.v-text-field--enclosed:not(.v-text-field--single-line) .v-select__selections {
+    padding-top: 0!important;
+}

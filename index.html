@@ -32,7 +32,9 @@
                             <v-select class="currency-selector"
                                 :items="allowedCurrencies" 
                                 :attach="true"
-                                :value="EUR">
+                                value="EUR"
+                                outline
+                                v-on:change="changeBaseCurrency()">
                             </v-select>
                         <!-- </v-container> -->
                         
