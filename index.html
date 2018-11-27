@@ -430,7 +430,32 @@
                 </v-layout>
             </template>
             <div class="checkout" id="checkout">
-  
+                <v-card>
+                    <v-data-table
+                        :headers="headers"
+                        :items="cart">
+
+                        <template slot="items" slot-scope="props">
+                            <tr v-for="item in cart">
+                                <td class="name">{{ item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
+                                <td class="price">{{ item.price }}{{ currencySymbol }}</td>
+                                <td class="qty">
+                                    {{ item.quantity }}
+                                </td>
+                                <td class="sub-total">{{ item.price * item.quantity }}{{
+                                    currencySymbol }}</td>
+                                <td class="item-total">{{ item.price * item.quantity * discount
+                                    }}{{ currencySymbol }}</td>
+                                <td class="discount">
+                                    {{ ( (item.price * item.quantity) * discount ) -
+                                    (item.price * item.quantity) }}{{ currencySymbol }}
+                                </td>
+                            </tr>
+
+                        </template>
+
+                    </v-data-table>
+                </v-card>    
             </div>
         </div>
         

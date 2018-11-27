@@ -238,6 +238,9 @@ td.checkout-btn-container > button {
 
 .checkout {
     display: none;
+    position: absolute;
+    width: 80%;
+    top: 30%;
 }
 
 .sponsorship-intro {
