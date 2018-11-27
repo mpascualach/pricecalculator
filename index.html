@@ -408,30 +408,31 @@
 
                     </v-container>
                 </v-card>
-            </div>
-            <template>
-                <v-layout row justify-center>
-                    <v-dialog v-model="advertModal" max-width="600" class="advert-dialog">
-                        <v-btn class="adverts adverts-activator" slot="activator">Adverts</v-btn>
-                        <v-card class="adverts-table">
-                            <!-- <v-card-title class="headline">Choose your exhibition booth!</v-card-title> -->
-                            <v-card-text class="advert-choice-container">
-                                <div class="advert-section" v-for="advert in adverts">
-                                    <v-card-title class="advert-title"> {{ advert.type }} </v-card-title>
-                                    <div class="advert-choice" v-for="choice in advert.choices">
-                                        <v-btn v-on:click="addToCart('', choice, 'adverts')">
-                                            {{ choice.name  }} : {{ currencySymbol }}{{ choice.price }}
-                                        </v-btn>
+                <template>
+                    <v-layout row justify-center>
+                        <v-dialog v-model="advertModal" max-width="600" class="advert-dialog">
+                            <v-btn class="adverts adverts-activator" slot="activator">Adverts</v-btn>
+                            <v-card class="adverts-table">
+                                <!-- <v-card-title class="headline">Choose your exhibition booth!</v-card-title> -->
+                                <v-card-text class="advert-choice-container">
+                                    <div class="advert-section" v-for="advert in adverts">
+                                        <v-card-title class="advert-title"> {{ advert.type }} </v-card-title>
+                                        <div class="advert-choice" v-for="choice in advert.choices">
+                                            <v-btn v-on:click="addToCart('', choice, 'adverts')">
+                                                {{ choice.name }} : {{ currencySymbol }}{{ choice.price }}
+                                            </v-btn>
+                                        </div>
                                     </div>
-                                </div>
-                            </v-card-text>
-                        </v-card>
-                    </v-dialog>
-                </v-layout>
-            </template>
+                                </v-card-text>
+                            </v-card>
+                        </v-dialog>
+                    </v-layout>
+                </template>
+            </div>
+            
             <div class="checkout" id="checkout">
-                <v-card>
-                    <v-data-table
+                <!-- <v-card> -->
+                    <!-- <v-data-table
                         :headers="headers"
                         :items="cart">
 
@@ -454,8 +455,23 @@
 
                         </template>
 
-                    </v-data-table>
-                </v-card>    
+                    </v-data-table> -->
+
+                    <div class="checkout-section">
+                        <h3>Selected workshops</h3>
+
+
+                    </div>
+
+                    <div>
+                        <h3>Price</h3>
+                    </div>
+
+                    <v-actions class="checkout-buttons">
+                        <v-btn>Go back to calculator screen</v-btn>
+                        <v-btn></v-btn>
+                    </v-actions>
+                <!-- </v-card>     -->
             </div>
         </div>
         
