@@ -132,24 +132,6 @@ var vue = new Vue({
                         name: "Display advertising",
                         types: [
                             {
-                                name: 'Lift doors',
-                                price: 6000,
-                                originalprice: 6000,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Intro-Point Sponsorship',
-                                price: 2200,
-                                originalprice: 2200,
-                                quantity: 0,
-                            },
-                            {
-                                name: 'Advertising Panel',
-                                price: 1600,
-                                originalprice: 1600,
-                                quantity: 0
-                            },
-                            {
                                 name: 'Literature Display Rack',
                                 price: 1200,
                                 originalprice: 1200,
@@ -170,43 +152,37 @@ var vue = new Vue({
                             {
                                 name: 'Pens',
                                 price: 2000,
-                                originalprice: 2400,
+                                originalprice: 2000,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag insert - paper',
                                 price: 900,
-                                originalprice: 2400,
+                                originalprice: 900,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag insert - paper',
                                 price: 2200,
-                                originalprice: 2400,
+                                originalprice: 2200,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag tags',
                                 price: 2000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Catalogue USB Memory cards',
-                                price: 2900,
-                                originalprice: 2400,
+                                originalprice: 2000,
                                 quantity: 0
                             },
                             {
                                 name: 'Key card sleeves',
                                 price: 3300,
-                                originalprice: 2400,
+                                originalprice: 3300,
                                 quantity: 0
                             },
                             {
                                 name: 'Neck cords',
                                 price: 6500,
-                                originalprice: 2400,
+                                originalprice: 6500,
                                 quantity: 0
                             },
                         ]
@@ -218,25 +194,25 @@ var vue = new Vue({
                             {
                                 name: 'Coffee & tea break',
                                 price: 4000,
-                                originalprice: 2400,
+                                originalprice: 4000,
                                 quantity: 0
                             },
                             {
                                 name: 'Lunch',
                                 price: 4000,
-                                originalprice: 2400,
+                                originalprice: 4000,
                                 quantity: 0
                             },
                             {
                                 name: 'Welcome reception',
                                 price: 6000,
-                                originalprice: 2400,
+                                originalprice: 6000,
                                 quantity: 0
                             },
                             {
                                 name: 'Dinner reception',
                                 price: 9000,
-                                originalprice: 2400,
+                                originalprice: 9000,
                                 quantity: 0
                             }
                         ]
@@ -248,49 +224,25 @@ var vue = new Vue({
                             {
                                 name: 'Internet hub',
                                 price: 3000,
-                                originalprice: 2400,
+                                originalprice: 3000,
                                 quantity: 0
                             },
                             {
                                 name: 'Wireless internet service',
                                 price: 2000,
-                                originalprice: 2400,
+                                originalprice: 2000,
                                 quantity: 0
                             },
                             {
                                 name: 'Agent hotel room drop',
                                 price: 4000,
-                                originalprice: 2400,
+                                originalprice: 4000,
                                 quantity: 0
                             },
                             {
                                 name: 'Agent lounge - dedicated room',
                                 price: 5000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Agent lounge - dedicated area',
-                                price: 5400,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Registration - agents',
-                                price: 3500,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Registration - providers',
-                                price: 3500,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Registration - both',
-                                price: 3500,
-                                originalprice: 2400,
+                                originalprice: 5000,
                                 quantity: 0
                             },
                         ]
@@ -299,18 +251,18 @@ var vue = new Vue({
                         id: 1,
                         name: "Presentations",
                         types: [
-                            {
-                                name: '50 minute slot',
-                                price: 690,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: '25 minute slot',
-                                price: 490,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
+                            // {
+                            //     name: '50 minute slot',
+                            //     price: 690,
+                            //     originalprice: 2400,
+                            //     quantity: 0
+                            // },
+                            // {
+                            //     name: '25 minute slot',
+                            //     price: 490,
+                            //     originalprice: 2400,
+                            //     quantity: 0
+                            // },
                         ]
                     },
                 ]
@@ -472,26 +424,26 @@ var vue = new Vue({
                         name: 'Advertisement in Educator/Agent Catalogue',
                         types: [{
                                 name: 'Inside cover',
-                                price: 2000,
+                                price: 2400,
                                 originalprice: 2400,
                                 quantity: 0
                             },
                             {
                                 name: 'Outside cover',
                                 price: 2900,
-                                originalprice: 2400,
+                                originalprice: 2900,
                                 quantity: 0
                             },
                             {
                                 name: 'Full page',
-                                price: 1700,
-                                originalprice: 2400,
+                                price: 1400,
+                                originalprice: 1400,
                                 quantity: 0
                             },
                             {
                                 name: 'Half page',
-                                price: 1100,
-                                originalprice: 2400,
+                                price: 950,
+                                originalprice: 950,
                                 quantity: 0
                             }
                         ]
@@ -502,25 +454,25 @@ var vue = new Vue({
                         types: [{
                                 name: 'Lift doors',
                                 price: 6000,
-                                originalprice: 2400,
+                                originalprice: 6000,
                                 quantity: 0
                             },
                             {
                                 name: 'Intro-Point Sponsorship',
                                 price: 2200,
-                                originalprice: 2400,
+                                originalprice: 2200,
                                 quantity: 0,
                             },
                             {
                                 name: 'Advertising Panel',
-                                price: 1600,
-                                originalprice: 2400,
+                                price: 1700,
+                                originalprice: 1700,
                                 quantity: 0
                             },
                             {
                                 name: 'Literature Display Rack',
-                                price: 1200,
-                                originalprice: 2400,
+                                price: 1300,
+                                originalprice: 1700,
                                 quantity: 0
                             }
                         ]
@@ -530,50 +482,50 @@ var vue = new Vue({
                         name: "Merchandise Sponsorship",
                         types: [{
                                 name: 'Note pads',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 3200,
+                                originalprice: 3200,
                                 quantity: 0
                             },
                             {
                                 name: 'Pens',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 3900,
+                                originalprice: 3900,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag insert - paper',
-                                price: 900,
-                                originalprice: 2400,
+                                price: 1100,
+                                originalprice: 1100,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag insert - paper',
                                 price: 2200,
-                                originalprice: 2400,
+                                originalprice: 2200,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag tags',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 3800,
+                                originalprice: 3800,
                                 quantity: 0
                             },
                             {
                                 name: 'Catalogue USB Memory cards',
                                 price: 2900,
-                                originalprice: 2400,
+                                originalprice: 2900,
                                 quantity: 0
                             },
                             {
                                 name: 'Key card sleeves',
-                                price: 3300,
-                                originalprice: 2400,
+                                price: 3800,
+                                originalprice: 3800,
                                 quantity: 0
                             },
                             {
                                 name: 'Neck cords',
                                 price: 6500,
-                                originalprice: 2400,
+                                originalprice: 6500,
                                 quantity: 0
                             },
                         ]
@@ -584,25 +536,25 @@ var vue = new Vue({
                         types: [{
                                 name: 'Coffee & tea break',
                                 price: 4000,
-                                originalprice: 2400,
+                                originalprice: 4000,
                                 quantity: 0
                             },
                             {
                                 name: 'Lunch',
                                 price: 4000,
-                                originalprice: 2400,
+                                originalprice: 4000,
                                 quantity: 0
                             },
                             {
                                 name: 'Welcome reception',
-                                price: 6000,
-                                originalprice: 2400,
+                                price: 5000,
+                                originalprice: 5000,
                                 quantity: 0
                             },
                             {
                                 name: 'Dinner reception',
                                 price: 9000,
-                                originalprice: 2400,
+                                originalprice: 9000,
                                 quantity: 0
                             }
                         ]
@@ -612,50 +564,44 @@ var vue = new Vue({
                         name: "Services Sponsorship",
                         types: [{
                                 name: 'Internet hub',
-                                price: 3000,
-                                originalprice: 2400,
+                                price: 5400,
+                                originalprice: 5400,
                                 quantity: 0
                             },
                             {
                                 name: 'Wireless internet service',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 5400,
+                                originalprice: 5400,
                                 quantity: 0
                             },
                             {
                                 name: 'Agent hotel room drop',
-                                price: 4000,
-                                originalprice: 2400,
+                                price: 4900,
+                                originalprice: 4900,
                                 quantity: 0
                             },
                             {
                                 name: 'Agent lounge - dedicated room',
-                                price: 5000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Agent lounge - dedicated area',
-                                price: 5400,
+                                price: 7600,
                                 originalprice: 2400,
                                 quantity: 0
                             },
                             {
                                 name: 'Registration - agents',
                                 price: 3500,
-                                originalprice: 2400,
+                                originalprice: 3500,
                                 quantity: 0
                             },
                             {
                                 name: 'Registration - providers',
-                                price: 3500,
+                                price: 2400,
                                 originalprice: 2400,
                                 quantity: 0
                             },
                             {
                                 name: 'Registration - both',
-                                price: 3500,
-                                originalprice: 2400,
+                                price: 5300,
+                                originalprice: 5300,
                                 quantity: 0
                             },
                         ]
@@ -666,13 +612,13 @@ var vue = new Vue({
                         types: [{
                                 name: '50 minute slot',
                                 price: 690,
-                                originalprice: 2400,
+                                originalprice: 690,
                                 quantity: 0
                             },
                             {
                                 name: '25 minute slot',
                                 price: 490,
-                                originalprice: 2400,
+                                originalprice: 490,
                                 quantity: 0
                             },
                         ]
@@ -784,28 +730,28 @@ var vue = new Vue({
                     discount: 1,
                     quantity: 0,
                     price: 990,
-                    originalprice: 2400,
+                    originalprice: 990,
                 },
                 sponsorships: {
                     platinum: {
                         id: 3,
                         name: "Beijing Platinum Sponsorship Package",
                         price: 16000,
-                        originalprice: 2400,
+                        originalprice: 16000,
                         qty: 0,
                     },
                     gold: {
                         id: 3,
                         name: "Beijing Gold Sponsorship Package",
                         price: 11000,
-                        originalprice: 2400,
+                        originalprice: 11000,
                         qty: 0,
                     },
                     silver: {
                         id: 3,
                         name: "Beijing Silver Sponsorship Package",
                         price: 8000,
-                        originalprice: 2400,
+                        originalprice: 8000,
                         qty: 0,
                     },
                 },
@@ -815,26 +761,26 @@ var vue = new Vue({
                         name: 'Advertisement in Educator/Agent Catalogue',
                         types: [{
                                 name: 'Inside cover',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 1850,
+                                originalprice: 1850,
                                 quantity: 0
                             },
                             {
                                 name: 'Outside cover',
-                                price: 2900,
-                                originalprice: 2400,
+                                price: 2150,
+                                originalprice: 2150,
                                 quantity: 0
                             },
                             {
                                 name: 'Full page',
-                                price: 1700,
-                                originalprice: 2400,
+                                price: 1100,
+                                originalprice: 1100,
                                 quantity: 0
                             },
                             {
                                 name: 'Half page',
-                                price: 1100,
-                                originalprice: 2400,
+                                price: 750,
+                                originalprice: 750,
                                 quantity: 0
                             }
                         ]
@@ -842,28 +788,11 @@ var vue = new Vue({
                     {
                         id: 3,
                         name: "Display advertising",
-                        types: [{
-                                name: 'Lift doors',
-                                price: 6000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Intro-Point Sponsorship',
-                                price: 2200,
-                                originalprice: 2400,
-                                quantity: 0,
-                            },
-                            {
-                                name: 'Advertising Panel',
-                                price: 1600,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
+                        types: [
                             {
                                 name: 'Literature Display Rack',
-                                price: 1200,
-                                originalprice: 2400,
+                                price: 1000,
+                                originalprice: 1000,
                                 quantity: 0
                             }
                         ]
@@ -873,50 +802,44 @@ var vue = new Vue({
                         name: "Merchandise Sponsorship",
                         types: [{
                                 name: 'Note pads',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 1700,
+                                originalprice: 1700,
                                 quantity: 0
                             },
                             {
                                 name: 'Pens',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 2300,
+                                originalprice: 2300,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag insert - paper',
                                 price: 900,
-                                originalprice: 2400,
+                                originalprice: 900,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag insert - paper',
-                                price: 2200,
-                                originalprice: 2400,
+                                price: 1800,
+                                originalprice: 1800,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag tags',
                                 price: 2000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Catalogue USB Memory cards',
-                                price: 2900,
-                                originalprice: 2400,
+                                originalprice: 2000,
                                 quantity: 0
                             },
                             {
                                 name: 'Key card sleeves',
                                 price: 3300,
-                                originalprice: 2400,
+                                originalprice: 3300,
                                 quantity: 0
                             },
                             {
                                 name: 'Neck cords',
-                                price: 6500,
-                                originalprice: 2400,
+                                price: 3900,
+                                originalprice: 3900,
                                 quantity: 0
                             },
                         ]
@@ -926,26 +849,26 @@ var vue = new Vue({
                         name: "Hospitality Sponsorship",
                         types: [{
                                 name: 'Coffee & tea break',
-                                price: 4000,
-                                originalprice: 2400,
+                                price: 2500,
+                                originalprice: 2500,
                                 quantity: 0
                             },
                             {
                                 name: 'Lunch',
-                                price: 4000,
-                                originalprice: 2400,
+                                price: 2500,
+                                originalprice: 2500,
                                 quantity: 0
                             },
                             {
                                 name: 'Welcome reception',
-                                price: 6000,
-                                originalprice: 2400,
+                                price: 3500,
+                                originalprice: 3500,
                                 quantity: 0
                             },
                             {
                                 name: 'Dinner reception',
-                                price: 9000,
-                                originalprice: 2400,
+                                price: 5000,
+                                originalprice: 5000,
                                 quantity: 0
                             }
                         ]
@@ -953,71 +876,32 @@ var vue = new Vue({
                     {
                         id: 3,
                         name: "Services Sponsorship",
-                        types: [{
-                                name: 'Internet hub',
-                                price: 3000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Wireless internet service',
-                                price: 2000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
+                        types: [
                             {
                                 name: 'Agent hotel room drop',
-                                price: 4000,
-                                originalprice: 2400,
+                                price: 3300,
+                                originalprice: 3300,
                                 quantity: 0
                             },
                             {
                                 name: 'Agent lounge - dedicated room',
-                                price: 5000,
-                                originalprice: 2400,
+                                price: 5400,
+                                originalprice: 5400,
                                 quantity: 0
                             },
                             {
                                 name: 'Agent lounge - dedicated area',
-                                price: 5400,
-                                originalprice: 2400,
+                                price: 3900,
+                                originalprice: 3900,
                                 quantity: 0
-                            },
-                            {
-                                name: 'Registration - agents',
-                                price: 3500,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Registration - providers',
-                                price: 3500,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Registration - both',
-                                price: 3500,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
+                            }
                         ]
                     },
                     {
                         id: 3,
                         name: "Presentations",
-                        types: [{
-                                name: '50 minute slot',
-                                price: 690,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: '25 minute slot',
-                                price: 490,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
+                        types: [
+
                         ]
                     },
                 ]
@@ -1159,26 +1043,26 @@ var vue = new Vue({
                         name: 'Advertisement in Educator/Agent Catalogue',
                         types: [{
                                 name: 'Inside cover',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 1850,
+                                originalprice: 1850,
                                 quantity: 0
                             },
                             {
                                 name: 'Outside cover',
-                                price: 2900,
-                                originalprice: 2400,
+                                price: 2150,
+                                originalprice: 2150,
                                 quantity: 0
                             },
                             {
                                 name: 'Full page',
-                                price: 1700,
-                                originalprice: 2400,
+                                price: 1100,
+                                originalprice: 1100,
                                 quantity: 0
                             },
                             {
                                 name: 'Half page',
-                                price: 1100,
-                                originalprice: 2400,
+                                price: 750,
+                                originalprice: 750,
                                 quantity: 0
                             }
                         ]
@@ -1186,28 +1070,11 @@ var vue = new Vue({
                     {
                         id: 4,
                         name: "Display advertising",
-                        types: [{
-                                name: 'Lift doors',
-                                price: 6000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Intro-Point Sponsorship',
-                                price: 2200,
-                                originalprice: 2400,
-                                quantity: 0,
-                            },
-                            {
-                                name: 'Advertising Panel',
-                                price: 1600,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
+                        types: [
                             {
                                 name: 'Literature Display Rack',
-                                price: 1200,
-                                originalprice: 2400,
+                                price: 1000,
+                                originalprice: 1000,
                                 quantity: 0
                             }
                         ]
@@ -1217,50 +1084,44 @@ var vue = new Vue({
                         name: "Merchandise Sponsorship",
                         types: [{
                                 name: 'Note pads',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 1700,
+                                originalprice: 1700,
                                 quantity: 0
                             },
                             {
                                 name: 'Pens',
-                                price: 2000,
-                                originalprice: 2400,
+                                price: 2300,
+                                originalprice: 2300,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag insert - paper',
                                 price: 900,
-                                originalprice: 2400,
+                                originalprice: 900,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag insert - paper',
-                                price: 2200,
-                                originalprice: 2400,
+                                price: 1800,
+                                originalprice: 1800,
                                 quantity: 0
                             },
                             {
                                 name: 'Bag tags',
-                                price: 2000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Catalogue USB Memory cards',
-                                price: 2900,
-                                originalprice: 2400,
+                                price: 2200,
+                                originalprice: 2200,
                                 quantity: 0
                             },
                             {
                                 name: 'Key card sleeves',
                                 price: 3300,
-                                originalprice: 2400,
+                                originalprice: 3300,
                                 quantity: 0
                             },
                             {
                                 name: 'Neck cords',
-                                price: 6500,
-                                originalprice: 2400,
+                                price: 3900,
+                                originalprice: 3900,
                                 quantity: 0
                             },
                         ]
@@ -1271,26 +1132,26 @@ var vue = new Vue({
                         types: [
                                 {
                                 name: 'Coffee & tea break',
-                                price: 4000,
-                                originalprice: 2400,
+                                price: 2500,
+                                originalprice: 2500,
                                 quantity: 0
                             },
                             {
                                 name: 'Lunch',
-                                price: 4000,
-                                originalprice: 2400,
+                                price: 2500,
+                                originalprice: 2500,
                                 quantity: 0
                             },
                             {
                                 name: 'Welcome reception',
-                                price: 6000,
-                                originalprice: 2400,
+                                price: 3500,
+                                originalprice: 3500,
                                 quantity: 0
                             },
                             {
                                 name: 'Dinner reception',
-                                price: 9000,
-                                originalprice: 2400,
+                                price: 5000,
+                                originalprice: 5000,
                                 quantity: 0
                             }
                         ]
@@ -1298,52 +1159,23 @@ var vue = new Vue({
                     {
                         id: 4,
                         name: "Services Sponsorship",
-                        types: [{
-                                name: 'Internet hub',
-                                price: 3000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Wireless internet service',
-                                price: 2000,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
+                        types: [
                             {
                                 name: 'Agent hotel room drop',
-                                price: 4000,
-                                originalprice: 2400,
+                                price: 3300,
+                                originalprice: 3300,
                                 quantity: 0
                             },
                             {
                                 name: 'Agent lounge - dedicated room',
-                                price: 5000,
-                                originalprice: 2400,
+                                price: 5400,
+                                originalprice: 5400,
                                 quantity: 0
                             },
                             {
                                 name: 'Agent lounge - dedicated area',
-                                price: 5400,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Registration - agents',
-                                price: 3500,
-                                originalprice: 2400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Registration - providers',
-                                price: 3500,
-                                originalprice: 3500,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Registration - both',
-                                price: 3500,
-                                originalprice: 3500,
+                                price: 3900,
+                                originalprice: 3900,
                                 quantity: 0
                             },
                         ]
@@ -1351,18 +1183,8 @@ var vue = new Vue({
                     {
                         id: 4,
                         name: "Presentations",
-                        types: [{
-                                name: '50 minute slot',
-                                price: 690,
-                                originalprice: 3500,
-                                quantity: 0
-                            },
-                            {
-                                name: '25 minute slot',
-                                price: 490,
-                                originalprice: 3500,
-                                quantity: 0
-                            },
+                        types: [
+                            
                         ]
                     },
                 ]
