@@ -48,6 +48,7 @@ var vue = new Vue({
                 price: 6900,
                 originalprice: 6900,
                 priceearly: 5600,
+                originalpriceearly: 5600,
                 quantity: 0,
                 sponsorshipPackageSelected: false,
                 schedules: {
@@ -715,6 +716,7 @@ var vue = new Vue({
                 price: 4400,
                 originalprice: 4400,
                 priceearly: 3900,
+                originalpriceearly: 3900,
                 quantity: 0,
                 schedules: {
                     id: 3,
@@ -980,7 +982,7 @@ var vue = new Vue({
             originalpriceearly: 3900,
             selectedearly: false,
             endofearly: false,
-            currency: "AUD",
+            currency: "EUR",
             description: "Miami Workshop description text goes here",
             earlybirdends: 20180311,
             earlyRate: false,
@@ -1473,7 +1475,6 @@ var vue = new Vue({
             let cartIds = this.cart.map(m => m.id);
             var position = cartIds.indexOf(product.id);
             let cartEq = this.cart[position];
-            console.log("Cartitem: ", this.cart[position]);
             while ( this.cart[position].quantity > 0 ){ //process by which tables are removed and price deduction is applied step by step
                 if ( this.cart[position].selectedearly ) this.earlytotal -= cartEq.priceearly;
                 else this.total -= cartEq.price;
@@ -1582,12 +1583,24 @@ var vue = new Vue({
             }
         },
         gotoCheckout(){
-            this.selectedWorkshops = this.cart.map(m => m.name);
+            this.cart.forEach(m => {
+                this.selectedWorkshops.push(m.name);
+                if (m.schedules && m.schedules.quantity > 0){
+                    this.selectedWorkshops.push(m.schedules.name);
+                }
+                if (m.additionalPeople && m.additionalPeople.quantity > 0){
+                    this.selectedWorkshops.push(m.additionalPeople.name)
+                }
+            })
 
             document.getElementById("main-wrapper").style.display = "none";
             document.getElementById("checkout").style.display = "block";
+        },
+        goBackFromCheckout(){
+            this.selectedWorkshops = [];
 
-            console.log(this.selectedWorkshops)
+            document.getElementById("main-wrapper").style.display = "block";
+            document.getElementById("checkout").style.display = "none";
         },
         changeMode(){
             this.attendBooths = !this.attendBooths;
@@ -1596,7 +1609,6 @@ var vue = new Vue({
             product.selectBoothBoolean = true;
         },
         setBaseCurrency(baseCurrency){
-            console.log(baseCurrency)
             switch(baseCurrency){
                 case 'EUR':
                     this.currencySymbol = "€";
@@ -1622,12 +1634,16 @@ var vue = new Vue({
                     m.price = m.originalprice;
                     m.priceearly = m.originalpriceearly;
                     m.tables.price = m.tables.originalprice;
+                    m.tables.priceearly = m.tables.originalpriceearly;
                     m.currencyDisclaimer = '';
                     if (m.currency !== this.fixer.base) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
-                        m.earlyprice = (m.originalpriceearly * this.fixerRates[m.currency]).toFixed();
+                        m.priceearly = (m.originalpriceearly * this.fixerRates[m.currency]).toFixed();
                         m.price = (m.originalprice * this.fixerRates[m.currency]).toFixed();
-                        m.tables.price = (m.tables.price * this.fixerRates[m.currency]).toFixed();
+                        if (m.tables){
+                            m.tables.price = (m.tables.price * this.fixerRates[m.currency]).toFixed();
+                            m.tables.priceearly = parseInt((m.tables.priceearly * this.fixerRates[m.currency]).toFixed());
+                        }   
                     }
                 });
             });

@@ -239,8 +239,18 @@ td.checkout-btn-container > button {
 .checkout {
     display: none;
     position: absolute;
-    width: 80%;
-    top: 30%;
+    width: 50%;
+    top: 22%;
+    left: 22%;
+}
+
+.checkout-buttons {
+    justify-content: center;
+}
+
+.checkout-totals {
+    display: flex;
+    flex-direction: column;
 }
 
 .sponsorship-intro {
@@ -473,7 +483,7 @@ button.marketing-choice.v-btn.theme--light {
 }
 
 .checkout-section {
-    min-height: 150px;
+    min-height: 100px;
 }
 
 .selected-workshops-container {
@@ -486,11 +496,10 @@ button.marketing-choice.v-btn.theme--light {
     border-radius: 5px;
     padding: 10px;
     margin-top: 10%;
+    margin-right: 10px;
 }
 
-.checkout-buttons {
-    justify-content: center;
-}
+
 
 /* .v-input__slot {
     border: none !important;

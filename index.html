@@ -149,36 +149,6 @@
                                 <td></td>
                             </tr>
 
-                            <!-- <tr class="sponsorship-platinum" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.platinum.quantity > 0">
-                                <td> {{ props.item.sponsorships.platinum.name }} </td>
-                                <td> {{ props.item.sponsorships.platinum.price }}{{ currencySymbol }} </td>
-                                <td> {{ props.item.sponsorships.platinum.quantity }} </td>
-                                <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}{{ currencySymbol }} </td>
-                                <td> {{ props.item.sponsorships.platinum.price * props.item.sponsorships.platinum.quantity }}{{ currencySymbol }} </td>
-                                <td> 0{{ currencySymbol }} </td>
-                                <td></td>
-                            </tr> 
-
-                            <tr class="sponsorship-gold" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.gold.quantity > 0">
-                                <td> {{ props.item.sponsorships.gold.name }} </td>
-                                <td> {{ props.item.sponsorships.gold.price }}{{ currencySymbol }} </td>
-                                <td> {{ props.item.sponsorships.gold.quantity }} </td>
-                                <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}{{ currencySymbol }} </td>
-                                <td> {{ props.item.sponsorships.gold.price * props.item.sponsorships.gold.quantity }}{{ currencySymbol }} </td>
-                                <td> 0{{ currencySymbol }} </td>
-                                <td></td>
-                            </tr>
-
-                            <tr class="sponsorship-silver" v-if="!props.item.booths && !props.workandtravel && !props.item.advert && props.item.sponsorships.silver.quantity > 0">
-                                <td> {{ props.item.sponsorships.silver.name }} </td>
-                                <td> {{ props.item.sponsorships.silver.price }}{{ currencySymbol }} </td>
-                                <td> {{ props.item.sponsorships.silver.quantity }} </td>
-                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}{{ currencySymbol }} </td>
-                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}{{ currencySymbol }} </td>
-                                <td> 0{{ currencySymbol }} </td>
-                                <td></td>
-                            </tr> -->
-
                             <tr v-if="!props.item.advert && props.item.marketing_and_sponsorships[0].quantity">
                                 <td> {{ props.item.sponsorships.silver.name }} </td>
                                 <td> {{ props.item.sponsorships.silver.price }}{{ currencySymbol }} </td>
@@ -431,31 +401,6 @@
             </div>
             
             <div class="checkout" id="checkout">
-                <!-- <v-card> -->
-                    <!-- <v-data-table
-                        :headers="headers"
-                        :items="cart">
-
-                        <template slot="items" slot-scope="props">
-                            <tr v-for="item in cart">
-                                <td class="name">{{ item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
-                                <td class="price">{{ item.price }}{{ currencySymbol }}</td>
-                                <td class="qty">
-                                    {{ item.quantity }}
-                                </td>
-                                <td class="sub-total">{{ item.price * item.quantity }}{{
-                                    currencySymbol }}</td>
-                                <td class="item-total">{{ item.price * item.quantity * discount
-                                    }}{{ currencySymbol }}</td>
-                                <td class="discount">
-                                    {{ ( (item.price * item.quantity) * discount ) -
-                                    (item.price * item.quantity) }}{{ currencySymbol }}
-                                </td>
-                            </tr>
-
-                        </template>
-
-                    </v-data-table> -->
 
                     <div class="checkout-section">
                         <h3>Selected workshops</h3>
@@ -465,12 +410,35 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="checkout-section">
                         <h3>Price</h3>
+
+                        <div class="checkout-totals">
+                            <!-- <span v-if="earlytotal">Original total : {{ currencySymbol }}{{ earlytotal }} </span>
+                            <span v-else>Original total : {{ currencySymbol }}{{ total }} </span>
+                            <span v-if="subitemtotal">Subitems total: {{ currencySymbol }}{{ subitemtotal }} </span>
+                            <span v-if="earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ earlytotal + subitemtotal}}
+                            </span>
+                            <span v-if="!earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ total + subitemtotal }} </span>
+                            <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ) }}% </span>
+                            <span>Discounted : {{ currencySymbol }}{{ (total * discount) - total }} </span> -->
+                            <strong v-if="earlytotal">Total: {{ currencySymbol }}{{subitemtotal + earlytotal}} </strong>
+                            <strong v-else>Total: {{ currencySymbol }}{{(total * discount) + subitemtotal }} </strong>
+                        </div>
+                    </div>
+
+                    <div class="checkout-section">
+                        <v-text-field label="Solo"></v-text-field>
+                    </div>
+
+                    <div class="checkout-section">
+                        <v-text-field full-width label="Enter any comments here" solo>
+
+                        </v-text-field>
                     </div>
 
                     <v-card-actions class="checkout-buttons">
-                        <v-btn>Go back to calculator screen</v-btn>
+                        <v-btn v-on:click="goBackFromCheckout()">Go back to calculator screen</v-btn>
                         <v-btn>Confirm quote</v-btn>
                     </v-card-actions>
                 <!-- </v-card>     -->
