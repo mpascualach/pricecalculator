@@ -460,17 +460,19 @@
                     <div class="checkout-section">
                         <h3>Selected workshops</h3>
 
-
+                        <div class="selected-workshops-container" v-if="selectedWorkshops" v-for="workshop in selectedWorkshops">
+                            <div class="selected-item">{{ workshop }}</div>
+                        </div>
                     </div>
 
                     <div>
                         <h3>Price</h3>
                     </div>
 
-                    <v-actions class="checkout-buttons">
+                    <v-card-actions class="checkout-buttons">
                         <v-btn>Go back to calculator screen</v-btn>
-                        <v-btn></v-btn>
-                    </v-actions>
+                        <v-btn>Confirm quote</v-btn>
+                    </v-card-actions>
                 <!-- </v-card>     -->
             </div>
         </div>

@@ -1184,7 +1184,7 @@ var vue = new Vue({
                         id: 4,
                         name: "Presentations",
                         types: [
-                            
+
                         ]
                     },
                 ]
@@ -1356,6 +1356,7 @@ var vue = new Vue({
         earlyRates: true,
         checkout: false,
         checkoutscreen: {},
+        selectedWorkshops: [],
         advertModal: false,
         choiceModal: false,
         boothModal: false,
@@ -1581,9 +1582,12 @@ var vue = new Vue({
             }
         },
         gotoCheckout(){
-            this.checkoutScreen = Object.assign({}, this.cart);
+            this.selectedWorkshops = this.cart.map(m => m.name);
+
             document.getElementById("main-wrapper").style.display = "none";
             document.getElementById("checkout").style.display = "block";
+
+            console.log(this.selectedWorkshops)
         },
         changeMode(){
             this.attendBooths = !this.attendBooths;

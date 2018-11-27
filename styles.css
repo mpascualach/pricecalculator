@@ -472,6 +472,26 @@ button.marketing-choice.v-btn.theme--light {
     padding-top: 0!important;
 }
 
+.checkout-section {
+    min-height: 150px;
+}
+
+.selected-workshops-container {
+    display: inline-block;
+}
+
+.selected-item {
+    background-color: #0d58ac;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10%;
+}
+
+.checkout-buttons {
+    justify-content: center;
+}
+
 /* .v-input__slot {
     border: none !important;
 } */
