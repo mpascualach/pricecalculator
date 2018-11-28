@@ -1720,6 +1720,13 @@ var vue = new Vue({
                     m.tables.sponsorships.platinum.price = m.tables.sponsorships.platinum.originalprice;
                     m.tables.sponsorships.gold.price = m.tables.sponsorships.platinum.originalprice;
                     m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
+
+                    m.tables.marketing_and_sponsorships.forEach(n => {
+                        n.types.forEach(p => {
+                            p.price = p.originalprice;
+                        });
+                    });
+                    console.log(m.tables.marketing_and_sponsorships)
                     m.currencyDisclaimer = '';
                     if (m.currency !== this.fixer.base) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
@@ -1735,22 +1742,18 @@ var vue = new Vue({
                             m.tables.sponsorships.platinum.price = (m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed());
                             m.tables.sponsorships.gold.price = (m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed());
                             m.tables.sponsorships.silver.price = (m.tables.sponsorships.silver.price * this.fixerRates[m.currency].toFixed());
+
+                            m.tables.marketing_and_sponsorships.forEach(n => {
+                                n.types.forEach(p => {
+                                    p.price = (p.price * this.fixerRates[m.currency]).toFixed();
+                                });
+                            });
                         }   
                     }
                 });
             });
         },
         changeBaseCurrency(){
-            if (this.fixerRates[event.target.innerText]){
-                let currency = event.target.innerText;
-                this.products.forEach(m => {
-                    m.tables.marketing_and_sponsorships.forEach(n => {
-                        n.types.forEach(p => {
-                            p.price = (p.price * this.fixerRates[currency]).toFixed();
-                        });
-                    });
-                });
-            }
             this.setBaseCurrency(event.target.innerText);
         }
     },
