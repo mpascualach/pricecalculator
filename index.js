@@ -1401,7 +1401,7 @@ var vue = new Vue({
         fixer: {}, //with regards to fixer.io
         fixerRates: {},
         allowedCurrencies: ["EUR","GBP","USD","CAD","AUD"],
-        defaultCurrency: "EUR",
+        currentCurrency: "EUR",
         currencySymbol: "€"
     },
     methods: {
@@ -1688,6 +1688,7 @@ var vue = new Vue({
             product.selectBoothBoolean = true;
         },
         setBaseCurrency(baseCurrency){
+            this.currentCurrency = baseCurrency;
             switch(baseCurrency){
                 case 'EUR':
                     this.currencySymbol = "€";
@@ -1708,6 +1709,16 @@ var vue = new Vue({
             .then(response => {
                 this.fixer = response.data;
                 this.fixerRates = this.fixer.rates;
+                if (typeof fx !== "undefined " && fx.rates ) {
+                    fx.rates = this.fixer.rates;
+                    fx.base = this.fixer.base;
+                }
+                else {
+                    var fxSetup = {
+                        rates: this.fixer.rates,
+                        base: this.fixer.base
+                    }
+                }
                 this.products.forEach(m => {
                     if (this.fullDate < m.earlybirdends) m.earlyRate = true;
                     m.price = m.originalprice;
@@ -1730,30 +1741,101 @@ var vue = new Vue({
                     m.currencyDisclaimer = '';
                     if (m.currency !== this.fixer.base) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
-                        m.priceearly = (m.originalpriceearly * this.fixerRates[m.currency]).toFixed();
-                        m.price = (m.originalprice * this.fixerRates[m.currency]).toFixed();
-                        if (m.tables){
-                            m.tables.price = (m.tables.price * this.fixerRates[m.currency]).toFixed();
-                            m.tables.priceearly = parseInt((m.tables.priceearly * this.fixerRates[m.currency]).toFixed());
+                        m.priceearly = (m.originalpriceearly / fx.rates[m.currency]).toFixed();
+                        // m.price = (m.originalprice / this.fixerRates[m.currency]).toFixed();
+                        // if (m.tables){
+                        //     m.tables.price = (m.tables.price / this.fixerRates[m.currency]).toFixed();
+                        //     m.tables.priceearly = parseInt((m.tables.priceearly / this.fixerRates[m.currency]).toFixed());
 
-                            m.tables.schedules.price = (m.tables.schedules.price * this.fixerRates[m.currency].toFixed());
-                            m.tables.additionalPeople.price = (m.tables.additionalPeople.price * this.fixerRates[m.currency].toFixed());
+                        //     m.tables.schedules.price = parseInt((m.tables.schedules.price / this.fixerRates[m.currency].toFixed()));
+                        //     m.tables.additionalPeople.price = parseInt((m.tables.additionalPeople.price / this.fixerRates[m.currency].toFixed()));
 
-                            m.tables.sponsorships.platinum.price = (m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed());
-                            m.tables.sponsorships.gold.price = (m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed());
-                            m.tables.sponsorships.silver.price = (m.tables.sponsorships.silver.price * this.fixerRates[m.currency].toFixed());
+                        //     m.tables.sponsorships.platinum.price = parseInt((m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed()));
+                        //     m.tables.sponsorships.gold.price = parseInt((m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed()));
+                        //     m.tables.sponsorships.silver.price = parseInt((m.tables.sponsorships.silver.price * this.fixerRates[m.currency].toFixed()));
 
-                            m.tables.marketing_and_sponsorships.forEach(n => {
-                                n.types.forEach(p => {
-                                    p.price = (p.price * this.fixerRates[m.currency]).toFixed();
-                                });
-                            });
-                        }   
+                        //     m.tables.marketing_and_sponsorships.forEach(n => {
+                        //         n.types.forEach(p => {
+                        //             p.price = parseInt((p.price * this.fixerRates[m.currency]).toFixed());
+                        //         });
+                        //     });
+                        // }   
                     }
                 });
             });
         },
         changeBaseCurrency(){
+            this.products.forEach(m => {
+                if (this.fullDate < m.earlybirdends) m.earlyRate = true;
+                m.price = m.originalprice;
+                m.priceearly = m.originalpriceearly;
+                m.tables.price = m.tables.originalprice;
+                m.tables.priceearly = m.tables.originalpriceearly;
+                m.tables.schedules.price = m.tables.schedules.originalprice;
+                m.tables.additionalPeople.price = m.tables.additionalPeople.originalprice;
+
+                m.tables.sponsorships.platinum.price = m.tables.sponsorships.platinum.originalprice;
+                m.tables.sponsorships.gold.price = m.tables.sponsorships.platinum.originalprice;
+                m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
+
+                m.tables.marketing_and_sponsorships.forEach(n => {
+                    n.types.forEach(p => {
+                        p.price = p.originalprice;
+                    });
+                });
+                console.log(m.tables.marketing_and_sponsorships)
+                m.currencyDisclaimer = '';
+                if (m.currency !== this.fixer.base) {
+                    m.currencyDisclaimer = "Converted from " + m.currency;
+                    m.priceearly = fx.convert(m.priceearly, { from: this.currentCurrency, to: event.target.innerText});
+                    // fx.convert(m.price, {
+                    //     from: this.currencySymbol,
+                    //     to: event.target.innerText
+                    // });
+                    // if (m.tables) {
+                    //     fx.convert(m.tables.price, {
+                    //         from: this.currencySymbol,
+                    //         to: event.target.innerText
+                    //     });
+                    //     fx.convert(m.tables.priceearly, {
+                    //         from: this.currencySymbol,
+                    //         to: event.target.innerText
+                    //     });
+
+                    //     fx.convert(m.tables.schedules.price, {
+                    //         from: this.currencySymbol,
+                    //         to: event.target.innerText
+                    //     });
+                    //     fx.convert(m.tables.additionalPeople.price, {
+                    //         from: this.currencySymbol,
+                    //         to: event.target.innerText
+                    //     });
+
+                    //     fx.convert(m.tables.sponsorships.platinum.price, {
+                    //         from: this.currencySymbol,
+                    //         to: event.target.innerText
+                    //     });
+                    //     fx.convert(m.tables.sponsorships.gold.price, {
+                    //         from: this.currencySymbol,
+                    //         to: event.target.innerText
+                    //     });
+                    //     fx.convert(m.tables.sponsorships.silver.price, {
+                    //         from: this.currencySymbol,
+                    //         to: event.target.innerText
+                    //     });
+
+                    //     m.tables.marketing_and_sponsorships.forEach(n => {
+                    //         n.types.forEach(p => {
+                    //             fx.convert(p.price, {
+                    //                 from: this.currencySymbol,
+                    //                 to: event.target.innerText
+                    //             });
+                    //         });
+                    //     });
+                    // }
+                }
+            });
+            console.log(fx.convert(1000, { from: "AUD", to: "EUR"}));
             this.setBaseCurrency(event.target.innerText);
         }
     },

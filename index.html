@@ -17,6 +17,7 @@
     <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="money.js"></script>
 
 </head>
 
@@ -305,10 +306,10 @@
                                                             Large:
                                                         </div>
                                                         <div class="booth-buttons">
-                                                            <v-btn v-if="product.booths.large12" v-on:click="addToCart(product, product.booths.large12, 'booths')">
-                                                                12m²
+                                                            <v-btn class="booth-btn" v-if="product.booths.large12" v-on:click="addToCart(product, product.booths.large12, 'booths')">
+                                                                12m²: {{ currencySymbol }}{{ product.booths.large12.price }}
                                                             </v-btn>
-                                                            <v-btn v-if="product.booths.large10" v-on:click="addToCart(product, product.booths.large10, 'booths')">
+                                                            <v-btn class="booth-btn" v-if="product.booths.large10" v-on:click="addToCart(product, product.booths.large10, 'booths')">
                                                                 10m²
                                                             </v-btn>
                                                         </div>
@@ -318,10 +319,10 @@
                                                             Medium:
                                                         </div>
                                                         <div class="booth-buttons">
-                                                            <v-btn v-if="product.booths.medium8" v-on:click="addToCart(product, product.booths.medium8, 'booths')">
+                                                            <v-btn class="booth-btn" v-if="product.booths.medium8" v-on:click="addToCart(product, product.booths.medium8, 'booths')">
                                                                 8m²
                                                             </v-btn>
-                                                            <v-btn v-if="product.booths.medium6" v-on:click="addToCart(product, product.booths.medium6, 'booths')">
+                                                            <v-btn class="booth-btn" v-if="product.booths.medium6" v-on:click="addToCart(product, product.booths.medium6, 'booths')">
                                                                 6m²
                                                             </v-btn>
                                                         </div>
