@@ -419,6 +419,12 @@ var vue = new Vue({
                         qty: 0,
                     },
                 },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
                 marketing_and_sponsorships: [
                     {
                         id: 2,
@@ -532,7 +538,7 @@ var vue = new Vue({
                         ]
                     },
                     {
-                        id: 1,
+                        id: 2,
                         name: "Hospitality Sponsorship",
                         types: [{
                                 name: 'Coffee & tea break',
@@ -756,6 +762,12 @@ var vue = new Vue({
                         originalprice: 8000,
                         qty: 0,
                     },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
                 },
                 marketing_and_sponsorships: [
                     {
@@ -1038,6 +1050,12 @@ var vue = new Vue({
                         originalprice: 2400,
                         qty: 0,
                     },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
                 },
                 marketing_and_sponsorships: [
                     {
@@ -1363,6 +1381,7 @@ var vue = new Vue({
         choiceModal: false,
         boothModal: false,
         infoModal: false,
+        valid: false,
         accountType: 'educator', //can also be 'service_provider' and 'work_and_travel'
         attendBooths: false, //determines whether the user is buying an exhibition booth or another fo
         currentDate: new Date(), //current date
@@ -1550,6 +1569,7 @@ var vue = new Vue({
                         m.sponsorship_package.quantity = subitem.quantity + 1;
                         this.total -=  m.price;
                         this.earlytotal = 0;
+                        console.log(m.sponsorship_package)
                     }
                 });
             }
@@ -1584,7 +1604,12 @@ var vue = new Vue({
         },
         gotoCheckout(){
             this.cart.forEach(m => {
-                this.selectedWorkshops.push(m.name);
+                console.log(m);
+                if (m.sponsorshipPackageSelected){
+                    this.selectedWorkshops.push(m.sponsorship_package.name);
+                }
+                else this.selectedWorkshops.push(m.name);
+                
                 if (m.schedules && m.schedules.quantity > 0){
                     this.selectedWorkshops.push(m.schedules.name);
                 }

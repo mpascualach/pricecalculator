@@ -427,19 +427,23 @@
                         </div>
                     </div>
 
-                    <div class="checkout-section">
-                        <v-text-field label="Solo"></v-text-field>
-                    </div>
+                    <template>
+                        <v-form v-model="valid">
+                            <div class="checkout-section">
+                                <v-text-field class="email-box" label="Email"></v-text-field>
+                            </div>
 
-                    <div class="checkout-section">
-                        <v-text-field full-width label="Enter any comments here" solo>
+                            <div class="checkout-section">
+                                <v-text-field class="comments-box" full-width label="Enter any comments here" solo>
 
-                        </v-text-field>
-                    </div>
+                                </v-text-field>
+                            </div>
+                        </v-form>
+                    </template>
 
                     <v-card-actions class="checkout-buttons">
                         <v-btn v-on:click="goBackFromCheckout()">Go back to calculator screen</v-btn>
-                        <v-btn>Confirm quote</v-btn>
+                        <v-btn type="submit">Confirm quote</v-btn>
                     </v-card-actions>
                 <!-- </v-card>     -->
             </div>
