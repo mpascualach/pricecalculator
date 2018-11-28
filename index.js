@@ -23,339 +23,339 @@ var vue = new Vue({
     i18n,
     data: {
         products: [{
-        //     id: 1,
-        //     name: "ANZA",
-        //     priceearly: 5600,
-        //     originalpriceearly: 5600,
-        //     selectedearly: false,
-        //     endofearly: false,
-        //     price: 6900,
-        //     originalprice: 6900, //this is going to be subject to change with respect to the copies of it that'll appear in the cart
-        //     currency: "AUD",
-        //     description: "ANZA Workshop description text goes here",
-        //     earlybirdends: 20200320,
-        //     earlyRate: false,
-        //     incart: 0,
-        //     quantity: 0,
-        //     subtotal: 0,
-        //     selectBoothBoolean: false,
-        //     boothselected: false,
-        //     workandtravel: true,
-        //     tables: {
-        //         id: 1,
-        //         name: "ANZA Table",
-        //         discount: 1, //1 means there is no discount applied
-        //         price: 6900,
-        //         originalprice: 6900,
-        //         priceearly: 5600,
-        //         originalpriceearly: 5600,
-        //         quantity: 0,
-        //         sponsorshipPackageSelected: false,
-        //         schedules: {
-        //             id: 1,
-        //             name: "ANZA Additional Schedule",
-        //             quantity: 0,
-        //             price: 2400,
-        //             originalprice: 2400,
-        //         },
-        //         additionalPeople: {
-        //             id: 1,
-        //             name: "ANZA Additional Person",
-        //             quantity: 0,
-        //             price: 990,
-        //             originalprice: 990,
-        //         },
-        //         sponsorships: {
-        //             platinum: {
-        //                 id: 1,
-        //                 name: "ANZA Platinum Sponsorship Package",
-        //                 price: 22000,
-        //                 originalprice: 22000,
-        //                 quantity: 0,
-        //                 sponsorshipPackage: true
-        //             },
-        //             gold: {
-        //                 id: 1,
-        //                 name: "ANZA Gold Sponsorship Package",
-        //                 price: 14000,
-        //                 originalprice: 14000,
-        //                 quantity: 0,
-        //                 sponsorshipPackage: true
-        //             },
-        //             silver: {
-        //                 id: 1,
-        //                 name: "ANZA Silver Sponsorship Package",
-        //                 price: 9000,
-        //                 originalprice: 9000,
-        //                 quantity: 0,
-        //                 sponsorshipPackage: true
-        //             },
-        //         },
-        //         sponsorship_package: {
-        //             tier: '',
-        //             name: '',
-        //             price: 0,
-        //             quantity: 0
-        //         },
-        //         marketing_and_sponsorships: [
-        //             {
-        //                 id: 1,
-        //                 name: 'Advertisement in Educator/Agent Catalogue',
-        //                 types: [
-        //                     {
-        //                         name: 'Inside cover',
-        //                         price: 2000,
-        //                         originalprice: 2000,
-        //                         quantity: 0,
-        //                     },
-        //                     {
-        //                         name: 'Outside cover',
-        //                         price: 2900,
-        //                         originalprice: 2900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Full page',
-        //                         price: 1700,
-        //                         originalprice: 1700,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Half page',
-        //                         price: 1100,
-        //                         originalprice: 1100,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 1,
-        //                 name: "Display advertising",
-        //                 types: [
-        //                     {
-        //                         name: 'Literature Display Rack',
-        //                         price: 1200,
-        //                         originalprice: 1200,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 1,
-        //                 name: "Merchandise Sponsorship",
-        //                 types: [
-        //                     {
-        //                         name: 'Note pads',
-        //                         price: 2000,
-        //                         originalprice: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Pens',
-        //                         price: 2000,
-        //                         originalprice: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag insert - paper',
-        //                         price: 900,
-        //                         originalprice: 900,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag insert - paper',
-        //                         price: 2200,
-        //                         originalprice: 2200,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Bag tags',
-        //                         price: 2000,
-        //                         originalprice: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Key card sleeves',
-        //                         price: 3300,
-        //                         originalprice: 3300,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Neck cords',
-        //                         price: 6500,
-        //                         originalprice: 6500,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //             {
-        //                 id: 1,
-        //                 name: "Hospitality Sponsorship",
-        //                 types: [
-        //                     {
-        //                         name: 'Coffee & tea break',
-        //                         price: 4000,
-        //                         originalprice: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Lunch',
-        //                         price: 4000,
-        //                         originalprice: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Welcome reception',
-        //                         price: 6000,
-        //                         originalprice: 6000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Dinner reception',
-        //                         price: 9000,
-        //                         originalprice: 9000,
-        //                         quantity: 0
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 id: 1,
-        //                 name: "Services Sponsorship",
-        //                 types: [
-        //                     {
-        //                         name: 'Internet hub',
-        //                         price: 3000,
-        //                         originalprice: 3000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Wireless internet service',
-        //                         price: 2000,
-        //                         originalprice: 2000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent hotel room drop',
-        //                         price: 4000,
-        //                         originalprice: 4000,
-        //                         quantity: 0
-        //                     },
-        //                     {
-        //                         name: 'Agent lounge - dedicated room',
-        //                         price: 5000,
-        //                         originalprice: 5000,
-        //                         quantity: 0
-        //                     },
-        //                 ]
-        //             },
-        //             {
-        //                 id: 1,
-        //                 name: "Presentations",
-        //                 types: [
-        //                     // {
-        //                     //     name: '50 minute slot',
-        //                     //     price: 690,
-        //                     //     originalprice: 2400,
-        //                     //     quantity: 0
-        //                     // },
-        //                     // {
-        //                     //     name: '25 minute slot',
-        //                     //     price: 490,
-        //                     //     originalprice: 2400,
-        //                     //     quantity: 0
-        //                     // },
-        //                 ]
-        //             },
-        //         ]
-        //     },
-        //     booths: {
-        //         id: 1,
-        //         quantity: 0,
-        //         price: 0,
-        //         originalprice: 2400,
-        //         name: '',
-        //         description: '',
-        //         large12: {
-        //             id: 1,
-        //             name: "ANZA Exhibition Booth 12m²",
-        //             quantity: 0,
-        //             price: 12000,
-        //             originalprice: 2400,
-        //             description: "Includes 2 people & 2 schedules"
-        //         },
-        //         large10: {
-        //             id: 1,
-        //             name: "ANZA Exhibition Booth 10m²",
-        //             quantity: 0,
-        //             price: 9000,
-        //             originalprice: 2400,
-        //             description: "Includes 2 people & 2 schedules"
-        //         },
-        //         medium8: {
-        //             id: 1,
-        //             name: "ANZA Exhibition Booth 8m²",
-        //             quantity: 0,
-        //             price: 8000,
-        //             originalprice: 2400,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         medium6: {
-        //             id: 1,
-        //             name: "ANZA Exhibition Booth 6m²",
-        //             quantity: 0,
-        //             price: 6000,
-        //             originalprice: 2400,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std5: {
-        //             id: 1,
-        //             name: "ANZA Exhibition Booth 4.5m²",
-        //             quantity: 0,
-        //             price: 5500,
-        //             originalprice: 2400,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std4: {
-        //             id: 1,
-        //             name: "ANZA Exhibition Booth 4m²",
-        //             quantity: 0,
-        //             price: 5000,
-        //             originalprice: 2400,
-        //             description: "Includes 1 people & 1 schedule"
-        //         },
-        //         std3: {
-        //             id: 1,
-        //             name: "ANZA Exhibition Booth 3m²",
-        //             quantity: 0,
-        //             price: 4400,
-        //             originalprice: 2400,
-        //             description: "Includes 1 people & 1 schedule"
-        //         }
-        //     },
-        //     work_and_travel: {
-        //         id: 1,
-        //         name: "ANZA Work and Travel",
-        //         price: 6900,
-        //         originalprice: 2400,
-        //         quantity: 0,
-        //         schedules: {
-        //             id: 1,
-        //             name: "ANZA Work and Travel Schedule",
-        //             quantity: 0,
-        //             price: 2400,
-        //             originalprice: 2400,
-        //         },
-        //         additionalPeople: {
-        //             id: 1,
-        //             name: "ANZA Work and Travel Additional Person",
-        //             quantity: 0,
-        //             price: 900,
-        //             originalprice: 2400,
-        //         },
-        //     },
-        //     additional: []
-        // },
-        // {
+            id: 1,
+            name: "ANZA",
+            priceearly: 5600,
+            originalpriceearly: 5600,
+            selectedearly: false,
+            endofearly: false,
+            price: 6900,
+            originalprice: 6900, //this is going to be subject to change with respect to the copies of it that'll appear in the cart
+            currency: "AUD",
+            description: "ANZA Workshop description text goes here",
+            earlybirdends: 20200320,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            selectBoothBoolean: false,
+            boothselected: false,
+            workandtravel: true,
+            tables: {
+                id: 1,
+                name: "ANZA Table",
+                discount: 1, //1 means there is no discount applied
+                price: 6900,
+                originalprice: 6900,
+                priceearly: 5600,
+                originalpriceearly: 5600,
+                quantity: 0,
+                sponsorshipPackageSelected: false,
+                schedules: {
+                    id: 1,
+                    name: "ANZA Additional Schedule",
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 1,
+                    name: "ANZA Additional Person",
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 1,
+                        name: "ANZA Platinum Sponsorship Package",
+                        price: 22000,
+                        originalprice: 22000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 1,
+                        name: "ANZA Gold Sponsorship Package",
+                        price: 14000,
+                        originalprice: 14000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 1,
+                        name: "ANZA Silver Sponsorship Package",
+                        price: 9000,
+                        originalprice: 9000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 1,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [
+                            {
+                                name: 'Inside cover',
+                                price: 2000,
+                                originalprice: 2000,
+                                quantity: 0,
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2900,
+                                originalprice: 2900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1200,
+                                originalprice: 1200,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Merchandise Sponsorship",
+                        types: [
+                            {
+                                name: 'Note pads',
+                                price: 2000,
+                                originalprice: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2000,
+                                originalprice: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2000,
+                                originalprice: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 6500,
+                                originalprice: 6500,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                            {
+                                name: 'Coffee & tea break',
+                                price: 4000,
+                                originalprice: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 4000,
+                                originalprice: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 6000,
+                                originalprice: 6000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 9000,
+                                originalprice: 9000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Internet hub',
+                                price: 3000,
+                                originalprice: 3000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Wireless internet service',
+                                price: 2000,
+                                originalprice: 2000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 4000,
+                                originalprice: 4000,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 1,
+                        name: "Presentations",
+                        types: [
+                            // {
+                            //     name: '50 minute slot',
+                            //     price: 690,
+                            //     originalprice: 2400,
+                            //     quantity: 0
+                            // },
+                            // {
+                            //     name: '25 minute slot',
+                            //     price: 490,
+                            //     originalprice: 2400,
+                            //     quantity: 0
+                            // },
+                        ]
+                    },
+                ]
+            },
+            booths: {
+                id: 1,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 1,
+                    name: "ANZA Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 12000,
+                    originalprice: 2400,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                large10: {
+                    id: 1,
+                    name: "ANZA Exhibition Booth 10m²",
+                    quantity: 0,
+                    price: 9000,
+                    originalprice: 2400,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 1,
+                    name: "ANZA Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 8000,
+                    originalprice: 2400,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 1,
+                    name: "ANZA Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 6000,
+                    originalprice: 2400,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std5: {
+                    id: 1,
+                    name: "ANZA Exhibition Booth 4.5m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 2400,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 1,
+                    name: "ANZA Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 5000,
+                    originalprice: 2400,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std3: {
+                    id: 1,
+                    name: "ANZA Exhibition Booth 3m²",
+                    quantity: 0,
+                    price: 4400,
+                    originalprice: 2400,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
+            work_and_travel: {
+                id: 1,
+                name: "ANZA Work and Travel",
+                price: 6900,
+                originalprice: 2400,
+                quantity: 0,
+                schedules: {
+                    id: 1,
+                    name: "ANZA Work and Travel Schedule",
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 1,
+                    name: "ANZA Work and Travel Additional Person",
+                    quantity: 0,
+                    price: 900,
+                    originalprice: 2400,
+                },
+            },
+            additional: []
+        },
+        {
             id: 2,
             name: "Berlin",
             priceearly: 3900,
@@ -1475,7 +1475,7 @@ var vue = new Vue({
                 cartitem.quantity++;
             }  
         },
-        absoluteRemoveFromCart: function (product) {
+        absoluteRemoveFromCart: function (product, selector) {
             if (product.tables) {
                 while ( product.tables.additionalPeople.quantity > 0 ){
                     this.subitemtotal -= product.tables.additionalPeople.price;
@@ -1507,6 +1507,7 @@ var vue = new Vue({
                         m.tables.quantity = 0;
                         if (m.tables.sponsorshipPackageSelected){
                             this.subitemtotal -= m.tables.sponsorship_package.price;
+                            m.tables.sponsorshipPackageSelected = false;
                             m.tables.sponsorships.platinum.quantity = 0;
                             m.tables.sponsorships.gold.quantity = 0;
                             m.tables.sponsorships.silver.quantity = 0;
@@ -1713,6 +1714,12 @@ var vue = new Vue({
                     m.priceearly = m.originalpriceearly;
                     m.tables.price = m.tables.originalprice;
                     m.tables.priceearly = m.tables.originalpriceearly;
+                    m.tables.schedules.price = m.tables.schedules.originalprice;
+                    m.tables.additionalPeople.price = m.tables.additionalPeople.originalprice;
+
+                    m.tables.sponsorships.platinum.price = m.tables.sponsorships.platinum.originalprice;
+                    m.tables.sponsorships.gold.price = m.tables.sponsorships.platinum.originalprice;
+                    m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
                     m.currencyDisclaimer = '';
                     if (m.currency !== this.fixer.base) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
@@ -1721,13 +1728,30 @@ var vue = new Vue({
                         if (m.tables){
                             m.tables.price = (m.tables.price * this.fixerRates[m.currency]).toFixed();
                             m.tables.priceearly = parseInt((m.tables.priceearly * this.fixerRates[m.currency]).toFixed());
+
+                            m.tables.schedules.price = (m.tables.schedules.price * this.fixerRates[m.currency].toFixed());
+                            m.tables.additionalPeople.price = (m.tables.additionalPeople.price * this.fixerRates[m.currency].toFixed());
+
+                            m.tables.sponsorships.platinum.price = (m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed());
+                            m.tables.sponsorships.gold.price = (m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed());
+                            m.tables.sponsorships.silver.price = (m.tables.sponsorships.silver.price * this.fixerRates[m.currency].toFixed());
                         }   
                     }
                 });
             });
         },
         changeBaseCurrency(){
-            this.setBaseCurrency(event.target.innerText)
+            if (this.fixerRates[event.target.innerText]){
+                let currency = event.target.innerText;
+                this.products.forEach(m => {
+                    m.tables.marketing_and_sponsorships.forEach(n => {
+                        n.types.forEach(p => {
+                            p.price = (p.price * this.fixerRates[currency]).toFixed();
+                        });
+                    });
+                });
+            }
+            this.setBaseCurrency(event.target.innerText);
         }
     },
     beforeMount(){
