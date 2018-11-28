@@ -1475,7 +1475,7 @@ var vue = new Vue({
                 cartitem.quantity++;
             }  
         },
-        absoluteRemoveFromCart: function (product, selector) {
+        absoluteRemoveFromCart: function (product) {
             if (product.tables) {
                 while ( product.tables.additionalPeople.quantity > 0 ){
                     this.subitemtotal -= product.tables.additionalPeople.price;
@@ -1485,8 +1485,13 @@ var vue = new Vue({
                     this.subitemtotal -= product.tables.schedules.price;
                     product.tables.schedules.quantity--;
                 }
+                console.log(product)
                 product.tables.quantity = 0;
                 product.incart = 0;
+                this.subitemtotal -= product.tables.sponsorship_package.price;
+                if (product.tables.sponsorshipPackageSelected){                 
+                    product.tables.sponsorshipPackageSelected = false;
+                }
             } else {
                 while ( product.additionalPeople.quantity > 0 ){
                     this.subitemtotal -= product.additionalPeople.price;
@@ -1500,6 +1505,13 @@ var vue = new Vue({
                     if ( m.id == product.id ) {
                         m.incart = 0;
                         m.tables.quantity = 0;
+                        if (m.tables.sponsorshipPackageSelected){
+                            this.subitemtotal -= m.tables.sponsorship_package.price;
+                            m.tables.sponsorships.platinum.quantity = 0;
+                            m.tables.sponsorships.gold.quantity = 0;
+                            m.tables.sponsorships.silver.quantity = 0;
+                        }
+                        console.log("Product item!", m);
                     }
                 });
             }
@@ -1519,7 +1531,7 @@ var vue = new Vue({
                     this.products.forEach(m => {
                         if (m.selectedearly) m.selectedearly = false;
                         this.earlyRates = true;
-                    })
+                    });
                     break;
                 case 1:
                     this.discount = 1; //resetting this.discount;
@@ -1573,6 +1585,7 @@ var vue = new Vue({
             }
             if ( selector == 'marketing' ) subitem.name = product.name + " " + subitem.name;
             else if ( selector == 'sponsorship_package' ){
+                product.tables.sponsorshipPackageSelected = true;
                 this.cart.forEach(m => {
                     if ( m.id == product.id ){
                         if (m.sponsorshipPackageSelected){

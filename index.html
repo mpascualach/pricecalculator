@@ -70,7 +70,7 @@
                                     <td class="discount">
                                         {{ ( (props.item.sponsorship_package.price * props.item.sponsorship_package.quantity) * discount ) - (props.item.price * props.item.quantity) }}{{ currencySymbol }}</td>
                                     <td>
-                                        <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
+                                        <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">P.REMOVE</v-btn>
                                     </td>
                                 </tr>
                                 <tr v-else>
@@ -192,7 +192,6 @@
                                 <span>Discounted : {{ currencySymbol }}{{ (total * discount) - total }} </span>
                                 <strong v-if="earlytotal">Total: {{ currencySymbol }}{{subitemtotal + earlytotal}} </strong>
                                 <strong v-else>Total: {{ currencySymbol }}{{(total * discount) + subitemtotal }} </strong>
-
                             </td>
                         </template>
                     </v-data-table>
