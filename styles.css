@@ -296,6 +296,18 @@ button.silver.v-btn.theme--light {
     /* color: #C0C0C0 !important; */
 }
 
+button.platinum-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
+    background-color: #E5E4E2 !important;
+}
+
+button.gold-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
+    background-color: #D4AF37 !important;
+}
+
+button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
+    background-color: #C0C0C0 !important;
+}
+
 .pressed {
     color: white!important;
 }

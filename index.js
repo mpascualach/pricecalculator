@@ -1566,7 +1566,7 @@ var vue = new Vue({
                 });
             }
         },
-        addSubItem: function (product, subitem, selector) {
+        addSubItem: function (product, subitem, selector, tier) {
             if ( selector == 'schedules' && subitem.quantity > product.quantity && subitem.quantity > product.tables.quantity ) {
                 this.limitReached = true;
                 return;
@@ -1575,13 +1575,22 @@ var vue = new Vue({
             else if ( selector == 'sponsorship_package' ){
                 this.cart.forEach(m => {
                     if ( m.id == product.id ){
+                        if (m.sponsorshipPackageSelected){
+                            this.subitemtotal -= m.sponsorship_package.price;
+                            m.sponsorship_package.quantity--;
+                            if (tier == 'platinum'){
+                                product.tables.sponsorships.gold.quantity = 0;
+                                product.tables.sponsorships.silver.quantity = 0;
+                            }
+                        }
+                        else {
+                            this.total -= m.price;
+                        }
                         m.sponsorshipPackageSelected = true;
                         m.sponsorship_package.name = subitem.name;
                         m.sponsorship_package.price = subitem.price;
                         m.sponsorship_package.quantity = subitem.quantity + 1;
-                        this.total -=  m.price;
                         this.earlytotal = 0;
-
                     }
                 });
             }
@@ -1601,6 +1610,15 @@ var vue = new Vue({
         removeSubItem: function (product, subitem, selector) {
             subitem.quantity--;
             this.subitemtotal -= subitem.price;
+            if ( selector == 'sponsorship_package' ) {
+                this.cart.forEach(m => {
+                    if (m.id == product.id){
+                        m.sponsorshipPackageSelected = false;
+                        if (m.earlyrateselected) this.earlytotal += m.priceearly;
+                        else this.total += m.price;
+                    }
+                })
+            }
             if ( selector == 'schedules' ){
                 this.cart.forEach(m => {
                     if ( m.id == product.id ) {
