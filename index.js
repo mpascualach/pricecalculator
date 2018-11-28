@@ -25,17 +25,17 @@ var vue = new Vue({
         products: [{
             id: 1,
             name: "ANZA",
-            priceearly: 5600,
-            originalpriceearly: 5600,
-            selectedearly: false,
-            endofearly: false,
-            price: 6900,
-            originalprice: 6900, //this is going to be subject to change with respect to the copies of it that'll appear in the cart
-            currency: "AUD",
-            description: "ANZA Workshop description text goes here",
-            earlybirdends: 20200320,
-            earlyRate: false,
-            incart: 0,
+            priceearly: 5600, //for when early bird rates apply
+            originalpriceearly: 5600, //original early bird price - used for when we're converting figures back to their base price
+            selectedearly: false, //will activate a message letting the user know that he's getting the workshop at a discount
+            endofearly: false, //will let user know that early bird rates no longer apply (if another regular workshop has been selected, e.g.)
+            price: 6900, //regular price
+            originalprice: 6900, //for conversions back to the item's base currency
+            currency: "AUD", //base currency
+            description: "ANZA Workshop description text goes here", //not used yet
+            earlybirdends: 20200320, //date in YYYY-MM-DD straight numeric format 
+            earlyRate: false, //we check whether it's eligible for early bird rates
+            incart: 0, 
             quantity: 0,
             subtotal: 0,
             selectBoothBoolean: false,
@@ -1562,9 +1562,16 @@ var vue = new Vue({
             }
         },
         removeBoothFromCart(booth){
-            console.log(booth)
             this.total -= booth.price;
-            booth.booths = false;
+            // booth.booths = false;
+            this.products.forEach(m => {
+                if (m.id == booth.id){
+                    m.booths.quantity = 0;
+                }
+            })
+            booth.quantity--;
+            this.cart = this.cart.filter(m => m.id !== booth.id);
+            // booth.booths = false;
         },
         addTable: function (product) {
             product.quantity++;
