@@ -1540,7 +1540,7 @@ var vue = new Vue({
                         if (m.selectedearly && m.endofearly){
                             m.endofearly = false;
                         }
-                    })
+                    });
                     this.cart[0].price = this.cart[0].priceearly;
                     this.cart[0].endofearly = false;
                     this.total = this.cart[0].price; //+ this.subitemtotal;
@@ -1560,6 +1560,11 @@ var vue = new Vue({
                 default:
                     this.discount = 0.73;
             }
+        },
+        removeBoothFromCart(booth){
+            console.log(booth)
+            this.total -= booth.price;
+            booth.booths = false;
         },
         addTable: function (product) {
             product.quantity++;
@@ -1717,7 +1722,8 @@ var vue = new Vue({
                     var fxSetup = {
                         rates: this.fixer.rates,
                         base: this.fixer.base
-                    }
+                    };
+                    console.log(fxSetup.rates)
                 }
                 this.products.forEach(m => {
                     if (this.fullDate < m.earlybirdends) m.earlyRate = true;
