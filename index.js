@@ -1578,9 +1578,19 @@ var vue = new Vue({
                         if (m.sponsorshipPackageSelected){
                             this.subitemtotal -= m.sponsorship_package.price;
                             m.sponsorship_package.quantity--;
-                            if (tier == 'platinum'){
-                                product.tables.sponsorships.gold.quantity = 0;
-                                product.tables.sponsorships.silver.quantity = 0;
+                            switch(tier){
+                                case 'platinum':
+                                    product.tables.sponsorships.gold.quantity = 0;
+                                    product.tables.sponsorships.silver.quantity = 0;
+                                    break;
+                                case 'gold':
+                                    product.tables.sponsorships.platinum.quantity = 0;
+                                    product.tables.sponsorships.silver.quantity = 0;
+                                    break;
+                                case 'silver':
+                                    product.tables.sponsorships.platinum.quantity = 0;
+                                    product.tables.sponsorships.gold.quantity = 0;
+                                    break;
                             }
                         }
                         else {

@@ -263,7 +263,7 @@
                                                         v-else>Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price }}</v-btn>
 
                                                     <v-btn light class="gold sponsorship light" 
-                                                        v-on:click="addSubItem(product, product.tables.sponsorships.gold, 'sponsorship_package', 'platinum')"
+                                                        v-on:click="addSubItem(product, product.tables.sponsorships.gold, 'sponsorship_package', 'gold')"
                                                         v-if="product.tables.sponsorships.gold.quantity == 0">
                                                         Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price }}</v-btn>
                                                     <v-btn light class="gold-pressed sponsorship-pressed sponsorship light" 
@@ -271,7 +271,7 @@
                                                         v-else>Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price }}</v-btn>
 
                                                     <v-btn light class="silver sponsorship" 
-                                                        v-on:click="addSubItem(product, product.tables.sponsorships.silver, 'sponsorship_package', 'platinum')"
+                                                        v-on:click="addSubItem(product, product.tables.sponsorships.silver, 'sponsorship_package', 'gold')"
                                                         v-if="product.tables.sponsorships.silver.quantity == 0">
                                                             Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price }}</v-btn>
                                                     <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
