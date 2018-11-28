@@ -1444,7 +1444,7 @@ var vue = new Vue({
                 cartitem.quantity++;
             }  
         },
-        absoluteRemoveFromCart: function (product) {
+        absoluteRemoveFromCart: function (product, selector) {
             if (product.tables) {
                 while ( product.tables.additionalPeople.quantity > 0 ){
                     this.subitemtotal -= product.tables.additionalPeople.price;
