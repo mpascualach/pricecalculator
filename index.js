@@ -1501,10 +1501,16 @@ var vue = new Vue({
             }
         },
         addSubItem: function (product, subitem, selector, tier) {
-            if ( selector == 'schedules' && subitem.quantity > product.quantity && subitem.quantity > product.tables.quantity ) {
-                this.limitReached = true;
-                return;
-            }
+            if ( selector == 'schedules'){
+                console.log("hmm", subitem);
+                if (subitem.quantity >= product.tables.quantity){
+                    this.limitReached = true;
+                    return;
+                }
+                else {
+                    this.limitReached = false;
+                }
+            } 
             if ( selector == 'marketing' ) subitem.name = product.name + " " + subitem.name;
             else if ( selector == 'sponsorship_package' ){
                 product.tables.sponsorshipPackageSelected = true;
@@ -1660,7 +1666,6 @@ var vue = new Vue({
                     });
                     m.currencyDisclaimer = '';
 
-                    console.log("Item from products: ", m)
                     if (m.currency !== this.fixer.base) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
                         m.priceearly = parseInt(fx.convert(m.priceearly, { from: m.currency, to: this.fixer.base}).toFixed());

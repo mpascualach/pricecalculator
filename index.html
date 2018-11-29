@@ -81,7 +81,9 @@
                                     </td>
                                 </tr>
                                 <tr v-else>
-                                    <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
+                                    <td class="name">{{ props.item.name }} <br /> 
+                                        <sub>(includes 1 schedule)</sub> <br />
+                                    </td>
                                     <td class="price">{{ currencySymbol }}{{ props.item.price }}</td>
                                     <td class="qty">
                                         <i class="fa fa-plus-square smaller" v-on:click="addTable(props.item)"></i> 
@@ -139,7 +141,10 @@
                             </tr>
 
                             <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && props.item.schedules.quantity > 0">
-                                <td>{{ props.item.schedules.name }}<br /> <sub>(max. 1 per table)</sub></td>
+                                <td>{{ props.item.schedules.name }}<br /> 
+                                        <sub>(max. 1 per table)</sub> <br />
+                                        <span class="schedule-alert" v-if="limitReached">There can't be more additional schedules than tables</span>
+                                </td>
                                 <td>{{ currencySymbol }}{{ props.item.schedules.price }}{{ currencySymbol }}</td>
                                 <td class="qty">{{ currencySymbol }}{{ props.item.schedules.quantity }}</td>
                                 <td>{{ currencySymbol }}{{ props.item.schedules.price * props.item.schedules.quantity }}</td>
