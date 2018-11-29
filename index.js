@@ -312,7 +312,7 @@ var vue = new Vue({
                 id: 1,
                 name: "ANZA Work and Travel",
                 price: 6900,
-                originalprice: 2400,
+                originalprice: 6900,
                 quantity: 0,
                 schedules: {
                     id: 1,
@@ -371,14 +371,14 @@ var vue = new Vue({
                     name: "Berlin Additional Person",
                     quantity: 0,
                     price: 990,
-                    originalprice: 2400,
+                    originalprice: 990,
                 },
                 sponsorships: {
                     platinum: {
                         id: 2,
                         name: "Berlin Platinum Sponsorship Package",
                         price: 22000,
-                        originalprice: 2400,
+                        originalprice: 22000,
                         quantity: 0,
                         sponsorshipPackage: true
                     },
@@ -386,7 +386,7 @@ var vue = new Vue({
                         id: 2,
                         name: "Berlin Gold Sponsorship Package",
                         price: 16000,
-                        originalprice: 2400,
+                        originalprice: 16000,
                         quantity: 0,
                         sponsorshipPackage: true
                     },
@@ -394,7 +394,7 @@ var vue = new Vue({
                         id: 2,
                         name: "Berlin Silver Sponsorship Package",
                         price: 10000,
-                        originalprice: 2400,
+                        originalprice: 10000,
                         quantity: 0,
                         sponsorshipPackage: true
                     },
@@ -570,7 +570,7 @@ var vue = new Vue({
                             {
                                 name: 'Agent lounge - dedicated room',
                                 price: 7600,
-                                originalprice: 2400,
+                                originalprice: 7600,
                                 quantity: 0
                             },
                             {
@@ -623,7 +623,7 @@ var vue = new Vue({
                     name: "Berlin Exhibition Booth 12m²",
                     quantity: 0,
                     price: 12000,
-                    originalprice: 2400,
+                    originalprice: 12000,
                     description: "Includes 2 people & 2 schedules"
                 },
                 large10: {
@@ -631,7 +631,7 @@ var vue = new Vue({
                     name: "Berlin Exhibition Booth 10m²",
                     quantity: 0,
                     price: 9000,
-                    originalprice: 2400,
+                    originalprice: 9000,
                     description: "Includes 2 people & 2 schedules"
                 },
                 medium8: {
@@ -639,7 +639,7 @@ var vue = new Vue({
                     name: "Berlin Exhibition Booth 8m²",
                     quantity: 0,
                     price: 8000,
-                    originalprice: 2400,
+                    originalprice: 8000,
                     description: "Includes 1 people & 1 schedule"
                 },
                 medium6: {
@@ -647,7 +647,7 @@ var vue = new Vue({
                     name: "Berlin Exhibition Booth 6m²",
                     quantity: 0,
                     price: 6000,
-                    originalprice: 2400,
+                    originalprice: 6000,
                     description: "Includes 1 people & 1 schedule"
                 },
                 std5: {
@@ -655,7 +655,7 @@ var vue = new Vue({
                     name: "Berlin Exhibition Booth 4.5m²",
                     quantity: 0,
                     price: 5500,
-                    originalprice: 2400,
+                    originalprice: 5500,
                     description: "Includes 1 people & 1 schedule"
                 },
                 std4: {
@@ -663,7 +663,7 @@ var vue = new Vue({
                     name: "Berlin Exhibition Booth 4m²",
                     quantity: 0,
                     price: 5000,
-                    originalprice: 2400,
+                    originalprice: 5000,
                     description: "Includes 1 people & 1 schedule"
                 },
                 std3: {
@@ -671,7 +671,7 @@ var vue = new Vue({
                     name: "Berlin Exhibition Booth 3m²",
                     quantity: 0,
                     price: 4400,
-                    originalprice: 2400,
+                    originalprice: 4400,
                     description: "Includes 1 people & 1 schedule"
                 }
             },
@@ -963,14 +963,14 @@ var vue = new Vue({
                     discount: 0,
                     quantity: 0,
                     price: 990,
-                    originalprice: 2400,
+                    originalprice: 990,
                 },
                 sponsorships: {
                     platinum: {
                         id: 4,
                         name: "Miami Platinum Sponsorship Package",
                         price: 16000,
-                        originalprice: 2400,
+                        originalprice: 16000,
                         quantity: 0,
                         sponsorshipPackage: true
                     },
@@ -978,7 +978,7 @@ var vue = new Vue({
                         id: 4,
                         name: "Miami Gold Sponsorship Package",
                         price: 11000,
-                        originalprice: 2400,
+                        originalprice: 11000,
                         quantity: 0,
                         sponsorshipPackage: true
                     },
@@ -986,7 +986,7 @@ var vue = new Vue({
                         id: 4,
                         name: "Miami Silver Sponsorship Package",
                         price: 8000,
-                        originalprice: 2400,
+                        originalprice: 8000,
                         quantity: 0,
                         sponsorshipPackage: true
                     },
@@ -1650,7 +1650,7 @@ var vue = new Vue({
                     m.tables.additionalPeople.price = m.tables.additionalPeople.originalprice;
 
                     m.tables.sponsorships.platinum.price = m.tables.sponsorships.platinum.originalprice;
-                    m.tables.sponsorships.gold.price = m.tables.sponsorships.platinum.originalprice;
+                    m.tables.sponsorships.gold.price = m.tables.sponsorships.gold.originalprice;
                     m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
 
                     m.tables.marketing_and_sponsorships.forEach(n => {
@@ -1659,6 +1659,8 @@ var vue = new Vue({
                         });
                     });
                     m.currencyDisclaimer = '';
+
+                    console.log("Item from products: ", m)
                     if (m.currency !== this.fixer.base) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
                         m.priceearly = parseInt(fx.convert(m.priceearly, { from: m.currency, to: this.fixer.base}).toFixed());
@@ -1716,7 +1718,7 @@ var vue = new Vue({
                 m.tables.additionalPeople.price = m.tables.additionalPeople.originalprice;
 
                 m.tables.sponsorships.platinum.price = m.tables.sponsorships.platinum.originalprice;
-                m.tables.sponsorships.gold.price = m.tables.sponsorships.platinum.originalprice;
+                m.tables.sponsorships.gold.price = m.tables.sponsorships.gold.originalprice;
                 m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
 
                 m.tables.marketing_and_sponsorships.forEach(n => {
@@ -1724,7 +1726,7 @@ var vue = new Vue({
                         p.price = p.originalprice;
                     });
                 });
-                console.log(m.tables.marketing_and_sponsorships)
+
                 m.currencyDisclaimer = '';
                 if (m.currency !== this.fixer.base) {
                     m.currencyDisclaimer = "Converted from " + m.currency;

@@ -503,6 +503,10 @@ button.marketing-choice.v-btn.theme--light {
     margin-left: 6%;
 }
 
+.v-list.theme--light {
+    width: 100%;
+}
+
 .v-select-list.v-card.theme--light {
     width: 100%;
 }
