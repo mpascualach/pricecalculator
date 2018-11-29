@@ -60,32 +60,39 @@
                             <template v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert">
                                 <tr v-if="props.item.sponsorshipPackageSelected">
                                     <td class="name">{{ props.item.sponsorship_package.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
-                                    <td class="price">{{ props.item.sponsorship_package.price }}{{ currencySymbol }}</td>
+                                    <td class="price">{{ currencySymbol }}{{ props.item.sponsorship_package.price }}</td>
                                     <td class="qty">
                                         <i class="fa fa-plus-square smaller" v-on:click="addTable(props.item)"></i> 
                                         {{ props.item.sponsorship_package.quantity }}
                                         <i class="fa fa-minus-square smaller" v-on:click="removeTable(props.item)"></i>
                                     </td>
-                                    <td class="sub-total">{{ props.item.sponsorship_package.price * props.item.sponsorship_package.quantity }}{{ currencySymbol }}</td>
-                                    <td class="item-total">{{ props.item.sponsorship_package.price * props.item.sponsorship_package.quantity * discount }}{{ currencySymbol }}</td>
+                                    <td class="sub-total">{{ currencySymbol }}{{ props.item.sponsorship_package.price *
+                                        props.item.sponsorship_package.quantity }}
+                                    </td>
+                                    <td class="item-total">{{ currencySymbol }}{{ props.item.sponsorship_package.price *
+                                        props.item.sponsorship_package.quantity * discount }}
+                                    </td>
                                     <td class="discount">
-                                        {{ ( (props.item.sponsorship_package.price * props.item.sponsorship_package.quantity) * discount ) - (props.item.price * props.item.quantity) }}{{ currencySymbol }}</td>
+                                        {{ currencySymbol }}{{ ( (props.item.sponsorship_package.price * props.item.sponsorship_package.quantity) * discount )
+                                        - (props.item.price * props.item.quantity) }}
+                                    </td>
                                     <td>
                                         <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                     </td>
                                 </tr>
                                 <tr v-else>
                                     <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
-                                    <td class="price">{{ props.item.price }}{{ currencySymbol }}</td>
+                                    <td class="price">{{ currencySymbol }}{{ props.item.price }}</td>
                                     <td class="qty">
                                         <i class="fa fa-plus-square smaller" v-on:click="addTable(props.item)"></i> 
                                             {{ props.item.quantity }}
                                         <i class="fa fa-minus-square smaller" v-on:click="removeTable(props.item)"></i>
                                     </td>
-                                    <td class="sub-total">{{ props.item.price * props.item.quantity }}{{ currencySymbol }}</td>
-                                    <td class="item-total">{{ props.item.price * props.item.quantity * discount }}{{ currencySymbol }}</td>
-                                    <td class="discount">{{ ( (props.item.price * props.item.quantity) * discount ) - (props.item.price *
-                                        props.item.quantity) }}{{ currencySymbol }}</td>
+                                    <td class="sub-total">{{ currencySymbol }}{{ props.item.price * props.item.quantity }}</td>
+                                    <td class="item-total">{{ currencySymbol }}{{ props.item.price * props.item.quantity * discount }}</td>
+                                    <td class="discount">{{ currencySymbol }}{{ ( (props.item.price * props.item.quantity) * discount ) - (props.item.price
+                                        *
+                                        props.item.quantity) }}</td>
                                     <td>
                                         <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                     </td>
@@ -94,11 +101,11 @@
 
                             <tr v-else-if="props.item.booths && !props.item.advert"> 
                                 <td>{{ props.item.name }}</td>
-                                <td>{{ props.item.price }}{{ currencySymbol }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.price }}</td>
                                 <td class="qty">{{ props.item.quantity }}</td>
-                                <td>{{ props.item.price * props.item.quantity }}{{ currencySymbol }}</td>
-                                <td>{{ props.item.price * props.item.quantity }}{{ currencySymbol }}</td>
-                                <td>0{{ currencySymbol }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.price * props.item.quantity }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.price * props.item.quantity }}</td>
+                                <td>{{ currencySymbol }}0</td>
                                 <td>
                                     <v-btn class="add-to-package" v-on:click="removeBoothFromCart(props.item)">REMOVE</v-btn>
                                 </td>
@@ -106,11 +113,11 @@
 
                             <tr v-if="props.item.advert"> 
                                 <td>{{ props.item.name }}</td>
-                                <td>{{ props.item.price }}{{ currencySymbol }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.price }}{{ currencySymbol }}</td>
                                 <td class="qty">{{ props.item.quantity }}</td>
-                                <td>{{ props.item.price * props.item.quantity }}{{ currencySymbol }}</td>
-                                <td>{{ props.item.price * props.item.quantity }}{{ currencySymbol }}</td>
-                                <td>0{{ currencySymbol }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.price * props.item.quantity }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.price * props.item.quantity }}</td>
+                                <td>{{ currencySymbol }}0</td>
                                 <td>
                                     <v-btn class="add-to-package" v-on:click="removeAdvert(props.item)">REMOVE</v-btn>
                                 </td>
@@ -118,13 +125,14 @@
 
                             <tr v-else-if="props.item.workandtravel && !props.item.advert">
                                 <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
-                                <td class="price">{{ props.item.price }}{{ currencySymbol }}</td>
+                                <td class="price">{{ currencySymbol }}{{ props.item.price }}{{ currencySymbol }}</td>
                                 <td class="qty"><i class="fa fa-plus-square smaller"></i> {{ props.item.quantity }}<i class="fa fa-minus-square smaller"></i>
                                 </td>
-                                <td class="sub-total">{{ props.item.price * props.item.quantity }}{{ currencySymbol }}</td>
-                                <td class="item-total">{{ props.item.price * props.item.quantity * discount }}{{ currencySymbol }}</td>
-                                <td class="discount">{{ ( (props.item.price * props.item.quantity) * discount ) - (props.item.price *
-                                    props.item.quantity) }}{{ currencySymbol }}</td>
+                                <td class="sub-total">{{ currencySymbol }}{{ props.item.price * props.item.quantity }}</td>
+                                <td class="item-total">{{ currencySymbol }}{{ props.item.price * props.item.quantity * discount }}</td>
+                                <td class="discount">{{ currencySymbol }}{{ ( (props.item.price * props.item.quantity) * discount ) - (props.item.price
+                                    *
+                                    props.item.quantity) }}</td>
                                 <td>
                                     <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                 </td>
@@ -132,31 +140,31 @@
 
                             <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && props.item.schedules.quantity > 0">
                                 <td>{{ props.item.schedules.name }}<br /> <sub>(max. 1 per table)</sub></td>
-                                <td>{{ props.item.schedules.price }}{{ currencySymbol }}</td>
-                                <td class="qty">{{ props.item.schedules.quantity }}</td>
-                                <td>{{ props.item.schedules.price * props.item.schedules.quantity }}{{ currencySymbol }}</td>
-                                <td>{{ props.item.schedules.price * props.item.schedules.quantity - 0 }}{{ currencySymbol }}</td>
-                                <td>0{{ currencySymbol }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.schedules.price }}{{ currencySymbol }}</td>
+                                <td class="qty">{{ currencySymbol }}{{ props.item.schedules.quantity }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.schedules.price * props.item.schedules.quantity }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.schedules.price * props.item.schedules.quantity - 0 }}</td>
+                                <td>{{ currencySymbol }}0</td>
                                 <td></td>
                             </tr>
 
                             <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && !props.item.advert && props.item.additionalPeople.quantity > 0">
                                 <td>{{ props.item.additionalPeople.name }}</td>
-                                <td>{{ props.item.additionalPeople.price }}{{ currencySymbol }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.additionalPeople.price }}{{ currencySymbol }}</td>
                                 <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
-                                <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}{{ currencySymbol }}</td>
-                                <td>{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}{{ currencySymbol }}</td>
-                                <td>0{{ currencySymbol }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.additionalPeople.price * props.item.additionalPeople.quantity }}</td>
+                                <td>{{ currencySymbol }}0</td>
                                 <td></td>
                             </tr>
 
                             <tr v-if="!props.item.advert && !props.item.booths && props.item.marketing_and_sponsorships[0].quantity">
                                 <td> {{ props.item.sponsorships.silver.name }} </td>
-                                <td> {{ props.item.sponsorships.silver.price }}{{ currencySymbol }} </td>
+                                <td> {{ currencySymbol }}{{ props.item.sponsorships.silver.price }} </td>
                                 <td> {{ props.item.sponsorships.silver.quantity }} </td>
-                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}{{ currencySymbol }} </td>
-                                <td> {{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }}{{ currencySymbol }} </td>
-                                <td> 0{{ currencySymbol }} </td>
+                                <td> {{ currencySymbol }}{{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }} </td>
+                                <td> {{ currencySymbol }}{{ props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity }} </td>
+                                <td> {{ currencySymbol }}0 </td>
                                 <td></td>
                             </tr>  
                             
@@ -165,11 +173,11 @@
                                     <template v-for="type in item.types">
                                         <tr v-if="type.quantity > 0">
                                             <td> {{ type.name }} </td>
-                                            <td> {{ type.price }}{{ currencySymbol }} </td>
+                                            <td> {{ currencySymbol }}{{ type.price }} </td>
                                             <td> {{ type.quantity }} </td>
-                                            <td> {{ type.price * type.quantity }}{{ currencySymbol }} </td>
-                                            <td> {{ type.price * type.quantity }}{{ currencySymbol }} </td>
-                                            <td> 0{{ currencySymbol }} </td>
+                                            <td> {{ currencySymbol }}{{ type.price * type.quantity }} </td>
+                                            <td> {{ currencySymbol }}{{ type.price * type.quantity }} </td>
+                                            <td> {{ currencySymbol }}0 </td>
                                             <td></td>
                                         </tr>
                                     </template>

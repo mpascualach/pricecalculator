@@ -13,6 +13,16 @@ body {
     left: -5%;
 } */
 
+div#main-wrapper {
+    position: absolute;
+    left: 40;
+    width: 100%;
+}
+
+.events.v-card.theme--light{
+    width: 40%;
+}
+
 .headline {
     margin-right: 3%;
 }
@@ -110,7 +120,9 @@ th.column.text-xs-left:first-child {
     max-width: 840px;
     margin: 0 auto;
   	width: 50% !important;
- 	 float: right;
+    float: right;
+    position: absolute;
+    right: 10%;
 }
 
 table.v-table {
