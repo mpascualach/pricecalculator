@@ -279,56 +279,32 @@ var vue = new Vue({
                     id: 1,
                     name: "ANZA Exhibition Booth 12m²",
                     quantity: 0,
-                    price: 12000,
-                    originalprice: 2400,
-                    description: "Includes 2 people & 2 schedules"
-                },
-                large10: {
-                    id: 1,
-                    name: "ANZA Exhibition Booth 10m²",
-                    quantity: 0,
-                    price: 9000,
-                    originalprice: 2400,
+                    price: 10500,
+                    originalprice: 10500,
                     description: "Includes 2 people & 2 schedules"
                 },
                 medium8: {
                     id: 1,
                     name: "ANZA Exhibition Booth 8m²",
                     quantity: 0,
-                    price: 8000,
-                    originalprice: 2400,
+                    price: 7500,
+                    originalprice: 7500,
                     description: "Includes 1 people & 1 schedule"
                 },
                 medium6: {
                     id: 1,
                     name: "ANZA Exhibition Booth 6m²",
                     quantity: 0,
-                    price: 6000,
-                    originalprice: 2400,
-                    description: "Includes 1 people & 1 schedule"
-                },
-                std5: {
-                    id: 1,
-                    name: "ANZA Exhibition Booth 4.5m²",
-                    quantity: 0,
                     price: 5500,
-                    originalprice: 2400,
+                    originalprice: 5500,
                     description: "Includes 1 people & 1 schedule"
                 },
                 std4: {
                     id: 1,
                     name: "ANZA Exhibition Booth 4m²",
                     quantity: 0,
-                    price: 5000,
-                    originalprice: 2400,
-                    description: "Includes 1 people & 1 schedule"
-                },
-                std3: {
-                    id: 1,
-                    name: "ANZA Exhibition Booth 3m²",
-                    quantity: 0,
-                    price: 4400,
-                    originalprice: 2400,
+                    price: 4500,
+                    originalprice: 4500,
                     description: "Includes 1 people & 1 schedule"
                 }
             },
@@ -934,61 +910,13 @@ var vue = new Vue({
                 price: 0,
                 name: '',
                 description: '',
-                large12: {
+                displaytable: {
                     id: 3,
-                    name: "Beijing Exhibition Booth 12m²",
-                    quantity: 0,
-                    price: 12000,
-                    originalprice: 2400,
-                    description: "Includes 2 people & 2 schedules"
-                },
-                large10: {
-                    id: 3,
-                    name: "Beijing Exhibition Booth 10m²",
-                    quantity: 0,
-                    price: 9000,
-                    originalprice: 2400,
-                    description: "Includes 2 people & 2 schedules"
-                },
-                medium8: {
-                    id: 3,
-                    name: "Beijing Exhibition Booth 8m²",
-                    quantity: 0,
-                    price: 8000,
-                    originalprice: 2400,
-                    description: "Includes 1 people & 1 schedule"
-                },
-                medium6: {
-                    id: 3,
-                    name: "Beijing Exhibition Booth 6m²",
-                    quantity: 0,
-                    price: 6000,
-                    originalprice: 2400,
-                    description: "Includes 1 people & 1 schedule"
-                },
-                std5: {
-                    id: 3,
-                    name: "Beijing Exhibition Booth 4.5m²",
-                    quantity: 0,
-                    price: 5500,
-                    originalprice: 2400,
-                    description: "Includes 1 people & 1 schedule"
-                },
-                std4: {
-                    id: 3,
-                    name: "Beijing Exhibition Booth 4m²",
-                    quantity: 0,
-                    price: 5000,
-                    originalprice: 2400,
-                    description: "Includes 1 people & 1 schedule"
-                },
-                std3: {
-                    id: 3,
-                    name: "Beijing Exhibition Booth 3m²",
+                    name: "Beijing display table",
                     quantity: 0,
                     price: 4400,
-                    originalprice: 2400,
-                    description: "Includes 1 people & 1 schedule"
+                    originalprice: 4400,
+                    description: ""
                 }
             },
             additional: []
@@ -1235,14 +1163,6 @@ var vue = new Vue({
                     originalprice: 12000,
                     description: "Includes 2 people & 2 schedules"
                 },
-                large10: {
-                    id: 4,
-                    name: "Miami Exhibition Booth 10m²",
-                    quantity: 0,
-                    price: 9000,
-                    originalprice: 9000,
-                    description: "Includes 2 people & 2 schedules"
-                },
                 medium8: {
                     id: 4,
                     name: "Miami Exhibition Booth 8m²",
@@ -1259,14 +1179,6 @@ var vue = new Vue({
                     originalprice: 6000,
                     description: "Includes 1 people & 1 schedule"
                 },
-                std5: {
-                    id: 4,
-                    name: "Miami Exhibition Booth 4.5m²",
-                    quantity: 0,
-                    price: 5500,
-                    originalprice: 5500,
-                    description: "Includes 1 people & 1 schedule"
-                },
                 std4: {
                     id: 4,
                     name: "Miami Exhibition Booth 4m²",
@@ -1275,14 +1187,6 @@ var vue = new Vue({
                     originalprice: 5000,
                     description: "Includes 1 people & 1 schedule"
                 },
-                std3: {
-                    id: 4,
-                    name: "Miami Exhibition Booth 3m²",
-                    quantity: 0,
-                    price: 4400,
-                    originalprice: 4400,
-                    description: "Includes 1 people & 1 schedule"
-                }
             },
             additional: []
         }],
