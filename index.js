@@ -1571,7 +1571,11 @@ var vue = new Vue({
             })
             booth.quantity--;
             this.cart = this.cart.filter(m => m.id !== booth.id);
-            // booth.booths = false;
+        },
+        removeAdvert(advert){
+            console.log(advert);
+            this.total -= advert.price;
+            this.cart = this.cart.filter(m => m.name !== advert.name);
         },
         addTable: function (product) {
             product.quantity++;

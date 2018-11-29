@@ -112,7 +112,7 @@
                                 <td>{{ props.item.price * props.item.quantity }}{{ currencySymbol }}</td>
                                 <td>0{{ currencySymbol }}</td>
                                 <td>
-                                    <v-btn class="add-to-package">REMOVE</v-btn>
+                                    <v-btn class="add-to-package" v-on:click="removeAdvert(props.item)">REMOVE</v-btn>
                                 </td>
                             </tr>
 
