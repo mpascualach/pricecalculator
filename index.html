@@ -310,9 +310,18 @@
                                                                     <i class="fa fa-question-circle"></i>
                                                                 </v-btn>
                                                                 <v-card class="sponsorship-dialog-container">
-                                                                    <v-data-cart :headers="helpheaders">
-
-                                                                    </v-data-cart>
+                                                                    <v-data-table :headers="helpheaders" :items="sponsorship_package_info">
+                                                                        <template slot="items" slot-scope="props">
+                                                                            <tr>
+                                                                                <td>{{props.item.name}} 
+                                                                                        <span v-if="props.item.sidenote">{{ props.item.sidenote }}</span>
+                                                                                    </td>
+                                                                                <td>{{props.item.Platinum}}</td>
+                                                                                <td>{{props.item.Gold}}</td>
+                                                                                <td>{{props.item.Silver}}</td>
+                                                                            </tr>
+                                                                        </template>
+                                                                    </v-data-table>
                                                                 </v-card>
                                                                 
                                                             </v-dialog>

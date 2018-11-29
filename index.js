@@ -1234,7 +1234,116 @@ var vue = new Vue({
             { text: 'Silver', sortable: false } 
         ],
         sponsorship_package_info: [
-
+            {
+                name: 'Exhibition Booths',
+                sidenote: "(Berlin/NA/ANZA Workshops)",
+                Platinum: "9m/12m/12m",
+                Gold: "6m",
+                Silver: "4.5m/6m/6m"
+            },
+            {
+                name: 'Display Tables',
+                sidenote: "(excl. Berlin/NA/ANZA Workshops)",
+                Platinum: 2,
+                Gold: 1,
+                Silver: 1
+            },
+            {
+                name: 'Number of delegates',
+                sidenote: "(incl. eSchedule PRO account)",
+                Platinum: 2,
+                Gold: 1,
+                Silver: 1
+            },
+            {
+                name: 'Accompanying person',
+                sidenote: "(incl. eSchedule PRO account)",
+                Platinum: 2,
+                Gold: 1,
+                Silver: 1
+            },
+            // {
+            //     items: 'Recognition as Event Sponsor',
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Bag insert',
+            //     sidenote: "(Berlin/NA/ANZA Workshops)",
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Full page advertisement in educator catalogue',
+            //     sidenote: "(Berlin/NA/ANZA Workshops)",
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Full page advertisement in agent catalogue',
+            //     sidenote: "(Berlin/NA/ANZA Workshops)",
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Literature Display Rack',
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Presentation',
+            //     sidenote: "(Berlin/NA/ANZA Workshops)",
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: '',
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Exhibition Booths',
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Exhibition Booths',
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Exhibition Booths',
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Exhibition Booths',
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Exhibition Booths',
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
+            // {
+            //     items: 'Exhibition Booths',
+            //     Platinum: "9m/12m/12m",
+            //     Gold: "6m",
+            //     Silver: "4.5m/6m/6m"
+            // },
         ],
         cart: [], //it starts empty
         adverts: [
