@@ -1661,25 +1661,46 @@ var vue = new Vue({
                     m.currencyDisclaimer = '';
                     if (m.currency !== this.fixer.base) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
-                        // m.priceearly = (m.originalpriceearly / fx.rates[m.currency]).toFixed();
-                        // m.price = (m.originalprice / this.fixerRates[m.currency]).toFixed();
-                        // if (m.tables){
-                        //     m.tables.price = (m.tables.price / this.fixerRates[m.currency]).toFixed();
-                        //     m.tables.priceearly = parseInt((m.tables.priceearly / this.fixerRates[m.currency]).toFixed());
+                        m.priceearly = parseInt(fx.convert(m.priceearly, { from: m.currency, to: this.fixer.base}).toFixed());
+                        m.price = parseInt(fx.convert(m.price, { from: m.currency, to: this.fixer.base}).toFixed());
+                        if (m.tables){
+                            m.tables.price = parseInt(fx.convert(m.tables.price, { from: m.currency, to: this.fixer.base }).toFixed());
+                            m.tables.priceearly = parseInt(fx.convert(m.tables.priceearly, { from: m.currency, to: this.fixer.base}).toFixed());
 
-                        //     m.tables.schedules.price = parseInt((m.tables.schedules.price / this.fixerRates[m.currency].toFixed()));
-                        //     m.tables.additionalPeople.price = parseInt((m.tables.additionalPeople.price / this.fixerRates[m.currency].toFixed()));
+                            m.tables.schedules.price = parseInt(fx.convert(m.tables.schedules.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed());
 
-                        //     m.tables.sponsorships.platinum.price = parseInt((m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed()));
-                        //     m.tables.sponsorships.gold.price = parseInt((m.tables.sponsorships.platinum.price * this.fixerRates[m.currency].toFixed()));
-                        //     m.tables.sponsorships.silver.price = parseInt((m.tables.sponsorships.silver.price * this.fixerRates[m.currency].toFixed()));
+                            m.tables.additionalPeople.price = parseInt(fx.convert(m.tables.additionalPeople.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed());
 
-                        //     m.tables.marketing_and_sponsorships.forEach(n => {
-                        //         n.types.forEach(p => {
-                        //             p.price = parseInt((p.price * this.fixerRates[m.currency]).toFixed());
-                        //         });
-                        //     });
-                        // }   
+                            m.tables.sponsorships.platinum.price = parseInt(fx.convert(m.tables.sponsorships.platinum.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed());
+
+                            m.tables.sponsorships.gold.price = parseInt(fx.convert(m.tables.sponsorships.gold.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed());
+
+                            m.tables.sponsorships.silver.price = parseInt(fx.convert(m.tables.sponsorships.silver.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed());
+
+                            m.tables.marketing_and_sponsorships.forEach(n => {
+                                n.types.forEach(p => {
+                                    p.price = parseInt(fx.convert(p.price, {
+                                        from: m.currency,
+                                        to: this.fixer.base
+                                    }).toFixed());
+                                });
+                            });
+                        }   
                     }
                 });
             });
@@ -1707,51 +1728,55 @@ var vue = new Vue({
                 m.currencyDisclaimer = '';
                 if (m.currency !== this.fixer.base) {
                     m.currencyDisclaimer = "Converted from " + m.currency;
-                    console.log(fx);
-                    console.log(m.priceearly, this.currentCurrency, event.target.innerText);
-                    m.priceearly = fx.convert(m.priceearly, { from: this.currentCurrency, to: event.target.innerText});
-                    fx.convert(m.price, {
-                        from: this.currentCurrency,
-                        to: event.target.innerText
-                    });
+                    m.priceearly = parseInt(fx.convert(m.priceearly, {
+                        from: m.currency,
+                        to: this.fixer.base
+                    }).toFixed());
+                    m.price = parseInt(fx.convert(m.price, {
+                        from: m.currency,
+                        to: this.fixer.base
+                    }).toFixed());
                     if (m.tables) {
-                        fx.convert(m.tables.price, {
-                            from: this.currentCurrency,
-                            to: event.target.innerText
-                        });
-                        fx.convert(m.tables.priceearly, {
-                            from: this.currentCurrency,
-                            to: event.target.innerText
-                        });
+                        m.tables.price = parseInt(fx.convert(m.tables.price, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
+                        m.tables.priceearly = parseInt(fx.convert(m.tables.priceearly, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
 
-                        fx.convert(m.tables.schedules.price, {
-                            from: this.currentCurrency,
-                            to: event.target.innerText
-                        });
-                        fx.convert(m.tables.additionalPeople.price, {
-                            from: this.currentCurrency,
-                            to: event.target.innerText
-                        });
+                        m.tables.schedules.price = parseInt(fx.convert(m.tables.schedules.price, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
 
-                        fx.convert(m.tables.sponsorships.platinum.price, {
-                            from: this.currentCurrency,
-                            to: event.target.innerText
-                        });
-                        fx.convert(m.tables.sponsorships.gold.price, {
-                            from: this.currentCurrency,
-                            to: event.target.innerText
-                        });
-                        fx.convert(m.tables.sponsorships.silver.price, {
-                            from: this.currentCurrency,
-                            to: event.target.innerText
-                        });
+                        m.tables.additionalPeople.price = parseInt(fx.convert(m.tables.additionalPeople.price, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
+
+                        m.tables.sponsorships.platinum.price = parseInt(fx.convert(m.tables.sponsorships.platinum.price, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
+
+                        m.tables.sponsorships.gold.price = parseInt(fx.convert(m.tables.sponsorships.gold.price, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
+
+                        m.tables.sponsorships.silver.price = parseInt(fx.convert(m.tables.sponsorships.silver.price, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
 
                         m.tables.marketing_and_sponsorships.forEach(n => {
                             n.types.forEach(p => {
-                                fx.convert(p.price, {
-                                    from: this.currentCurrency,
-                                    to: event.target.innerText
-                                });
+                                p.price = parseInt(fx.convert(p.price, {
+                                    from: m.currency,
+                                    to: this.fixer.base
+                                }).toFixed());
                             });
                         });
                     }
