@@ -532,6 +532,15 @@ button.marketing-choice.v-btn.theme--light {
     margin-right: 10px;
 }
 
+button.sponsorship-dialog-info.v-btn.theme--light {
+    background-color: transparent !important;
+    position: absolute;
+    right: -15;
+    top: -10;
+    box-shadow: none;
+    color: #2196f3;
+}
+
 
 
 /* .v-input__slot {

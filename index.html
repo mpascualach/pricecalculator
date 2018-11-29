@@ -62,9 +62,9 @@
                                     <td class="name">{{ props.item.sponsorship_package.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                     <td class="price">{{ currencySymbol }}{{ props.item.sponsorship_package.price }}</td>
                                     <td class="qty">
-                                        <i class="fa fa-plus-square smaller" v-on:click="addTable(props.item)"></i> 
+                                        <!-- <i class="fa fa-plus-square smaller" v-on:click="addTable(props.item)"></i>  -->
                                         {{ props.item.sponsorship_package.quantity }}
-                                        <i class="fa fa-minus-square smaller" v-on:click="removeTable(props.item)"></i>
+                                        <!-- <i class="fa fa-minus-square smaller" v-on:click="removeTable(props.item)"></i> -->
                                     </td>
                                     <td class="sub-total">{{ currencySymbol }}{{ props.item.sponsorship_package.price *
                                         props.item.sponsorship_package.quantity }}
@@ -86,9 +86,9 @@
                                     </td>
                                     <td class="price">{{ currencySymbol }}{{ props.item.price }}</td>
                                     <td class="qty">
-                                        <i class="fa fa-plus-square smaller" v-on:click="addTable(props.item)"></i> 
+                                        <!-- <i class="fa fa-plus-square smaller" v-on:click="addTable(props.item)"></i>  -->
                                             {{ props.item.quantity }}
-                                        <i class="fa fa-minus-square smaller" v-on:click="removeTable(props.item)"></i>
+                                        <!-- <i class="fa fa-minus-square smaller" v-on:click="removeTable(props.item)"></i> -->
                                     </td>
                                     <td class="sub-total">{{ currencySymbol }}{{ props.item.price * props.item.quantity }}</td>
                                     <td class="item-total">{{ currencySymbol }}{{ props.item.price * props.item.quantity * discount }}</td>
@@ -146,7 +146,7 @@
                                         <span class="schedule-alert" v-if="limitReached">There can't be more additional schedules than tables</span>
                                 </td>
                                 <td>{{ currencySymbol }}{{ props.item.schedules.price }}{{ currencySymbol }}</td>
-                                <td class="qty">{{ currencySymbol }}{{ props.item.schedules.quantity }}</td>
+                                <td class="qty">{{ props.item.schedules.quantity }}</td>
                                 <td>{{ currencySymbol }}{{ props.item.schedules.price * props.item.schedules.quantity }}</td>
                                 <td>{{ currencySymbol }}{{ props.item.schedules.price * props.item.schedules.quantity - 0 }}</td>
                                 <td>{{ currencySymbol }}0</td>
@@ -242,6 +242,17 @@
                                             </div>
 
                                             <div class="attendance" v-if="product.incart > 0">
+                                                <div class="attendance tables">
+                                                    <i class="fas fa-table-o"></i> Additional tables: 
+                                                    <i class="fa fa-minus-square smaller" 
+                                                        v-on:click="removeTable(product.tables)" 
+                                                        v-if="product.tables.quantity > 0">
+                                                    </i>
+                                                    <i class="fa fa-minus-square smaller hidden" v-else></i>
+                                                    <span>{{ product.tables.quantity }}</span>
+                                                    <i class="fa fa-plus-square smaller" 
+                                                        v-on:click="addTable(product.tables)"></i>
+                                                </div>
                                                 <div class="attendance schedules">
                                                     <i class="fa fa-calendar-o"></i> Additional schedules:
                                                     <i class="fa fa-minus-square smaller" 
@@ -291,7 +302,22 @@
                                                         v-on:click="removeSubItem(product,product.tables.sponsorships.silver, 'sponsorship_package')"
                                                         v-else>Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price }}</v-btn>
 
-                                                    <i class="fa fa-question-circle"></i>
+                                                    
+                                                    <template>
+                                                         <v-layout row justify-center>
+                                                            <v-dialog v-model="infoModal">
+                                                                <v-btn class="sponsorship-dialog-info" slot="activator">
+                                                                    <i class="fa fa-question-circle"></i>
+                                                                </v-btn>
+                                                                <v-card class="sponsorship-dialog-container">
+                                                                    <v-data-cart :headers="helpheaders">
+
+                                                                    </v-data-cart>
+                                                                </v-card>
+                                                                
+                                                            </v-dialog>
+                                                         </v-layout>
+                                                    </template>
                                                 </div>
 
                                                 <template>

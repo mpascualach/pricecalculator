@@ -1227,6 +1227,15 @@ var vue = new Vue({
                 sortable: false
             },
         ], 
+        helpheaders: [
+            { text: 'Sponsorship Packages, included items: ', sortable: false },
+            { text: 'Platinum', sortable: false },
+            { text: 'Gold', sortable: false },
+            { text: 'Silver', sortable: false } 
+        ],
+        sponsorship_package_info: [
+
+        ],
         cart: [], //it starts empty
         adverts: [
             {
@@ -1478,26 +1487,23 @@ var vue = new Vue({
             this.cart = this.cart.filter(m => m.id !== booth.id);
         },
         removeAdvert(advert){
-            console.log(advert);
             this.total -= advert.price;
             this.cart = this.cart.filter(m => m.name !== advert.name);
         },
-        addTable: function (product) {
-            product.quantity++;
-            if ( product.selectedearly ) this.earlytotal += product.price;
-            else this.total += product.price;
-            this.total += product.price;
+        addTable: function (tables) {
+            tables.quantity++;
+            this.cart.forEach(m => {
+                if (m.id == tables.id){
+                    m.quantity++;
+                    if (m.selectedearly) this.earlytotal += m.price;
+                    else this.total += m.price;
+                }
+            });
         },
-        removeTable: function (cartitem) {
-            cartitem.quantity--;
-            if ( cartitem.selectedearly ) this.earlytotal -= cartitem.price;
-            else this.total -= cartitem.price;
-            if ( cartitem.quantity == 0 ){
-                this.products.forEach(m => {
-                    if ( m.id == cartitem.id ){
-                        this.absoluteRemoveFromCart(m);
-                    }
-                });
+        removeTable: function (tables) {
+            tables.quantity--;
+            if (tables.quantity == 0){
+                this.absoluteRemoveFromCart(tables);
             }
         },
         addSubItem: function (product, subitem, selector, tier) {
