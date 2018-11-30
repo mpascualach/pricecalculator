@@ -15,10 +15,31 @@ body {
 
 div#main-wrapper {
     position: absolute;
-    left: 40;
+    left: 3%;
     width: 100%;
     max-width: 1140px;
 }
+
+.v-table__overflow {
+    overflow-x: unset !important;
+    overflow-y: unset !important;
+    max-width: 840px;
+    margin: 0 auto;
+    width: 50% !important;
+    float: right;
+    position: absolute;
+    right: 10%;
+}
+
+@media (min-width: 1628px) {
+    div#main-wrapper {
+        left: 11%;
+    }
+    .v-table__overflow {
+        right: 0!important;
+    }
+}
+
 
 .events.v-card.theme--light{
     width: 50%;
@@ -112,17 +133,6 @@ th.column.text-xs-left:first-child {
 
 .remove-from-package {
     position: relative;
-    right: 10%;
-}
-
-.v-table__overflow {
-    overflow-x: unset!important;
-    overflow-y: unset!important;
-    max-width: 840px;
-    margin: 0 auto;
-  	width: 50% !important;
-    float: right;
-    position: absolute;
     right: 10%;
 }
 

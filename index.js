@@ -1430,6 +1430,7 @@ var vue = new Vue({
     methods: {
         addToCart: function (product, subitem, selector) {
             let cartitem;
+            console.log(product.booths);
             if ( selector && selector == 'booths' ) {
                 product.booths.booths = true;
                 product.booths.quantity++;
