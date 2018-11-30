@@ -347,7 +347,7 @@ var vue = new Vue({
             incart: 0,
             quantity: 0,
             subtotal: 0,
-            boothselected: false,
+            selectBoothBoolean: false,
             workandtravel: true,
             tables: {
                 id: 2,
@@ -693,7 +693,7 @@ var vue = new Vue({
             incart: 0,
             quantity: 0,
             subtotal: 0,
-            boothselected: false,
+            selectBoothBoolean: false,
             sponsorshipPackageSelected: false,
             workandtravel: false,
             tables: {
@@ -938,7 +938,7 @@ var vue = new Vue({
             quantity: 0,
             subtotal: 0,
             sponsorshipPackageSelected: false,
-            boothselected: false,
+            selectBoothBoolean: false,
             workandtravel: false,
             tables: {
                 id: 4,
@@ -1430,13 +1430,19 @@ var vue = new Vue({
     methods: {
         addToCart: function (product, subitem, selector) {
             let cartitem;
-            console.log(product.booths);
+            console.log(product)
             if ( selector && selector == 'booths' ) {
                 product.booths.booths = true;
                 product.booths.quantity++;
                 product.booths.name = subitem.name;
                 product.booths.price = subitem.price;
                 cartitem = Object.assign({}, product.booths);
+                this.cart.forEach(m => {
+                    if (m.booths){
+                        console.log(m);
+                        return;
+                    }
+                })
                 this.cart.push(cartitem);
                 this.total += cartitem.price;
                 console.log("Cart: ", this.cart);
@@ -1585,6 +1591,9 @@ var vue = new Vue({
                     this.discount = 0.73;
             }
         },
+        // addBoothToCart(product, booths){
+        //     console.log("Booth arguments:", product, booths);
+        // },
         removeBoothFromCart(booth){
             this.total -= booth.price;
             // booth.booths = false;
@@ -1729,6 +1738,7 @@ var vue = new Vue({
         },
         showBoothOptions(product){
             product.selectBoothBoolean = true;
+            console.log(product);
         },
         setBaseCurrency(baseCurrency){
             this.currentCurrency = baseCurrency;

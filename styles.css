@@ -38,6 +38,9 @@ div#main-wrapper {
     .v-table__overflow {
         right: 0!important;
     }
+    .checkout {
+        top: 32%!important;
+    }
 }
 
 
@@ -375,6 +378,8 @@ button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
 
 button.booths.booths-activator.v-btn.theme--light {
     margin-bottom: 7%;
+    position: relative;
+    left: 15px;
 }
 
 .booth-buttons {
