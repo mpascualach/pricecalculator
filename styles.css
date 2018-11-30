@@ -557,6 +557,19 @@ button.sponsorship-dialog-info.v-btn.theme--light {
     color: #2196f3;
 }
 
+.sponsorship-dialog-container.v-card.theme--light {
+    width: 100%;
+    height: 100%;
+}
+
+.sponsorship-modal-info>.v-table__overflow {
+    right: unset !important;
+}
+
+.v-dialog.NaN.v-dialog--active {
+    width: 600px;
+}
+
 
 
 /* .v-input__slot {

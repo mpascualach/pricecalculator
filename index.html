@@ -305,23 +305,26 @@
                                                     
                                                     <template>
                                                          <v-layout row justify-center>
-                                                            <v-dialog v-model="infoModal">
+                                                            <v-dialog :content-class="info-modal" v-model="infoModal">
                                                                 <v-btn class="sponsorship-dialog-info" slot="activator">
                                                                     <i class="fa fa-question-circle"></i>
                                                                 </v-btn>
                                                                 <v-card class="sponsorship-dialog-container">
-                                                                    <v-data-table :headers="helpheaders" :items="sponsorship_package_info">
-                                                                        <template slot="items" slot-scope="props">
-                                                                            <tr>
-                                                                                <td>{{props.item.name}} 
+                                                                    <v-card-text>
+                                                                        <v-data-table class="sponsorship-modal-info" :headers="helpheaders" :items="sponsorship_package_info">
+                                                                            <template slot="items" slot-scope="props">
+                                                                                <tr>
+                                                                                    <td>{{props.item.name}}
                                                                                         <span v-if="props.item.sidenote">{{ props.item.sidenote }}</span>
                                                                                     </td>
-                                                                                <td>{{props.item.Platinum}}</td>
-                                                                                <td>{{props.item.Gold}}</td>
-                                                                                <td>{{props.item.Silver}}</td>
-                                                                            </tr>
-                                                                        </template>
-                                                                    </v-data-table>
+                                                                                    <td>{{props.item.Platinum}}</td>
+                                                                                    <td>{{props.item.Gold}}</td>
+                                                                                    <td>{{props.item.Silver}}</td>
+                                                                                </tr>
+                                                                            </template>
+                                                                        </v-data-table>
+                                                                    </v-card-text>
+                                                                    
                                                                 </v-card>
                                                                 
                                                             </v-dialog>

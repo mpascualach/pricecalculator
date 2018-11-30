@@ -40,7 +40,7 @@ var vue = new Vue({
             subtotal: 0,
             selectBoothBoolean: false,
             boothselected: false,
-            workandtravel: true,
+            workandtravel: true, //for work and travel accounts - an alternative kind of workshop
             tables: {
                 id: 1,
                 name: "ANZA Table",
@@ -1438,14 +1438,14 @@ var vue = new Vue({
                 product.booths.price = subitem.price;
                 cartitem = Object.assign({}, product.booths);
                 this.cart.forEach(m => {
+                    console.log("Cart item: ", m);
                     if (m.booths){
-                        console.log(m);
+                        console.log("Booth item: ", m);
                         return;
                     }
                 })
                 this.cart.push(cartitem);
                 this.total += cartitem.price;
-                console.log("Cart: ", this.cart);
             }
             else if (selector == 'adverts'){
                 cartitem = Object.assign({}, subitem);
