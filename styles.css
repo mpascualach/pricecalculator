@@ -17,10 +17,11 @@ div#main-wrapper {
     position: absolute;
     left: 40;
     width: 100%;
+    max-width: 1140px;
 }
 
 .events.v-card.theme--light{
-    width: 40%;
+    width: 50%;
 }
 
 .headline {
