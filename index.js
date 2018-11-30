@@ -1262,88 +1262,68 @@ var vue = new Vue({
                 Gold: 1,
                 Silver: 1
             },
-            // {
-            //     items: 'Recognition as Event Sponsor',
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Bag insert',
-            //     sidenote: "(Berlin/NA/ANZA Workshops)",
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Full page advertisement in educator catalogue',
-            //     sidenote: "(Berlin/NA/ANZA Workshops)",
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Full page advertisement in agent catalogue',
-            //     sidenote: "(Berlin/NA/ANZA Workshops)",
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Literature Display Rack',
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Presentation',
-            //     sidenote: "(Berlin/NA/ANZA Workshops)",
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: '',
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Exhibition Booths',
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Exhibition Booths',
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Exhibition Booths',
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Exhibition Booths',
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Exhibition Booths',
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
-            // {
-            //     items: 'Exhibition Booths',
-            //     Platinum: "9m/12m/12m",
-            //     Gold: "6m",
-            //     Silver: "4.5m/6m/6m"
-            // },
+            {
+                name: 'Recognition as Event Sponsor',
+                Platinum: "Yes",
+                Gold: "Yes",
+                Silver: "Yes"
+            },
+            {
+                name: 'Bag insert',
+                sidenote: "(paper/USB/other)",
+                Platinum: "Yes",
+                Gold: "Yes",
+                Silver: "Yes"
+            },
+            {
+                name: 'Full page advertisement in educator catalogue',
+                Platinum: "Yes",
+                Gold: "Yes",
+                Silver: "Yes"
+            },
+            {
+                name: 'Full page advertisement in agent catalogue',
+                Platinum: "Yes",
+                Gold: "Yes",
+                Silver: "No"
+            },
+            {
+                name: 'Literature Display Rack',
+                Platinum: "2",
+                Gold: "1",
+                Silver: "No"
+            },
+            {
+                name: 'Presentation',
+                sidenote: "(Berlin 5 -7 pm. ANZA Platinum only - 30min)",
+                Platinum: "50 mins",
+                Gold: "50 mins",
+                Silver: "25 mins"
+            },
+            {
+                name: 'Logo on bag',
+                Platinum: "Yes",
+                Gold: "No",
+                Silver: "No"
+            },
+            {
+                name: 'Logo on eSchedule PRO',
+                Platinum: "Yes",
+                Gold: "Yes",
+                Silver: "Yes"
+            },
+            {
+                name: 'ICEF Monitor advert - Skyscraper',
+                Platinum: "30K impressions",
+                Gold: "-",
+                Silver: "-"
+            },
+            {
+                name: 'ICEF Monitor advert - Rectangle',
+                Platinum: "-",
+                Gold: "20K impressions",
+                Silver: "10K impressions"
+            },
         ],
         cart: [], //it starts empty
         adverts: [
