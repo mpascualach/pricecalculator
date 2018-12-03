@@ -1938,7 +1938,6 @@ var vue = new Vue({
     },
     mounted(){
         this.loaded = true;
-        console.log(this.loaded)
     }
 })
 
