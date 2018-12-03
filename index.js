@@ -1426,7 +1426,8 @@ var vue = new Vue({
         allowedCurrencies: ["EUR","GBP","USD","CAD","AUD"],
         currentCurrency: "EUR",
         currencySymbol: "€",
-        defaultCurrency: "EUR"
+        defaultCurrency: "EUR",
+        loaded: false
     },
     filters: {
         moneyify: function( value ){
@@ -1934,7 +1935,10 @@ var vue = new Vue({
     },
     beforeMount(){
         this.setBaseCurrency(this.defaultCurrency);
-        document.getElementById("main-wrapper").style.visibility = "unset";
+    },
+    mounted(){
+        this.loaded = true;
+        console.log(this.loaded)
     }
 })
 
