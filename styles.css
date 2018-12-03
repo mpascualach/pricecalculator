@@ -20,6 +20,11 @@ div#main-wrapper {
     max-width: 1140px;
 }
 
+#events-wrapper {
+    position: relative;
+    /* left: 50%; */
+}
+
 .v-table__overflow {
     overflow-x: unset !important;
     overflow-y: unset !important;
@@ -493,6 +498,11 @@ button.work-and-travel.v-btn.theme--light {
 button.add-to-package.remove-from-package.v-btn.theme--light {
     position: absolute;
     top: 20;
+}
+
+button.adverts.adverts-activator.v-btn.theme--light {
+    /* position: absolute;
+    top: 350; */
 }
 
 ul.v-expansion-panel.marketing-and-sponsorship-items.theme--light {

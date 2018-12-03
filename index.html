@@ -213,7 +213,9 @@
 
                 <v-card class="events">
 
-                    <v-container xs12>
+                    <v-container xs12 id="events-wrapper" 
+                        v-bind:style="[cart.length == 0 ? { left: '50%' } : { left: '0' }]"
+                        >
                         <v-layout row wrap>
                             <v-layout column>
                                 <v-flex v-for="product in products" v-bind:data="product" v-bind:key="product.id">
