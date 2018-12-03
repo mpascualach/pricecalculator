@@ -228,7 +228,7 @@
                                                         Early discount rates are no longer applicable.
                                                     </span>
                                                     <span v-else-if="product.selectedearly" class="early-notification">Early discount
-                                                        rates have been applied at: {{ currencySymbol }}{{ product.priceearly | moneyify }}!</span>
+                                                        rates have been applied at {{ currencySymbol }}{{ product.priceearly | moneyify }}!</span>
                                                 </div>
                                                 <div class="price-container">
                                                     <div class="product-price" v-if="product.tables">
@@ -431,7 +431,7 @@
                                         </div>
 
                                         <v-card-actions v-if="!product.incart">
-                                            <v-btn v-if="!attendBooths && accountType == 'educator'" 
+                                            <v-btn v-if="!attendBooths && accountType == 'educator' && !product.selectBoothBoolean" 
                                                 v-on:click="addToCart(product, product.tables, 'tables')"> 
                                                 Add to package 
                                             </v-btn>

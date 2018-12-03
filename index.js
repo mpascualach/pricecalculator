@@ -1600,6 +1600,7 @@ var vue = new Vue({
             this.products.forEach(m => {
                 if (m.id == booth.id){
                     m.booths.quantity = 0;
+                    m.selectBoothBoolean = false;
                 }
             })
             booth.quantity--;
