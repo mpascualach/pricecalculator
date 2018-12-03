@@ -232,7 +232,7 @@
                                                 </div>
                                                 <div class="price-container">
                                                     <div class="product-price" v-if="product.tables">
-                                                        {{ currencySymbol }}{{ product.tables.price }}
+                                                        {{ currencySymbol }}{{ product.tables.price | moneyify }}
                                                     </div>
                                                     <div class="product-price" v-else>
                                                         {{ currencySymbol }}{{ product.price }}
