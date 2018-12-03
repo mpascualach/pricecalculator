@@ -323,7 +323,7 @@ button.platinum.v-btn.theme--light {
 }
 
 button.platinum.v-btn.theme--light:hover {
-    border: none;
+    border: none!important;
     background-color: #E5E4E2 !important;
 }
 
@@ -333,7 +333,7 @@ button.gold.v-btn.theme--light {
 }
 
 button.gold.v-btn.theme--light:hover {
-    border: none;
+    border: none!important;
     background-color: #D4AF37 !important;
 }
 
@@ -343,6 +343,7 @@ button.silver.v-btn.theme--light {
 }
 
 button.silver.v-btn.theme--light:hover {
+    border: none!important;
     background-color: #C0C0C0 !important;
 }
 
