@@ -46,6 +46,7 @@ div#main-wrapper {
 td {
     text-align: center;
     white-space: nowrap;
+    font-size: 14px;
 }
 
 
@@ -296,18 +297,6 @@ td.checkout-btn-container > button {
     margin-top: 2%;
 }
 
-.sponsorship-platinum > td {
-    background-color: #E5E4E2;
-}
-
-.sponsorship-gold > td {
-    background-color: #D4AF37;
-}
-
-.sponsorship-silver > td {
-    background-color: #f5f5f5;
-}
-
 .v-btn {
     padding: 0 10px;
 }
@@ -317,14 +306,28 @@ button.platinum.v-btn.theme--light {
     /* color: #e5e4e2 !important; */
 }
 
+button.platinum.v-btn.theme--light:hover {
+    border: none;
+    background-color: #E5E4E2 !important;
+}
+
 button.gold.v-btn.theme--light {
     border: 2px solid #D4AF37 !important;
     /* color: #D4AF37 !important; */
 }
 
+button.gold.v-btn.theme--light:hover {
+    border: none;
+    background-color: #D4AF37 !important;
+}
+
 button.silver.v-btn.theme--light {
     border: 2px solid #C0C0C0 !important;
     /* color: #C0C0C0 !important; */
+}
+
+button.silver.v-btn.theme--light:hover {
+    background-color: #C0C0C0 !important;
 }
 
 button.platinum-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
@@ -572,7 +575,9 @@ button.sponsorship-dialog-info.v-btn.theme--light {
 }
 
 .v-dialog.NaN.v-dialog--active {
-    width: 600px;
+    width: 70%;
+    position: relative;
+    bottom: 1%;
 }
 
 td.sponsorship-info-name {
@@ -591,7 +596,7 @@ td.sponsorship-info-value {
 
 i.fa.fa-question-circle.sponsorship-dialog-activator {
     position: relative;
-    right: 20;
+    right: 10;
 }
 
 i.fa.fa-check.sponsorship-info-check {
