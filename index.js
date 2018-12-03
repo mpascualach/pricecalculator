@@ -1725,7 +1725,6 @@ var vue = new Vue({
         },
         gotoCheckout(){
             this.cart.forEach(m => {
-                console.log(m);
                 if (m.sponsorshipPackageSelected){
                     this.selectedWorkshops.push(m.sponsorship_package.name);
                 }
@@ -1931,6 +1930,9 @@ var vue = new Vue({
                 }
             });
             this.setBaseCurrency(event.target.innerText);
+        },
+        confirmQuote(){
+            console.log("Quote confirmed! :", document.getElementById("checkout"));
         }
     },
     beforeMount(){
