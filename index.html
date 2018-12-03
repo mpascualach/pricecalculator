@@ -108,7 +108,7 @@
 
                             <tr v-if="props.item.advert"> 
                                 <td>{{ props.item.name }}</td>
-                                <td>{{ currencySymbol }}{{ props.item.price | moneyify }}{{ currencySymbol }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.price | moneyify }}</td>
                                 <td class="qty">{{ props.item.quantity }}</td>
                                 <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify}}</td>
                                 <td>{{ currencySymbol }}{{ (props.item.price * props.item.quantity)  | moneyify}}</td>
