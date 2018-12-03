@@ -570,6 +570,33 @@ button.sponsorship-dialog-info.v-btn.theme--light {
     width: 600px;
 }
 
+td.sponsorship-info-name {
+    font-weight: 700 !important;
+}
+
+.sponsorship-info-sidenote {
+    color: #2196f3;
+    font-weight: 400!important;
+}
+
+td.sponsorship-info-value {
+    color: #2196f3;
+    text-align: center;
+}
+
+i.fa.fa-question-circle.sponsorship-dialog-activator {
+    position: relative;
+    right: 20;
+}
+
+i.fa.fa-check.sponsorship-info-check {
+    color: #228B22;
+}
+
+i.fa.fa-times.sponsorship-info-cross {
+    color: #FFA500;
+}
+
 
 
 /* .v-input__slot {

@@ -1273,10 +1273,11 @@ var vue = new Vue({
                 sidenote: "(incl. eSchedule PRO account)",
                 Platinum: 2,
                 Gold: 1,
-                Silver: 1
+                Silver: "No"
             },
             {
                 name: 'Recognition as Event Sponsor',
+                sidenote: '',
                 Platinum: "Yes",
                 Gold: "Yes",
                 Silver: "Yes"
@@ -1290,20 +1291,23 @@ var vue = new Vue({
             },
             {
                 name: 'Full page advertisement in educator catalogue',
+                sidenote: '',
                 Platinum: "Yes",
                 Gold: "Yes",
                 Silver: "Yes"
             },
             {
                 name: 'Full page advertisement in agent catalogue',
+                sidenote: '',
                 Platinum: "Yes",
                 Gold: "Yes",
                 Silver: "No"
             },
             {
                 name: 'Literature Display Rack',
-                Platinum: "2",
-                Gold: "1",
+                sidenote: '',
+                Platinum: 2,
+                Gold: 1,
                 Silver: "No"
             },
             {
@@ -1315,24 +1319,28 @@ var vue = new Vue({
             },
             {
                 name: 'Logo on bag',
+                sidenote: '',
                 Platinum: "Yes",
                 Gold: "No",
                 Silver: "No"
             },
             {
                 name: 'Logo on eSchedule PRO',
+                sidenote: '',
                 Platinum: "Yes",
                 Gold: "Yes",
                 Silver: "Yes"
             },
             {
                 name: 'ICEF Monitor advert - Skyscraper',
+                sidenote: '',
                 Platinum: "30K impressions",
                 Gold: "-",
                 Silver: "-"
             },
             {
                 name: 'ICEF Monitor advert - Rectangle',
+                sidenote: '',
                 Platinum: "-",
                 Gold: "20K impressions",
                 Silver: "10K impressions"

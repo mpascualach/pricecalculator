@@ -216,7 +216,7 @@
                     <v-container xs12>
                         <v-layout row wrap>
                             <v-layout column>
-                                <v-flex v-for="product in products">
+                                <v-flex v-for="product in products" v-bind:data="product" v-bind:key="product.id">
                                     <v-card class="blue--text">
                                         <div class="product-info-container">
                                             <div class="product-info">
@@ -307,19 +307,34 @@
                                                          <v-layout row justify-center>
                                                             <v-dialog :content-class="info-modal" v-model="infoModal">
                                                                 <v-btn class="sponsorship-dialog-info" slot="activator">
-                                                                    <i class="fa fa-question-circle"></i>
+                                                                    <i class="fa fa-question-circle sponsorship-dialog-activator"></i>
                                                                 </v-btn>
                                                                 <v-card class="sponsorship-dialog-container">
                                                                     <v-card-text>
-                                                                        <v-data-table class="sponsorship-modal-info" :headers="helpheaders" :items="sponsorship_package_info">
+                                                                        <v-data-table class="sponsorship-modal-info" 
+                                                                            :headers="helpheaders" 
+                                                                            :items="sponsorship_package_info"
+                                                                            :total-items="sponsorship_package_info.length">
                                                                             <template slot="items" slot-scope="props">
-                                                                                <tr>
-                                                                                    <td v-if="props.item.name">{{props.item.name}}
-                                                                                        <span v-if="props.item.sidenote">{{ props.item.sidenote }}</span>
+                                                                                <tr class="sponsorship-info-row">
+                                                                                    <td class="sponsorship-info-name" v-if="props.item.name">{{props.item.name}}
+                                                                                        <span v-if="props.item.sidenote"> - <span class="sponsorship-info-sidenote">{{ props.item.sidenote }}</span> </span>
                                                                                     </td>
-                                                                                    <td>{{props.item.Platinum}}</td>
-                                                                                    <td>{{props.item.Gold}}</td>
-                                                                                    <td>{{props.item.Silver}}</td>
+                                                                                    <td class="sponsorship-info-value">
+                                                                                        <span v-if="props.item.Platinum == 'Yes'"><i class="fa fa-check sponsorship-info-check"></i></span>
+                                                                                        <span v-else-if="props.item.Platinum == 'No'"><i class="fa fa-times sponsorship-info-cross"></i></span>
+                                                                                        <span v-else>{{props.item.Platinum}}</span>
+                                                                                    </td>
+                                                                                    <td class="sponsorship-info-value">
+                                                                                        <span v-if="props.item.Gold == 'Yes'"><i class="fa fa-check sponsorship-info-check"></i></span>
+                                                                                        <span v-else-if="props.item.Gold == 'No'"><i class="fa fa-times sponsorship-info-cross"></i></span>
+                                                                                        <span v-else>{{props.item.Gold}}</span>
+                                                                                    </td>
+                                                                                    <td class="sponsorship-info-value">
+                                                                                        <span v-if="props.item.Silver == 'Yes'"><i class="fa fa-check sponsorship-info-check"></i></span>
+                                                                                        <span v-else-if="props.item.Silver == 'No'"><i class="fa fa-times sponsorship-info-cross"></i></span>
+                                                                                        <span v-else>{{props.item.Silver}}</span>
+                                                                                    </td>
                                                                                 </tr>
                                                                             </template>
                                                                         </v-data-table>
@@ -334,7 +349,8 @@
 
                                                 <template>
                                                     <v-expansion-panel class="marketing-and-sponsorship-items">
-                                                        <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships">
+                                                        <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships"
+                                                            v-bind:data="item" v-bind:key="item.id">
                                                             <div slot="header">{{ item.name }}</div>
                                                             <div class="sponsorship-type" v-for="type in item.types">
                                                                 <v-btn class="marketing-choice" 
