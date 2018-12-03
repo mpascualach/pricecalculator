@@ -13,11 +13,21 @@ body {
     left: -5%;
 } */
 
-div#main-wrapper {
+#main-wrapper {
     position: absolute;
-    left: 3%;
+    left: -5%;
+    top: 18%;
     width: 100%;
     max-width: 1140px;
+    /* visibility: hidden; */
+}
+
+.application--wrapper {
+    background-color: #eef0f3;
+}
+
+.theme--light.application {
+    background-color: #eef0f3!important;
 }
 
 #events-wrapper {
@@ -38,7 +48,8 @@ div#main-wrapper {
 
 @media (min-width: 1628px) {
     div#main-wrapper {
-        left: 11%;
+        /* left: -5%; */
+        top: 40%;
     }
     .v-table__overflow {
         right: 0!important;
@@ -584,7 +595,7 @@ button.sponsorship-dialog-info.v-btn.theme--light {
     right: unset !important;
 }
 
-.v-dialog.NaN.v-dialog--active {
+.v-dialog.info-modal.v-dialog--active {
     width: 70%;
     position: relative;
     bottom: 1%;
@@ -606,7 +617,7 @@ td.sponsorship-info-value {
 
 i.fa.fa-question-circle.sponsorship-dialog-activator {
     position: relative;
-    right: 10;
+    /* right: 10; */
 }
 
 i.fa.fa-check.sponsorship-info-check {
