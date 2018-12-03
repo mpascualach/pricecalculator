@@ -14,9 +14,9 @@ body {
 } */
 
 #main-wrapper {
-    position: absolute;
+    position: relative;
     left: -5%;
-    top: 18%;
+    top: 0;
     width: 100%;
     max-width: 1140px;
     /* visibility: hidden; */
@@ -47,10 +47,6 @@ body {
 }
 
 @media (min-width: 1628px) {
-    div#main-wrapper {
-        /* left: -5%; */
-        top: 40%;
-    }
     .v-table__overflow {
         right: 0!important;
     }
@@ -519,7 +515,12 @@ button.adverts.adverts-activator.v-btn.theme--light {
 }
 
 ul.v-expansion-panel.marketing-and-sponsorship-items.theme--light {
-    width: 103%;
+    width: 103.2%;
+    box-shadow:none;
+}
+
+.theme--light.v-expansion-panel .v-expansion-panel__container {
+    border-top: none!important;
 }
 
 button.marketing-choice.v-btn.theme--light {
@@ -579,10 +580,14 @@ button.marketing-choice.v-btn.theme--light {
     margin-right: 10px;
 }
 
+.product-info-container{
+    padding-bottom: 4%;
+}
+
 button.sponsorship-dialog-info.v-btn.theme--light {
     background-color: transparent !important;
     position: absolute;
-    right: -15;
+    right: -2%;
     top: -10;
     box-shadow: none;
     color: #2196f3;
