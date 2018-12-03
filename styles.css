@@ -584,10 +584,6 @@ button.marketing-choice.v-btn.theme--light {
     margin-right: 10px;
 }
 
-.product-info-container{
-    padding-bottom: 4%;
-}
-
 button.sponsorship-dialog-info.v-btn.theme--light {
     background-color: transparent !important;
     position: absolute;
@@ -624,6 +620,10 @@ td.sponsorship-info-name {
 td.sponsorship-info-value {
     color: #2196f3;
     text-align: center;
+}
+
+th.column.text-xs-left {
+    font-weight: 600;
 }
 
 i.fa.fa-question-circle.sponsorship-dialog-activator {
