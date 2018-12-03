@@ -28,7 +28,7 @@ div#main-wrapper {
     width: 50% !important;
     float: right;
     position: absolute;
-    right: 10%;
+    right: 1%;
 }
 
 @media (min-width: 1628px) {
@@ -41,6 +41,11 @@ div#main-wrapper {
     .checkout {
         top: 32%!important;
     }
+}
+
+td {
+    text-align: center;
+    white-space: nowrap;
 }
 
 
