@@ -546,6 +546,10 @@ button.marketing-choice.v-btn.theme--light {
     width: 400px;
 }
 
+.v-dialog__container {
+    margin-bottom: 2%;
+}
+
 .sponsorship-type {
     justify-content: start!important;
     margin-left: 6%;
