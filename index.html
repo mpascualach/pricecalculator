@@ -86,7 +86,7 @@
                                     </td>
                                     <td class="sub-total">{{ currencySymbol }}{{ (props.item.price * props.item.quantity)  | moneyify }}</td>
                                     <td class="item-total">{{ currencySymbol }}{{ (props.item.price * props.item.quantity * discount)  | moneyify }}</td>
-                                    <td class="discount">{{ currencySymbol }}{{ ( ( (props.item.price * props.item.quantity) * discount ) - (props.item.price | moneyify
+                                    <td class="discount">{{ currencySymbol }}{{ ( ( (props.item.price * props.item.quantity) * discount ) - (props.item.price 
                                         *
                                         props.item.quantity) ) | moneyify }}</td>
                                     <td>
@@ -126,7 +126,7 @@
                                 </td>
                                 <td class="sub-total">{{ currencySymbol }}{{ (props.item.price * props.item.quantity)  | moneyify }}</td>
                                 <td class="item-total">{{ currencySymbol }}{{ ( (props.item.price * props.item.quantity) * discount )  | moneyify }}</td>
-                                <td class="discount">{{ currencySymbol }}{{ ( ( (props.item.price * props.item.quantity) * discount ) - (props.item.price | moneyify
+                                <td class="discount">{{ currencySymbol }}{{ ( ( (props.item.price * props.item.quantity) * discount ) - (props.item.price 
                                     *
                                     props.item.quantity) ) | moneyify }}</td>
                                 <td>
