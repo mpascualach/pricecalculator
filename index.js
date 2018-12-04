@@ -344,6 +344,7 @@ var vue = new Vue({
             },
             additional: []
         },
+        //Berlin
         {
             id: 2,
             name: "Berlin",
@@ -690,6 +691,7 @@ var vue = new Vue({
             },
             additional: []
         },
+        //Beijing
         {
             id: 3,
             name: "Beijing",
@@ -934,6 +936,7 @@ var vue = new Vue({
             },
             additional: []
         },
+        //Miami
         {
             id: 4,
             name: "Miami",
@@ -1203,6 +1206,7 @@ var vue = new Vue({
             },
             additional: []
         },
+        //Higher Education Forum
         {
             id: 5,
             name: "Higher Education ",
@@ -1472,6 +1476,7 @@ var vue = new Vue({
             },
             additional: []
         },
+        // Higher Education Partnership Forum
         {
             id: 6,
             name: "Higher Education Partnership Forum",
@@ -1700,10 +1705,50 @@ var vue = new Vue({
                     },
                 ]
             },
+            booths: {
+                id: 6,
+                quantity: 0,
+                price: 0,
+                name: '',
+                description: '',
+                large12: {
+                    id: 6,
+                    name: "Higher Education Partnership Forum Workshop Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 12000,
+                    originalprice: 12000,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 6,
+                    name: "Higher Education Partnership Forum Workshop Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 8000,
+                    originalprice: 8000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 6,
+                    name: "Higher Education Partnership Forum Workshop Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 6000,
+                    originalprice: 6000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 6,
+                    name: "Higher Education Partnership Forum Workshop Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 5000,
+                    originalprice: 5000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+            },
         },
+        //Latin America
         {
             id: 7,
-            name: "Latin American Workshop",
+            name: "Latin America",
             price: 4400,
             originalprice: 4400,
             priceearly: 3900,
@@ -1712,7 +1757,7 @@ var vue = new Vue({
             endofearly: false,
             currency: "EUR",
             description: "Latin American Workshop description text goes here",
-            earlybirdends: 20180311,
+            earlybirdends: 20180331,
             earlyRate: false,
             incart: 0,
             quantity: 0,
@@ -1929,10 +1974,51 @@ var vue = new Vue({
                     },
                 ]
             },
+            booths: {
+                id: 7,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 7,
+                    name: "Latin American Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 7,
+                    name: "Latin American Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 7,
+                    name: "Latin American Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 7,
+                    name: "Latin American Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
         },
+        //Dubai
         {
             id: 8,
-            name: "ICEF Dubai ",
+            name: "Dubai",
             price: 4400,
             originalprice: 4400,
             priceearly: 3900,
@@ -2158,10 +2244,51 @@ var vue = new Vue({
                     },
                 ]
             },
+            booths: {
+                id: 8,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 8,
+                    name: "Dubai Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 8,
+                    name: "Dubai Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 8,
+                    name: "Dubai Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 8,
+                    name: "Dubai Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
         },
+        //Japan
         {
             id: 9,
-            name: "ICEF Japan",
+            name: "Japan",
             price: 4400,
             originalprice: 4400,
             priceearly: 3900,
@@ -2387,10 +2514,51 @@ var vue = new Vue({
                     },
                 ]
             },
+            booths: {
+                id: 9,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 9,
+                    name: "Japan Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 9,
+                    name: "Japan Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 9,
+                    name: "Japan Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 9,
+                    name: "Japan Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
         },
+        //Mexico
         {
             id: 10,
-            name: "ICEF Mexico",
+            name: "Mexico",
             price: 6900,
             originalprice: 2400,
             priceearly: 3900,
@@ -2616,10 +2784,51 @@ var vue = new Vue({
                     },
                 ]
             },
+            booths: {
+                id: 10,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 10,
+                    name: "Mexico Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 10,
+                    name: "Mexico Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 10,
+                    name: "Mexico Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 10,
+                    name: "Mexico Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
         },
+        //Ukraine
         {
-            id: 11,
-            name: "ICEF Ukraine ",
+            id: 12,
+            name: "Ukraine ",
             price: 4400,
             originalprice: 4400,
             priceearly: 3900,
@@ -2628,7 +2837,7 @@ var vue = new Vue({
             endofearly: false,
             currency: "EUR",
             description: "ICEF Ukraine description text goes here",
-            earlybirdends: 20180311,
+            earlybirdends: 20180831,
             earlyRate: false,
             incart: 0,
             quantity: 0,
@@ -2845,239 +3054,51 @@ var vue = new Vue({
                     },
                 ]
             },
-        },
-        {
-            id: 12,
-            name: "ICEF Moscow",
-            price: 6900,
-            originalprice: 2400,
-            priceearly: 3900,
-            originalpriceearly: 3900,
-            selectedearly: false,
-            endofearly: false,
-            currency: "EUR",
-            description: "ICEF Moscow description text goes here",
-            earlybirdends: 20180311,
-            earlyRate: false,
-            incart: 0,
-            quantity: 0,
-            subtotal: 0,
-            sponsorshipPackageSelected: false,
-            selectBoothBoolean: false,
-            workandtravel: false,
-            tables: {
+            booths: {
                 id: 12,
-                name: "ICEF Moscow Table",
-				discount: 0,
-                price: 4400,
-                originalprice: 4400,
-                priceearly: 3900,
-                originalpriceearly: 3900,
                 quantity: 0,
-                schedules: {
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
                     id: 12,
-                    name: "ICEF Moscow Additional Schedule",
-                    discount: 0,
+                    name: "Ukraine Exhibition Booth 12m²",
                     quantity: 0,
-                    price: 2400,
-                    originalprice: 2400,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
                 },
-                additionalPeople: {
+                medium8: {
                     id: 12,
-                    name: "ICEF Moscow Additional Person",
-                    discount: 0,
+                    name: "Ukraine Exhibition Booth 8m²",
                     quantity: 0,
-                    price: 990,
-                    originalprice: 990,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
                 },
-                sponsorships: {
-                    platinum: {
-                        id: 12,
-                        name: "ICEF Moscow Platinum Sponsorship Package",
-                        price: 16000,
-                        originalprice: 16000,
-                        quantity: 0,
-                        sponsorshipPackage: true
-                    },
-                    gold: {
-                        id: 12,
-                        name: "ICEF Moscow Gold Sponsorship Package",
-                        price: 11000,
-                        originalprice: 11000,
-                        quantity: 0,
-                        sponsorshipPackage: true
-                    },
-                    silver: {
-                        id: 12,
-                        name: "ICEF Moscow Silver Sponsorship Package",
-                        price: 8000,
-                        originalprice: 8000,
-                        quantity: 0,
-                        sponsorshipPackage: true
-                    },
+                medium6: {
+                    id: 12,
+                    name: "Ukraine Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
                 },
-                sponsorship_package: {
-                    tier: '',
-                    name: '',
-                    price: 0,
-                    quantity: 0
-                },
-                marketing_and_sponsorships: [
-                    {
-                        id: 12,
-                        name: 'Advertisement in Educator/Agent Catalogue',
-                        types: [{
-                                name: 'Inside cover',
-                                price: 1850,
-                                originalprice: 1850,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Outside cover',
-                                price: 2150,
-                                originalprice: 2150,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Full page',
-                                price: 1100,
-                                originalprice: 1100,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Half page',
-                                price: 750,
-                                originalprice: 750,
-                                quantity: 0
-                            }
-                        ]
-                    },
-                    {
-                        id: 12,
-                        name: "Display advertising",
-                        types: [
-                            {
-                                name: 'Literature Display Rack',
-                                price: 1000,
-                                originalprice: 1000,
-                                quantity: 0
-                            }
-                        ]
-                    },
-                    {
-                        id: 12,
-                        name: "Merchandise Sponsorship",
-                        types: [{
-                                name: 'Note pads',
-                                price: 1700,
-                                originalprice: 1700,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Pens',
-                                price: 2300,
-                                originalprice: 2300,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Bag insert - paper',
-                                price: 900,
-                                originalprice: 900,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Bag insert - paper',
-                                price: 1800,
-                                originalprice: 1800,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Bag tags',
-                                price: 2200,
-                                originalprice: 2200,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Key card sleeves',
-                                price: 3300,
-                                originalprice: 3300,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Neck cords',
-                                price: 3900,
-                                originalprice: 3900,
-                                quantity: 0
-                            },
-                        ]
-                    },
-                    {
-                        id: 12,
-                        name: "Hospitality Sponsorship",
-                        types: [
-                                {
-                                name: 'Coffee & tea break',
-                                price: 2500,
-                                originalprice: 2500,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Lunch',
-                                price: 2500,
-                                originalprice: 2500,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Welcome reception',
-                                price: 3500,
-                                originalprice: 3500,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Dinner reception',
-                                price: 5000,
-                                originalprice: 5000,
-                                quantity: 0
-                            }
-                        ]
-                    },
-                    {
-                        id: 12,
-                        name: "Services Sponsorship",
-                        types: [
-                            {
-                                name: 'Agent hotel room drop',
-                                price: 3300,
-                                originalprice: 3300,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Agent lounge - dedicated room',
-                                price: 5400,
-                                originalprice: 5400,
-                                quantity: 0
-                            },
-                            {
-                                name: 'Agent lounge - dedicated area',
-                                price: 3900,
-                                originalprice: 3900,
-                                quantity: 0
-                            },
-                        ]
-                    },
-                    {
-                        id: 6,
-                        name: "Presentations",
-                        types: [
-
-                        ]
-                    },
-                ]
+                std4: {
+                    id: 12,
+                    name: "Ukraine Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
             },
         },
+        //Central Asia Focus
         {
             id: 13,
-            name: "ICEF Central Asia Focus",
+            name: "Central Asia Focus",
             price: 4400,
             originalprice: 4400,
             priceearly: 3900,
@@ -3303,10 +3324,51 @@ var vue = new Vue({
                     },
                 ]
             },
+            booths: {
+                id: 13,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 13,
+                    name: "Central Asia Focus Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 13,
+                    name: "Central Asia Focus Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 13,
+                    name: "Central Asia Focus Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 13,
+                    name: "Latin American Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
         },
+        //North America
         {
             id: 14,
-            name: "ICEF North America",
+            name: "North America",
             price: 4400,
             originalprice: 4400,
             priceearly: 3900,
@@ -3532,7 +3594,48 @@ var vue = new Vue({
                     },
                 ]
             },
+            booths: {
+                id: 14,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 14,
+                    name: "North American Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 14,
+                    name: "North American Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 14,
+                    name: "North American Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 14,
+                    name: "North American Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
         },
+        //Africa
         {
             id: 15,
             name: "ICEF Africa",
@@ -3761,7 +3864,48 @@ var vue = new Vue({
                     },
                 ]
             },
+            booths: {
+                id: 15,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 15,
+                    name: "Africa Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 15,
+                    name: "Africa Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 15,
+                    name: "Africa Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 15,
+                    name: "Africa Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
         },
+        //Southeast Asia
         {
             id: 16,
             name: "ICEF Southeast Asia",
@@ -3989,6 +4133,316 @@ var vue = new Vue({
                         ]
                     },
                 ]
+            },
+            booths: {
+                id: 16,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 16,
+                    name: "Southeast Asia Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 16,
+                    name: "Southeast Asia Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 16,
+                    name: "Southeast Asia Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 7,
+                    name: "Southeast Asia Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
+            },
+        },
+        //Moscow
+        {
+            id: 17,
+            name: "ICEF Moscow",
+            price: 6900,
+            originalprice: 2400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF Moscow description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 17,
+                name: "ICEF Moscow Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 17,
+                    name: "ICEF Moscow Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 17,
+                    name: "ICEF Moscow Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 17,
+                        name: "ICEF Moscow Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 17,
+                        name: "ICEF Moscow Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 17,
+                        name: "ICEF Moscow Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 17,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 17,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 17,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 17,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 17,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 17,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+            booths: {
+                id: 17,
+                quantity: 0,
+                price: 0,
+                originalprice: 2400,
+                name: '',
+                description: '',
+                large12: {
+                    id: 17,
+                    name: "Moscow Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 10500,
+                    originalprice: 10500,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 17,
+                    name: "Moscow Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 7500,
+                    originalprice: 7500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 17,
+                    name: "Moscow Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 5500,
+                    originalprice: 5500,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 17,
+                    name: "Moscow Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 4500,
+                    originalprice: 4500,
+                    description: "Includes 1 people & 1 schedule"
+                }
             },
         },
         ],

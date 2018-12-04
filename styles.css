@@ -27,7 +27,18 @@ body {
 
 #events-wrapper {
     position: relative;
+    overflow-y: scroll;
+    height: 500px;
     /* left: 50%; */
+}
+
+.layout.row.wrap {
+    width: 108%;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
 }
 
 .v-table__overflow {
