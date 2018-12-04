@@ -156,6 +156,21 @@ th.column.text-xs-left:first-child {
 .remove-from-package {
     position: relative;
     right: 10%;
+    background-color: #d95e3c!important;
+    color: white!important;
+    font-weight: 700!important;
+}
+
+.add-event {
+    border: 1px solid #d95e3c;
+    box-shadow: none !important;
+    color: #d95e3c!important;
+}
+
+.remove-event {
+    color: white!important;
+    background-color: rgb(217, 94, 60)!important;
+    box-shadow: none!important;
 }
 
 table.v-table {
@@ -320,7 +335,7 @@ button.platinum.v-btn.theme--light {
 }
 
 button.platinum.v-btn.theme--light:hover {
-    border: none!important;
+    border: 2px solid #E5E4E2 !important;
     background-color: #E5E4E2 !important;
 }
 
@@ -330,8 +345,9 @@ button.gold.v-btn.theme--light {
 }
 
 button.gold.v-btn.theme--light:hover {
-    border: none!important;
+    border: 2px solid #D4AF37 !important;
     background-color: #D4AF37 !important;
+    
 }
 
 button.silver.v-btn.theme--light {
@@ -340,7 +356,7 @@ button.silver.v-btn.theme--light {
 }
 
 button.silver.v-btn.theme--light:hover {
-    border: none!important;
+    border: 2px solid #C0C0C0 !important;
     background-color: #C0C0C0 !important;
 }
 
@@ -587,7 +603,7 @@ button.marketing-choice.v-btn.theme--light {
 button.sponsorship-dialog-info.v-btn.theme--light {
     background-color: transparent !important;
     position: absolute;
-    right: -2%;
+    right: -20;
     top: -10;
     box-shadow: none;
     color: #2196f3;

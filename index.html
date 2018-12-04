@@ -72,8 +72,8 @@
                                         {{ currencySymbol }}{{ ( (props.item.sponsorship_package.price * props.item.sponsorship_package.quantity) * discount )
                                         - (props.item.price * props.item.quantity) | moneyify}}
                                     </td>
-                                    <td>
-                                        <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
+                                    <td class="remove-btn-container">
+                                        <v-btn class="add-to-package remove-btn-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                     </td>
                                 </tr>
                                 <tr v-else>
@@ -89,8 +89,8 @@
                                     <td class="discount">{{ currencySymbol }}{{ ( ( (props.item.price * props.item.quantity) * discount ) - (props.item.price 
                                         *
                                         props.item.quantity) ) | moneyify }}</td>
-                                    <td>
-                                        <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
+                                    <td class="remove-btn-container">
+                                        <v-btn class="add-to-package remove-btn-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                     </td>
                                 </tr>
                             </template>
@@ -102,8 +102,8 @@
                                 <td>{{ currencySymbol }}{{ (props.item.price * props.item.quantity)  | moneyify}}</td>
                                 <td>{{ currencySymbol }}{{ (props.item.price * props.item.quantity)  | moneyify}}</td>
                                 <td>{{ currencySymbol }}0</td>
-                                <td>
-                                    <v-btn class="add-to-package" v-on:click="removeBoothFromCart(props.item)">REMOVE</v-btn>
+                                <td class="remove-btn-container">
+                                    <v-btn class="add-to-package remove-btn-package" v-on:click="removeBoothFromCart(props.item)">REMOVE</v-btn>
                                 </td>
                             </tr>
 
@@ -114,8 +114,8 @@
                                 <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify}}</td>
                                 <td>{{ currencySymbol }}{{ (props.item.price * props.item.quantity)  | moneyify}}</td>
                                 <td>{{ currencySymbol }}0</td>
-                                <td>
-                                    <v-btn class="add-to-package" v-on:click="removeAdvert(props.item)">REMOVE</v-btn>
+                                <td class="remove-btn-container">
+                                    <v-btn class="add-to-package remove-btn-package" v-on:click="removeAdvert(props.item)">REMOVE</v-btn>
                                 </td>
                             </tr>
 
@@ -129,8 +129,8 @@
                                 <td class="discount">{{ currencySymbol }}{{ ( ( (props.item.price * props.item.quantity) * discount ) - (props.item.price 
                                     *
                                     props.item.quantity) ) | moneyify }}</td>
-                                <td>
-                                    <v-btn class="add-to-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
+                                <td class="remove-btn-container">
+                                    <v-btn class="add-to-package remove-btn-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                 </td>
                             </tr>
 
@@ -429,7 +429,8 @@
 
                                         <v-card-actions v-if="!product.incart">
                                             <v-btn v-if="!attendBooths && accountType == 'educator' && !product.selectBoothBoolean" 
-                                                v-on:click="addToCart(product, product.tables, 'tables')"> 
+                                                v-on:click="addToCart(product, product.tables, 'tables')"
+                                                class="add-event"> 
                                                 Add to package 
                                             </v-btn>
                                             <v-btn class="booths booths-activator" 
