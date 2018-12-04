@@ -8,11 +8,6 @@ body {
     background-color: #eef0f3;
 }
 
-/* div#vue {
-    position: relative;
-    left: -5%;
-} */
-
 #main-wrapper {
     position: relative;
     left: -5%;
@@ -376,18 +371,6 @@ button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
     color: white!important;
 }
 
-/* .platinum-pressed {
-    background-color: #E5E4E2 !important;
-}
-
-.gold-pressed {
-    background-color: #D4AF37 !important;
-}
-
-.silver-pressed {
-    background-color: #C0C0C0 !important;
-} */
-
 .theme--light.v-btn {
     color: white;
 }
@@ -683,3 +666,5 @@ i.fa.fa-times.sponsorship-info-cross {
     position: relative;
     top: 20%
 }
+
+

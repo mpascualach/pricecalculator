@@ -937,8 +937,8 @@ var vue = new Vue({
         {
             id: 4,
             name: "Miami",
-            price: 6900,
-            originalprice: 2400,
+            price: 4400,
+            originalprice: 4400,
             priceearly: 3900,
             originalpriceearly: 3900,
             selectedearly: false,
@@ -1202,7 +1202,2796 @@ var vue = new Vue({
                 },
             },
             additional: []
-        }],
+        },
+        {
+            id: 5,
+            name: "Higher Education ",
+            price: 6900,
+            originalprice: 2400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "Miami Workshop description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 5,
+                name: "Higher Education Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 5,
+                    name: "Higher Education Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 5,
+                    name: "Higher Education Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 5,
+                        name: "Higher Education Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 5,
+                        name: "Higher Education Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 5,
+                        name: "Higher Education Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 5,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 5,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 5,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+            booths: {
+                id: 5,
+                quantity: 0,
+                price: 0,
+                name: '',
+                description: '',
+                large12: {
+                    id: 5,
+                    name: "Higher Education Exhibition Booth 12m²",
+                    quantity: 0,
+                    price: 12000,
+                    originalprice: 12000,
+                    description: "Includes 2 people & 2 schedules"
+                },
+                medium8: {
+                    id: 5,
+                    name: "Miami Exhibition Booth 8m²",
+                    quantity: 0,
+                    price: 8000,
+                    originalprice: 8000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                medium6: {
+                    id: 5,
+                    name: "Miami Exhibition Booth 6m²",
+                    quantity: 0,
+                    price: 6000,
+                    originalprice: 6000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+                std4: {
+                    id: 5,
+                    name: "Miami Exhibition Booth 4m²",
+                    quantity: 0,
+                    price: 5000,
+                    originalprice: 5000,
+                    description: "Includes 1 people & 1 schedule"
+                },
+            },
+            additional: []
+        },
+        {
+            id: 6,
+            name: "Higher Education Partnership Forum",
+            price: 6900,
+            originalprice: 2400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "Higher Education Partnership Forum Workshop description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 6,
+                name: "Higher Education Partnership Forum",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 6,
+                    name: "Higher Education Partnership Forum Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 6,
+                    name: "Higher Education Partnership Forum Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 6,
+                        name: "Higher Education Partnership Forum Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 6,
+                        name: "Higher Education Partnership Forum Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 6,
+                        name: "Higher Education Partnership Forum Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 6,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 6,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 6,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 6,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 6,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 6,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 7,
+            name: "Latin American Workshop",
+            price: 4400,
+            originalprice: 4400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "Latin American Workshop description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 7,
+                name: "Latin American Workshop Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 7,
+                    name: "Latin American Workshop Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 7,
+                    name: "Latin American Workshop Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 7,
+                        name: "Latin American Workshop Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 7,
+                        name: "Latin American Workshop Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 7,
+                        name: "Latin American Workshop Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 7,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 7,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 7,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 7,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 7,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 7,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 8,
+            name: "ICEF Dubai ",
+            price: 4400,
+            originalprice: 4400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF Dubai description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 8,
+                name: "ICEF Dubai Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 8,
+                    name: "ICEF Dubai Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 8,
+                    name: "ICEF Dubai Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 8,
+                        name: "ICEF Dubai Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 8,
+                        name: "ICEF Dubai Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 8,
+                        name: "ICEF Dubai Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 8,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 8,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 8,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 8,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 8,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 8,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 9,
+            name: "ICEF Japan",
+            price: 4400,
+            originalprice: 4400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF Japan description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 9,
+                name: "ICEF Japan Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 9,
+                    name: "ICEF Japan Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 9,
+                    name: "ICEF Japan Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 9,
+                        name: "ICEF Japan Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 9,
+                        name: "ICEF Japan Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 9,
+                        name: "ICEF Japan Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 9,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 9,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 9,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 9,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 9,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 9,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 10,
+            name: "ICEF Mexico",
+            price: 6900,
+            originalprice: 2400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF Mexico Workshop description text goes here",
+            earlybirdends: 20180831,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 10,
+                name: "ICEF Mexico Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 10,
+                    name: "ICEF Mexico Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 10,
+                    name: "ICEF Mexico Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 10,
+                        name: "ICEF Mexico Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 10,
+                        name: "ICEF Mexico Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 10,
+                        name: "ICEF Mexico Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 10,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 10,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 10,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 10,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 10,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 10,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 11,
+            name: "ICEF Ukraine ",
+            price: 4400,
+            originalprice: 4400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF Ukraine description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 11,
+                name: "ICEF Ukraine Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 11,
+                    name: "ICEF Ukraine Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 11,
+                    name: "ICEF Ukraine Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 11,
+                        name: "ICEF Ukraine Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 11,
+                        name: "ICEF Ukraine Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 11,
+                        name: "ICEF Ukraine Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 11,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 11,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 11,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 11,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 11,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 11,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 12,
+            name: "ICEF Moscow",
+            price: 6900,
+            originalprice: 2400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF Moscow description text goes here",
+            earlybirdends: 20180311,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 12,
+                name: "ICEF Moscow Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 12,
+                    name: "ICEF Moscow Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 12,
+                    name: "ICEF Moscow Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 12,
+                        name: "ICEF Moscow Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 12,
+                        name: "ICEF Moscow Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 12,
+                        name: "ICEF Moscow Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 12,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 12,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 12,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 12,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 12,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 6,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 13,
+            name: "ICEF Central Asia Focus",
+            price: 4400,
+            originalprice: 4400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF Central Asia Focus description text goes here",
+            earlybirdends: 20180831,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 13,
+                name: "ICEF Central Asia Focus Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 13,
+                    name: "ICEF Central Asia Focus Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 13,
+                    name: "ICEF Central Asia Focus Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 13,
+                        name: "ICEF Central Asia Focus Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 13,
+                        name: "ICEF Central Asia Focus Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 13,
+                        name: "ICEF Central Asia Focus Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 13,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 13,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 13,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 13,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 13,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 13,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 14,
+            name: "ICEF North America",
+            price: 4400,
+            originalprice: 4400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF North America Workshop description text goes here",
+            earlybirdends: 20180831,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 14,
+                name: "ICEF North America Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 14,
+                    name: "ICEF North America Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 14,
+                    name: "ICEF North America Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 14,
+                        name: "ICEF North America Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 14,
+                        name: "ICEF North America Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 14,
+                        name: "ICEF North America Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 14,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 14,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 14,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 14,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 14,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 14,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 15,
+            name: "ICEF Africa",
+            price: 4400,
+            originalprice: 4400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF Africa description text goes here",
+            earlybirdends: 20180831,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 15,
+                name: "ICEF Africa Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 15,
+                    name: "ICEF Africa Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 15,
+                    name: "ICEF Africa Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 15,
+                        name: "ICEF Africa Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 15,
+                        name: "ICEF Africa Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 15,
+                        name: "ICEF Africa Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 15,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 15,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 15,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 15,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 15,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 15,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        {
+            id: 16,
+            name: "ICEF Southeast Asia",
+            price: 4400,
+            originalprice: 4400,
+            priceearly: 3900,
+            originalpriceearly: 3900,
+            selectedearly: false,
+            endofearly: false,
+            currency: "EUR",
+            description: "ICEF Southeast Asia description text goes here",
+            earlybirdends: 20180831,
+            earlyRate: false,
+            incart: 0,
+            quantity: 0,
+            subtotal: 0,
+            sponsorshipPackageSelected: false,
+            selectBoothBoolean: false,
+            workandtravel: false,
+            tables: {
+                id: 16,
+                name: "ICEF Southeast Asia Table",
+				discount: 0,
+                price: 4400,
+                originalprice: 4400,
+                priceearly: 3900,
+                originalpriceearly: 3900,
+                quantity: 0,
+                schedules: {
+                    id: 16,
+                    name: "ICEF Southeast Asia Additional Schedule",
+                    discount: 0,
+                    quantity: 0,
+                    price: 2400,
+                    originalprice: 2400,
+                },
+                additionalPeople: {
+                    id: 16,
+                    name: "ICEF Southeast Asia Additional Person",
+                    discount: 0,
+                    quantity: 0,
+                    price: 990,
+                    originalprice: 990,
+                },
+                sponsorships: {
+                    platinum: {
+                        id: 16,
+                        name: "ICEF Southeast Asia Platinum Sponsorship Package",
+                        price: 16000,
+                        originalprice: 16000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    gold: {
+                        id: 16,
+                        name: "ICEF Southeast Asia Gold Sponsorship Package",
+                        price: 11000,
+                        originalprice: 11000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                    silver: {
+                        id: 16,
+                        name: "ICEF Southeast Asia Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
+                },
+                sponsorship_package: {
+                    tier: '',
+                    name: '',
+                    price: 0,
+                    quantity: 0
+                },
+                marketing_and_sponsorships: [
+                    {
+                        id: 16,
+                        name: 'Advertisement in Educator/Agent Catalogue',
+                        types: [{
+                                name: 'Inside cover',
+                                price: 1850,
+                                originalprice: 1850,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Outside cover',
+                                price: 2150,
+                                originalprice: 2150,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Full page',
+                                price: 1100,
+                                originalprice: 1100,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Half page',
+                                price: 750,
+                                originalprice: 750,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 16,
+                        name: "Display advertising",
+                        types: [
+                            {
+                                name: 'Literature Display Rack',
+                                price: 1000,
+                                originalprice: 1000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 16,
+                        name: "Merchandise Sponsorship",
+                        types: [{
+                                name: 'Note pads',
+                                price: 1700,
+                                originalprice: 1700,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Pens',
+                                price: 2300,
+                                originalprice: 2300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 900,
+                                originalprice: 900,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag insert - paper',
+                                price: 1800,
+                                originalprice: 1800,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Bag tags',
+                                price: 2200,
+                                originalprice: 2200,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Key card sleeves',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Neck cords',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 16,
+                        name: "Hospitality Sponsorship",
+                        types: [
+                                {
+                                name: 'Coffee & tea break',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Lunch',
+                                price: 2500,
+                                originalprice: 2500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Welcome reception',
+                                price: 3500,
+                                originalprice: 3500,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Dinner reception',
+                                price: 5000,
+                                originalprice: 5000,
+                                quantity: 0
+                            }
+                        ]
+                    },
+                    {
+                        id: 16,
+                        name: "Services Sponsorship",
+                        types: [
+                            {
+                                name: 'Agent hotel room drop',
+                                price: 3300,
+                                originalprice: 3300,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated room',
+                                price: 5400,
+                                originalprice: 5400,
+                                quantity: 0
+                            },
+                            {
+                                name: 'Agent lounge - dedicated area',
+                                price: 3900,
+                                originalprice: 3900,
+                                quantity: 0
+                            },
+                        ]
+                    },
+                    {
+                        id: 16,
+                        name: "Presentations",
+                        types: [
+
+                        ]
+                    },
+                ]
+            },
+        },
+        ],
         addons: [
             {
                 product: "Additional Person",
