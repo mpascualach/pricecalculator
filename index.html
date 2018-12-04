@@ -503,14 +503,14 @@
                             <span v-if="!earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ total + subitemtotal }} </span>
                             <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ) }}% </span>
                             <span>Discounted : {{ currencySymbol }}{{ (total * discount) - total }} </span> -->
-                            <span v-if="earlytotal">Early bird total : {{ currencySymbol }}{{ earlytotal }} </span>
-                            <span v-else>Original total : {{ currencySymbol }}{{ total }} </span>
-                            <span v-if="subitemtotal">Subitems total: {{ currencySymbol }}{{ subitemtotal }} </span>
-                            <span v-if="earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ earlytotal + subitemtotal}} </span>
-                            <span v-if="!earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ total + subitemtotal }} </span>
-                            <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ) }}% </span>
-                            <span>Discounted : {{ currencySymbol }}{{ (total * discount) - total }} </span>
-                            <strong v-if="earlytotal">Total: {{ currencySymbol }}{{subitemtotal + earlytotal}} </strong>
+                            <span v-if="earlytotal">Early bird total : {{ currencySymbol }}{{ earlytotal | moneyify }} </span>
+                            <span v-else>Original total : {{ currencySymbol }}{{ total | moneyify }} </span>
+                            <span v-if="subitemtotal">Subitems total: {{ currencySymbol }}{{ subitemtotal | moneyify }} </span>
+                            <span v-if="earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ (earlytotal + subitemtotal) | moneyify}} </span>
+                            <span v-if="!earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ (total + subitemtotal) | moneyify }} </span>
+                            <span v-if="discount !== 1">Discount rate: {{ ( (1 - discount) * 100 ) | moneyify }}% </span>
+                            <span>Discounted : {{ currencySymbol }}{{ ((total * discount) - total) | moneyify }} </span>
+                            <strong v-if="earlytotal">Total: {{ currencySymbol }}{{ (subitemtotal + earlytotal) | moneyify }} </strong>
                             <strong v-else>Total: {{ currencySymbol }}{{(total * discount) + subitemtotal }} </strong>
                         </div>
                     </div>
