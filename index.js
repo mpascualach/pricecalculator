@@ -1933,6 +1933,8 @@ var vue = new Vue({
         },
         confirmQuote(){
             console.log("Quote confirmed! :", document.getElementById("checkout"));
+            document.getElementById("checkout").style.display = "none";
+            document.getElementById("post-checkout").style.display = "block";
         }
     },
     beforeMount(){

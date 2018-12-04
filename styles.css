@@ -639,8 +639,22 @@ i.fa.fa-times.sponsorship-info-cross {
     color: #FFA500;
 }
 
+#post-checkout {
+    display: none;
+}
 
-
-/* .v-input__slot {
-    border: none !important;
-} */
+.confirmation-bubble {
+    background-color: white;
+    border-radius: 10px;
+    height: 200px;
+    font-size: 18px;
+    max-width: 1140px;
+    margin: 0 auto;
+    margin-top: 5%;
+    text-align: center;
+}
+  
+.confirmation-text {
+    position: relative;
+    top: 20%
+}
