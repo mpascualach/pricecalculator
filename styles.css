@@ -38,7 +38,7 @@ html, body {
     content: "";
     position: absolute;
     z-index: 1;
-    bottom: 40;
+    bottom: 20;
     border-radius: 7px;
     pointer-events: none;
     background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255, 1) 90%);
@@ -65,7 +65,7 @@ html, body {
 }
 
 .events-wrap {
-    width: 110%;
+    width: 100%;
     position: absolute;
     left: 0;
 }
@@ -75,14 +75,14 @@ html, body {
 } */
 
 ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+    width: 0px; 
+    background: transparent; 
 }
 
 .v-table__overflow {
     overflow-x: unset !important;
     overflow-y: unset !important;
-    max-width: 840px;
+    /* max-width: 840px; */
     margin: 0 auto;
     width: 50% !important;
     float: right;
@@ -98,6 +98,13 @@ html, body {
         top: 32%!important;
     }
 }
+
+.cart {
+    position: relative;
+    left: 3%;
+}
+
+
 
 td {
     text-align: center;
@@ -126,9 +133,9 @@ td {
     background: #eef0f3;
 }
 
-.layout.column {
+/* .layout.column {
     margin-right: 5%;
-}
+} */
 
 .layout.column>.flex {
     margin-bottom: 1%;

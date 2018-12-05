@@ -51,8 +51,8 @@
             </div>
             
             <div class="calculator" id="main-wrapper">
-                <template class="cart" v-if="cart.length > 0">
-                    <v-data-table :headers="headers" :items="cart">
+                <template class="cart-container" v-if="cart.length > 0">
+                    <v-data-table :headers="headers" :items="cart" class="cart">
 
                         <template slot="items" slot-scope="props">
                             <template v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert">
