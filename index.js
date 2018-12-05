@@ -5177,6 +5177,7 @@ var vue = new Vue({
     },
     mounted(){
         this.loaded = true;
+        console.log("Events handler: ", Array.from(document.getElementsByClassName("events")))
     }
 })
 
