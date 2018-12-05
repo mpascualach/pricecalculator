@@ -208,11 +208,9 @@
                     </v-data-table>
                 </template>
 
-                <v-card class="events">
+                <v-card class="events" v-bind:style="[cart.length == 0 ? { left: '25%' } : { left: '0' }]">
 
-                    <v-container xs12 id="events-wrapper" 
-                        v-bind:style="[cart.length == 0 ? { left: '50%' } : { left: '0' }]"
-                        >
+                    <v-container xs12 id="events-wrapper">
                         <v-layout row wrap class="events-wrap">
                             <v-layout column>
                                 <v-flex v-for="product in products" v-bind:data="product" v-bind:key="product.id">

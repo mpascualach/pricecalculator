@@ -29,12 +29,24 @@ html, body {
 #events-wrapper {
     position: relative;
     overflow-y: scroll;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     margin-bottom: 5%;
     height: 500px;
 }
 
-.events:after {
+#bottom-fade {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 40;
+    border-radius: 7px;
+    pointer-events: none;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255, 1) 90%);
+    width: 100%;
+    height: 4em;
+}
+
+/* .events:after {
     content: "";
     position: absolute;
     z-index: 1;
@@ -45,6 +57,11 @@ html, body {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255, 1) 90%);
     width: 100%;
     height: 4em;
+} */
+
+.blurry {
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
 }
 
 .events-wrap {
