@@ -2857,7 +2857,7 @@ var vue = new Vue({
                 quantity: 0,
                 schedules: {
                     id: 11,
-                    name: "ICEF Ukraine Additional Schedule",
+                    name: "Ukraine Additional Schedule",
                     discount: 0,
                     quantity: 0,
                     price: 2400,
@@ -2865,7 +2865,7 @@ var vue = new Vue({
                 },
                 additionalPeople: {
                     id: 11,
-                    name: "ICEF Ukraine Additional Person",
+                    name: "Ukraine Additional Person",
                     discount: 0,
                     quantity: 0,
                     price: 990,
@@ -2890,7 +2890,7 @@ var vue = new Vue({
                     },
                     silver: {
                         id: 11,
-                        name: "ICEF Ukraine Silver Sponsorship Package",
+                        name: "ICEF Silver Sponsorship Package",
                         price: 8000,
                         originalprice: 8000,
                         quantity: 0,
@@ -3118,7 +3118,7 @@ var vue = new Vue({
             workandtravel: false,
             tables: {
                 id: 13,
-                name: "ICEF Central Asia Focus Table",
+                name: "Central Asia Focus Table",
 				discount: 0,
                 price: 4400,
                 originalprice: 4400,
@@ -3127,7 +3127,7 @@ var vue = new Vue({
                 quantity: 0,
                 schedules: {
                     id: 13,
-                    name: "ICEF Central Asia Focus Additional Schedule",
+                    name: "Central Asia Focus Additional Schedule",
                     discount: 0,
                     quantity: 0,
                     price: 2400,
@@ -3135,7 +3135,7 @@ var vue = new Vue({
                 },
                 additionalPeople: {
                     id: 13,
-                    name: "ICEF Central Asia Focus Additional Person",
+                    name: "Central Asia Focus Additional Person",
                     discount: 0,
                     quantity: 0,
                     price: 990,
@@ -3144,7 +3144,7 @@ var vue = new Vue({
                 sponsorships: {
                     platinum: {
                         id: 13,
-                        name: "ICEF Central Asia Focus Platinum Sponsorship Package",
+                        name: "Central Asia Focus Platinum Sponsorship Package",
                         price: 16000,
                         originalprice: 16000,
                         quantity: 0,
@@ -3152,7 +3152,7 @@ var vue = new Vue({
                     },
                     gold: {
                         id: 13,
-                        name: "ICEF Central Asia Focus Gold Sponsorship Package",
+                        name: "Central Asia Focus Gold Sponsorship Package",
                         price: 11000,
                         originalprice: 11000,
                         quantity: 0,
@@ -3160,7 +3160,7 @@ var vue = new Vue({
                     },
                     silver: {
                         id: 13,
-                        name: "ICEF Central Asia Focus Silver Sponsorship Package",
+                        name: "Central Asia Focus Silver Sponsorship Package",
                         price: 8000,
                         originalprice: 8000,
                         quantity: 0,
@@ -3377,7 +3377,7 @@ var vue = new Vue({
             selectedearly: false,
             endofearly: false,
             currency: "EUR",
-            description: "ICEF North America Workshop description text goes here",
+            description: "North America Workshop description text goes here",
             earlybirdends: 20180831,
             earlyRate: false,
             incart: 0,
@@ -3388,7 +3388,7 @@ var vue = new Vue({
             workandtravel: false,
             tables: {
                 id: 14,
-                name: "ICEF North America Table",
+                name: "North America Table",
 				discount: 0,
                 price: 4400,
                 originalprice: 4400,
@@ -3397,7 +3397,7 @@ var vue = new Vue({
                 quantity: 0,
                 schedules: {
                     id: 14,
-                    name: "ICEF North America Additional Schedule",
+                    name: "North America Additional Schedule",
                     discount: 0,
                     quantity: 0,
                     price: 2400,
@@ -3405,7 +3405,7 @@ var vue = new Vue({
                 },
                 additionalPeople: {
                     id: 14,
-                    name: "ICEF North America Additional Person",
+                    name: "North America Additional Person",
                     discount: 0,
                     quantity: 0,
                     price: 990,
@@ -3414,7 +3414,7 @@ var vue = new Vue({
                 sponsorships: {
                     platinum: {
                         id: 14,
-                        name: "ICEF North America Platinum Sponsorship Package",
+                        name: "North America Platinum Sponsorship Package",
                         price: 16000,
                         originalprice: 16000,
                         quantity: 0,
@@ -3422,7 +3422,7 @@ var vue = new Vue({
                     },
                     gold: {
                         id: 14,
-                        name: "ICEF North America Gold Sponsorship Package",
+                        name: "North America Gold Sponsorship Package",
                         price: 11000,
                         originalprice: 11000,
                         quantity: 0,
@@ -3430,7 +3430,7 @@ var vue = new Vue({
                     },
                     silver: {
                         id: 14,
-                        name: "ICEF North America Silver Sponsorship Package",
+                        name: "North America Silver Sponsorship Package",
                         price: 8000,
                         originalprice: 8000,
                         quantity: 0,
@@ -3639,7 +3639,7 @@ var vue = new Vue({
         //Africa
         {
             id: 15,
-            name: "ICEF Africa",
+            name: "Africa",
             price: 4400,
             originalprice: 4400,
             priceearly: 3900,
@@ -3647,7 +3647,7 @@ var vue = new Vue({
             selectedearly: false,
             endofearly: false,
             currency: "EUR",
-            description: "ICEF Africa description text goes here",
+            description: "Africa description text goes here",
             earlybirdends: 20180831,
             earlyRate: false,
             incart: 0,
@@ -3667,7 +3667,7 @@ var vue = new Vue({
                 quantity: 0,
                 schedules: {
                     id: 15,
-                    name: "ICEF Africa Additional Schedule",
+                    name: "Africa Additional Schedule",
                     discount: 0,
                     quantity: 0,
                     price: 2400,
@@ -3675,7 +3675,7 @@ var vue = new Vue({
                 },
                 additionalPeople: {
                     id: 15,
-                    name: "ICEF Africa Additional Person",
+                    name: "Africa Additional Person",
                     discount: 0,
                     quantity: 0,
                     price: 990,
@@ -3684,7 +3684,7 @@ var vue = new Vue({
                 sponsorships: {
                     platinum: {
                         id: 15,
-                        name: "ICEF Africa Platinum Sponsorship Package",
+                        name: "Africa Platinum Sponsorship Package",
                         price: 16000,
                         originalprice: 16000,
                         quantity: 0,
@@ -3692,7 +3692,7 @@ var vue = new Vue({
                     },
                     gold: {
                         id: 15,
-                        name: "ICEF Africa Gold Sponsorship Package",
+                        name: "Africa Gold Sponsorship Package",
                         price: 11000,
                         originalprice: 11000,
                         quantity: 0,
@@ -3700,7 +3700,7 @@ var vue = new Vue({
                     },
                     silver: {
                         id: 15,
-                        name: "ICEF Africa Silver Sponsorship Package",
+                        name: "Africa Silver Sponsorship Package",
                         price: 8000,
                         originalprice: 8000,
                         quantity: 0,
@@ -3954,7 +3954,7 @@ var vue = new Vue({
                 sponsorships: {
                     platinum: {
                         id: 16,
-                        name: "ICEF Southeast Asia Platinum Sponsorship Package",
+                        name: "Southeast Asia Platinum Sponsorship Package",
                         price: 16000,
                         originalprice: 16000,
                         quantity: 0,
@@ -3962,7 +3962,7 @@ var vue = new Vue({
                     },
                     gold: {
                         id: 16,
-                        name: "ICEF Southeast Asia Gold Sponsorship Package",
+                        name: "Southeast Asia Gold Sponsorship Package",
                         price: 11000,
                         originalprice: 11000,
                         quantity: 0,
@@ -3970,7 +3970,7 @@ var vue = new Vue({
                     },
                     silver: {
                         id: 16,
-                        name: "ICEF Southeast Asia Silver Sponsorship Package",
+                        name: "Southeast Asia Silver Sponsorship Package",
                         price: 8000,
                         originalprice: 8000,
                         quantity: 0,
@@ -4179,7 +4179,7 @@ var vue = new Vue({
         //Moscow
         {
             id: 17,
-            name: "ICEF Moscow",
+            name: "Moscow",
             price: 6900,
             originalprice: 2400,
             priceearly: 3900,
@@ -4187,7 +4187,7 @@ var vue = new Vue({
             selectedearly: false,
             endofearly: false,
             currency: "EUR",
-            description: "ICEF Moscow description text goes here",
+            description: "Moscow description text goes here",
             earlybirdends: 20180311,
             earlyRate: false,
             incart: 0,
@@ -4198,7 +4198,7 @@ var vue = new Vue({
             workandtravel: false,
             tables: {
                 id: 17,
-                name: "ICEF Moscow Table",
+                name: "Moscow Table",
 				discount: 0,
                 price: 4400,
                 originalprice: 4400,
@@ -4207,7 +4207,7 @@ var vue = new Vue({
                 quantity: 0,
                 schedules: {
                     id: 17,
-                    name: "ICEF Moscow Additional Schedule",
+                    name: "Moscow Additional Schedule",
                     discount: 0,
                     quantity: 0,
                     price: 2400,
@@ -4215,7 +4215,7 @@ var vue = new Vue({
                 },
                 additionalPeople: {
                     id: 17,
-                    name: "ICEF Moscow Additional Person",
+                    name: "Moscow Additional Person",
                     discount: 0,
                     quantity: 0,
                     price: 990,
@@ -4224,7 +4224,7 @@ var vue = new Vue({
                 sponsorships: {
                     platinum: {
                         id: 17,
-                        name: "ICEF Moscow Platinum Sponsorship Package",
+                        name: "Moscow Platinum Sponsorship Package",
                         price: 16000,
                         originalprice: 16000,
                         quantity: 0,
@@ -4232,7 +4232,7 @@ var vue = new Vue({
                     },
                     gold: {
                         id: 17,
-                        name: "ICEF Moscow Gold Sponsorship Package",
+                        name: "Moscow Gold Sponsorship Package",
                         price: 11000,
                         originalprice: 11000,
                         quantity: 0,
@@ -4240,7 +4240,7 @@ var vue = new Vue({
                     },
                     silver: {
                         id: 17,
-                        name: "ICEF Moscow Silver Sponsorship Package",
+                        name: "Moscow Silver Sponsorship Package",
                         price: 8000,
                         originalprice: 8000,
                         quantity: 0,
@@ -4665,6 +4665,7 @@ var vue = new Vue({
         loaded: false
     },
     filters: {
+        // we change each displayed price to fit the format exemplified on icef.design/main and the icef ratesheet among other places
         moneyify: function( value ){
             let stringified = value.toString();
             if ( stringified.length > 3 ){
@@ -4678,6 +4679,7 @@ var vue = new Vue({
         }
     },
     methods: {
+        // push a table to the cart and update our price accordingly
         addToCart: function (product, subitem, selector) {
             let cartitem;
             if ( selector && selector == 'booths' ) {
@@ -4754,6 +4756,7 @@ var vue = new Vue({
                 cartitem.quantity++;
             }  
         },
+        // remove the existence of a given workshop from the cart
         absoluteRemoveFromCart: function (product, selector) {
             if (product.tables) {
                 while ( product.tables.additionalPeople.quantity > 0 ){
@@ -5177,8 +5180,6 @@ var vue = new Vue({
     },
     mounted(){
         this.loaded = true;
-        let events = document.getElementsByClassName("events");
-        console.log("Events handler: ", events[0]);
     }
 })
 

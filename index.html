@@ -455,6 +455,10 @@
                                                 class="booths booths-activator">
                                                 Add exhibition booth
                                             </v-btn>
+                                            <v-btn v-if="attendBooths && product.selectBoothBoolean"
+                                                class="booth booths-removal">
+                                                Remove exhibition booth
+                                            </v-btn>
                                             <v-btn v-if="accountType == 'work_and_travel' && product.workandtravel"
                                                 v-on:click="addToCart(product, product.work_and_travel, 'work_and_travel')" 
                                                 class="work-and-travel">
@@ -478,7 +482,7 @@
                         </v-layout>
                         
                     </v-container>
-                    <div id="bottom-fade"></div>
+                    <div id="bottom-fade" v-if="loaded"></div>
                 </v-card>
 
                 <template>
@@ -490,7 +494,7 @@
                                     <div class="advert-section" v-for="advert in adverts">
                                         <v-card-title class="advert-title"> {{ advert.type }} </v-card-title>
                                         <div class="advert-choice" v-for="choice in advert.choices">
-                                            <v-btn v-on:click="addToCart('', choice, 'adverts')">
+                                            <v-btn class="advert-choice-btn" v-on:click="addToCart('', choice, 'adverts')">
                                                 {{ choice.name }} : {{ currencySymbol }}{{ choice.price | moneyify }}
                                             </v-btn>
                                         </div>

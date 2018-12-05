@@ -46,19 +46,6 @@ html, body {
     height: 4em;
 }
 
-/* .events:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    bottom: 14;
-    border-radius: 7px;
-    left: 50%;
-    pointer-events: none;
-    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255, 1) 90%);
-    width: 100%;
-    height: 4em;
-} */
-
 .blurry {
     -webkit-filter: blur(5px);
     filter: blur(5px);
@@ -69,10 +56,6 @@ html, body {
     position: absolute;
     left: 0;
 }
-
-/* .layout.row.wrap {
-    width: 108%;
-} */
 
 ::-webkit-scrollbar {
     width: 0px; 
@@ -452,6 +435,16 @@ button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
 .booths-table.v-card.theme--light {
     align-items: center;
     width: 100%;
+}
+
+.booths-removal {
+    color: #d95e3c!important;
+    position: absolute!important;
+    right: 0;
+    top: 15;
+    background-color: white!important;
+    box-shadow: none!important;
+    border: 1px solid #d95e3c!important;
 }
 
 .v-card__text.booth-choice-container {
