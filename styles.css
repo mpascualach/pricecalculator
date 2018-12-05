@@ -102,16 +102,14 @@ html, body {
 .cart {
     position: relative;
     left: 3%;
+    top: 20;
 }
-
-
 
 td {
     text-align: center;
     white-space: nowrap;
     font-size: 14px;
 }
-
 
 .events.v-card.theme--light{
     width: 50%;
@@ -288,6 +286,11 @@ tr {
 
 .fa-minus-square, .fa-plus-square {
     cursor: pointer;
+}
+
+.fa-building {
+    margin-right: 10%;
+    font-size: 16px;
 }
 
 span.schedule-alert {
