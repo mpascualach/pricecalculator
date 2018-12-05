@@ -35,7 +35,9 @@ var vue = new Vue({
     i18n,
     el: '#vue',
     data: {
-        products: [{
+        products: [
+        //ANZA
+        {
             id: 1,
             name: "ANZA",
             priceearly: 5600, //for when early bird rates apply
@@ -342,7 +344,6 @@ var vue = new Vue({
                     originalprice: 2400,
                 },
             },
-            additional: []
         },
         //Berlin
         {
@@ -4445,15 +4446,6 @@ var vue = new Vue({
                 }
             },
         },
-        ],
-        addons: [
-            {
-                product: "Additional Person",
-                price: 1280,
-                min: 0,
-                max: null,
-                description: "Additional attendee without a schedule"
-            }
         ],
         headers:[
             { text: 'Name', value: 'name', sortable: false },
