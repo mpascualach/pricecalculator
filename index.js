@@ -5032,7 +5032,7 @@ var vue = new Vue({
 
                     m.tables.sponsorships.platinum.price = m.tables.sponsorships.platinum.originalprice;
                     m.tables.sponsorships.gold.price = m.tables.sponsorships.gold.originalprice;
-                    m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
+                    if (m.tables.sponsorships.silver) m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
 
                     m.tables.marketing_and_sponsorships.forEach(n => {
                         n.types.forEach(p => {

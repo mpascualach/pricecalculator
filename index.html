@@ -213,7 +213,7 @@
                     <v-container xs12 id="events-wrapper" 
                         v-bind:style="[cart.length == 0 ? { left: '50%' } : { left: '0' }]"
                         >
-                        <v-layout row wrap>
+                        <v-layout row wrap class="events-wrap">
                             <v-layout column>
                                 <v-flex v-for="product in products" v-bind:data="product" v-bind:key="product.id">
                                     <v-card class="blue--text">
@@ -476,12 +476,13 @@
 
                                 </v-flex>
                             </v-layout>
+                            
                         </v-layout>
                         
                     </v-container>
-                    <!-- <img class="events-wrapper-blur" src="./resources/bg-grey-gradient.png" alt="gradient"> -->
+                    <div id="bottom-fade"></div>
                 </v-card>
-                
+
                 <template>
                     <v-layout row justify-center>
                         <v-dialog v-model="advertModal" max-width="600" class="advert-dialog">
