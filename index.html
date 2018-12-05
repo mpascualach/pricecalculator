@@ -217,7 +217,7 @@
                                         <div class="product-info-container">
                                             <div class="product-info">
                                                 <div class="product-name">
-                                                    {{ product.name }}
+                                                    <span class="product-name-title">{{ product.name }}</span>
                                                     <span v-if="product.earlyRate && earlyRates" class="early-notification">Early rate:
                                                         {{ currencySymbol }}{{ product.priceearly | moneyify }}!</span>
                                                     <span v-else-if="product.endofearly && product.selectedearly" class="early-notification  multiple-bookings">
@@ -425,12 +425,16 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="booth-choice" v-if="product.booths.displaytable">
+                                                    <div class="booth-choice display-table-container" v-if="product.booths.displaytable">
+                                                        <div class="booth-category display-table-header">
+                                                            Display table: 
+                                                        </div>
+
                                                         <div class="booth-buttons">
                                                             <v-btn class="booth-btn"
                                                                 v-if="product.booths.displaytable && product.booths.displaytable.price"
                                                                 v-on:click="addToCart(product, product.booths.displaytable, 'booths')">
-                                                                Display table: {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
+                                                                {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
                                                             </v-btn>
                                                         </div>
                                                     </div>
@@ -445,14 +449,14 @@
                                                 class="add-event"> 
                                                 Add to package 
                                             </v-btn>
-                                            <v-btn class="booths booths-activator" 
-                                                v-on:click="showBoothOptions(product)" 
-                                                v-if="attendBooths && !product.selectBoothBoolean">
+                                            <v-btn v-if="attendBooths && !product.selectBoothBoolean" 
+                                                v-on:click="showBoothOptions(product)"
+                                                class="booths booths-activator">
                                                 Add exhibition booth
                                             </v-btn>
-                                            <v-btn class="work-and-travel"
+                                            <v-btn v-if="accountType == 'work_and_travel' && product.workandtravel"
                                                 v-on:click="addToCart(product, product.work_and_travel, 'work_and_travel')" 
-                                                v-if="accountType == 'work_and_travel' && product.workandtravel">
+                                                class="work-and-travel">
                                                 Attend as Work and Travel provider
                                             </v-btn>
                                         </v-card-actions>

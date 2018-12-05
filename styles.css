@@ -168,9 +168,9 @@ th.column.text-xs-left:first-child {
 }
 
 .add-event {
-    border: 1px solid #d95e3c;
     box-shadow: none !important;
-    color: #d95e3c!important;
+    color: white!important;
+    background-color: rgba(0,90,166,0.8)!important;
 }
 
 .remove-event {
@@ -276,6 +276,10 @@ span.schedule-alert {
     display: flex;
     flex-direction: column;
     max-width: 30%;
+}
+
+.product-name-title {
+    line-height: 1.3;
 }
 
 .price-container {
@@ -677,5 +681,14 @@ i.fa.fa-times.sponsorship-info-cross {
     position: relative;
     top: 20%
 }
+
+.display-table-container {
+    position: relative;
+    left: 50%;
+    font-size: 14px;
+}
+
+
+
 
 
