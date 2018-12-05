@@ -34,9 +34,9 @@ html, body {
     height: 500px;
 }
 
-.layout.row.wrap {
+/* .layout.row.wrap {
     width: 108%;
-}
+} */
 
 ::-webkit-scrollbar {
     width: 0px;  /* remove scrollbar space */
@@ -164,8 +164,8 @@ th.column.text-xs-left:first-child {
 .remove-from-package {
     position: relative;
     right: 10%;
-    background-color: #d95e3c!important;
-    color: white!important;
+    color: rgba(0,90,166,0.8)!important;
+    border: 1px solid rgba(0,90,166,0.8)!important;
     font-weight: 700!important;
 }
 
@@ -418,6 +418,10 @@ button.booths.booths-activator.v-btn.theme--light {
     margin-bottom: 7%;
     position: relative;
     left: 15px;
+    box-shadow: none!important;
+    background: #d95e3c!important;
+    color: white!important;
+    opacity: 0.9;
 }
 
 .booth-buttons {
@@ -612,10 +616,12 @@ button.sponsorship-dialog-info.v-btn.theme--light {
 button.add-to-package.remove-btn-package.v-btn.theme--light {
     height: 100%;
     width: 100%;
+    border-radius: 0px;
+    margin: 0;
 }
 
 .remove-btn-container {
-    padding: 0px;
+    padding: 0px!important;
 }
 
 .sponsorship-dialog-container.v-card.theme--light {
