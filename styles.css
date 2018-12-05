@@ -315,6 +315,10 @@ td.checkout-btn-container > button {
     border-radius: 5px;
 }
 
+.fa-arrow-right {
+    margin-right: 4%;
+}
+
 .checkout {
     display: none;
     position: absolute;

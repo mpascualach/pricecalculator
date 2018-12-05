@@ -48,7 +48,7 @@ var vue = new Vue({
             originalprice: 6900, //for conversions back to the item's base currency
             currency: "AUD", //base currency
             description: "ANZA Workshop description text goes here", //not used yet
-            earlybirdends: 20200320, //date in YYYY-MM-DD straight numeric format 
+            earlybirdends: 20180831, //date in YYYY-MM-DD straight numeric format 
             earlyRate: false, //we check whether it's eligible for early bird rates
             incart: 0, 
             quantity: 0,
@@ -357,7 +357,7 @@ var vue = new Vue({
             originalprice: 4400,
             currency: "EUR",
             description: "Berlin Workshop description text goes here",
-            earlybirdends: 20190311,
+            earlybirdends: 20180331,
             earlyRate: false,
             incart: 0,
             quantity: 0,
@@ -704,7 +704,7 @@ var vue = new Vue({
             endofearly: false,
             currency: "EUR",
             description: "Beijing Workshop description text goes here",
-            earlybirdends: 20190311,
+            earlybirdends: 20180331,
             earlyRate: false,
             incart: 0,
             quantity: 0,
@@ -949,7 +949,7 @@ var vue = new Vue({
             endofearly: false,
             currency: "EUR",
             description: "Miami Workshop description text goes here",
-            earlybirdends: 20180311,
+            earlybirdends: 20180831,
             earlyRate: false,
             incart: 0,
             quantity: 0,
@@ -1219,7 +1219,7 @@ var vue = new Vue({
             endofearly: false,
             currency: "EUR",
             description: "Miami Workshop description text goes here",
-            earlybirdends: 20180311,
+            earlybirdends: 20180331,
             earlyRate: false,
             incart: 0,
             quantity: 0,
@@ -1526,27 +1526,27 @@ var vue = new Vue({
                     platinum: {
                         id: 6,
                         name: "Higher Education Partnership Forum Platinum Sponsorship Package",
-                        price: 16000,
-                        originalprice: 16000,
+                        price: 5500,
+                        originalprice: 5500,
                         quantity: 0,
                         sponsorshipPackage: true
                     },
                     gold: {
                         id: 6,
                         name: "Higher Education Partnership Forum Gold Sponsorship Package",
-                        price: 11000,
-                        originalprice: 11000,
+                        price: 4000,
+                        originalprice: 4000,
                         quantity: 0,
                         sponsorshipPackage: true
                     },
-                    silver: {
-                        id: 6,
-                        name: "Higher Education Partnership Forum Silver Sponsorship Package",
-                        price: 8000,
-                        originalprice: 8000,
-                        quantity: 0,
-                        sponsorshipPackage: true
-                    },
+                    // silver: {
+                    //     id: 6,
+                    //     name: "Higher Education Partnership Forum Silver Sponsorship Package",
+                    //     price: 8000,
+                    //     originalprice: 8000,
+                    //     quantity: 0,
+                    //     sponsorshipPackage: true
+                    // },
                 },
                 sponsorship_package: {
                     tier: '',

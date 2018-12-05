@@ -187,7 +187,10 @@
 
                         <template slot="footer">
                             <td class="checkout-btn-container">
-                                <v-btn class="checkout-btn" v-on:click="gotoCheckout()">Go to checkout</v-btn>
+                                <v-btn class="checkout-btn" v-on:click="gotoCheckout()">
+                                    <i class="fa fa-arrow-right"></i>   
+                                    Go to checkout
+                                </v-btn>
                             </td>
 
                             <td class="totals">
@@ -476,6 +479,7 @@
                         </v-layout>
 
                     </v-container>
+                    <img class="events-wrapper-blur" src="./resources/bg-grey-gradient.png" alt="gradient">
                 </v-card>
                 <template>
                     <v-layout row justify-center>
