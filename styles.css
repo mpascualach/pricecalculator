@@ -263,6 +263,13 @@ span.schedule-alert {
     right: 13%;
 }
 
+.checkout-btn {
+    box-shadow: none!important;
+    background-color: #32CD32!important;
+    color: white!important;
+    font-weight: 700;
+}
+
 .early-notification {
     color: green;
     font-size: 12px;
@@ -415,7 +422,6 @@ button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
 }
 
 button.booths.booths-activator.v-btn.theme--light {
-    margin-bottom: 7%;
     position: relative;
     left: 15px;
     box-shadow: none!important;
