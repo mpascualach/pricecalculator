@@ -294,7 +294,7 @@ span.schedule-alert {
 
 .checkout-btn {
     box-shadow: none!important;
-    background-color: #32CD32!important;
+    background-color: rgba(0,90,166,0.8)!important;
     color: white!important;
     font-weight: 700;
 }
@@ -756,6 +756,20 @@ i.fa.fa-times.sponsorship-info-cross {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.back-to-calculator-btn {
+    box-shadow: none!important;
+    border: 1px solid #d95e3c!important;
+    color: #d95e3c!important;
+    background: white!important;
+}
+
+.confirm-quote-btn {
+    color: white!important;
+    background: #d95e3c!important;
+    box-shadow: none!important;
+    
 }
 
 
