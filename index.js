@@ -4674,7 +4674,7 @@ var vue = new Vue({
             let cartitem;
             if ( selector && selector == 'booths' ) {
                 this.cart.forEach(m => {
-                    if (m.booths){
+                    if (m.booths && m.id == product.id){
                         this.total -= m.price;
                         this.cart = this.cart.filter(n => n.id !== m.id);
                         return;
@@ -4989,15 +4989,16 @@ var vue = new Vue({
         },
         showBoothOptions(product){
             product.selectBoothBoolean = true;
-            let empty = {
-                booths: true,
-                notify: true,
-                name: '',
-                price: '',
-                quantity: ''
-            };
-            this.cart.push(empty);
-            console.log(product);
+            if (this.cart.length == 0){
+                let empty = {
+                    booths: true,
+                    notify: true,
+                    name: '',
+                    price: '',
+                    quantity: ''
+                };
+                this.cart.push(empty);
+            }
         },
         setBaseCurrency(baseCurrency){
             this.currentCurrency = baseCurrency;

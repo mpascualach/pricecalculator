@@ -749,15 +749,15 @@ i.fa.fa-times.sponsorship-info-cross {
 
 .booths-standby {
     position: absolute;
-    top: 24;
-    width: 89.7%;
-    height: 50%;
+    top: 25;
+    width: 100%;
+    height: 50%!important;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-}
+
 
 
 
