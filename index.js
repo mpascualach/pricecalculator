@@ -4672,12 +4672,15 @@ var vue = new Vue({
         // push a table to the cart and update our price accordingly
         addToCart: function (product, subitem, selector) {
             let cartitem;
+            console.log("addToCart arguments: ", product, subitem)
             if ( selector && selector == 'booths' ) {
                 this.cart.forEach(m => {
                     if (m.booths && m.id == product.id){
                         this.total -= m.price;
                         this.cart = this.cart.filter(n => n.id !== m.id);
-                        return;
+                    }
+                    if (m.notify){
+                        this.cart = this.cart.filter(n => !n.notify);
                     }
                 })
                 product.booths.booths = true;
