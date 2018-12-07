@@ -4689,9 +4689,7 @@ var vue = new Vue({
                 product.booths.price = subitem.price;
                 cartitem = Object.assign({}, product.booths);
                 this.cart.forEach(m => {
-                    console.log("Cart item: ", m);
                     if (m.booths){
-                        console.log("Booth item: ", m);
                         return;
                     }
                 })
@@ -4846,8 +4844,17 @@ var vue = new Vue({
         // addBoothToCart(product, booths){
         //     console.log("Booth arguments:", product, booths);
         // },
-        removeBoothFromCart(booth){
-            this.total -= booth.price;
+        removeBoothFromCart(booth, selector){
+            if (selector == 'events'){
+                this.cart.forEach(m => {
+                    if (m.id == booth.id){
+                        this.total -= m.price;
+                        return;
+                    }
+                })
+            }
+            else this.total -= booth.price;
+            console.log(booth, this.total)
             // booth.booths = false;
             this.products.forEach(m => {
                 if (m.id == booth.id){
