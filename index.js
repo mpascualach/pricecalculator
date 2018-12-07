@@ -19,18 +19,6 @@ const i18n = new VueI18n({
     numberFormats
 });
 
-// Vue.filter('moneyify', function( value ){
-//     let stringified = value.toString();
-//     if ( stringified.length > 3 ){
-//         for ( let i = stringified.length - 1; i >= 0; i-- ){
-//             if ( ( stringified.length - i) % 3 == 0 ){
-//                 stringified = stringified.substring(0,i) + " " + stringified.substring(i,stringified.length)
-//             }
-//         }
-//     }
-//     return stringified;
-// })
-
 var vue = new Vue({
     i18n,
     el: '#vue',
@@ -4667,15 +4655,17 @@ var vue = new Vue({
     filters: {
         // we change each displayed price to fit the format exemplified on icef.design/main and the icef ratesheet among other places
         moneyify: function( value ){
-            let stringified = value.toString();
-            if ( stringified.length > 3 ){
-                for ( let i = stringified.length - 1; i >= 0; i-- ){
-                    if ( ( stringified.length - i) % 3 == 0 ){
-                        stringified = stringified.substring(0,i) + " " + stringified.substring(i,stringified.length)
+            if (value || value == 0){
+                let stringified = value.toString();
+                if ( stringified.length > 3 ){
+                    for ( let i = stringified.length - 1; i >= 0; i-- ){
+                        if ( ( stringified.length - i) % 3 == 0 ){
+                            stringified = stringified.substring(0,i) + " " + stringified.substring(i,stringified.length)
+                        }
                     }
                 }
+                return stringified;
             }
-            return stringified;
         }
     },
     methods: {
@@ -4999,6 +4989,14 @@ var vue = new Vue({
         },
         showBoothOptions(product){
             product.selectBoothBoolean = true;
+            let empty = {
+                booths: true,
+                notify: true,
+                name: '',
+                price: '',
+                quantity: ''
+            };
+            this.cart.push(empty);
             console.log(product);
         },
         setBaseCurrency(baseCurrency){

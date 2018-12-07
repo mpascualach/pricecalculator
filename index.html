@@ -96,6 +96,9 @@
                             </template>
 
                             <tr v-else-if="props.item.booths && !props.item.advert"> 
+                                <div class="booths-standby" v-if="props.item.notify">
+                                    <span>   Of what size would you like your booth? </span>
+                                </div>
                                 <td>{{ props.item.name }}</td>
                                 <td>{{ currencySymbol }}{{ props.item.price | moneyify }}</td>
                                 <td class="qty">{{ props.item.quantity }}</td>
