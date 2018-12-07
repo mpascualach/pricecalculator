@@ -4683,16 +4683,18 @@ var vue = new Vue({
         addToCart: function (product, subitem, selector) {
             let cartitem;
             if ( selector && selector == 'booths' ) {
+                this.cart.forEach(m => {
+                    if (m.booths){
+                        this.total -= m.price;
+                        this.cart = this.cart.filter(n => n.id !== m.id);
+                        return;
+                    }
+                })
                 product.booths.booths = true;
                 product.booths.quantity++;
                 product.booths.name = subitem.name;
                 product.booths.price = subitem.price;
                 cartitem = Object.assign({}, product.booths);
-                this.cart.forEach(m => {
-                    if (m.booths){
-                        return;
-                    }
-                })
                 this.cart.push(cartitem);
                 this.total += cartitem.price;
             }
