@@ -456,6 +456,7 @@
                                                 Add exhibition booth
                                             </v-btn>
                                             <v-btn v-if="attendBooths && product.selectBoothBoolean"
+                                                v-on:click="removeBoothFromCart(product)"
                                                 class="booth booths-removal">
                                                 Remove exhibition booth
                                             </v-btn>
