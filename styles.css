@@ -172,6 +172,7 @@ input:checked + .slider:before {
 .white--text.v-card.theme--light.blue-grey.darken-2 {
     width: 100%;
     padding-bottom: 5px;
+    
 }
 
 .product-info {
@@ -553,6 +554,9 @@ button.work-and-travel.v-btn.theme--light {
 .adverts-table.v-card.theme--light,
 .close-advert-modal-container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 6%;
 }
 
 .close-advert-modal {
