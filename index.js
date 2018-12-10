@@ -274,10 +274,12 @@ var vue = new Vue({
             booths: {
                 id: 1,
                 quantity: 0,
-                price: 0,
-                originalprice: 2400,
                 name: '',
                 description: '',
+                priceLowest: 4500,
+                originalPriceLowest: 4500,
+                priceHighest: 10500,
+                originalPriceHighest: 10500,
                 large12: {
                     id: 1,
                     name: "ANZA Exhibition Booth 12m²",

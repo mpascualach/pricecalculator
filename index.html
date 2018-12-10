@@ -240,8 +240,9 @@
                                                     <span v-if="product.currencyDisclaimer" class="early-notification multiple-bookings">{{ product.currencyDisclaimer }}</span>
                                                 </div>
                                                 <div class="booth-indicator" v-else>
-                                                    <div class="booth-disclaimer price-container" v-if="!product.selectBoothBoolean">
-                                                        <!-- Click here to check all <br/> available prices -->
+                                                    <div class="booth-disclaimer price-container" 
+                                                        v-if="!product.selectBoothBoolean && product.booths.priceLowest && product.booths.priceHighest">
+                                                        Prices range from {{ currencySymbol }}{{ product.booths.priceLowest | moneyify }} to {{ currencySymbol }}{{ product.booths.priceHighest | moneyify }}
                                                     </div> 
                                                 </div>
                                             </div>
