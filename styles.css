@@ -117,12 +117,23 @@ input:checked + .slider:before {
 #events-wrapper {
     position: relative;
     overflow-y: scroll;
-    /* overflow-x: hidden; */
     margin-bottom: 5%;
     height: 500px;
 }
 
+.events-wrap {
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+
+::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent; 
+}
+
 #bottom-fade {
+    /* for a blur effect at the bottom of the events-wrapper */
     content: "";
     position: absolute;
     z-index: 1;
@@ -139,21 +150,72 @@ input:checked + .slider:before {
     filter: blur(5px);
 }
 
-.events-wrap {
-    width: 100%;
-    position: absolute;
-    left: 0;
+.events.v-card.theme--light{
+    width: 50%;
 }
 
-::-webkit-scrollbar {
-    width: 0px; 
-    background: transparent; 
+.v-card.theme--light {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: none !important;
 }
+
+.layout.column > .flex {
+    margin-bottom: 1%;
+}
+
+.blue--text.v-card.theme--light,
+.white--text.v-card.theme--light.blue-grey.darken-2 {
+    width: 100%;
+}
+
+.product-info {
+    font-size: 1.4em;
+    width: 200px;
+    margin-top: 6%;
+    margin-left: 6%;
+}
+
+.product-name {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    position: relative;
+    top: -7;
+}
+
+.product-name-title {
+    line-height: 1.3;
+}
+
+.price-container {
+    position: absolute;
+    left: 33%;
+    top: 2%;
+}
+
+.early-notification {
+    color: green;
+    font-size: 12px;
+    width: 200%;
+    bottom: 0;
+}
+
+.multiple-bookings {
+    color: grey;
+}
+
+.add-event {
+    box-shadow: none !important;
+    color: white!important;
+    background-color: rgba(0,90,166,0.8)!important;
+}
+
+/* Cart / datatable styles */
 
 .v-table__overflow {
     overflow-x: unset !important;
     overflow-y: unset !important;
-    /* max-width: 840px; */
     margin: 0 auto;
     width: 50% !important;
     float: right;
@@ -182,23 +244,9 @@ td {
     font-size: 14px;
 }
 
-.events.v-card.theme--light{
-    width: 50%;
-}
-
 /* .layout.column {
     margin-right: 5%;
 } */
-
-.layout.column>.flex {
-    margin-bottom: 1%;
-}
-
-.v-card.theme--light {
-    display: flex;
-    justify-content: space-between;
-    box-shadow: none !important;
-}
 
 .theme--light.v-table {
     background-color: #fff;
@@ -212,10 +260,6 @@ button.v-btn.theme--light {
     margin: 2px;
     border-radius: 15px;
     background-color: transparent;
-}
-
-.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
-    background-color: unset;
 }
 
 table.v-table tbody td:first-child, table.v-table tbody td:not(:first-child), table.v-table tbody th:first-child, table.v-table tbody th:not(:first-child), table.v-table thead td:first-child, table.v-table thead td:not(:first-child), table.v-table thead th:first-child, table.v-table thead th:not(:first-child) {
@@ -237,20 +281,6 @@ th.column.text-xs-left:first-child {
     width: 20%;
 }
 
-.white--text.v-card.theme--light.blue-grey.darken-2 {
-    width: 100%;
-}
-
-.product-info {
-    display: flex;
-    font-size: 1.4em;
-    width: 200px;
-    justify-content: space-between;
-    margin-top: 6%;
-    margin-left: 6%;
-    padding-bottom: 3%;
-}
-
 .add-to-package {
     background-color: transparent !important;
     border: 0px transparent !important;
@@ -263,12 +293,6 @@ th.column.text-xs-left:first-child {
     color: rgba(0,90,166,0.8)!important;
     border: 1px solid rgba(0,90,166,0.8)!important;
     font-weight: 700!important;
-}
-
-.add-event {
-    box-shadow: none !important;
-    color: white!important;
-    background-color: rgba(0,90,166,0.8)!important;
 }
 
 .remove-event {
@@ -296,16 +320,6 @@ table.v-table {
 
 .v-datatable__actions {
     display: none !important;
-}
-
-.blue--text.v-card.theme--light {
-    width: 100%;
-}
-
-
-
-.blue--text.v-card.theme--light {
-    border-radius: 5px;
 }
 
 .theme--light.v-table thead tr:first-child {
@@ -367,35 +381,6 @@ span.schedule-alert {
     background-color: rgba(0,90,166,0.8)!important;
     color: white!important;
     font-weight: 700;
-}
-
-.early-notification {
-    color: green;
-    font-size: 12px;
-    width: 200%;
-    bottom: 0;
-}
-
-.multiple-bookings {
-    color: grey;
-}
-
-.product-name {
-    display: flex;
-    flex-direction: column;
-    max-width: 30%;
-    position: relative;
-    top: -7;
-}
-
-.product-name-title {
-    line-height: 1.3;
-}
-
-.price-container {
-    position: absolute;
-    left: 33%;
-    top: 1;
 }
 
 td.totals {
@@ -499,10 +484,6 @@ button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
 
 .pressed {
     color: white!important;
-}
-
-.theme--light.v-btn {
-    color: white;
 }
 
 .booths-table.v-card.theme--light {
