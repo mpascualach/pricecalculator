@@ -242,7 +242,11 @@
                                                 <div class="booth-indicator" v-else>
                                                     <div class="booth-disclaimer price-container" 
                                                         v-if="!product.selectBoothBoolean && product.booths.priceLowest && product.booths.priceHighest">
-                                                        Prices range from {{ currencySymbol }}{{ product.booths.priceLowest | moneyify }} to {{ currencySymbol }}{{ product.booths.priceHighest | moneyify }}
+                                                        From: {{ currencySymbol }}{{ product.booths.priceLowest | moneyify }} <br/> 
+                                                        to: {{ currencySymbol }}{{ product.booths.priceHighest | moneyify }}
+                                                    </div>
+                                                    <div class="display-table-disclaimer price-container" v-else-if="!product.selectBoothBoolean && product.booths.priceOnly">
+                                                        Display table available at <br/>{{ currencySymbol }} {{ product.booths.priceOnly | moneyify }}
                                                     </div> 
                                                 </div>
                                             </div>

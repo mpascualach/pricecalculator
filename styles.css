@@ -341,8 +341,15 @@ button.booths.booths-activator.v-btn.theme--light {
     font-size: 14px;
     max-width: 20%;
     color: grey;
+    top: 15%;
 }
 
+.display-table-disclaimer {
+    font-size: 14px;
+    max-width: 20%;
+    color: grey;
+    top: 0;
+}
 
 /* Cart / datatable styles */
 
