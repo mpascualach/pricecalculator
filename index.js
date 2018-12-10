@@ -4671,7 +4671,7 @@ var vue = new Vue({
             this.regularWorkshops++;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
             this.cart.push(cartitem); //push copy of product into cart
-            if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops && selector !== 'work_and_travel' ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+            if ( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops && selector !== 'work_and_travel' ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
                 cartitem.selectedearly = true;
                 product.selectedearly = true;
                 cartitem.price = subitem.priceearly; 
@@ -4717,7 +4717,7 @@ var vue = new Vue({
         },
         // remove the existence of a given workshop from the cart
         absoluteRemoveFromCart: function (product, selector) {
-            if (product.tables) {
+            if ( product.tables ) {
                 while ( product.tables.additionalPeople.quantity > 0 ){
                     this.subitemtotal -= product.tables.additionalPeople.price;
                     product.tables.additionalPeople.quantity--;
@@ -4726,11 +4726,10 @@ var vue = new Vue({
                     this.subitemtotal -= product.tables.schedules.price;
                     product.tables.schedules.quantity--;
                 }
-                console.log(product)
                 product.tables.quantity = 0;
                 product.incart = 0;
                 this.subitemtotal -= product.tables.sponsorship_package.price;
-                if (product.tables.sponsorshipPackageSelected){                 
+                if ( product.tables.sponsorshipPackageSelected ){                 
                     product.tables.sponsorshipPackageSelected = false;
                 }
             } else {
@@ -4746,7 +4745,7 @@ var vue = new Vue({
                     if ( m.id == product.id ) {
                         m.incart = 0;
                         m.tables.quantity = 0;
-                        if (m.tables.sponsorshipPackageSelected){
+                        if ( m.tables.sponsorshipPackageSelected ){
                             this.subitemtotal -= m.tables.sponsorship_package.price;
                             m.tables.sponsorshipPackageSelected = false;
                             m.tables.sponsorships.platinum.quantity = 0;
@@ -4802,13 +4801,14 @@ var vue = new Vue({
                     this.discount = 0.73;
             }
         },
+        // add a booth to the cart
         addBoothToCart(product, subitem){
             this.cart.forEach(m => {
-                if (m.booths && m.id == product.id){
+                if ( m.booths && m.id == product.id ){
                     this.total -= m.price;
                     this.cart = this.cart.filter(n => n.id !== m.id);
                 }
-                if (m.notify){
+                if ( m.notify ){
                     this.cart = this.cart.filter(n => !n.notify);
                 }
             })
@@ -4820,20 +4820,19 @@ var vue = new Vue({
             this.cart.push(cartitem);
             this.total += cartitem.price;
         },
+        // remove a booth from the cart
         removeBoothFromCart(booth, selector){
-            if (selector == 'events'){
+            if ( selector == 'events' ){
                 this.cart.forEach(m => {
-                    if (m.id == booth.id){
+                    if ( m.id == booth.id ){
                         this.total -= m.price;
                         return;
                     }
                 })
             }
             else this.total -= booth.price;
-            console.log(booth, this.total)
-            // booth.booths = false;
             this.products.forEach(m => {
-                if (m.id == booth.id){
+                if ( m.id == booth.id ){
                     m.booths.quantity = 0;
                     m.selectBoothBoolean = false;
                 }
@@ -4841,6 +4840,7 @@ var vue = new Vue({
             booth.quantity--;
             this.cart = this.cart.filter(m => m.id !== booth.id);
         },
+        // add an advert to the cart
         addAdvert(subitem){
             cartitem = Object.assign({}, subitem);
             console.log(cartitem);
@@ -4849,10 +4849,12 @@ var vue = new Vue({
             this.total += cartitem.price;
             this.advertModal = false;
         },
+        // remove an advert from the cart
         removeAdvert(advert){
             this.total -= advert.price;
             this.cart = this.cart.filter(m => m.name !== advert.name);
         },
+        // add a table for an event to the cart - used in opened events panel after addToCart has been invoked for an event
         addTable: function (tables) {
             tables.quantity++;
             this.cart.forEach(m => {
@@ -4863,29 +4865,29 @@ var vue = new Vue({
                 }
             });
         },
+        // remove a table from cart - accessed via the minus sign - triggers absoluteRemoveFromCart if the last table for an event has been removed
         removeTable: function (tables) {
             tables.quantity--;
-            if (tables.quantity == 0){
+            if ( tables.quantity == 0 ){
                 this.absoluteRemoveFromCart(tables);
             }
         },
+        // adds either an extra schedule, an additional person or a subscription package for an event
         addSubItem: function (product, subitem, selector, tier) {
-            if ( selector == 'schedules'){
+            if ( selector == 'schedules') {
                 console.log("hmm", subitem);
-                if (subitem.quantity >= product.tables.quantity){
+                if ( subitem.quantity >= product.tables.quantity ) {
                     this.limitReached = true;
                     return;
                 }
-                else {
-                    this.limitReached = false;
-                }
+                else this.limitReached = false;
             } 
             if ( selector == 'marketing' ) subitem.name = product.name + " " + subitem.name;
             else if ( selector == 'sponsorship_package' ){
                 product.tables.sponsorshipPackageSelected = true;
                 this.cart.forEach(m => {
                     if ( m.id == product.id ){
-                        if (m.sponsorshipPackageSelected){
+                        if ( m.sponsorshipPackageSelected ) {
                             this.subitemtotal -= m.sponsorship_package.price;
                             m.sponsorship_package.quantity--;
                             switch(tier){
@@ -4903,9 +4905,7 @@ var vue = new Vue({
                                     break;
                             }
                         }
-                        else {
-                            this.total -= m.price;
-                        }
+                        else this.total -= m.price;
                         m.sponsorshipPackageSelected = true;
                         m.sponsorship_package.name = subitem.name;
                         m.sponsorship_package.price = subitem.price;
@@ -4918,21 +4918,22 @@ var vue = new Vue({
             subitem.quantity++;
             if ( selector == 'schedules' && subitem.quantity > 1 ){
                 this.cart.forEach(m => {
-                    if (m.id == product.id){
-                        m.quantity = Math.floor((subitem.quantity / 2) + 1);
-                        if (m.selectedearly) this.earlytotal += m.price;
+                    if ( m.id == product.id ){
+                        m.quantity = Math.floor( ( subitem.quantity / 2 ) + 1);
+                        if ( m.selectedearly ) this.earlytotal += m.price;
                         this.total += m.price;
                         // this.subitemtotal += m.price;
                     }
                 });
             }
         },
+        // removes either a sponsorship package, an additional schedule or an additional person for an event
         removeSubItem: function (product, subitem, selector) {
             subitem.quantity--;
             this.subitemtotal -= subitem.price;
             if ( selector == 'sponsorship_package' ) {
                 this.cart.forEach(m => {
-                    if (m.id == product.id){
+                    if ( m.id == product.id ){
                         m.sponsorshipPackageSelected = false;
                         if (m.earlyrateselected) this.earlytotal += m.priceearly;
                         else this.total += m.price;
@@ -4942,7 +4943,7 @@ var vue = new Vue({
             if ( selector == 'schedules' ){
                 this.cart.forEach(m => {
                     if ( m.id == product.id ) {
-                        m.quantity = Math.floor( (subitem.quantity / 2 )+1 );
+                        m.quantity = Math.floor( ( subitem.quantity / 2 )+1 );
                         if ( subitem.quantity == 1 || subitem.quantity == 0 ) m.quantity = 1;
                         if ( subitem.quantity !== 0 ) this.subitemtotal -= m.price;
                     }
@@ -4952,39 +4953,42 @@ var vue = new Vue({
                 }
             }
         },
+        // we exit the calculator screen and go into checkout
         gotoCheckout() {
             this.cart.forEach(m => {
-                if (m.sponsorshipPackageSelected){
-                    this.selectedWorkshops.push(m.sponsorship_package.name);
+                if ( m.sponsorshipPackageSelected ) {
+                    this.selectedWorkshops.push( m.sponsorship_package.name );
                 }
-                else this.selectedWorkshops.push(m.name);
-                
-                if (m.schedules && m.schedules.quantity > 0){
-                    this.selectedWorkshops.push(m.schedules.name);
+                else this.selectedWorkshops.push( m.name );
+
+                if ( m.schedules && m.schedules.quantity > 0 ) {
+                    this.selectedWorkshops.push( m.schedules.name );
                 }
-                if (m.additionalPeople && m.additionalPeople.quantity > 0){
-                    this.selectedWorkshops.push(m.additionalPeople.name)
+                if ( m.additionalPeople && m.additionalPeople.quantity > 0 ) {
+                    this.selectedWorkshops.push( m.additionalPeople.name )
                 }
             })
 
             document.getElementById("main-wrapper").style.display = "none";
             document.getElementById("checkout").style.display = "block";
         },
-        goBackFromCheckout(){
+        // we return to the calculator screen from checkout (if we want to add a new item etc.)
+        goBackFromCheckout() {
             this.selectedWorkshops = [];
 
             document.getElementById("main-wrapper").style.display = "block";
             document.getElementById("checkout").style.display = "none";
         },
-        changeMode(){
+        //we allow a user to start adding exhibition booths to the cart instead of our regular products
+        changeMode() {
             this.attendBooths = !this.attendBooths;
         },
-        closeAdvertModal(){
+        closeAdvertModal() {
             this.advertModal = false;
         },
-        showBoothOptions(product){
+        showBoothOptions(product) {
             product.selectBoothBoolean = true;
-            if (this.cart.length == 0){
+            if ( this.cart.length == 0 ){
                 let empty = {
                     booths: true,
                     notify: true,
@@ -4992,10 +4996,10 @@ var vue = new Vue({
                     price: '',
                     quantity: ''
                 };
-                this.cart.push(empty);
+                this.cart.push( empty );
             }
         },
-        setBaseCurrency(baseCurrency){
+        setBaseCurrency(baseCurrency) {
             this.currentCurrency = baseCurrency;
             switch(baseCurrency){
                 case 'EUR':
@@ -5028,7 +5032,7 @@ var vue = new Vue({
                     };
                 }
                 this.products.forEach(m => {
-                    if (this.fullDate < m.earlybirdends) m.earlyRate = true;
+                    if ( this.fullDate < m.earlybirdends ) m.earlyRate = true;
                     m.price = m.originalprice;
                     m.priceearly = m.originalpriceearly;
                     m.tables.price = m.tables.originalprice;
@@ -5038,7 +5042,7 @@ var vue = new Vue({
 
                     m.tables.sponsorships.platinum.price = m.tables.sponsorships.platinum.originalprice;
                     m.tables.sponsorships.gold.price = m.tables.sponsorships.gold.originalprice;
-                    if (m.tables.sponsorships.silver) m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
+                    if ( m.tables.sponsorships.silver ) m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
 
                     m.tables.marketing_and_sponsorships.forEach(n => {
                         n.types.forEach(p => {
@@ -5047,7 +5051,7 @@ var vue = new Vue({
                     });
                     m.currencyDisclaimer = '';
 
-                    if (m.currency !== this.fixer.base) {
+                    if ( m.currency !== this.fixer.base ) {
                         m.currencyDisclaimer = "Converted from " + m.currency;
                         m.priceearly = parseInt(fx.convert(m.priceearly, { from: m.currency, to: this.fixer.base}).toFixed());
                         m.price = parseInt(fx.convert(m.price, { from: m.currency, to: this.fixer.base}).toFixed());
@@ -5093,9 +5097,10 @@ var vue = new Vue({
                 });
             });
         },
-        changeBaseCurrency(){
+        // we convert all price values to the selected currency
+        changeBaseCurrency() {
             this.products.forEach(m => {
-                if (this.fullDate < m.earlybirdends) m.earlyRate = true;
+                if ( this.fullDate < m.earlybirdends ) m.earlyRate = true;
                 m.price = m.originalprice;
                 m.priceearly = m.originalpriceearly;
                 m.tables.price = m.tables.originalprice;
@@ -5114,7 +5119,7 @@ var vue = new Vue({
                 });
 
                 m.currencyDisclaimer = '';
-                if (m.currency !== this.fixer.base) {
+                if ( m.currency !== this.fixer.base ) {
                     m.currencyDisclaimer = "Converted from " + m.currency;
                     m.priceearly = parseInt(fx.convert(m.priceearly, {
                         from: m.currency,
@@ -5170,8 +5175,9 @@ var vue = new Vue({
                     }
                 }
             });
-            this.setBaseCurrency(event.target.innerText);
+            this.setBaseCurrency( event.target.innerText );
         },
+        // this doesn't fulfill a function beyond switching out of the checkout screen yet
         confirmQuote(){
             console.log("Quote confirmed! :", document.getElementById("checkout"));
             document.getElementById("checkout").style.display = "none";
@@ -5179,7 +5185,7 @@ var vue = new Vue({
         }
     },
     beforeMount(){
-        this.setBaseCurrency(this.defaultCurrency);
+        this.setBaseCurrency( this.defaultCurrency );
     },
     mounted(){
         this.loaded = true;
