@@ -5031,74 +5031,10 @@ var vue = new Vue({
                         base: this.fixer.base
                     };
                 }
-                this.products.forEach(m => {
-                    if ( this.fullDate < m.earlybirdends ) m.earlyRate = true;
-                    m.price = m.originalprice;
-                    m.priceearly = m.originalpriceearly;
-                    m.tables.price = m.tables.originalprice;
-                    m.tables.priceearly = m.tables.originalpriceearly;
-                    m.tables.schedules.price = m.tables.schedules.originalprice;
-                    m.tables.additionalPeople.price = m.tables.additionalPeople.originalprice;
-
-                    m.tables.sponsorships.platinum.price = m.tables.sponsorships.platinum.originalprice;
-                    m.tables.sponsorships.gold.price = m.tables.sponsorships.gold.originalprice;
-                    if ( m.tables.sponsorships.silver ) m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
-
-                    m.tables.marketing_and_sponsorships.forEach(n => {
-                        n.types.forEach(p => {
-                            p.price = p.originalprice;
-                        });
-                    });
-                    m.currencyDisclaimer = '';
-
-                    if ( m.currency !== this.fixer.base ) {
-                        m.currencyDisclaimer = "Converted from " + m.currency;
-                        m.priceearly = parseInt(fx.convert(m.priceearly, { from: m.currency, to: this.fixer.base}).toFixed());
-                        m.price = parseInt(fx.convert(m.price, { from: m.currency, to: this.fixer.base}).toFixed());
-                        if (m.tables){
-                            m.tables.price = parseInt(fx.convert(m.tables.price, { from: m.currency, to: this.fixer.base }).toFixed());
-                            m.tables.priceearly = parseInt(fx.convert(m.tables.priceearly, { from: m.currency, to: this.fixer.base}).toFixed());
-
-                            m.tables.schedules.price = parseInt(fx.convert(m.tables.schedules.price, {
-                                from: m.currency,
-                                to: this.fixer.base
-                            }).toFixed());
-
-                            m.tables.additionalPeople.price = parseInt(fx.convert(m.tables.additionalPeople.price, {
-                                from: m.currency,
-                                to: this.fixer.base
-                            }).toFixed());
-
-                            m.tables.sponsorships.platinum.price = parseInt(fx.convert(m.tables.sponsorships.platinum.price, {
-                                from: m.currency,
-                                to: this.fixer.base
-                            }).toFixed());
-
-                            m.tables.sponsorships.gold.price = parseInt(fx.convert(m.tables.sponsorships.gold.price, {
-                                from: m.currency,
-                                to: this.fixer.base
-                            }).toFixed());
-
-                            m.tables.sponsorships.silver.price = parseInt(fx.convert(m.tables.sponsorships.silver.price, {
-                                from: m.currency,
-                                to: this.fixer.base
-                            }).toFixed());
-
-                            m.tables.marketing_and_sponsorships.forEach(n => {
-                                n.types.forEach(p => {
-                                    p.price = parseInt(fx.convert(p.price, {
-                                        from: m.currency,
-                                        to: this.fixer.base
-                                    }).toFixed());
-                                });
-                            });
-                        }   
-                    }
-                });
+                this.setCurrencies();
             });
         },
-        // we convert all price values to the selected currency
-        changeBaseCurrency() {
+        setCurrencies(){
             this.products.forEach(m => {
                 if ( this.fullDate < m.earlybirdends ) m.earlyRate = true;
                 m.price = m.originalprice;
@@ -5175,6 +5111,9 @@ var vue = new Vue({
                     }
                 }
             });
+        },
+        // we convert all price values to the selected currency
+        changeBaseCurrency() {
             this.setBaseCurrency( event.target.innerText );
         },
         // this doesn't fulfill a function beyond switching out of the checkout screen yet
