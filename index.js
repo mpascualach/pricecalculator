@@ -4838,7 +4838,7 @@ var vue = new Vue({
                 }
             })
             booth.quantity--;
-            this.cart = this.cart.filter(m => m.id !== booth.id);
+            this.cart = this.cart.filter( m => m.id !== booth.id && !m.notify );
         },
         // add an advert to the cart
         addAdvert(subitem){

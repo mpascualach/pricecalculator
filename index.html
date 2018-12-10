@@ -216,7 +216,7 @@
                     <v-container xs12 id="events-wrapper">
                         <v-layout row wrap class="events-wrap">
                             <v-layout column>
-                                <v-flex v-for="product in products" v-bind:data="product" v-bind:key="product.id">
+                                <v-flex v-for="(product, index) in products" v-bind:data="product" v-bind:key="product.id">
                                     <v-card class="blue--text event">
                                         <div class="product-info-container">
                                             <div class="product-info">
@@ -240,9 +240,9 @@
                                                     <span v-if="product.currencyDisclaimer" class="early-notification multiple-bookings">{{ product.currencyDisclaimer }}</span>
                                                 </div>
                                                 <div class="booth-indicator" v-else>
-                                                    <div class="booth-disclaimer price-container">
-                                                        Click here to check all available prices
-                                                    </div>
+                                                    <div class="booth-disclaimer price-container" v-if="!product.selectBoothBoolean">
+                                                        <!-- Click here to check all <br/> available prices -->
+                                                    </div> 
                                                 </div>
                                             </div>
 
