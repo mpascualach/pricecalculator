@@ -32,6 +32,10 @@ img.icef-pricer-logo {
     height: 180px;
 }
 
+.v-input__control {
+    margin-top: 10%;
+}
+
 .switch-container {
     margin-right: 35%;
     display: flex;

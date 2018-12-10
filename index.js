@@ -251,24 +251,24 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 1,
-                        name: "Presentations",
-                        types: [
-                            // {
-                            //     name: '50 minute slot',
-                            //     price: 690,
-                            //     originalprice: 2400,
-                            //     quantity: 0
-                            // },
-                            // {
-                            //     name: '25 minute slot',
-                            //     price: 490,
-                            //     originalprice: 2400,
-                            //     quantity: 0
-                            // },
-                        ]
-                    },
+                    // {
+                    //     id: 1,
+                    //     name: "Presentations",
+                    //     types: [
+                    //         // {
+                    //         //     name: '50 minute slot',
+                    //         //     price: 690,
+                    //         //     originalprice: 2400,
+                    //         //     quantity: 0
+                    //         // },
+                    //         // {
+                    //         //     name: '25 minute slot',
+                    //         //     price: 490,
+                    //         //     originalprice: 2400,
+                    //         //     quantity: 0
+                    //         // },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -899,13 +899,13 @@ var vue = new Vue({
                             }
                         ]
                     },
-                    {
-                        id: 3,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 3,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -1145,13 +1145,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 4,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 4,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -1227,7 +1227,6 @@ var vue = new Vue({
                 schedules: {
                     id: 5,
                     name: "Higher Education Additional Schedule",
-                    discount: 0,
                     quantity: 0,
                     price: 2400,
                     originalprice: 2400,
@@ -1415,13 +1414,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 5,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 5,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -1497,7 +1496,6 @@ var vue = new Vue({
                 schedules: {
                     id: 6,
                     name: "Higher Education Partnership Forum Additional Schedule",
-                    discount: 0,
                     quantity: 0,
                     price: 2400,
                     originalprice: 2400,
@@ -1527,14 +1525,14 @@ var vue = new Vue({
                         quantity: 0,
                         sponsorshipPackage: true
                     },
-                    // silver: {
-                    //     id: 6,
-                    //     name: "Higher Education Partnership Forum Silver Sponsorship Package",
-                    //     price: 8000,
-                    //     originalprice: 8000,
-                    //     quantity: 0,
-                    //     sponsorshipPackage: true
-                    // },
+                    silver: {
+                        id: 6,
+                        name: "Higher Education Partnership Forum Silver Sponsorship Package",
+                        price: 8000,
+                        originalprice: 8000,
+                        quantity: 0,
+                        sponsorshipPackage: true
+                    },
                 },
                 sponsorship_package: {
                     tier: '',
@@ -1685,13 +1683,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 6,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 6,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -1766,7 +1764,6 @@ var vue = new Vue({
                 schedules: {
                     id: 7,
                     name: "Latin American Workshop Additional Schedule",
-                    discount: 0,
                     quantity: 0,
                     price: 2400,
                     originalprice: 2400,
@@ -1774,7 +1771,6 @@ var vue = new Vue({
                 additionalPeople: {
                     id: 7,
                     name: "Latin American Workshop Additional Person",
-                    discount: 0,
                     quantity: 0,
                     price: 990,
                     originalprice: 990,
@@ -1954,13 +1950,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 7,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 7,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -2036,7 +2032,6 @@ var vue = new Vue({
                 schedules: {
                     id: 8,
                     name: "ICEF Dubai Additional Schedule",
-                    discount: 0,
                     quantity: 0,
                     price: 2400,
                     originalprice: 2400,
@@ -2224,13 +2219,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 8,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 8,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -2494,13 +2489,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 9,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 9,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -2548,8 +2543,8 @@ var vue = new Vue({
         {
             id: 10,
             name: "Mexico",
-            price: 6900,
-            originalprice: 2400,
+            price: 4400,
+            originalprice: 4400,
             priceearly: 3900,
             originalpriceearly: 3900,
             selectedearly: false,
@@ -2764,13 +2759,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 10,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 10,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -2816,7 +2811,7 @@ var vue = new Vue({
         },
         //Ukraine
         {
-            id: 12,
+            id: 11,
             name: "Ukraine ",
             price: 4400,
             originalprice: 4400,
@@ -3034,13 +3029,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 11,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 11,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -3304,13 +3299,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 13,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 13,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -3574,13 +3569,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 14,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 14,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -3844,13 +3839,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 15,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 15,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -4114,13 +4109,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 16,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 16,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
@@ -4384,13 +4379,13 @@ var vue = new Vue({
                             },
                         ]
                     },
-                    {
-                        id: 17,
-                        name: "Presentations",
-                        types: [
+                    // {
+                    //     id: 17,
+                    //     name: "Presentations",
+                    //     types: [
 
-                        ]
-                    },
+                    //     ]
+                    // },
                 ]
             },
             booths: {
