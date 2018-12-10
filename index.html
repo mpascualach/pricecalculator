@@ -394,12 +394,12 @@
                                                         <div class="booth-buttons">
                                                             <v-btn class="booth-btn" 
                                                                 v-if="product.booths.medium8 && product.booths.medium8.price" 
-                                                                v-on:click="addToCart(product, product.booths.medium8, 'booths')">
+                                                                v-on:click="addBoothToCart(product, product.booths.medium8)">
                                                                 8m²: {{ currencySymbol }}{{ product.booths.medium8.price | moneyify }}
                                                             </v-btn>
                                                             <v-btn class="booth-btn" 
                                                                 v-if="product.booths.medium6 && product.booths.medium6.price" 
-                                                                v-on:click="addToCart(product, product.booths.medium6, 'booths')">
+                                                                v-on:click="addBoothToCart(product, product.booths.medium6)">
                                                                 6m²: {{ currencySymbol }}{{ product.booths.medium6.price | moneyify }} 
                                                             </v-btn>
                                                         </div>
@@ -413,17 +413,17 @@
                                                         <div class="booth-buttons">
                                                             <v-btn class="booth-btn" 
                                                                 v-if="product.booths.std5 && product.booths.std5.price" 
-                                                                v-on:click="addToCart(product, product.booths.std5, 'booths')">
+                                                                v-on:click="addBoothToCart(product, product.booths.std5)">
                                                                 4.5m²: {{ currencySymbol }}{{ product.booths.std5.price | moneyify }}
                                                             </v-btn>
                                                             <v-btn class="booth-btn" 
                                                                 v-if="product.booths.std4 && product.booths.std4.price" 
-                                                                v-on:click="addToCart(product, product.booths.std4, 'booths')">
+                                                                v-on:click="addBoothToCart(product, product.booths.std4)">
                                                                 4m²: {{ currencySymbol }}{{ product.booths.std4.price | moneyify }}
                                                             </v-btn>
                                                             <v-btn class="booth-btn" 
                                                                 v-if="product.booths.std3 && product.booths.std3.price" 
-                                                                v-on:click="addToCart(product, product.booths.std4, 'booths')">
+                                                                v-on:click="addBoothToCart(product, product.booths.std4)">
                                                                 3m²: {{ currencySymbol }}{{ product.booths.std3.price | moneyify }}
                                                             </v-btn>
                                                         </div>
@@ -437,7 +437,7 @@
                                                         <div class="booth-buttons">
                                                             <v-btn class="booth-btn"
                                                                 v-if="product.booths.displaytable && product.booths.displaytable.price"
-                                                                v-on:click="addToCart(product, product.booths.displaytable, 'booths')">
+                                                                v-on:click="addBoothToCart(product, product.booths.displaytable)">
                                                                 {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
                                                             </v-btn>
                                                         </div>
