@@ -4881,6 +4881,21 @@ var vue = new Vue({
                 m.tables.sponsorships.gold.price = m.tables.sponsorships.gold.originalprice;
                 m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
 
+                if ( m.booths ) {
+                    if ( m.booths.priceLowest ) m.booths.priceLowest = m.booths.priceLowest;
+                    if ( m.booths.priceHighest ) m.booths.priceHighest = m.booths.priceHighest;
+                    if ( m.booths.priceOnly ) m.booths.priceOnly = m.booths.originalPriceOnly;
+
+                    if ( m.booths.large12 ) m.booths.large12.price = m.booths.large12.originalprice;
+                    if ( m.booths.large10 ) m.booths.large10.price = m.booths.large10.originalprice;
+                    if ( m.booths.medium8 ) m.booths.medium8.price = m.booths.medium8.originalprice;
+                    if ( m.booths.medium6 ) m.booths.medium6.price = m.booths.medium6.originalprice;
+                    if ( m.booths.std5 ) m.booths.std5.price = m.booths.std5.originalprice;
+                    if ( m.booths.std4 ) m.booths.std4.price = m.booths.std4.originalprice;
+                    if ( m.booths.std3 ) m.booths.std3.price = m.booths.std3.originalprice;
+                    if ( m.booths.displaytable ) m.booths.displaytable.price = m.booths.displaytable.originalprice;
+                }
+
                 m.tables.marketing_and_sponsorships.forEach(n => {
                     n.types.forEach(p => {
                         p.price = p.originalprice;
@@ -4890,14 +4905,17 @@ var vue = new Vue({
                 m.currencyDisclaimer = '';
                 if ( m.currency !== this.fixer.base ) {
                     m.currencyDisclaimer = "Converted from " + m.currency;
+
                     m.priceearly = parseInt(fx.convert(m.priceearly, {
                         from: m.currency,
                         to: this.fixer.base
                     }).toFixed());
+
                     m.price = parseInt(fx.convert(m.price, {
                         from: m.currency,
                         to: this.fixer.base
                     }).toFixed());
+
                     if (m.tables) {
                         m.tables.price = parseInt(fx.convert(m.tables.price, {
                             from: m.currency,
@@ -4941,6 +4959,74 @@ var vue = new Vue({
                                 }).toFixed());
                             });
                         });
+                    }
+
+                    if ( m.booths.priceHighest && m.booths.priceLowest ) {
+                        m.booths.priceHighest = parseInt(fx.convert(m.booths.priceHighest, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
+
+                        m.booths.priceLowest = parseInt(fx.convert(m.booths.priceLowest, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
+
+                        if (m.booths.large12) {
+                            m.booths.large12.price = parseInt(fx.convert(m.booths.large12.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed()); 
+                        }
+
+                        if (m.booths.large10) {
+                            m.booths.large10.price = parseInt(fx.convert(m.booths.large10.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed()); 
+                        }
+
+                        if (m.booths.medium8) {
+                            m.booths.medium8.price = parseInt(fx.convert(m.booths.medium8.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed()); 
+                        }
+
+                        if (m.booths.medium6) {
+                            m.booths.medium6.price = parseInt(fx.convert(m.booths.medium6.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed()); 
+                        }
+
+                        if (m.booths.std5) {
+                            m.booths.std5.price = parseInt(fx.convert(m.booths.std5.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed()); 
+                        }
+
+                        if (m.booths.std4) {
+                            m.booths.std4.price = parseInt(fx.convert(m.booths.std4.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed()); 
+                        }
+
+                        if (m.booths.std3) {
+                            m.booths.std3.price = parseInt(fx.convert(m.booths.std3.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed()); 
+                        }
+
+                        if (m.booths.displaytable) {
+                            m.booths.displaytable.price = parseInt(fx.convert(m.booths.displaytable.price, {
+                                from: m.currency,
+                                to: this.fixer.base
+                            }).toFixed()); 
+                        }
                     }
                 }
             });
