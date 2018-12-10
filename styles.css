@@ -489,6 +489,7 @@ button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
 .booths-table.v-card.theme--light {
     align-items: center;
     width: 100%;
+    background-color: transparent!important;
 }
 
 .booths-removal {

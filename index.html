@@ -376,12 +376,12 @@
                                                         <div class="booth-buttons">
                                                             <v-btn class="booth-btn" 
                                                                 v-if="product.booths.large12 && product.booths.large12.price" 
-                                                                v-on:click="addToCart(product, product.booths.large12, 'booths')">
+                                                                v-on:click="addBoothToCart(product, product.booths.large12)">
                                                                 12m²: {{ currencySymbol }}{{ product.booths.large12.price | moneyify }}
                                                             </v-btn>
                                                             <v-btn class="booth-btn" 
                                                                 v-if="product.booths.large10 && product.booths.large10.price" 
-                                                                v-on:click="addToCart(product, product.booths.large10, 'booths')">
+                                                                v-on:click="addBoothToCart(product, product.booths.large10)">
                                                                 10m²: {{ currencySymbol }}{{ product.booths.large10.price | moneyify }}
                                                             </v-btn>
                                                         </div>

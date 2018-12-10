@@ -4655,7 +4655,7 @@ var vue = new Vue({
                 if ( stringified.length > 3 ){
                     for ( let i = stringified.length - 1; i >= 0; i-- ){
                         if ( ( stringified.length - i) % 3 == 0 ){
-                            stringified = stringified.substring(0,i) + " " + stringified.substring(i,stringified.length)
+                            stringified = stringified.substring( 0, i ) + " " + stringified.substring( i, stringified.length );
                         }
                     }
                 }
@@ -4667,26 +4667,7 @@ var vue = new Vue({
         // push a table to the cart and update our price accordingly
         addToCart: function (product, subitem, selector) {
             let cartitem;
-            console.log("addToCart arguments: ", product, subitem)
-            if ( selector && selector == 'booths' ) {
-                this.cart.forEach(m => {
-                    if (m.booths && m.id == product.id){
-                        this.total -= m.price;
-                        this.cart = this.cart.filter(n => n.id !== m.id);
-                    }
-                    if (m.notify){
-                        this.cart = this.cart.filter(n => !n.notify);
-                    }
-                })
-                product.booths.booths = true;
-                product.booths.quantity++;
-                product.booths.name = subitem.name;
-                product.booths.price = subitem.price;
-                cartitem = Object.assign({}, product.booths);
-                this.cart.push(cartitem);
-                this.total += cartitem.price;
-            }
-            else if (selector == 'adverts'){
+            if (selector == 'adverts'){
                 cartitem = Object.assign({}, subitem);
                 console.log(cartitem);
                 cartitem.quantity++;
@@ -4831,9 +4812,24 @@ var vue = new Vue({
                     this.discount = 0.73;
             }
         },
-        // addBoothToCart(product, booths){
-        //     console.log("Booth arguments:", product, booths);
-        // },
+        addBoothToCart(product, subitem){
+            this.cart.forEach(m => {
+                if (m.booths && m.id == product.id){
+                    this.total -= m.price;
+                    this.cart = this.cart.filter(n => n.id !== m.id);
+                }
+                if (m.notify){
+                    this.cart = this.cart.filter(n => !n.notify);
+                }
+            })
+            product.booths.booths = true;
+            product.booths.quantity++;
+            product.booths.name = subitem.name;
+            product.booths.price = subitem.price;
+            cartitem = Object.assign({}, product.booths);
+            this.cart.push(cartitem);
+            this.total += cartitem.price;
+        },
         removeBoothFromCart(booth, selector){
             if (selector == 'events'){
                 this.cart.forEach(m => {
