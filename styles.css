@@ -127,6 +127,10 @@ input:checked + .slider:before {
     left: 0;
 }
 
+.events {
+    background-color: transparent!important;
+}
+
 ::-webkit-scrollbar {
     width: 0px; 
     background: transparent; 
@@ -172,14 +176,13 @@ input:checked + .slider:before {
 .product-info {
     font-size: 1.4em;
     width: 200px;
-    margin-top: 6%;
-    margin-left: 6%;
+    margin-top: 13px;
+    margin-left: 20px;
 }
 
 .product-name {
     display: flex;
     flex-direction: column;
-    max-width: 85%;
     position: relative;
     top: -7;
 }
@@ -190,8 +193,8 @@ input:checked + .slider:before {
 
 .price-container {
     position: absolute;
-    left: 33%;
-    top: 2%;
+    left: 42%;
+    top: 1%;
 }
 
 .early-notification {
@@ -210,6 +213,128 @@ input:checked + .slider:before {
     color: white!important;
     background-color: rgba(0,90,166,0.8)!important;
 }
+
+.add-to-package {
+    background-color: transparent !important;
+    border: 0px transparent !important;
+    box-shadow: none !important; 
+}
+
+.remove-from-package {
+    position: relative;
+    right: 10%;
+    color: rgba(0,90,166,0.8)!important;
+    border: 1px solid rgba(0,90,166,0.8)!important;
+    font-weight: 700!important;
+}
+
+button.add-to-package.remove-from-package.v-btn.theme--light {
+    position: absolute;
+    top: 8;
+    right: 5;
+}
+
+.sponsorship-intro {
+    margin-left: 5%;
+}
+
+.sponsorship-dialog-start {
+    width: 20px;
+}
+
+.sponsorship-container {
+    display: flex;
+    padding-bottom: 20px;
+    position: relative;
+    left: 20px;
+    margin-top: 2%;
+}
+
+button.platinum.v-btn.theme--light {
+    border: 2px solid #E5E4E2 !important;
+    /* color: #e5e4e2 !important; */
+}
+
+button.platinum.v-btn.theme--light:hover {
+    border: 2px solid #E5E4E2 !important;
+    background-color: #E5E4E2 !important;
+}
+
+button.gold.v-btn.theme--light {
+    border: 2px solid #D4AF37 !important;
+    /* color: #D4AF37 !important; */
+}
+
+button.gold.v-btn.theme--light:hover {
+    border: 2px solid #D4AF37 !important;
+    background-color: #D4AF37 !important;
+    
+}
+
+button.silver.v-btn.theme--light {
+    border: 2px solid #C0C0C0 !important;
+    /* color: #C0C0C0 !important; */
+}
+
+button.silver.v-btn.theme--light:hover {
+    border: 2px solid #C0C0C0 !important;
+    background-color: #C0C0C0 !important;
+}
+
+button.platinum-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
+    background-color: #E5E4E2 !important;
+}
+
+button.gold-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
+    background-color: #D4AF37 !important;
+}
+
+button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
+    background-color: #C0C0C0 !important;
+}
+
+.pressed {
+    color: white!important;
+}
+
+.booth-btn {
+    width: 100px;
+}
+
+.booth-buttons {
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+    width: 40px;
+    justify-content: space-around;
+}
+
+button.booths.booths-activator.v-btn.theme--light {
+    position: relative;
+    left: 15px;
+    box-shadow: none!important;
+    background: #d95e3c!important;
+    color: white!important;
+    opacity: 0.9;
+}
+
+.booths-removal {
+    color: #d95e3c!important;
+    position: absolute!important;
+    right: 0;
+    top: 15;
+    background-color: white!important;
+    box-shadow: none!important;
+    border: 1px solid #d95e3c!important;
+}
+
+.booth-choice {
+    display: flex;
+    align-items: center;
+    margin-right: 33%;
+    font-size: 12px;
+}
+
 
 /* Cart / datatable styles */
 
@@ -242,6 +367,7 @@ td {
     text-align: center;
     white-space: nowrap;
     font-size: 14px;
+    background: white;
 }
 
 /* .layout.column {
@@ -273,39 +399,11 @@ th.column.text-xs-left {
     padding: 5px !important;
 }
 
-td {
-    background: white;
-}
-
 th.column.text-xs-left:first-child {
     width: 20%;
 }
 
-.add-to-package {
-    background-color: transparent !important;
-    border: 0px transparent !important;
-    box-shadow: none !important;
-}
-
-.remove-from-package {
-    position: relative;
-    right: 10%;
-    color: rgba(0,90,166,0.8)!important;
-    border: 1px solid rgba(0,90,166,0.8)!important;
-    font-weight: 700!important;
-}
-
-.remove-event {
-    color: white!important;
-    background-color: rgb(217, 94, 60)!important;
-    box-shadow: none!important;
-}
-
 table.v-table {
-    background-color: transparent!important;
-}
-
-.events {
     background-color: transparent!important;
 }
 
@@ -423,67 +521,8 @@ td.checkout-btn-container > button {
     flex-direction: column;
 }
 
-.sponsorship-intro {
-    margin-left: 5%;
-}
-
-.sponsorship-container {
-    display: flex;
-    padding-bottom: 20px;
-    position: relative;
-    left: 20px;
-    margin-top: 2%;
-}
-
 .v-btn {
     padding: 0 10px;
-}
-
-button.platinum.v-btn.theme--light {
-    border: 2px solid #E5E4E2 !important;
-    /* color: #e5e4e2 !important; */
-}
-
-button.platinum.v-btn.theme--light:hover {
-    border: 2px solid #E5E4E2 !important;
-    background-color: #E5E4E2 !important;
-}
-
-button.gold.v-btn.theme--light {
-    border: 2px solid #D4AF37 !important;
-    /* color: #D4AF37 !important; */
-}
-
-button.gold.v-btn.theme--light:hover {
-    border: 2px solid #D4AF37 !important;
-    background-color: #D4AF37 !important;
-    
-}
-
-button.silver.v-btn.theme--light {
-    border: 2px solid #C0C0C0 !important;
-    /* color: #C0C0C0 !important; */
-}
-
-button.silver.v-btn.theme--light:hover {
-    border: 2px solid #C0C0C0 !important;
-    background-color: #C0C0C0 !important;
-}
-
-button.platinum-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
-    background-color: #E5E4E2 !important;
-}
-
-button.gold-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
-    background-color: #D4AF37 !important;
-}
-
-button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
-    background-color: #C0C0C0 !important;
-}
-
-.pressed {
-    color: white!important;
 }
 
 .booths-table.v-card.theme--light {
@@ -492,48 +531,10 @@ button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
     background-color: transparent!important;
 }
 
-.booths-removal {
-    color: #d95e3c!important;
-    position: absolute!important;
-    right: 0;
-    top: 15;
-    background-color: white!important;
-    box-shadow: none!important;
-    border: 1px solid #d95e3c!important;
-}
-
 .v-card__text.booth-choice-container {
     width: 100%;
     margin-bottom: 6%;
     display: flex;
-}
-
-.booth-choice {
-    display: flex;
-    align-items: center;
-    margin-right: 33%;
-    font-size: 12px;
-}
-
-.booth-btn {
-    width: 100px;
-}
-
-button.booths.booths-activator.v-btn.theme--light {
-    position: relative;
-    left: 15px;
-    box-shadow: none!important;
-    background: #d95e3c!important;
-    color: white!important;
-    opacity: 0.9;
-}
-
-.booth-buttons {
-    display: flex;
-    flex-direction: column;
-    margin: 2%;
-    width: 40px;
-    justify-content: space-around;
 }
 
 .v-card__text.booth-choice-container {
@@ -548,14 +549,20 @@ button.work-and-travel.v-btn.theme--light {
     bottom: 5;
 }
 
-.adverts-table.v-card.theme--light {
+.adverts-table.v-card.theme--light,
+.close-advert-modal-container {
     width: 100%;
 }
 
-button.add-to-package.remove-from-package.v-btn.theme--light {
-    position: absolute;
-    top: 20;
+.close-advert-modal {
+    box-shadow: none!important;
+    border: 1px solid #d95e3c!important;
+    color: #d95e3c!important;
+    background: white!important;
+    font-weight: 700!important;
 }
+
+
 
 button.adverts.adverts-activator.v-btn.theme--light {
     background-color: rgba(0,90,166,0.8)!important;
@@ -605,11 +612,8 @@ button.marketing-choice.v-btn.theme--light {
     margin-left: 6%;
 }
 
+.v-select-list.v-card.theme--light,
 .v-list.theme--light {
-    width: 100%;
-}
-
-.v-select-list.v-card.theme--light {
     width: 100%;
 }
 
@@ -636,8 +640,6 @@ button.marketing-choice.v-btn.theme--light {
 
 button.sponsorship-dialog-info.v-btn.theme--light {
     background-color: transparent !important;
-    position: absolute;
-    right: -20;
     top: -10;
     box-shadow: none;
     color: #2196f3;
@@ -657,6 +659,10 @@ button.add-to-package.remove-btn-package.v-btn.theme--light {
 .sponsorship-dialog-container.v-card.theme--light {
     width: 100%;
     height: 105%;
+}
+
+.sponsorship-dialog-container-text {
+    margin-left: 5%;
 }
 
 .sponsorship-modal-info>.v-table__overflow {
@@ -700,26 +706,6 @@ i.fa.fa-times.sponsorship-info-cross {
     color: #FFA500;
 }
 
-#post-checkout {
-    display: none;
-}
-
-.confirmation-bubble {
-    background-color: white;
-    border-radius: 10px;
-    height: 200px;
-    font-size: 18px;
-    max-width: 1140px;
-    margin: 0 auto;
-    margin-top: 5%;
-    text-align: center;
-}
-  
-.confirmation-text {
-    position: relative;
-    top: 20%
-}
-
 .display-table-container {
     position: relative;
     left: 50%;
@@ -744,15 +730,28 @@ i.fa.fa-times.sponsorship-info-cross {
     background: white!important;
 }
 
+#post-checkout {
+    display: none;
+}
+
 .confirm-quote-btn {
     color: white!important;
     background: #d95e3c!important;
-    box-shadow: none!important;
-    
+    box-shadow: none!important;    
 }
 
+.confirmation-bubble {
+    background-color: white;
+    border-radius: 10px;
+    height: 200px;
+    font-size: 18px;
+    max-width: 1140px;
+    margin: 0 auto;
+    margin-top: 5%;
+    text-align: center;
+}
 
-
-
-
-
+.confirmation-text {
+    position: relative;
+    top: 20%
+}

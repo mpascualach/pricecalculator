@@ -15,12 +15,12 @@ const numberFormats = {
 
 // import * as products from 'products';
 
-const i18n = new VueI18n({
-    numberFormats
-});
+// const i18n = new VueI18n({
+//     numberFormats
+// });
 
 var vue = new Vue({
-    i18n,
+    // i18n,
     el: '#vue',
     data: {
         products: [
@@ -4667,63 +4667,53 @@ var vue = new Vue({
         // push a table to the cart and update our price accordingly
         addToCart: function (product, subitem, selector) {
             let cartitem;
-            if (selector == 'adverts'){
-                cartitem = Object.assign({}, subitem);
-                console.log(cartitem);
-                cartitem.quantity++;
-                this.cart.push(cartitem);
-                this.total += cartitem.price;
-                this.advertModal = false;
-            }
-            else {
-                cartitem = Object.assign({}, subitem); //make copy of product
-                this.regularWorkshops++;
-                this.earlyRates = false; //remove possibility of early bird rates from other events in products
-                this.cart.push(cartitem); //push copy of product into cart
-                if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops && selector !== 'work_and_travel' ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
-                    cartitem.selectedearly = true;
-                    product.selectedearly = true;
-                    cartitem.price = subitem.priceearly; 
-                    this.earlytotal += cartitem.price;
-                } else {
-                    this.earlytotal = 0;
-                    cartitem.price = subitem.price;
-                    if ( this.regularWorkshops > 1 ) {
-                        this.products.forEach(m => {
-                            if ( m.selectedearly ) m.endofearly = true;
-                        });
-                    }
-                } //log price of subitem and assign it to copy's price
-                this.total += cartitem.price;
-                product.incart++;
-                switch (this.regularWorkshops) {
-                    case 1:
-                        this.discount = 1;
-                        break;
-                    case 2:
-                        this.discount = 0.82;
-                        break;
-                    case 3:
-                        this.discount = 0.8;
-                        break;
-                    case 4:
-                        this.discount = 0.77;
-                        break;
-                    case 5:
-                        this.discount = 0.75;
-                        break;
-                    default:
-                        this.discount = 0.73;
-                }
-                if ( this.regularWorkshops == 2 ){
-                    this.cart.forEach(m => {
-                        if ( m.selectedearly ) m.price = m.originalprice;
+            cartitem = Object.assign({}, subitem); //make copy of product
+            this.regularWorkshops++;
+            this.earlyRates = false; //remove possibility of early bird rates from other events in products
+            this.cart.push(cartitem); //push copy of product into cart
+            if( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops && selector !== 'work_and_travel' ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+                cartitem.selectedearly = true;
+                product.selectedearly = true;
+                cartitem.price = subitem.priceearly; 
+                this.earlytotal += cartitem.price;
+            } else {
+                this.earlytotal = 0;
+                cartitem.price = subitem.price;
+                if ( this.regularWorkshops > 1 ) {
+                    this.products.forEach(m => {
+                        if ( m.selectedearly ) m.endofearly = true;
                     });
-                    this.total = this.cart.reduce((a,b)=>a.price + b.price);
                 }
-                subitem.quantity++;
-                cartitem.quantity++;
-            }  
+            } //log price of subitem and assign it to copy's price
+            this.total += cartitem.price;
+            product.incart++;
+            switch (this.regularWorkshops) {
+                case 1:
+                    this.discount = 1;
+                    break;
+                case 2:
+                    this.discount = 0.82;
+                    break;
+                case 3:
+                    this.discount = 0.8;
+                    break;
+                case 4:
+                    this.discount = 0.77;
+                    break;
+                case 5:
+                    this.discount = 0.75;
+                    break;
+                default:
+                    this.discount = 0.73;
+            }
+            if ( this.regularWorkshops == 2 ){
+                this.cart.forEach(m => {
+                    if ( m.selectedearly ) m.price = m.originalprice;
+                });
+                this.total = this.cart.reduce((a,b)=>a.price + b.price);
+            }
+            subitem.quantity++;
+            cartitem.quantity++;
         },
         // remove the existence of a given workshop from the cart
         absoluteRemoveFromCart: function (product, selector) {
@@ -4851,6 +4841,14 @@ var vue = new Vue({
             booth.quantity--;
             this.cart = this.cart.filter(m => m.id !== booth.id);
         },
+        addAdvert(subitem){
+            cartitem = Object.assign({}, subitem);
+            console.log(cartitem);
+            cartitem.quantity++;
+            this.cart.push(cartitem);
+            this.total += cartitem.price;
+            this.advertModal = false;
+        },
         removeAdvert(advert){
             this.total -= advert.price;
             this.cart = this.cart.filter(m => m.name !== advert.name);
@@ -4954,7 +4952,7 @@ var vue = new Vue({
                 }
             }
         },
-        gotoCheckout(){
+        gotoCheckout() {
             this.cart.forEach(m => {
                 if (m.sponsorshipPackageSelected){
                     this.selectedWorkshops.push(m.sponsorship_package.name);
@@ -4980,6 +4978,9 @@ var vue = new Vue({
         },
         changeMode(){
             this.attendBooths = !this.attendBooths;
+        },
+        closeAdvertModal(){
+            this.advertModal = false;
         },
         showBoothOptions(product){
             product.selectBoothBoolean = true;
