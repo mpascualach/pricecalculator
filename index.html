@@ -230,7 +230,7 @@
                                                     <span v-else-if="product.selectedearly" class="early-notification">Early discount
                                                         rates have been applied at {{ currencySymbol }}{{ product.priceearly | moneyify }}!</span>
                                                 </div>
-                                                <div class="price-container">
+                                                <div class="price-container" v-if="!attendBooths">
                                                     <div class="product-price" v-if="product.tables">
                                                         {{ currencySymbol }}{{ product.tables.price | moneyify }}
                                                     </div>
