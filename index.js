@@ -4822,6 +4822,8 @@ var vue = new Vue({
 
             document.getElementById("main-wrapper").style.display = "block";
             document.getElementById("checkout").style.display = "none";
+            document.getElementById("cart-bottom-screen").style.display = "block";
+            document.getElementById("cart-bottom-screen").style.height = "10%";
         },
         //we allow a user to start adding exhibition booths to the cart instead of our regular products
         changeMode() {

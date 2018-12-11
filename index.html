@@ -404,7 +404,7 @@
 
             <div class="cart-bottom-screen" id="cart-bottom-screen" 
                 v-if="cart.length > 0" 
-                    v-bind:style="[ footerExpanded ? { 'height': '80%' } : { 'height': '10%' } ]">
+                v-bind:style="[ footerExpanded ? { 'height': '80%' } : { 'height': '10%' } ]">
                 <template class="cart-container">
                     <v-data-table :headers="headers" :items="cart" class="cart">
 
