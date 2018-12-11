@@ -155,7 +155,7 @@ input:checked + .slider:before {
 }
 
 .events.v-card.theme--light{
-    width: 50%;
+    width: 46%;
 }
 
 .v-card.theme--light {
@@ -374,8 +374,13 @@ button.booths.booths-activator.v-btn.theme--light {
 
 .cart {
     position: relative;
-    left: 3%;
     top: 20;
+}
+
+@media (min-width: 1369px) {
+    .cart {
+        right: 2%;
+    }
 }
 
 td {
