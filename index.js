@@ -5046,6 +5046,11 @@ var vue = new Vue({
                 }
             });
         },
+        customSort(items, index, isdescending){
+            items.sort((a,b)=>{
+                return a.id - b.id;
+            })
+        },
         // we convert all price values to the selected currency
         changeBaseCurrency() {
             this.setBaseCurrency( event.target.innerText );

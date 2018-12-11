@@ -164,7 +164,7 @@ input:checked + .slider:before {
 }
 
 .events.v-card.theme--light{
-    width: 46%;
+    width: 52%;
 }
 
 .v-card.theme--light {
@@ -241,7 +241,7 @@ input:checked + .slider:before {
 
 button.add-to-package.remove-from-package.v-btn.theme--light {
     position: absolute;
-    right: 0;
+    right: 5;
     top: 8;
 }
 
@@ -626,7 +626,7 @@ button.adverts.adverts-activator.v-btn.theme--light {
 }
 
 ul.v-expansion-panel.marketing-and-sponsorship-items.theme--light {
-    width: 103.2%;
+    width: 100%;
     box-shadow:none;
 }
 

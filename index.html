@@ -515,7 +515,7 @@
 
                         </template>
 
-                        <template slot="footer">
+                        <template slot="footer" v-if="footerExpanded">
                             <td class="checkout-btn-container">
                                 <v-btn class="checkout-btn" v-on:click="gotoCheckout()">
                                     <i class="fa fa-arrow-right"></i>   
