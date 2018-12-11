@@ -4467,6 +4467,7 @@ var vue = new Vue({
         choiceModal: false,
         boothModal: false,
         infoModal: false,
+        cartAtBottom: true,
         valid: false,
         accountType: 'educator', //can also be 'service_provider' and 'work_and_travel'
         attendBooths: false, //determines whether the user is buying an exhibition booth or another fo
@@ -4483,11 +4484,11 @@ var vue = new Vue({
     filters: {
         // we change each displayed price to fit the format exemplified on icef.design/main and the icef ratesheet among other places
         moneyify: function( value ){
-            if (value || value == 0){
+            if ( value || value == 0 ) {
                 let stringified = value.toString();
-                if ( stringified.length > 3 ){
+                if ( stringified.length > 3 ) {
                     for ( let i = stringified.length - 1; i >= 0; i-- ){
-                        if ( ( stringified.length - i) % 3 == 0 ){
+                        if ( ( stringified.length - i ) % 3 == 0 ){
                             stringified = stringified.substring( 0, i ) + " " + stringified.substring( i, stringified.length );
                         }
                     }
@@ -4543,7 +4544,7 @@ var vue = new Vue({
                 this.cart.forEach(m => {
                     if ( m.selectedearly ) m.price = m.originalprice;
                 });
-                this.total = this.cart.reduce((a,b)=>a.price + b.price);
+                this.total = this.cart.reduce( ( a, b ) => a.price + b.price );
             }
             subitem.quantity++;
             cartitem.quantity++;

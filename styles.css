@@ -25,7 +25,15 @@ html, body {
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+}
+
+.header-item {
+    margin-right: 5%;
+}
+
+.header-totals {
+    position: absolute;
+    right: 0;
 }
 
 img.icef-pricer-logo {
@@ -37,7 +45,7 @@ img.icef-pricer-logo {
 }
 
 .switch-container {
-    margin-right: 35%;
+    margin-right: 5%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -129,6 +137,7 @@ input:checked + .slider:before {
 
 .events {
     background-color: transparent!important;
+    margin: 0 auto;
 }
 
 ::-webkit-scrollbar {
@@ -373,14 +382,26 @@ button.booths.booths-activator.v-btn.theme--light {
 }
 
 .cart {
-    position: relative;
-    top: 20;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-@media (min-width: 1369px) {
-    .cart {
-        right: 2%;
-    }
+.cart > .v-table__overflow {
+    width: 100%!important;
+}
+
+.cart > .v-table__overflow > .v-datatable {
+    margin-left: 15%;
+}
+
+.cart-bottom-screen {
+    position: absolute;
+    bottom: 0;
+    left: -10%;
+    width: 120%;
+    height: 10%;
+    box-shadow: 1px -3px 5px 5px #888888;
 }
 
 td {
