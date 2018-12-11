@@ -36,6 +36,16 @@ html, body {
     right: 0;
 }
 
+.header-total {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-total-value {
+    width: 100px;
+    margin-left: 10px;
+}
+
 img.icef-pricer-logo {
     height: 180px;
 }

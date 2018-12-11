@@ -50,22 +50,49 @@
                 </div>
                 
                 <div class="checkout-totals header-totals" v-if="cart.length > 0">
-                    <span v-if="earlytotal">Early bird total : {{ currencySymbol }}{{ earlytotal  | moneyify }} </span>
-                    <span v-else>Original total : {{ currencySymbol }}{{ total  | moneyify }} </span>
-                    <span v-if="subitemtotal">Subitems total: {{ currencySymbol }}{{ subitemtotal  | moneyify }} </span>
-                    <span v-if="earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ ( earlytotal + subitemtotal )  | moneyify }} </span>
-                    <span v-if="!earlytotal && subitemtotal">Undiscounted total: {{ currencySymbol }}{{ ( total + subitemtotal )  | moneyify }} </span>
-                    <span v-if="discount !== 1">Discount rate: {{ ( ( 1 - discount ) * 100 ).toFixed() }}% </span>
-                    <span>Discounted : {{ currencySymbol }}{{ ( total * discount ) - total  | moneyify }} </span>
-                    <strong v-if="earlytotal">Total: {{ currencySymbol }}{{ ( subitemtotal + earlytotal )  | moneyify }} </strong>
-                    <strong v-else>Total: {{ currencySymbol }}{{ (( total * discount ) + subitemtotal )  | moneyify }} </strong>
+                    <div class="header-total" v-if="earlytotal"> 
+                        <span class="header-total-property">Early bird total :</span> 
+                        <span class="header-total-value"> {{ currencySymbol }}{{ earlytotal  | moneyify }} </span>
+                    </div>
+                    <div class="header-total" v-else>
+                        <span class="header-total-property">Original total : </span>
+                        <span class="header-total-value">{{ currencySymbol }}{{ total  | moneyify }} </span>
+                    </div>
+                    <div class="header-total" v-if="subitemtotal">
+                        <span class="header-total-property"></span>
+                        <span class="header-total-value"></span>
+                        Subitems total: 
+                        {{ currencySymbol }}{{ subitemtotal  | moneyify }} 
+                    </div>
+                    <div class="header-total" v-if="earlytotal && subitemtotal">
+                        <span class="header-total-property">Undiscounted total: </span>
+                        <span class="header-total-value">{{ currencySymbol }}{{ ( earlytotal + subitemtotal )  | moneyify }} </span>
+                    </div>
+                    <div class="header-total" v-if="!earlytotal && subitemtotal">
+                        <span class="header-total-property">Undiscounted total: </span>
+                        <span class="header-total-value">{{ currencySymbol }}{{ ( total + subitemtotal )  | moneyify }} </span>
+                    </div>
+                    <div class="header-total" v-if="discount !== 1">
+                        <span class="header-total-property">Discount rate: </span>
+                        <span class="header-total-value">{{ ( ( 1 - discount ) * 100 ).toFixed() }}% </span>
+                    </div>
+                    <div class="header-total">
+                        <span class="header-total-property">Discounted : </span>
+                        <span class="header-total-value">{{ currencySymbol }}{{ ( total * discount ) - total  | moneyify }}</span> 
+                    </div>
+                    <div class="header-total" v-if="earlytotal">
+                        <strong class="header-total-property">Total: </strong>
+                        <strong class="header-total-value">{{ currencySymbol }}{{ ( subitemtotal + earlytotal )  | moneyify }}</strong> 
+                    </div>
+                    <div class="header-total" v-else>
+                        <strong class="header-total-property">Total: </strong>
+                        <strong class="header-total-value">{{ currencySymbol }}{{ (( total * discount ) + subitemtotal )  | moneyify }} </strong>
+                    </div>
                 </div>
             </div>
             
             <div class="calculator" id="main-wrapper">
-
                 <v-card class="events">
-
                     <v-container xs12 id="events-wrapper">
                         <v-layout row wrap class="events-wrap">
                             <v-layout column>

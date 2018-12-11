@@ -5069,13 +5069,3 @@ var vue = new Vue({
         this.loaded = true;
     }
 })
-
-//everything below this line will apply to multiple workshop discounts:
-
-// if (Date.now() > new Date(product.earlybirdends)) {
-//     new Date(product.earlybirdends)
-//   
-// }
-
-
-
