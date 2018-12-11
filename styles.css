@@ -241,8 +241,8 @@ input:checked + .slider:before {
 
 button.add-to-package.remove-from-package.v-btn.theme--light {
     position: absolute;
+    right: 0;
     top: 8;
-    right: 5;
 }
 
 .sponsorship-intro {

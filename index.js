@@ -4486,7 +4486,7 @@ var vue = new Vue({
         // we change each displayed price to fit the format exemplified on icef.design/main and the icef ratesheet among other places
         moneyify: function( value ){
             if ( value || value == 0 ) {
-                let stringified = value.toString();
+                let stringified = value.toFixed().toString();
                 if ( stringified.length > 3 ) {
                     for ( let i = stringified.length - 1; i >= 0; i-- ){
                         if ( ( stringified.length - i ) % 3 == 0 ){
@@ -4798,6 +4798,7 @@ var vue = new Vue({
         },
         // we exit the calculator screen and go into checkout
         gotoCheckout() {
+            document.getElementById("cart-bottom-screen").style.display = "none";
             this.cart.forEach(m => {
                 if ( m.sponsorshipPackageSelected ) {
                     this.selectedWorkshops.push( m.sponsorship_package.name );
@@ -4827,11 +4828,8 @@ var vue = new Vue({
             this.attendBooths = !this.attendBooths;
         },
         expandFooter(){
-            if (this.footerExanded){
-                this.footerExpanded = false;
-                document.getElementById("bottom-fade").style.display = "none";
-            }
-            else this.footerExpanded = true;
+            this.footerExpanded = !this.footerExpanded;
+            document.getElementById("bottom-fade").style.display = this.footerExpanded ? "none" : "block"; 
         },
         closeAdvertModal() {
             this.advertModal = false;
