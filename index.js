@@ -4505,7 +4505,7 @@ var vue = new Vue({
             cartitem = Object.assign({}, subitem); //make copy of product
             this.regularWorkshops++;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
-            this.cart.push(cartitem); //push copy of product into cart
+            this.cart.unshift(cartitem); //push copy of product into cart
             if ( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops && selector !== 'work_and_travel' ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
                 cartitem.selectedearly = true;
                 product.selectedearly = true;
@@ -4652,7 +4652,7 @@ var vue = new Vue({
             product.booths.name = subitem.name;
             product.booths.price = subitem.price;
             cartitem = Object.assign({}, product.booths);
-            this.cart.push(cartitem);
+            this.cart.unshift(cartitem);
             this.total += cartitem.price;
         },
         // remove a booth from the cart
@@ -4680,7 +4680,7 @@ var vue = new Vue({
             cartitem = Object.assign({}, subitem);
             console.log(cartitem);
             cartitem.quantity++;
-            this.cart.push(cartitem);
+            this.cart.unshift(cartitem);
             this.total += cartitem.price;
             this.advertModal = false;
         },
