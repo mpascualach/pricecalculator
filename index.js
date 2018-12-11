@@ -4704,6 +4704,14 @@ var vue = new Vue({
             if ( tables.quantity == 0 ){
                 this.absoluteRemoveFromCart(tables);
             }
+            else {
+                this.cart.forEach(m => {
+                    if ( m.id == tables.id ) {
+                        m.quantity--;
+                        this.total -= m.price;
+                    }
+                })
+            }
         },
         // adds either an extra schedule, an additional person or a subscription package for an event
         addSubItem: function (product, subitem, selector, tier) {
