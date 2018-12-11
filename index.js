@@ -4468,6 +4468,7 @@ var vue = new Vue({
         boothModal: false,
         infoModal: false,
         cartAtBottom: true,
+        footerExpanded: false,
         valid: false,
         accountType: 'educator', //can also be 'service_provider' and 'work_and_travel'
         attendBooths: false, //determines whether the user is buying an exhibition booth or another fo
@@ -4824,6 +4825,13 @@ var vue = new Vue({
         //we allow a user to start adding exhibition booths to the cart instead of our regular products
         changeMode() {
             this.attendBooths = !this.attendBooths;
+        },
+        expandFooter(){
+            if (this.footerExanded){
+                this.footerExpanded = false;
+                document.getElementById("bottom-fade").style.display = "none";
+            }
+            else this.footerExpanded = true;
         },
         closeAdvertModal() {
             this.advertModal = false;
