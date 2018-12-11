@@ -25,7 +25,7 @@ html, body {
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 img.icef-pricer-logo {
@@ -37,7 +37,7 @@ img.icef-pricer-logo {
 }
 
 .switch-container {
-    margin-right: 35%;
+    margin-right: 5%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -155,7 +155,8 @@ input:checked + .slider:before {
 }
 
 .events.v-card.theme--light{
-    width: 46%;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .v-card.theme--light {
@@ -373,14 +374,23 @@ button.booths.booths-activator.v-btn.theme--light {
 }
 
 .cart {
-    position: relative;
-    top: 20;
+    position: absolute;
+    left: 7%;
 }
 
-@media (min-width: 1369px) {
-    .cart {
-        right: 2%;
-    }
+.cart-layout {
+    flex-direction: column;
+    position: absolute;
+    right: -20%;
+    top: 5%;
+}
+
+.cart-activator {
+    margin-top: 10%;
+}
+
+.cart-card {
+    width: 100%!important;
 }
 
 td {
@@ -397,8 +407,6 @@ td {
 .theme--light.v-table {
     background-color: #fff;
     color: rgba(0,0,0,.87);
-    margin-right: 10px !important;
-    background: #eef0f3 !important;
     border-collapse: collapse;
 }
 
@@ -504,9 +512,9 @@ span.schedule-alert {
 td.totals {
     position: absolute;
     display: flex;
+    left: 400;
     flex-direction: column;
     height: auto;
-    right: 12.5%;
     text-align: right;
 }
 

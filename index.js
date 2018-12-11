@@ -4467,6 +4467,7 @@ var vue = new Vue({
         choiceModal: false,
         boothModal: false,
         infoModal: false,
+        cartModal: false,
         valid: false,
         accountType: 'educator', //can also be 'service_provider' and 'work_and_travel'
         attendBooths: false, //determines whether the user is buying an exhibition booth or another fo
