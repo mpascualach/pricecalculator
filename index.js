@@ -4778,7 +4778,7 @@ var vue = new Vue({
                 this.cart.forEach(m => {
                     if ( m.id == product.id ){
                         m.sponsorshipPackageSelected = false;
-                        if (m.earlyrateselected) this.earlytotal += m.priceearly;
+                        if ( m.earlyrateselected ) this.earlytotal += m.priceearly;
                         else this.total += m.price;
                     }
                 })
@@ -4799,6 +4799,7 @@ var vue = new Vue({
         // we exit the calculator screen and go into checkout
         gotoCheckout() {
             document.getElementById("cart-bottom-screen").style.display = "none";
+            // this.selectedWorkshops will be listed in the checkout screen in blocks containing the titles of each workshop you've indicated you're attending
             this.cart.forEach(m => {
                 if ( m.sponsorshipPackageSelected ) {
                     this.selectedWorkshops.push( m.sponsorship_package.name );
@@ -4838,16 +4839,16 @@ var vue = new Vue({
         },
         showBoothOptions(product) {
             product.selectBoothBoolean = true;
-            if ( this.cart.length == 0 ){
-                let empty = {
-                    booths: true,
-                    notify: true,
-                    name: '',
-                    price: '',
-                    quantity: ''
-                };
-                this.cart.push( empty );
-            }
+            // if ( this.cart.length == 0 ){
+            //     let empty = {
+            //         booths: true,
+            //         notify: true,
+            //         name: '',
+            //         price: '',
+            //         quantity: ''
+            //     };
+            //     this.cart.unshift( empty );
+            // }
         },
         setBaseCurrency(baseCurrency) {
             this.currentCurrency = baseCurrency;
@@ -4875,12 +4876,12 @@ var vue = new Vue({
                     fx.rates = this.fixer.rates;
                     fx.base = this.fixer.base;
                 }
-                else {
-                    var fxSetup = {
-                        rates: this.fixer.rates,
-                        base: this.fixer.base
-                    };
-                }
+                // else {
+                //     var fxSetup = {
+                //         rates: this.fixer.rates,
+                //         base: this.fixer.base
+                //     };
+                // }
                 this.setCurrencies();
             });
         },
@@ -4933,37 +4934,37 @@ var vue = new Vue({
                         to: this.fixer.base
                     }).toFixed());
 
-                    if (m.tables) {
-                        m.tables.price = parseInt(fx.convert(m.tables.price, {
+                    if ( m.tables ) {
+                        m.tables.price = parseInt( fx.convert( m.tables.price, {
                             from: m.currency,
                             to: this.fixer.base
                         }).toFixed());
-                        m.tables.priceearly = parseInt(fx.convert(m.tables.priceearly, {
-                            from: m.currency,
-                            to: this.fixer.base
-                        }).toFixed());
-
-                        m.tables.schedules.price = parseInt(fx.convert(m.tables.schedules.price, {
+                        m.tables.priceearly = parseInt( fx.convert( m.tables.priceearly, {
                             from: m.currency,
                             to: this.fixer.base
                         }).toFixed());
 
-                        m.tables.additionalPeople.price = parseInt(fx.convert(m.tables.additionalPeople.price, {
+                        m.tables.schedules.price = parseInt( fx.convert( m.tables.schedules.price, {
                             from: m.currency,
                             to: this.fixer.base
                         }).toFixed());
 
-                        m.tables.sponsorships.platinum.price = parseInt(fx.convert(m.tables.sponsorships.platinum.price, {
+                        m.tables.additionalPeople.price = parseInt( fx.convert( m.tables.additionalPeople.price, {
                             from: m.currency,
                             to: this.fixer.base
                         }).toFixed());
 
-                        m.tables.sponsorships.gold.price = parseInt(fx.convert(m.tables.sponsorships.gold.price, {
+                        m.tables.sponsorships.platinum.price = parseInt( fx.convert( m.tables.sponsorships.platinum.price, {
                             from: m.currency,
                             to: this.fixer.base
                         }).toFixed());
 
-                        m.tables.sponsorships.silver.price = parseInt(fx.convert(m.tables.sponsorships.silver.price, {
+                        m.tables.sponsorships.gold.price = parseInt( fx.convert( m.tables.sponsorships.gold.price, {
+                            from: m.currency,
+                            to: this.fixer.base
+                        }).toFixed());
+
+                        m.tables.sponsorships.silver.price = parseInt( fx.convert( m.tables.sponsorships.silver.price, {
                             from: m.currency,
                             to: this.fixer.base
                         }).toFixed());
@@ -4979,67 +4980,67 @@ var vue = new Vue({
                     }
 
                     if ( m.booths.priceHighest && m.booths.priceLowest ) {
-                        m.booths.priceHighest = parseInt(fx.convert(m.booths.priceHighest, {
+                        m.booths.priceHighest = parseInt(fx.convert( m.booths.priceHighest, {
                             from: m.currency,
                             to: this.fixer.base
                         }).toFixed());
 
-                        m.booths.priceLowest = parseInt(fx.convert(m.booths.priceLowest, {
+                        m.booths.priceLowest = parseInt(fx.convert( m.booths.priceLowest, {
                             from: m.currency,
                             to: this.fixer.base
                         }).toFixed());
 
-                        if (m.booths.large12) {
-                            m.booths.large12.price = parseInt(fx.convert(m.booths.large12.price, {
+                        if ( m.booths.large12 ) {
+                            m.booths.large12.price = parseInt(fx.convert( m.booths.large12.price, {
                                 from: m.currency,
                                 to: this.fixer.base
                             }).toFixed()); 
                         }
 
-                        if (m.booths.large10) {
-                            m.booths.large10.price = parseInt(fx.convert(m.booths.large10.price, {
+                        if ( m.booths.large10 ) {
+                            m.booths.large10.price = parseInt(fx.convert( m.booths.large10.price, {
                                 from: m.currency,
                                 to: this.fixer.base
                             }).toFixed()); 
                         }
 
-                        if (m.booths.medium8) {
-                            m.booths.medium8.price = parseInt(fx.convert(m.booths.medium8.price, {
+                        if ( m.booths.medium8 ) {
+                            m.booths.medium8.price = parseInt(fx.convert( m.booths.medium8.price, {
                                 from: m.currency,
                                 to: this.fixer.base
                             }).toFixed()); 
                         }
 
-                        if (m.booths.medium6) {
-                            m.booths.medium6.price = parseInt(fx.convert(m.booths.medium6.price, {
+                        if ( m.booths.medium6 ) {
+                            m.booths.medium6.price = parseInt(fx.convert( m.booths.medium6.price, {
                                 from: m.currency,
                                 to: this.fixer.base
                             }).toFixed()); 
                         }
 
-                        if (m.booths.std5) {
-                            m.booths.std5.price = parseInt(fx.convert(m.booths.std5.price, {
+                        if ( m.booths.std5 ) {
+                            m.booths.std5.price = parseInt(fx.convert( m.booths.std5.price, {
                                 from: m.currency,
                                 to: this.fixer.base
                             }).toFixed()); 
                         }
 
-                        if (m.booths.std4) {
-                            m.booths.std4.price = parseInt(fx.convert(m.booths.std4.price, {
+                        if ( m.booths.std4 ) {
+                            m.booths.std4.price = parseInt(fx.convert( m.booths.std4.price, {
                                 from: m.currency,
                                 to: this.fixer.base
                             }).toFixed()); 
                         }
 
-                        if (m.booths.std3) {
-                            m.booths.std3.price = parseInt(fx.convert(m.booths.std3.price, {
+                        if ( m.booths.std3 ) {
+                            m.booths.std3.price = parseInt(fx.convert( m.booths.std3.price, {
                                 from: m.currency,
                                 to: this.fixer.base
                             }).toFixed()); 
                         }
 
-                        if (m.booths.displaytable) {
-                            m.booths.displaytable.price = parseInt(fx.convert(m.booths.displaytable.price, {
+                        if ( m.booths.displaytable ) {
+                            m.booths.displaytable.price = parseInt(fx.convert( m.booths.displaytable.price, {
                                 from: m.currency,
                                 to: this.fixer.base
                             }).toFixed()); 
@@ -5048,18 +5049,12 @@ var vue = new Vue({
                 }
             });
         },
-        customSort(items, index, isdescending){
-            items.sort((a,b)=>{
-                return a.id - b.id;
-            })
-        },
         // we convert all price values to the selected currency
         changeBaseCurrency() {
             this.setBaseCurrency( event.target.innerText );
         },
         // this doesn't fulfill a function beyond switching out of the checkout screen yet
         confirmQuote(){
-            console.log("Quote confirmed! :", document.getElementById("checkout"));
             document.getElementById("checkout").style.display = "none";
             document.getElementById("post-checkout").style.display = "block";
         }

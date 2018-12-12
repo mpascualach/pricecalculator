@@ -625,6 +625,7 @@ button.work-and-travel.v-btn.theme--light {
     color: #d95e3c!important;
     background: white!important;
     font-weight: 700!important;
+    margin-top: 7%!important;
 }
 
 button.adverts.adverts-activator.v-btn.theme--light {
@@ -660,6 +661,13 @@ button.marketing-choice.v-btn.theme--light {
 
 .v-card__text.advert-choice-container {
     padding-bottom: 27px;
+}
+
+.advert-choice-btn {
+    background-color: rgba(0,90,166,0.8)!important;
+    color: white!important;
+    border-radius: 5px!important;
+    margin-bottom: 5%!important;
 }
 
 .v-dialog.v-dialog--active {

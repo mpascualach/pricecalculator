@@ -59,10 +59,8 @@
                         <span class="header-total-value">{{ currencySymbol }}{{ total  | moneyify }} </span>
                     </div>
                     <div class="header-total" v-if="subitemtotal">
-                        <span class="header-total-property"></span>
-                        <span class="header-total-value"></span>
-                        Subitems total: 
-                        {{ currencySymbol }}{{ subitemtotal  | moneyify }} 
+                        <span class="header-total-property">Subitems total: </span>
+                        <span class="header-total-value">{{ currencySymbol }}{{ subitemtotal  | moneyify }} </span>
                     </div>
                     <div class="header-total" v-if="earlytotal && subitemtotal">
                         <span class="header-total-property">Undiscounted total: </span>
@@ -126,7 +124,7 @@
                                                         to: {{ currencySymbol }}{{ product.booths.priceHighest | moneyify }}
                                                     </div>
                                                     <div class="display-table-disclaimer price-container" v-else-if="!product.selectBoothBoolean && product.booths.priceOnly">
-                                                        Display table available at <br/>{{ currencySymbol }} {{ product.booths.priceOnly | moneyify }}
+                                                        Display table at <br/>{{ currencySymbol }} {{ product.booths.priceOnly | moneyify }}
                                                     </div> 
                                                 </div>
                                             </div>
