@@ -4839,6 +4839,9 @@ var vue = new Vue({
         },
         showBoothOptions(product) {
             product.selectBoothBoolean = true;
+            if (product.booths.priceOnly) {
+                this.addBoothToCart(product, product.booths.displaytable);
+            }
             // if ( this.cart.length == 0 ){
             //     let empty = {
             //         booths: true,
