@@ -8,6 +8,9 @@
 
 html, body {
     background-color: #eef0f3;
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden
 }
 
 .main-wrapper {
@@ -501,6 +504,22 @@ table.v-table thead tr {
 .name {
     padding: 0 !important;
     padding-left: 10px !important;
+}
+
+.additional-name {
+    white-space: unset;
+}
+
+.includes-1-schedule {
+    bottom: 2;
+}
+
+.additional-schedule-counter {
+    bottom: -4;
+}
+
+.additional-person-counter {
+    bottom: -10;
 }
 
 tr {
