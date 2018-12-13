@@ -4719,7 +4719,6 @@ var vue = new Vue({
                 if (booth.price) this.total -= booth.price;
             } //for when we're removing booths from 'remove' buttons next to booth rows
             this.products.forEach(m => {
-                console.log(m.id, booth.id);
                 if ( m.id == booth.id ){
                     m.booths.quantity = 0;
                     m.selectBoothBoolean = false;
