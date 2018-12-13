@@ -8,6 +8,9 @@
 
 html, body {
     background-color: #eef0f3;
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden
 }
 
 .main-wrapper {
@@ -26,6 +29,25 @@ html, body {
     display: flex;
     align-items: center;
     /* justify-content: space-between; */
+}
+
+.header-item {
+    margin-right: 5%;
+}
+
+.header-totals {
+    position: absolute;
+    right: 0;
+}
+
+.header-total {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-total-value {
+    width: 100px;
+    margin-left: 10px;
 }
 
 img.icef-pricer-logo {
@@ -354,7 +376,7 @@ button.booths.booths-activator.v-btn.theme--light {
     font-size: 14px;
     max-width: 20%;
     color: grey;
-    top: 0;
+    top: 15%;
 }
 
 /* Cart / datatable styles */
@@ -391,7 +413,7 @@ button.booths.booths-activator.v-btn.theme--light {
 }
 
 .cart-activator {
-    margin-top: 10%;
+    margin-top: 8%!important;
 }
 
 .cart-card {
@@ -553,6 +575,7 @@ td.checkout-btn-container > button {
 .checkout-totals {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
 }
 
 .v-btn {
@@ -597,6 +620,7 @@ button.work-and-travel.v-btn.theme--light {
     color: #d95e3c!important;
     background: white!important;
     font-weight: 700!important;
+    margin-top: 7%!important;
 }
 
 button.adverts.adverts-activator.v-btn.theme--light {
@@ -632,6 +656,13 @@ button.marketing-choice.v-btn.theme--light {
 
 .v-card__text.advert-choice-container {
     padding-bottom: 27px;
+}
+
+.advert-choice-btn {
+    background-color: rgba(0,90,166,0.8)!important;
+    color: white!important;
+    border-radius: 5px!important;
+    margin-bottom: 5%!important;
 }
 
 .v-dialog.v-dialog--active {

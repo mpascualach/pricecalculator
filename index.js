@@ -4882,16 +4882,19 @@ var vue = new Vue({
         },
         showBoothOptions(product) {
             product.selectBoothBoolean = true;
-            if ( this.cart.length == 0 ){
-                let empty = {
-                    booths: true,
-                    notify: true,
-                    name: '',
-                    price: '',
-                    quantity: ''
-                };
-                this.cart.push( empty );
+            if (product.booths.priceOnly) {
+                this.addBoothToCart(product, product.booths.displaytable);
             }
+            // if ( this.cart.length == 0 ){
+            //     let empty = {
+            //         booths: true,
+            //         notify: true,
+            //         name: '',
+            //         price: '',
+            //         quantity: ''
+            //     };
+            //     this.cart.push( empty );
+            // }
         },
         setBaseCurrency(baseCurrency) {
             this.currentCurrency = baseCurrency;
