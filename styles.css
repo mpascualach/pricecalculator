@@ -403,7 +403,8 @@ button.booths.booths-activator.v-btn.theme--light {
 .cart {
     position: absolute;
     top: 10;
-    left: 25%;
+    left: 10%;
+    width: 60%;
 }
 
 .cart > .v-table__overflow {
@@ -811,12 +812,17 @@ i.fa.fa-times.sponsorship-info-cross {
 .booths-standby {
     position: absolute;
     top: 25;
-    width: 100%;
-    height: 50%!important;
+    width: 82%;
+    height: 100%!important;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.booths-standby-text {
+    position: relative;
+    bottom: 10;
 }
 
 .back-to-calculator-btn {

@@ -524,14 +524,23 @@
 
                             <tr v-else-if="props.item.booths && !props.item.advert"> 
                                 <td class="booths-standby" v-if="props.item.notify">
-                                    <span>   What kind of size booth would you like? </span>
+                                    <span class="booths-standby-text">   What size booth would you like? </span>
                                 </td>
                                 <td>{{ props.item.name }}</td>
-                                <td>{{ currencySymbol }}{{ props.item.price | moneyify }}</td>
+                                <td v-if="props.item.price">{{ currencySymbol }}{{ props.item.price | moneyify }}</td>
+                                <td v-else></td>
                                 <td class="qty">{{ props.item.quantity }}</td>
-                                <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify}}</td>
-                                <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify}}</td>
-                                <td>{{ currencySymbol }}0</td>
+                                <template v-if="props.item.price">
+                                    <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify}}</td>
+                                    <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify}}</td>
+                                    <td>{{ currencySymbol }}0</td>
+                                </template>
+                                <template v-else>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </template>
+                                
                                 <td class="remove-btn-container">
                                     <v-btn class="add-to-package remove-btn-package" v-on:click="removeBoothFromCart(props.item)">REMOVE</v-btn>
                                 </td>

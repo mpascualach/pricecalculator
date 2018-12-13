@@ -4715,8 +4715,11 @@ var vue = new Vue({
                     }
                 })
             }
-            else this.total -= booth.price; //for when we're removing booths from 'remove' buttons next to booth rows
+            else {
+                if (booth.price) this.total -= booth.price;
+            } //for when we're removing booths from 'remove' buttons next to booth rows
             this.products.forEach(m => {
+                console.log(m.id, booth.id);
                 if ( m.id == booth.id ){
                     m.booths.quantity = 0;
                     m.selectBoothBoolean = false;
@@ -4890,16 +4893,17 @@ var vue = new Vue({
             if ( product.booths.priceOnly ) {
                 this.addBoothToCart( product, product.booths.displaytable );
             }
-            // if ( this.cart.length == 0 ){
-            //     let empty = {
-            //         booths: true,
-            //         notify: true,
-            //         name: '',
-            //         price: '',
-            //         quantity: ''
-            //     };
-            //     this.cart.unshift( empty );
-            // }
+            if ( this.cart.length == 0 ){
+                let empty = {
+                    booths: true,
+                    notify: true,
+                    id: product.id,
+                    name: '',
+                    price: '',
+                    quantity: ''
+                };
+                this.cart.unshift( empty );
+            }
         },
         setBaseCurrency( baseCurrency ) {
             this.currentCurrency = baseCurrency;
