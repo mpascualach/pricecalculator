@@ -381,7 +381,7 @@ button.booths.booths-activator.v-btn.theme--light {
 .cart-layout {
     flex-direction: column;
     position: absolute;
-    right: -20%;
+    right: 0;
     top: 5%;
 }
 
@@ -391,6 +391,7 @@ button.booths.booths-activator.v-btn.theme--light {
 
 .cart-card {
     width: 100%!important;
+    height: 60%;
 }
 
 td {
