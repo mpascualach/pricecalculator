@@ -27,8 +27,10 @@
         
         <v-app id="vue" v-if="loaded">
             <div class="header">
+                <!-- ICEF logo -->
                 <img class="icef-pricer-logo header-item" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/471364/icef_logo-min-12.png" />
                 <div class="currencySelect header-item">
+                    <!-- this is where the user can switch between base currencies (EUR, AUD, etc.) -->
                     <template>
                         <v-select class="currency-selector"
                             :items="allowedCurrencies" 
@@ -41,6 +43,7 @@
                     
                 </div>
 				<div class="switch-container header-item">
+                    <!-- this is where the user can choose to either add regular workshop attendance items or exhibition booths -->
                     <div class="switch-label">Attend workshops</div>
 					<label class="switch">
 						<input type="checkbox" id="modeSelector" v-on:click="changeMode()">
@@ -49,6 +52,7 @@
 					<div class="switch-label">Exhibition workshops</div>
                 </div>
                 
+                <!-- list of totals updated with each addition to the cart -->
                 <div class="checkout-totals header-totals" v-if="cart.length > 0">
                     <div class="header-total" v-if="earlytotal"> 
                         <span class="header-total-property">Early bird total :</span> 
@@ -466,7 +470,7 @@
 
             <div class="cart-bottom-screen" id="cart-bottom-screen" 
                 v-if="cart.length > 0" 
-                v-bind:style="[ footerExpanded ? { 'height': '80%' } : { 'height': '10%' } ]">
+                v-bind:style="[ footerExpanded ? { 'height': '80%' } : { 'height': '15%' } ]">
                 <template class="cart-container">
                     <v-data-table :headers="headers" :items="cart" class="cart">
 
