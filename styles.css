@@ -304,6 +304,10 @@ button.silver-pressed.sponsorship-pressed.sponsorship.light.v-btn.theme--light {
     width: 100px;
 }
 
+.booth-btn-selected {
+    background-color: #DCDCDC!important;
+}
+
 .booth-buttons {
     display: flex;
     flex-direction: column;
@@ -335,6 +339,7 @@ button.booths.booths-activator.v-btn.theme--light {
     display: flex;
     align-items: center;
     margin-right: 33%;
+    margin-left: 10%;
     font-size: 12px;
 }
 
