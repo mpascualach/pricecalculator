@@ -4797,6 +4797,7 @@ var vue = new Vue({
         },
         // we exit the calculator screen and go into checkout
         gotoCheckout() {
+            this.cartModal = false;
             this.cart.forEach(m => {
                 if ( m.sponsorshipPackageSelected ) {
                     this.selectedWorkshops.push( m.sponsorship_package.name );
