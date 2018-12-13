@@ -286,7 +286,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 10500,
                     originalprice: 10500,
-                    description: "Includes 2 people & 2 schedules"
+                    description: "Includes 2 people & 2 schedules",
+                    selected: false,
                 },
                 medium8: {
                     id: 1,
@@ -294,7 +295,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 7500,
                     originalprice: 7500,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 medium6: {
                     id: 1,
@@ -302,7 +304,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 5500,
                     originalprice: 5500,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 std4: {
                     id: 1,
@@ -310,7 +313,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4500,
                     originalprice: 4500,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 }
             },
             work_and_travel: {
@@ -633,7 +637,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 12000,
                     originalprice: 12000,
-                    description: "Includes 2 people & 2 schedules"
+                    description: "Includes 2 people & 2 schedules",
+                    selected: false,
                 },
                 large10: {
                     id: 2,
@@ -641,7 +646,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 9000,
                     originalprice: 9000,
-                    description: "Includes 2 people & 2 schedules"
+                    description: "Includes 2 people & 2 schedules",
+                    selected: false,
                 },
                 medium8: {
                     id: 2,
@@ -649,7 +655,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 8000,
                     originalprice: 8000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 medium6: {
                     id: 2,
@@ -657,7 +664,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 6000,
                     originalprice: 6000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 std5: {
                     id: 2,
@@ -665,7 +673,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 5500,
                     originalprice: 5500,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 std4: {
                     id: 2,
@@ -673,7 +682,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 5000,
                     originalprice: 5000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 std3: {
                     id: 2,
@@ -681,7 +691,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 }
             },
             additional: []
@@ -928,7 +939,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: ""
+                    description: "",
+                    selected: false,
                 }
             },
             additional: []
@@ -1178,7 +1190,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 12000,
                     originalprice: 12000,
-                    description: "Includes 2 people & 2 schedules"
+                    description: "Includes 2 people & 2 schedules",
+                    selected: false,
                 },
                 medium8: {
                     id: 4,
@@ -1186,7 +1199,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 8000,
                     originalprice: 8000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 medium6: {
                     id: 4,
@@ -1194,7 +1208,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 6000,
                     originalprice: 6000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 std4: {
                     id: 4,
@@ -1202,7 +1217,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 5000,
                     originalprice: 5000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
             },
             additional: []
@@ -1451,7 +1467,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 12000,
                     originalprice: 12000,
-                    description: "Includes 2 people & 2 schedules"
+                    description: "Includes 2 people & 2 schedules",
+                    selected: false,
                 },
                 medium8: {
                     id: 5,
@@ -1459,7 +1476,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 8000,
                     originalprice: 8000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 medium6: {
                     id: 5,
@@ -1467,7 +1485,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 6000,
                     originalprice: 6000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 std4: {
                     id: 5,
@@ -1475,7 +1494,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 5000,
                     originalprice: 5000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
             },
             additional: []
@@ -1725,7 +1745,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 12000,
                     originalprice: 12000,
-                    description: "Includes 2 people & 2 schedules"
+                    description: "Includes 2 people & 2 schedules",
+                    selected: false,
                 },
                 medium8: {
                     id: 6,
@@ -1733,7 +1754,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 8000,
                     originalprice: 8000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 medium6: {
                     id: 6,
@@ -1741,7 +1763,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 6000,
                     originalprice: 6000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 std4: {
                     id: 6,
@@ -1749,7 +1772,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 5000,
                     originalprice: 5000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
             },
         },
@@ -1995,7 +2019,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 10500,
                     originalprice: 10500,
-                    description: "Includes 2 people & 2 schedules"
+                    description: "Includes 2 people & 2 schedules",
+                    selected: false,
                 },
                 medium8: {
                     id: 7,
@@ -2003,7 +2028,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 7500,
                     originalprice: 7500,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 medium6: {
                     id: 7,
@@ -2011,7 +2037,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 5500,
                     originalprice: 5500,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 std4: {
                     id: 7,
@@ -2019,7 +2046,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4500,
                     originalprice: 4500,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 }
             },
         },
@@ -2264,7 +2292,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: ""
+                    description: "",
+                    selected: false,
                 }
             },
         },
@@ -2510,7 +2539,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: ""
+                    description: "",
+                    selected: false,
                 }
             },
         },
@@ -2756,7 +2786,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: ""
+                    description: "",
+                    selected: false,
                 }
             },
         },
@@ -3002,7 +3033,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: ""
+                    description: "",
+                    selected: false,
                 },
             },
         },
@@ -3248,7 +3280,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: ""
+                    description: "",
+                    selected: false,
                 } 
             },
         },
@@ -3496,7 +3529,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 12000,
                     originalprice: 12000,
-                    description: "Includes 2 people & 2 schedules"
+                    description: "Includes 2 people & 2 schedules",
+                    selected: false,
                 },
                 medium8: {
                     id: 14,
@@ -3504,7 +3538,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 8000,
                     originalprice: 8000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 medium6: {
                     id: 14,
@@ -3512,7 +3547,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 6000,
                     originalprice: 6000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 },
                 std4: {
                     id: 14,
@@ -3520,7 +3556,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 5000,
                     originalprice: 5000,
-                    description: "Includes 1 people & 1 schedule"
+                    description: "Includes 1 people & 1 schedule",
+                    selected: false,
                 }
             },
         },
@@ -3766,7 +3803,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: ""
+                    description: "",
+                    selected: false,
                 }
             },
         },
@@ -4012,7 +4050,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: ""
+                    description: "",
+                    selected: false,
                 }
             },
         },
@@ -4258,7 +4297,8 @@ var vue = new Vue({
                     quantity: 0,
                     price: 4400,
                     originalprice: 4400,
-                    description: ""
+                    description: "",
+                    selected: false,
                 }
             },
         },
@@ -4647,6 +4687,18 @@ var vue = new Vue({
                     this.cart = this.cart.filter(n => !n.notify);
                 }
             })
+            if (product.booths.booths){
+                if (product.booths.large12) product.booths.large12.selected = false;
+                if (product.booths.large10) product.booths.large10.selected = false;
+                if (product.booths.medium8) product.booths.medium8.selected = false;
+                if (product.booths.medium6) product.booths.medium6.selected = false;
+                if (product.booths.std5) product.booths.std5.selected = false;
+                if (product.booths.std4) product.booths.std4.selected = false;
+                if (product.booths.std3) product.booths.std3.selected = false;
+                if (product.booths.displaytable) product.booths.displaytable.selected = false;
+            }
+            subitem.selected = true;
+            console.log("Subitem: ", subitem)
             product.booths.booths = true;
             product.booths.quantity++;
             product.booths.name = subitem.name;

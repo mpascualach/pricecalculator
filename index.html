@@ -261,16 +261,32 @@
                                                             Large:
                                                         </div>
                                                         <div class="booth-buttons">
-                                                            <v-btn class="booth-btn" 
-                                                                v-if="product.booths.large12 && product.booths.large12.price" 
-                                                                v-on:click="addBoothToCart(product, product.booths.large12)">
-                                                                12m²: {{ currencySymbol }}{{ product.booths.large12.price | moneyify }}
-                                                            </v-btn>
-                                                            <v-btn class="booth-btn" 
-                                                                v-if="product.booths.large10 && product.booths.large10.price" 
-                                                                v-on:click="addBoothToCart(product, product.booths.large10)">
-                                                                10m²: {{ currencySymbol }}{{ product.booths.large10.price | moneyify }}
-                                                            </v-btn>
+															<template v-if="product.booths.large12 && product.booths.large12.price">
+																<v-btn class="booth-btn" 
+																	v-if="!product.booths.large12.selected" 
+																	v-on:click="addBoothToCart(product, product.booths.large12)">
+																	12m²: {{ currencySymbol }}{{ product.booths.large12.price | moneyify }}
+																</v-btn>
+																<v-btn class="booth-btn booth-btn-selected" 
+																	v-on:click="removeBoothFromCart(product,'events')"
+																	v-else>
+																	12m²: {{ currencySymbol }}{{ product.booths.large12.price | moneyify }}
+																</v-btn>
+															</template>
+
+															<template v-if="product.booths.large10 && product.booths.large10.price">
+																<v-btn class="booth-btn"  
+																	v-on:click="addBoothToCart(product, product.booths.large10)"
+																	v-if="!product.booths.large10.selected">
+																	10m²: {{ currencySymbol }}{{ product.booths.large10.price | moneyify }}
+																</v-btn>
+																<v-btn class="booth-btn booth-btn-selected"  
+																	v-on:click="removeBoothFromCart(product, 'events')"
+																	v-else>
+																	10m²: {{ currencySymbol }}{{ product.booths.large10.price | moneyify }}
+																</v-btn>
+															</template>
+                                                             
                                                         </div>
                                                     </div>
 
@@ -279,16 +295,31 @@
                                                             Medium:
                                                         </div>
                                                         <div class="booth-buttons">
-                                                            <v-btn class="booth-btn" 
-                                                                v-if="product.booths.medium8 && product.booths.medium8.price" 
-                                                                v-on:click="addBoothToCart(product, product.booths.medium8)">
-                                                                8m²: {{ currencySymbol }}{{ product.booths.medium8.price | moneyify }}
-                                                            </v-btn>
-                                                            <v-btn class="booth-btn" 
-                                                                v-if="product.booths.medium6 && product.booths.medium6.price" 
-                                                                v-on:click="addBoothToCart(product, product.booths.medium6)">
-                                                                6m²: {{ currencySymbol }}{{ product.booths.medium6.price | moneyify }} 
-                                                            </v-btn>
+															<template v-if="product.booths.medium8 && product.booths.medium8.price">
+																<v-btn class="booth-btn"  
+																	v-on:click="addBoothToCart(product, product.booths.medium8)"
+																	v-if="!product.booths.medium8.selected">
+																	8m²: {{ currencySymbol }}{{ product.booths.medium8.price | moneyify }}
+																</v-btn>
+																<v-btn class="booth-btn booth-btn-selected"  
+																	v-on:click="removeBoothFromCart(product, 'events')"
+																	v-else>
+																	8m²: {{ currencySymbol }}{{ product.booths.medium8.price | moneyify }}
+																</v-btn>
+															</template>
+															
+															<template v-if="product.booths.medium6 && product.booths.medium6.price">
+																<v-btn class="booth-btn"  
+																	v-on:click="addBoothToCart(product, product.booths.medium6)"
+																	v-if="!product.booths.medium6.selected">
+																	6m²: {{ currencySymbol }}{{ product.booths.medium6.price | moneyify }} 
+																</v-btn>
+																<v-btn class="booth-btn booth-btn-selected"  
+																	v-on:click="removeBoothFromCart(product, 'events')"
+																	v-else>
+																	6m²: {{ currencySymbol }}{{ product.booths.medium6.price | moneyify }} 
+																</v-btn>
+															</template>
                                                         </div>
                                                     </div>
 
@@ -298,21 +329,46 @@
                                                         </div>
 
                                                         <div class="booth-buttons">
-                                                            <v-btn class="booth-btn" 
-                                                                v-if="product.booths.std5 && product.booths.std5.price" 
-                                                                v-on:click="addBoothToCart(product, product.booths.std5)">
-                                                                4.5m²: {{ currencySymbol }}{{ product.booths.std5.price | moneyify }}
-                                                            </v-btn>
-                                                            <v-btn class="booth-btn" 
-                                                                v-if="product.booths.std4 && product.booths.std4.price" 
-                                                                v-on:click="addBoothToCart(product, product.booths.std4)">
-                                                                4m²: {{ currencySymbol }}{{ product.booths.std4.price | moneyify }}
-                                                            </v-btn>
-                                                            <v-btn class="booth-btn" 
-                                                                v-if="product.booths.std3 && product.booths.std3.price" 
-                                                                v-on:click="addBoothToCart(product, product.booths.std4)">
-                                                                3m²: {{ currencySymbol }}{{ product.booths.std3.price | moneyify }}
-                                                            </v-btn>
+															<template v-if="product.booths.std5 && product.booths.std5.price">
+																<v-btn class="booth-btn"                                                                 
+																	v-on:click="addBoothToCart(product, product.booths.std5)"
+																	v-if="!product.booths.std5.selected">
+																	4.5m²: {{ currencySymbol }}{{ product.booths.std5.price | moneyify }}
+																</v-btn>
+																<v-btn class="booth-btn booth-btn-selected"                                                                 
+																	v-on:click="removeBoothFromCart(product, 'events')"
+																	v-else>
+																	4.5m²: {{ currencySymbol }}{{ product.booths.std5.price | moneyify }}
+																</v-btn>
+															</template>
+
+															<template v-if="product.booths.std4 && product.booths.std4.price">
+																<v-btn class="booth-btn" 
+																	v-on:click="addBoothToCart(product, product.booths.std4)"
+																	v-if="!product.booths.std4.selected">
+																	4m²: {{ currencySymbol }}{{ product.booths.std4.price | moneyify }}
+																</v-btn>
+																<v-btn class="booth-btn booth-btn-selected" 
+																	v-on:click="removeBoothFromCart(product, 'events')"
+																	v-else>
+																	4m²: {{ currencySymbol }}{{ product.booths.std4.price | moneyify }}
+																</v-btn>
+															</template>
+
+															<template v-if="product.booths.std3 && product.booths.std3.price">
+																<v-btn class="booth-btn" 
+																	v-on:click="addBoothToCart(product, product.booths.std3)"
+																	v-if="!product.booths.std3.selected">
+																	3m²: {{ currencySymbol }}{{ product.booths.std3.price | moneyify }}
+																</v-btn>
+																<v-btn class="booth-btn booth-btn-selected" 
+																	v-on:click="removeBoothFromCart(product, 'events')"
+																	v-else>
+																	3m²: {{ currencySymbol }}{{ product.booths.std3.price | moneyify }}
+																</v-btn>
+															</template>
+                                                            
+                                    
                                                         </div>
                                                     </div>
 
@@ -322,11 +378,19 @@
                                                         </div>
 
                                                         <div class="booth-buttons">
-                                                            <v-btn class="booth-btn"
-                                                                v-if="product.booths.displaytable && product.booths.displaytable.price"
-                                                                v-on:click="addBoothToCart(product, product.booths.displaytable)">
-                                                                {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
-                                                            </v-btn>
+                                                            <template v-if="product.booths.displaytable && product.booths.displaytable.price">
+                                                                <v-btn class="booth-btn"
+                                                                	v-if="!product.booths.displaytable.selected"
+                                                                	v-on:click="addBoothToCart(product, product.booths.displaytable)">
+                                                                	{{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
+																</v-btn>
+																<v-btn class="booth-btn booth-btn-selected"
+																	v-on:click="removeBoothFromCart(product,'events')"
+																	v-else>
+																	{{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
+																</v-btn>
+                                                            </template>
+                                                            
                                                         </div>
                                                     </div>
                                                 </v-card-text>
