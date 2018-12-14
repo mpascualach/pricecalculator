@@ -243,7 +243,8 @@ var vue = new Vue({
         currentCurrency: "EUR",
         currencySymbol: "€",
         defaultCurrency: "EUR",
-        loaded: false
+        loaded: false,
+        endpoint: "https://dev.live.my.icef.com/api3/allAvailableProducts.php"
     },
     filters: {
         // we change each displayed price to fit the format exemplified on icef.design/main and the icef ratesheet among other places
@@ -838,26 +839,24 @@ var vue = new Vue({
             document.getElementById("checkout").style.display = "none";
             document.getElementById("post-checkout").style.display = "block";
         },
-        fillProductsArray(){
-            const url = "https://dev.live.my.icef.com/api3/allAvailableProducts.php";
-
-            fetch(url)
-            .then(data => {
+        callEndpoint(url) {
+            fetch(url).then(data => {
                 return data.json();
             })
-            // .then(res => {
-            //     console.log("Response: ", res);
-            //     this.productKeys = Object.keys(data);
-            //     for (let i = 0; i < this.productKeys.length; i++){
-            //         let event = data[this.productKeys[i]];
-            //         console.log("Event " + i, event.products);
-            //         this.productsArray.push(data[this.productKeys[i]]);
-            //     }
-            // })
-            
+            .then(res => {
+                this.fillProducts(res);
+            })
+        },
+        fillProductsArray(products){
+            this.productKeys = Object.keys(products);
+            for (let i = 0; i < this.productKeys.length; i++){
+                let event = products[this.productKeys[i]];
+                this.productsArray.push(event);
+            }
         }
     },
     beforeMount(){
+        this.callEndpoint(this.endpoint);
         this.fillProductsArray();
         this.setBaseCurrency( this.defaultCurrency );
     },
