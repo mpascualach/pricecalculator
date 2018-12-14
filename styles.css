@@ -38,6 +38,13 @@ html, body {
 .header-totals {
     position: absolute;
     right: 0;
+    text-align: center;
+    padding: 10px;
+    right: 5;
+    border-radius: 5px;
+    background-color: #f9fddb;
+    opacity: 0.8;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 .header-total {
@@ -48,6 +55,7 @@ html, body {
 .header-total-value {
     width: 100px;
     margin-left: 10px;
+    text-align: right;
 }
 
 img.icef-pricer-logo {
@@ -177,7 +185,7 @@ input:checked + .slider:before {
 }
 
 .events.v-card.theme--light{
-    width: 50%;
+    width: 52%;
     margin: 0 auto;
 }
 
@@ -389,15 +397,6 @@ button.booths.booths-activator.v-btn.theme--light {
     float: right;
     position: absolute;
     right: 1%;
-}
-
-@media (min-width: 1628px) {
-    .v-table__overflow {
-        right: 0!important;
-    }
-    .checkout {
-        top: 32%!important;
-    }
 }
 
 .cart {
@@ -706,7 +705,8 @@ button.marketing-choice.v-btn.theme--light {
 
 button.sponsorship-dialog-info.v-btn.theme--light {
     background-color: transparent !important;
-    top: -10;
+    bottom: 10;
+    right: 25%;
     box-shadow: none;
     color: #2196f3;
 }
@@ -820,4 +820,30 @@ i.fa.fa-times.sponsorship-info-cross {
 .confirmation-text {
     position: relative;
     top: 20%
+}
+
+/* Responsive rules */
+
+@media (min-width: 1628px) {
+    .v-table__overflow {
+        right: 0!important;
+    }
+    .checkout {
+        top: 32%!important;
+    }
+}
+
+@media (max-width: 1044px) {
+    .header-item {
+        margin-right: 1%; 
+    }
+    .slider {
+        left: 10;
+    }
+    ul.v-expansion-panel.marketing-and-sponsorship-items.theme--light {
+        width: 100%;
+    }
+    button.add-to-package.remove-from-package.v-btn.theme--light {
+        right: 20;
+    }
 }

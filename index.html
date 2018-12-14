@@ -555,12 +555,12 @@
                                                                 <v-btn class="booth-btn"
                                                                     v-if="!product.booths.displaytable.selected"
                                                                     v-on:click="addBoothToCart(product, product.booths.displaytable)">
-                                                                    {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
+                                                                    {{ currencySymbol }}{{ product.booths.displaytable.price | moneyify }}
                                                                 </v-btn>
                                                                 <v-btn class="booth-btn booth-btn-selected"
                                                                     v-on:click="removeBoothFromCart(product,'events')"
                                                                     v-else>
-                                                                    {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
+                                                                    {{ currencySymbol }}{{ product.booths.displaytable.price | moneyify }}
                                                                 </v-btn>
                                                             </template>
                                                             
