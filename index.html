@@ -99,9 +99,7 @@
             </div>
 
             <div v-if="!loaded">
-                <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-                </svg>
+                <img class="loading-wheel" src="./resources/spinningwheel.gif">
             </div>
             
             <div class="calculator" id="main-wrapper" v-else>
@@ -123,16 +121,16 @@
                                                     <span v-else-if="product.selectedearly" class="early-notification">Early discount
                                                         rates have been applied at {{ currencySymbol }}{{ product.priceearly | moneyify }}!</span>
                                                 </div>
-                                                <div class="price-container" v-if="!attendBooths">
+                                                <div class="price-container">
                                                     <div class="product-price" v-if="product.tables">
-                                                        {{ currencySymbol }}{{ product.tables.price | moneyify }}
+                                                        {{ currencySymbol }}{{ product.form_edu_rate_regular_eur_1st_c | moneyify }}
                                                     </div>
                                                     <div class="product-price" v-else>
-                                                        {{ currencySymbol }}{{ product.price | moneyify }}
+                                                        {{ currencySymbol }}{{ product.form_edu_rate_regular_eur_1st__c | moneyify }}
                                                     </div>
                                                     <span v-if="product.currencyDisclaimer" class="early-notification multiple-bookings">{{ product.currencyDisclaimer }}</span>
                                                 </div>
-                                                <div class="booth-indicator" v-else>
+                                                <!-- <div class="booth-indicator" v-else>
                                                     <div class="booth-disclaimer price-container" 
                                                         v-if="!product.selectBoothBoolean && product.booths.priceLowest && product.booths.priceHighest">
                                                         From: {{ currencySymbol }}{{ product.booths.priceLowest | moneyify }} <br/> 
@@ -141,7 +139,7 @@
                                                     <div class="display-table-disclaimer price-container" v-else-if="!product.selectBoothBoolean && product.booths.priceOnly">
                                                         Display table at <br/>{{ currencySymbol }}{{ product.booths.priceOnly | moneyify }}
                                                     </div> 
-                                                </div>
+                                                </div> -->
                                             </div>
 
                                             <div class="attendance" v-if="product.incart > 0">
