@@ -853,6 +853,7 @@ var vue = new Vue({
                 let event = products[this.productKeys[i]];
                 this.productsArray.push(event);
             }
+            this.loaded = true;
         }
     },
     beforeMount(){
@@ -860,6 +861,5 @@ var vue = new Vue({
         this.setBaseCurrency( this.defaultCurrency );
     },
     mounted(){
-        this.loaded = true;
     }
 })
