@@ -269,14 +269,13 @@ var vue = new Vue({
             cartitem = {
                 name: product.Event_Name + " Table"
             };
-            cartitem.price = product.form_edu_rate_regular_eur_1st__c; //make copy of product
+            cartitem.price = parseInt(product.form_edu_rate_regular_eur_1st__c); //make copy of product
             cartitem.quantity = 1;
             this.regularWorkshops++;
-            console.log(cartitem);
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
             if ( product.form_edu_early_rate_active__c && 1 == this.regularWorkshops ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
                 product.selectedearly = true;
-                cartitem.price = product.form_edu_rate_early_eur_1st__c; 
+                cartitem.price = parseInt(product.form_edu_rate_early_eur_1st__c); 
                 this.earlytotal += cartitem.price;
             } else {
                 this.earlytotal = 0;
@@ -287,6 +286,7 @@ var vue = new Vue({
                 }
             } //log price of subitem and assign it to copy's price
             this.cart.unshift( cartitem ); //push copy of product into cart
+            console.log("Total: ", this.total);
             this.total += cartitem.price;
             product.incart++;
             switch ( this.regularWorkshops ) {
@@ -433,7 +433,7 @@ var vue = new Vue({
             this.total += cartitem.price;
         },
         // remove a booth from the cart
-        removeBoothFromCart(booth, selector){
+        removeBoothFromCart( booth, selector ){
             if ( selector == 'events' ) { //
                 this.cart.forEach(m => {
                     if ( m.id == booth.id ){
