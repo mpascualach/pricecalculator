@@ -844,7 +844,7 @@ var vue = new Vue({
                 return data.json();
             })
             .then(res => {
-                this.fillProducts(res);
+                this.fillProductsArray(res);
             })
         },
         fillProductsArray(products){
@@ -857,7 +857,6 @@ var vue = new Vue({
     },
     beforeMount(){
         this.callEndpoint(this.endpoint);
-        this.fillProductsArray();
         this.setBaseCurrency( this.defaultCurrency );
     },
     mounted(){
