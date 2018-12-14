@@ -4525,7 +4525,7 @@ var vue = new Vue({
         // we change each displayed price to fit the format exemplified on icef.design/main and the icef ratesheet among other places
         moneyify: function( value ){
             if (value || value == 0){
-                let stringified = value.toString();
+                let stringified = value.toFixed().toString();
                 if ( stringified.length > 3 ){
                     for ( let i = stringified.length - 1; i >= 0; i-- ){
                         if ( ( stringified.length - i) % 3 == 0 ){

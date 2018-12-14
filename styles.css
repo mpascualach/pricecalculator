@@ -42,14 +42,19 @@ html, body {
     padding: 10px;
     right: 5;
     border-radius: 5px;
-    background-color: #f9fddb;
-    opacity: 0.8;
+    background-color: white;
+    opacity: 0.9;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    z-index: 1;
 }
 
 .header-total {
     display: flex;
     justify-content: space-between;
+}
+
+.header-total-property {
+    color: #49A3F8;
 }
 
 .header-total-value {
@@ -401,7 +406,7 @@ button.booths.booths-activator.v-btn.theme--light {
 
 .cart {
     position: absolute;
-    left: 7%;
+    left: 1%;
 }
 
 .cart-layout {
@@ -537,12 +542,13 @@ span.schedule-alert {
 }
 
 td.totals {
-    position: absolute;
+    position: relative;
     display: flex;
-    left: 400;
+    left: 320;
     flex-direction: column;
     height: auto;
     text-align: right;
+    top: 5;
 }
 
 td.checkout-btn-container {
