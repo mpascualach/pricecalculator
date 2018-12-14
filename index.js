@@ -248,7 +248,7 @@ var vue = new Vue({
     },
     filters: {
         // we change each displayed price to fit the format exemplified on icef.design/main and the icef ratesheet among other places
-        moneyify: function( value ){
+        moneyify: function( value ) {
             if ( value || value == 0 ) {
                 let stringified = parseInt(value).toFixed().toString();
                 if ( stringified.length > 3 ) {
@@ -264,26 +264,29 @@ var vue = new Vue({
     },
     methods: {
         // push a table to the cart and update our price accordingly
-        addToCart: function (product, subitem, selector) {
+        addToCart: function (product) {
             let cartitem;
-            cartitem = Object.assign( {}, subitem ); //make copy of product
+            cartitem = {
+                name: product.Event_Name + " Table"
+            };
+            cartitem.price = product.form_edu_rate_regular_eur_1st__c; //make copy of product
+            cartitem.quantity = 1;
             this.regularWorkshops++;
+            console.log(cartitem);
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
-            this.cart.unshift( cartitem ); //push copy of product into cart
-            if ( this.fullDate < product.earlybirdends && 1 == this.regularWorkshops && selector !== 'work_and_travel' ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
-                cartitem.selectedearly = true;
+            if ( product.form_edu_early_rate_active__c && 1 == this.regularWorkshops ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
                 product.selectedearly = true;
-                cartitem.price = subitem.priceearly; 
+                cartitem.price = product.form_edu_rate_early_eur_1st__c; 
                 this.earlytotal += cartitem.price;
             } else {
                 this.earlytotal = 0;
-                cartitem.price = subitem.price;
                 if ( this.regularWorkshops > 1 ) {
                     this.productsArray.forEach(m => {
                         if ( m.selectedearly ) m.endofearly = true;
                     });
                 }
             } //log price of subitem and assign it to copy's price
+            this.cart.unshift( cartitem ); //push copy of product into cart
             this.total += cartitem.price;
             product.incart++;
             switch ( this.regularWorkshops ) {
@@ -311,8 +314,8 @@ var vue = new Vue({
                 });
                 this.total = this.cart.reduce( ( a, b ) => a.price + b.price );
             }
-            subitem.quantity++;
-            cartitem.quantity++;
+            // subitem.quantity++;
+            // cartitem.quantity++;
         },
         // remove the existence of a given workshop from the cart
         absoluteRemoveFromCart: function (product, selector) {

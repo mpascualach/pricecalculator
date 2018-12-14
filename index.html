@@ -113,13 +113,13 @@
                                             <div class="product-info">
                                                 <div class="product-name">
                                                     <span class="product-name-title">{{ product.Event_Name }}</span>
-                                                    <span v-if="product.earlyRate && earlyRates" class="early-notification">Early rate:
-                                                        {{ currencySymbol }}{{ product.priceearly | moneyify }}!</span>
+                                                    <span v-if="product.form_edu_early_rate_active__c && earlyRates" class="early-notification">Early rate:
+                                                        {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!</span>
                                                     <span v-else-if="product.endofearly && product.selectedearly" class="early-notification  multiple-bookings">
                                                         Early discount rates are no longer applicable.
                                                     </span>
                                                     <span v-else-if="product.selectedearly" class="early-notification">Early discount
-                                                        rates have been applied at {{ currencySymbol }}{{ product.priceearly | moneyify }}!</span>
+                                                        rates have been applied at {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!</span>
                                                 </div>
                                                 <div class="price-container">
                                                     <div class="product-price" v-if="product.tables">
@@ -485,11 +485,11 @@
 
                         <template slot="items" slot-scope="props">
                             <template v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert">
-                                <tr v-if="props.item.sponsorshipPackageSelected">
+                                <!-- <tr v-if="props.item.sponsorshipPackageSelected">
                                     <td class="name">{{ props.item.sponsorship_package.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                     <td class="price">{{ currencySymbol }}{{ props.item.sponsorship_package.price | moneyify }}</td>
                                     <td class="qty">
-                                        {{ props.item.sponsorship_package.quantity }}
+                                        <span>{{ props.item.sponsorship_package.quantity }}</span>
                                     </td>
                                     <td class="sub-total">{{ currencySymbol }}{{ ( props.item.sponsorship_package.price *
                                         props.item.sponsorship_package.quantity )  | moneyify }}
@@ -504,17 +504,17 @@
                                     <td class="remove-btn-container">
                                         <v-btn class="add-to-package remove-btn-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                     </td>
-                                </tr>
-                                <tr v-else>
+                                </tr> -->
+                                <tr>
                                     <td class="name">{{ props.item.name }} <br /> 
                                         <sub class="includes-1-schedule">(includes 1 schedule)</sub> <br />
-                                        <sub class="additional-schedule-counter" v-if="props.item.schedules.quantity > 0 && !footerExpanded"> + {{ props.item.schedules.quantity }} additional schedule </sub> <br/>
+                                        <!-- <sub class="additional-schedule-counter" v-if="props.item.schedules.quantity > 0 && !footerExpanded"> + {{ props.item.schedules.quantity }} additional schedule </sub> <br/>
                                         <sub class="additional-person-counter" v-if="props.item.additionalPeople.quantity == 1 && !footerExpanded"> 
                                             + {{ props.item.additionalPeople.quantity }} additional person
                                         </sub>
                                         <sub class="additional-person-counter" v-if="props.item.additionalPeople.quantity > 1 && !footerExpanded">
                                             + {{ props.item.additionalPeople.quantity }} additional people
-                                        </sub>
+                                        </sub> -->
                                     </td>
                                     <td class="price">{{ currencySymbol }}{{ props.item.price | moneyify }}</td>
                                     <td class="qty">
@@ -531,7 +531,7 @@
                                 </tr>
                             </template>
 
-                            <tr v-else-if="props.item.booths && !props.item.advert"> 
+                            <!-- <tr v-else-if="props.item.booths && !props.item.advert"> 
                                 <td class="booths-standby" v-if="props.item.notify">
                                     <span class="booths-standby-text">   What size booth would you like? </span>
                                 </td>
@@ -605,7 +605,7 @@
                                     <td>{{ currencySymbol }}0</td>
                                     <td></td>
                                 </tr>
-                            </template>
+                            </template> -->
                             
 
                             <!-- <tr v-if="!props.item.advert && !props.item.booths && props.item.marketing_and_sponsorships[0].quantity">
@@ -618,7 +618,7 @@
                                 <td></td>
                             </tr>   -->
                             
-                            <template v-if="!props.item.advert">
+                            <!-- <template v-if="!props.item.advert">
                                 <template v-for="item in props.item.marketing_and_sponsorships">
                                     <template v-for="type in item.types">
                                         <tr v-if="type.quantity > 0">
@@ -632,7 +632,7 @@
                                         </tr>
                                     </template>
                                 </template>
-                            </template>
+                            </template> -->
 
                         </template>
 
