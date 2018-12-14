@@ -4864,12 +4864,15 @@ var vue = new Vue({
                 }
             })
 
+            this.checkout = true;
+
             document.getElementById("main-wrapper").style.display = "none";
             document.getElementById("checkout").style.display = "block";
         },
         // we return to the calculator screen from checkout (if we want to add a new item etc.)
         goBackFromCheckout() {
             this.selectedWorkshops = [];
+            this.checkout = false;
 
             document.getElementById("main-wrapper").style.display = "block";
             document.getElementById("checkout").style.display = "none";

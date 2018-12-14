@@ -53,7 +53,7 @@
                 </div>
                 
                 <!-- list of totals updated with each addition to the cart -->
-                <div class="checkout-totals header-totals" v-if="cart.length > 0">
+                <div class="checkout-totals header-totals" v-if="cart.length > 0 && !checkout">
                     <strong>Price breakdown</strong>
                     <div class="header-total" v-if="earlytotal"> 
                         <span class="header-total-property">Early bird total: </span> 
@@ -90,6 +90,11 @@
                     <div class="header-total" v-else>
                         <strong class="header-total-property">Total: </strong>
                         <strong class="header-total-value">{{ currencySymbol }}{{ (( total * discount ) + subitemtotal )  | moneyify }} </strong>
+                    </div>
+                    <div class="header-total-buttons">
+                        <v-btn v-on:click="gotoCheckout()">
+                            Go to checkout
+                        </v-btn>
                     </div>
                 </div>
             </div>

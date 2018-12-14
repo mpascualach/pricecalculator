@@ -754,6 +754,7 @@ button.marketing-choice.v-btn.theme--light {
 button.sponsorship-dialog-info.v-btn.theme--light {
     background-color: transparent !important;
     top: -10;
+    right: 25%;
     box-shadow: none;
     color: #2196f3;
 }
