@@ -73,7 +73,7 @@ img.icef-pricer-logo {
 
 .switch-container {
     position: relative;
-    margin-right: 5%;
+    right: 4%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -168,6 +168,12 @@ input:checked + .slider:before {
     background-color: transparent!important;
 }
 
+.events.v-card.theme--light{
+    width: 52%;
+    margin: 0 auto;
+    position: relative;
+}
+
 ::-webkit-scrollbar {
     width: 0px; 
     background: transparent; 
@@ -191,10 +197,7 @@ input:checked + .slider:before {
     filter: blur(5px);
 }
 
-.events.v-card.theme--light{
-    width: 52%;
-    margin: 0 auto;
-}
+
 
 .v-card.theme--light {
     display: flex;
