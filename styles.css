@@ -59,6 +59,7 @@ html, body {
 .header-total-value {
     width: 100px;
     margin-left: 10px;
+    text-align: right;
 }
 
 img.icef-pricer-logo {

@@ -54,12 +54,13 @@
                 
                 <!-- list of totals updated with each addition to the cart -->
                 <div class="checkout-totals header-totals" v-if="cart.length > 0">
+                    <strong>Price breakdown</strong>
                     <div class="header-total" v-if="earlytotal"> 
-                        <span class="header-total-property">Early bird total :</span> 
+                        <span class="header-total-property">Early bird total: </span> 
                         <span class="header-total-value"> {{ currencySymbol }}{{ earlytotal  | moneyify }} </span>
                     </div>
                     <div class="header-total" v-else>
-                        <span class="header-total-property">Original total : </span>
+                        <span class="header-total-property">Original total: </span>
                         <span class="header-total-value">{{ currencySymbol }}{{ total  | moneyify }} </span>
                     </div>
                     <div class="header-total" v-if="subitemtotal">
@@ -79,7 +80,7 @@
                         <span class="header-total-value">{{ ( ( 1 - discount ) * 100 ).toFixed() }}% </span>
                     </div>
                     <div class="header-total">
-                        <span class="header-total-property">Discounted : </span>
+                        <span class="header-total-property">Discounted: </span>
                         <span class="header-total-value">{{ currencySymbol }}{{ ( total * discount ) - total  | moneyify }}</span> 
                     </div>
                     <div class="header-total" v-if="earlytotal">
