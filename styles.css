@@ -72,6 +72,7 @@ img.icef-pricer-logo {
 }
 
 .switch-container {
+    position: relative;
     margin-right: 5%;
     display: flex;
     align-items: center;
@@ -89,6 +90,7 @@ img.icef-pricer-logo {
 }
 
 .switch-label {
+    position: relative;
     width: 10%;
 }
   
@@ -844,7 +846,12 @@ i.fa.fa-times.sponsorship-info-cross {
         margin-right: 1%; 
     }
     .slider {
-        left: 10;
+        margin-left: 5px;
+        margin-right: -5px;
+    }
+    .switch-label {
+        position: relative;
+        right: 5;
     }
     ul.v-expansion-panel.marketing-and-sponsorship-items.theme--light {
         width: 100%;
