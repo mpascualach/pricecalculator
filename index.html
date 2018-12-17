@@ -122,11 +122,11 @@
                                                         rates have been applied at {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!</span>
                                                 </div>
                                                 <div class="price-container">
-                                                    <div class="product-price" v-if="product.tables">
-                                                        {{ currencySymbol }}{{ product.form_edu_rate_regular_eur_1st_c | moneyify }}
-                                                    </div>
-                                                    <div class="product-price" v-else>
+                                                    <div class="product-price" v-if="product.form_edu_rate_regular_eur_1st__c">
                                                         {{ currencySymbol }}{{ product.form_edu_rate_regular_eur_1st__c | moneyify }}
+                                                    </div>
+                                                    <div class="product-price" v-else-if="product.form_edu_rate_regular_aud_1st__c">
+                                                        {{ currencySymbol }}{{ product.form_edu_rate_regular_aud_1st__c | moneyify }}
                                                     </div>
                                                     <span v-if="product.currencyDisclaimer" class="early-notification multiple-bookings">{{ product.currencyDisclaimer }}</span>
                                                 </div>
@@ -142,8 +142,8 @@
                                                 </div> -->
                                             </div>
 
-                                            <div class="attendance" v-if="product.incart > 0">
-                                                <div class="attendance tables">
+                                            <div class="attendance" v-if="product.incart">
+                                                <!-- <div class="attendance tables">
                                                     <i class="fas fa-table-o"></i> Additional tables: 
                                                     <i class="fa fa-minus-square smaller" 
                                                         v-on:click="removeTable(product.tables)" 
@@ -172,10 +172,10 @@
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                     <span> {{ product.tables.additionalPeople.quantity }} </span>
                                                     <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.additionalPeople)"></i>
-                                                </div>
+                                                </div> -->
                                             </div>
                 
-                                            <div class="sponsorship-box" v-if="product.incart > 0">
+                                            <!-- <div class="sponsorship-box" v-if="product.incart > 0">
                                                 <span class="sponsorship-intro">Sponsorship packages:</span>
                                                 <div class="sponsorship-container">
 
@@ -259,13 +259,12 @@
                                                                     {{ type.name }} :
                                                                     {{ currencySymbol }}{{ type.price | moneyify }}
                                                                 </v-btn>
-                                                                <!-- <i class="fa fa-question-circle"></i> -->
                                                             </div>
                                                         </v-expansion-panel-content>
                                                     </v-expansion-panel>
                                                 </template>
 
-                                            </div>
+                                            </div> -->
                                             
 											<v-card v-if="product.selectBoothBoolean == true" class="booths-table">
                                                 <v-card-text class="booth-choice-container">

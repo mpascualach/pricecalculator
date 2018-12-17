@@ -263,6 +263,79 @@ var vue = new Vue({
         }
     },
     methods: {
+        callEndpoint(url) {
+            fetch(url).then(data => {
+                return data.json();
+            })
+            .then(res => {
+                this.fillProductsArray(res);
+            })
+        },
+        fillProductsArray(products){
+            this.productKeys = Object.keys( products );
+            for ( let i = 0; i < this.productKeys.length; i++ ){
+                let event = products[ this.productKeys[ i ] ];
+                event.incart = false;
+                this.productsArray.push( event );
+            }
+            this.activateFixer();
+        },
+        activateFixer(){
+            axios.get(
+                'https://data.fixer.io/api/latest?access_key=2a8bbb1fd33e5a65dc1404de3d7bd38b&base='
+                + this.currentCurrency)
+            .then(response => {
+                console.log(response);
+                this.fixer = response.data;
+                this.fixerRates = this.fixer.rates;
+                if ( typeof fx !== "undefined " && fx.rates ) {
+                    fx.rates = this.fixer.rates;
+                    fx.base = this.fixer.base;
+                }
+                else {
+                    var fxSetup = {
+                        rates: this.fixer.rates,
+                        base: this.fixer.base
+                    };
+                }
+            });
+            this.setCurrencies();
+        },
+        setCurrencies( fx ){
+            this.productsArray.forEach(m => {
+                if ( this.currentCurrency !== m.form_edu_available_currency__c ) {
+                    switch ( m.form_edu_available_currency__c ) {
+                        case 'AUD':
+                            m.product.form_edu_rate_regular_aud_1st__c = parseInt(
+                                fx.convert(m.form_edu_rate_regular_aud_1st__c, {  
+                                    from: m.currency,
+                                    to: this.fixer.base
+                                }).toFixed());
+                            console.log(m);
+                    }
+                }
+            });
+            this.loaded = true;
+        },
+        setBaseCurrency( baseCurrency ) {
+            this.currentCurrency = baseCurrency;
+            switch( baseCurrency ){
+                case 'EUR':
+                    this.currencySymbol = "€";
+                    break;
+                case 'GBP':
+                    this.currencySymbol = "£";
+                    break;
+                case 'USD':
+                    this.currencySymbol = "$";
+                    break;
+                case 'CAD':
+                    this.currencySymbol = "$";
+                    break;
+                case 'AUD':
+                    this.currencySymbol = "$";
+            }
+        },
         // push a table to the cart and update our price accordingly
         addToCart: function (product) {
             let cartitem;
@@ -272,6 +345,7 @@ var vue = new Vue({
             cartitem.price = parseInt(product.form_edu_rate_regular_eur_1st__c); //make copy of product
             cartitem.quantity = 1;
             this.regularWorkshops++;
+            // product.incart = true;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
             if ( product.form_edu_early_rate_active__c && 1 == this.regularWorkshops ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
                 product.selectedearly = true;
@@ -634,205 +708,6 @@ var vue = new Vue({
                 this.cart.unshift( empty );
             }
         },
-        setBaseCurrency( baseCurrency ) {
-            this.currentCurrency = baseCurrency;
-            switch( baseCurrency ){
-                case 'EUR':
-                    this.currencySymbol = "€";
-                    break;
-                case 'GBP':
-                    this.currencySymbol = "£";
-                    break;
-                case 'USD':
-                    this.currencySymbol = "$";
-                    break;
-                case 'CAD':
-                    this.currencySymbol = "$";
-                    break;
-                case 'AUD':
-                    this.currencySymbol = "$";
-            }
-            axios.get('https://data.fixer.io/api/latest?access_key=2a8bbb1fd33e5a65dc1404de3d7bd38b&base='+baseCurrency)
-            .then(response => {
-                this.fixer = response.data;
-                this.fixerRates = this.fixer.rates;
-                if ( typeof fx !== "undefined " && fx.rates ) {
-                    fx.rates = this.fixer.rates;
-                    fx.base = this.fixer.base;
-                }
-                // else {
-                //     var fxSetup = {
-                //         rates: this.fixer.rates,
-                //         base: this.fixer.base
-                //     };
-                // }
-                this.setCurrencies();
-            });
-        },
-        setCurrencies(){
-            this.productsArray.forEach(m => {
-                // if ( this.fullDate < m.earlybirdends ) m.earlyRate = true;
-                // m.price = m.originalprice;
-                // m.priceearly = m.originalpriceearly;
-                // m.tables.price = m.tables.originalprice;
-                // m.tables.priceearly = m.tables.originalpriceearly;
-                // m.tables.schedules.price = m.tables.schedules.originalprice;
-                // m.tables.additionalPeople.price = m.tables.additionalPeople.originalprice;
-
-                // m.tables.sponsorships.platinum.price = m.tables.sponsorships.platinum.originalprice;
-                // m.tables.sponsorships.gold.price = m.tables.sponsorships.gold.originalprice;
-                // m.tables.sponsorships.silver.price = m.tables.sponsorships.silver.originalprice;
-
-                // if ( m.booths ) {
-                //     if ( m.booths.priceLowest ) m.booths.priceLowest = m.booths.priceLowest;
-                //     if ( m.booths.priceHighest ) m.booths.priceHighest = m.booths.priceHighest;
-                //     if ( m.booths.priceOnly ) m.booths.priceOnly = m.booths.originalPriceOnly;
-
-                //     if ( m.booths.large12 ) m.booths.large12.price = m.booths.large12.originalprice;
-                //     if ( m.booths.large10 ) m.booths.large10.price = m.booths.large10.originalprice;
-                //     if ( m.booths.medium8 ) m.booths.medium8.price = m.booths.medium8.originalprice;
-                //     if ( m.booths.medium6 ) m.booths.medium6.price = m.booths.medium6.originalprice;
-                //     if ( m.booths.std5 ) m.booths.std5.price = m.booths.std5.originalprice;
-                //     if ( m.booths.std4 ) m.booths.std4.price = m.booths.std4.originalprice;
-                //     if ( m.booths.std3 ) m.booths.std3.price = m.booths.std3.originalprice;
-                //     if ( m.booths.displaytable ) m.booths.displaytable.price = m.booths.displaytable.originalprice;
-                // }
-
-                // m.tables.marketing_and_sponsorships.forEach(n => {
-                //     n.types.forEach(p => {
-                //         p.price = p.originalprice;
-                //     });
-                // });
-
-                // m.currencyDisclaimer = '';
-                // if ( m.currency !== this.fixer.base ) {
-                //     m.currencyDisclaimer = "Converted from " + m.currency;
-
-                //     m.priceearly = parseInt(fx.convert(m.priceearly, {
-                //         from: m.currency,
-                //         to: this.fixer.base
-                //     }).toFixed());
-
-                //     m.price = parseInt(fx.convert(m.price, {
-                //         from: m.currency,
-                //         to: this.fixer.base
-                //     }).toFixed());
-
-                //     if ( m.tables ) {
-                //         m.tables.price = parseInt( fx.convert( m.tables.price, {
-                //             from: m.currency,
-                //             to: this.fixer.base
-                //         }).toFixed());
-                //         m.tables.priceearly = parseInt( fx.convert( m.tables.priceearly, {
-                //             from: m.currency,
-                //             to: this.fixer.base
-                //         }).toFixed());
-
-                //         m.tables.schedules.price = parseInt( fx.convert( m.tables.schedules.price, {
-                //             from: m.currency,
-                //             to: this.fixer.base
-                //         }).toFixed());
-
-                //         m.tables.additionalPeople.price = parseInt( fx.convert( m.tables.additionalPeople.price, {
-                //             from: m.currency,
-                //             to: this.fixer.base
-                //         }).toFixed());
-
-                //         m.tables.sponsorships.platinum.price = parseInt( fx.convert( m.tables.sponsorships.platinum.price, {
-                //             from: m.currency,
-                //             to: this.fixer.base
-                //         }).toFixed());
-
-                //         m.tables.sponsorships.gold.price = parseInt( fx.convert( m.tables.sponsorships.gold.price, {
-                //             from: m.currency,
-                //             to: this.fixer.base
-                //         }).toFixed());
-
-                //         m.tables.sponsorships.silver.price = parseInt( fx.convert( m.tables.sponsorships.silver.price, {
-                //             from: m.currency,
-                //             to: this.fixer.base
-                //         }).toFixed());
-
-                //         m.tables.marketing_and_sponsorships.forEach(n => {
-                //             n.types.forEach(p => {
-                //                 p.price = parseInt(fx.convert(p.price, {
-                //                     from: m.currency,
-                //                     to: this.fixer.base
-                //                 }).toFixed());
-                //             });
-                //         });
-                //     }
-
-                //     if ( m.booths.priceHighest && m.booths.priceLowest ) {
-                //         m.booths.priceHighest = parseInt(fx.convert( m.booths.priceHighest, {
-                //             from: m.currency,
-                //             to: this.fixer.base
-                //         }).toFixed());
-
-                //         m.booths.priceLowest = parseInt(fx.convert( m.booths.priceLowest, {
-                //             from: m.currency,
-                //             to: this.fixer.base
-                //         }).toFixed());
-
-                //         if ( m.booths.large12 ) {
-                //             m.booths.large12.price = parseInt(fx.convert( m.booths.large12.price, {
-                //                 from: m.currency,
-                //                 to: this.fixer.base
-                //             }).toFixed()); 
-                //         }
-
-                //         if ( m.booths.large10 ) {
-                //             m.booths.large10.price = parseInt(fx.convert( m.booths.large10.price, {
-                //                 from: m.currency,
-                //                 to: this.fixer.base
-                //             }).toFixed()); 
-                //         }
-
-                //         if ( m.booths.medium8 ) {
-                //             m.booths.medium8.price = parseInt(fx.convert( m.booths.medium8.price, {
-                //                 from: m.currency,
-                //                 to: this.fixer.base
-                //             }).toFixed()); 
-                //         }
-
-                //         if ( m.booths.medium6 ) {
-                //             m.booths.medium6.price = parseInt(fx.convert( m.booths.medium6.price, {
-                //                 from: m.currency,
-                //                 to: this.fixer.base
-                //             }).toFixed()); 
-                //         }
-
-                //         if ( m.booths.std5 ) {
-                //             m.booths.std5.price = parseInt(fx.convert( m.booths.std5.price, {
-                //                 from: m.currency,
-                //                 to: this.fixer.base
-                //             }).toFixed()); 
-                //         }
-
-                //         if ( m.booths.std4 ) {
-                //             m.booths.std4.price = parseInt(fx.convert( m.booths.std4.price, {
-                //                 from: m.currency,
-                //                 to: this.fixer.base
-                //             }).toFixed()); 
-                //         }
-
-                //         if ( m.booths.std3 ) {
-                //             m.booths.std3.price = parseInt(fx.convert( m.booths.std3.price, {
-                //                 from: m.currency,
-                //                 to: this.fixer.base
-                //             }).toFixed()); 
-                //         }
-
-                //         if ( m.booths.displaytable ) {
-                //             m.booths.displaytable.price = parseInt(fx.convert( m.booths.displaytable.price, {
-                //                 from: m.currency,
-                //                 to: this.fixer.base
-                //             }).toFixed()); 
-                //         }
-                //     }
-                // }
-            });
-        },
         // we convert all price values to the selected currency
         changeBaseCurrency() {
             this.setBaseCurrency( event.target.innerText );
@@ -842,22 +717,6 @@ var vue = new Vue({
             document.getElementById("checkout").style.display = "none";
             document.getElementById("post-checkout").style.display = "block";
         },
-        callEndpoint(url) {
-            fetch(url).then(data => {
-                return data.json();
-            })
-            .then(res => {
-                this.fillProductsArray(res);
-            })
-        },
-        fillProductsArray(products){
-            this.productKeys = Object.keys(products);
-            for (let i = 0; i < this.productKeys.length; i++){
-                let event = products[this.productKeys[i]];
-                this.productsArray.push(event);
-            }
-            this.loaded = true;
-        }
     },
     beforeMount(){
         this.callEndpoint(this.endpoint);
