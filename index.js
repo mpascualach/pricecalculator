@@ -512,47 +512,28 @@ var vue = new Vue({
         },
         // remove the existence of a given workshop from the cart
         absoluteRemoveFromCart: function (product, selector) {
-            if ( product.tables ) {
-                while ( product.tables.additionalPeople.quantity > 0 ){
-                    this.subitemtotal -= product.tables.additionalPeople.price;
-                    product.tables.additionalPeople.quantity--;
+            if (selector == 'events'){
+                while ( product.wtAdditionalPeopleQuantity > 0 ){
+                    // this.subitemtotal -= product.additionalPeople.price;
+                    product.wtAdditionalPeopleQuantity--;
                 }
-                while ( product.tables.schedules.quantity > 0 ){
-                    this.subitemtotal -= product.tables.schedules.price;
-                    product.tables.schedules.quantity--;
+                while ( product.wtScheduleQuantity > 0 ){
+                    // this.subitemtotal -= product.schedules.price;
+                    product.wtScheduleQuantity--;
                 }
-                product.tables.quantity = 0;
-                product.incart = 0;
-                this.subitemtotal -= product.tables.sponsorship_package.price;
-                if ( product.tables.sponsorshipPackageSelected ){                 
-                    product.tables.sponsorshipPackageSelected = false;
-                }
-            } else {
-                while ( product.additionalPeople.quantity > 0 ){
-                    this.subitemtotal -= product.additionalPeople.price;
-                    product.additionalPeople.quantity--;
-                }
-                while ( product.schedules.quantity > 0 ){
-                    this.subitemtotal -= product.schedules.price;
-                    product.schedules.quantity--;
-                }
-                this.products.forEach(m => {
-                    if ( m.id == product.id ) {
-                        m.incart = 0;
-                        m.tables.quantity = 0;
-                        if ( m.tables.sponsorshipPackageSelected ){
-                            this.subitemtotal -= m.tables.sponsorship_package.price;
-                            m.tables.sponsorshipPackageSelected = false;
-                            m.tables.sponsorships.platinum.quantity = 0;
-                            m.tables.sponsorships.gold.quantity = 0;
-                            m.tables.sponsorships.silver.quantity = 0;
-                        }
-                    }
-                });
+                product.incart = false;
             }
-            let cartIds = this.cart.map( m => m.id );
-            var position = cartIds.indexOf( product.id );
+            else {
+                this.productsArray.forEach(m => {
+                    if (m.eventId == product.eventId) {
+                        m.incart = false;
+                    }
+                })
+            }
+            let cartIds = this.cart.map( m => m.eventId );
+            var position = cartIds.indexOf( product.eventId );
             let cartEq = this.cart[position];
+            console.log(cartEq)
             while ( this.cart[position].quantity > 0 ){ //process by which tables are removed and price deduction is applied step by step
                 if ( this.cart[position].selectedearly ) this.earlytotal -= cartEq.priceearly;
                 else this.total -= cartEq.price;
@@ -560,40 +541,40 @@ var vue = new Vue({
             }
             this.cart.splice( position, 1 );
             this.regularWorkshops--;
-            switch( this.regularWorkshops ){
-                case 0:
-                    this.discount = 1;
-                    this.products.forEach(m => {
-                        if ( m.selectedearly ) m.selectedearly = false;
-                        this.earlyRates = true;
-                    });
-                    break;
-                case 1:
-                    this.discount = 1; //resetting this.discount;
-                    this.products.forEach(m => {
-                        if ( m.selectedearly && m.endofearly ){
-                            m.endofearly = false;
-                        }
-                    });
-                    this.cart[0].price = this.cart[0].priceearly;
-                    this.cart[0].endofearly = false;
-                    this.total = this.cart[0].price; //+ this.subitemtotal;
-                    break;
-                case 2:
-                    this.discount = 0.82;
-                    break;
-                case 3:
-                    this.discount = 0.8;
-                    break;
-                case 4:
-                    this.discount = 0.77;
-                    break;
-                case 5:
-                    this.discount = 0.75;
-                    break;
-                default:
-                    this.discount = 0.73;
-            }
+            // switch( this.regularWorkshops ){
+            //     case 0:
+            //         this.discount = 1;
+            //         this.products.forEach(m => {
+            //             if ( m.selectedearly ) m.selectedearly = false;
+            //             this.earlyRates = true;
+            //         });
+            //         break;
+            //     case 1:
+            //         this.discount = 1; //resetting this.discount;
+            //         this.products.forEach(m => {
+            //             if ( m.selectedearly && m.endofearly ){
+            //                 m.endofearly = false;
+            //             }
+            //         });
+            //         this.cart[0].price = this.cart[0].priceearly;
+            //         this.cart[0].endofearly = false;
+            //         this.total = this.cart[0].price; //+ this.subitemtotal;
+            //         break;
+            //     case 2:
+            //         this.discount = 0.82;
+            //         break;
+            //     case 3:
+            //         this.discount = 0.8;
+            //         break;
+            //     case 4:
+            //         this.discount = 0.77;
+            //         break;
+            //     case 5:
+            //         this.discount = 0.75;
+            //         break;
+            //     default:
+            //         this.discount = 0.73;
+            // }
         },
         // add a table for an event to the cart - used in opened events panel after addToCart has been invoked for an event
         addTable(product) {
@@ -601,25 +582,25 @@ var vue = new Vue({
             this.cart.forEach(m => {
                 if ( m.eventId == product.eventId ){
                     m.quantity++;
-                    // if ( m.selectedearly ) this.earlytotal += m.price;
+                    if ( m.selectedearly ) this.earlytotal += m.price;
                     this.total += m.price;
                 }
             });
         },
         // remove a table from cart - accessed via the minus sign - triggers absoluteRemoveFromCart if the last table for an event has been removed
-        removeTable: function (tables) {
-            // tables.quantity--;
-            // if ( tables.quantity == 0 ){
-            //     this.absoluteRemoveFromCart(tables);
-            // }
-            // else {
-            //     this.cart.forEach(m => {
-            //         if ( m.id == tables.id ) {
-            //             m.quantity--;
-            //             this.total -= m.price;
-            //         }
-            //     })
-            // }
+        removeTable: function (product) {
+            product.wtTablesQuantity--;
+            if ( product.wtTablesQuantity == 0 ){
+                this.absoluteRemoveFromCart(product, 'events');
+            }
+            else {
+                this.cart.forEach(m => {
+                    if ( m.eventId == product.eventId ) {
+                        m.quantity--;
+                        this.total -= m.price;
+                    }
+                })
+            }
         },
         // add a booth to the cart
         addBoothToCart(product, subitem){
