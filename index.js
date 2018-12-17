@@ -281,9 +281,7 @@ var vue = new Vue({
                 if ( this.currentCurrency !== event.form_edu_available_currency__c ) {
                     event = this.setCurrencyChange( event );
                 }
-                else {
-                    event.currencyDisclaimer = '';
-                }
+                else event.currencyDisclaimer = '';
                 event.tablesQuantity = 0;
                 event.schedulesQuantity = 0;
                 event.additionalPeopleQuantity = 0;

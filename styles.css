@@ -150,6 +150,15 @@ input:checked + .slider:before {
 
 /* Events styles */
 
+.spinner-container {
+    display: flex;
+    justify-content: center;
+}
+
+.loading-wheel {
+    
+}
+
 #events-wrapper {
     position: relative;
     overflow-y: scroll;
