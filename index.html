@@ -162,18 +162,18 @@
                                                     <i class="fa fa-plus-square smaller add-table" 
                                                         v-on:click="addTable(product)"></i>
                                                 </div> 
-                                                <!-- <div class="attendance schedules">
+                                                <div class="attendance schedules">
                                                     <i class="fa fa-calendar-o"></i> Additional schedules:
                                                     <i class="fa fa-minus-square smaller" 
-                                                        v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')"
-                                                        v-if="product.tables.schedules.quantity > 0">
+                                                        v-on:click="removeSubItem(product, 'schedules')"
+                                                        v-if="product.wtSchedulesQuantity > 0">
                                                     </i>
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                    <span>{{ product.tables.schedules.quantity }}</span>
+                                                    <span>{{ product.wtSchedulesQuantity}}</span>
                                                     <i class="fa fa-plus-square smaller" 
-                                                        v-on:click="addSubItem(product, product.tables.schedules, 'schedules')">
+                                                        v-on:click="addSubItem(product, 'schedules')">
                                                     </i>
-                                                </div> -->
+                                                </div>
                                                 <!-- <div class="attendance additional-people">
                                                     <i class="fa fa-id-card"></i> </i> Additional people:
                                                     <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.additionalPeople)"
@@ -562,9 +562,9 @@
                                 <td class="remove-btn-container">
                                     <v-btn class="add-to-package remove-btn-package" v-on:click="removeBoothFromCart(props.item)">REMOVE</v-btn>
                                 </td>
-                            </tr>
+                            </tr> -->
 
-                            <tr v-if="props.item.advert"> 
+                            <!-- <tr v-if="props.item.advert"> 
                                 <td>{{ props.item.name }}</td>
                                 <td>{{ currencySymbol }}{{ props.item.price | moneyify }}</td>
                                 <td class="qty">{{ props.item.quantity }}</td>
@@ -574,9 +574,9 @@
                                 <td class="remove-btn-container">
                                     <v-btn class="add-to-package remove-btn-package" v-on:click="removeAdvert(props.item)">REMOVE</v-btn>
                                 </td>
-                            </tr>
+                            </tr> -->
 
-                            <tr v-else-if="props.item.workandtravel && !props.item.advert">
+                            <!-- <tr v-else-if="props.item.workandtravel && !props.item.advert">
                                 <td class="name">{{ props.item.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                 <td class="price | moneyify">{{ currencySymbol }}{{ props.item.price | moneyify }}{{ currencySymbol }}</td>
                                 <td class="qty"><i class="fa fa-plus-square smaller"></i> {{ props.item.quantity }}<i class="fa fa-minus-square smaller"></i>
@@ -589,10 +589,10 @@
                                 <td class="remove-btn-container">
                                     <v-btn class="add-to-package remove-btn-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                 </td>
-                            </tr>
+                            </tr> -->
 
                             <template v-if="footerExpanded">
-                                <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && props.item.schedules.quantity > 0">
+                                <tr v-if="props.item.schedules">
                                     <td class="additional-name">{{ props.item.schedules.name }}<br /> 
                                         <sub>(max. 1 per table)</sub> <br />
                                         <span class="schedule-alert" v-if="limitReached">There can't be more additional schedules than tables</span>
@@ -605,7 +605,7 @@
                                     <td></td>
                                 </tr>
 
-                                <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && !props.item.advert && props.item.additionalPeople.quantity > 0">
+                                <!-- <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && !props.item.advert && props.item.additionalPeople.quantity > 0">
                                     <td class="additional-name">{{ props.item.additionalPeople.name }}</td>
                                     <td>{{ currencySymbol }}{{ props.item.additionalPeople.price | moneyify }}{{ currencySymbol }}</td>
                                     <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
@@ -613,8 +613,8 @@
                                     <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity )  | moneyify }}</td>
                                     <td>{{ currencySymbol }}0</td>
                                     <td></td>
-                                </tr>
-                            </template> -->
+                                </tr> -->
+                            </template> 
                             
 
                             <!-- <tr v-if="!props.item.advert && !props.item.booths && props.item.marketing_and_sponsorships[0].quantity">

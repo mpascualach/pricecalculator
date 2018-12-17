@@ -602,6 +602,105 @@ var vue = new Vue({
                 })
             }
         },
+        // adds either an extra schedule, an additional person or a subscription package for an event
+        addSubItem( product, selector, tier ) {
+            if ( selector == 'schedules' ) {
+                product.wtSchedulesQuantity++;
+                let schedulePrice;
+                switch( product.form_edu_available_currency__c ) {
+                    case 'EUR':
+                        schedulePrice = parseInt(product.form_edu_rate_regular_eur_2nd__c);
+                        break;
+                    case 'AUD':
+                        schedulePrice = parseInt(product.form_edu_rate_regular_aud_2nd__c);
+                        break;
+                    case 'USD;CAD':
+                        schedulePrice = parseInt(product.form_edu_rate_regular_usd_2nd__c);
+                        break;
+                }
+                this.cart.forEach(m => {
+                    if ( m.eventId == product.eventId ){
+                        m.schedules = {
+                            name: product.eventName + " additional schedule",
+                            quantity: 1,
+                            price: schedulePrice
+                        };
+                        console.log()
+                    }
+                })
+                this.subitemtotal += schedulePrice;
+            } 
+            else if ( selector == 'marketing' ) subitem.name = product.name + " " + subitem.name;
+            else if ( selector == 'sponsorship_package' ){
+                product.tables.sponsorshipPackageSelected = true;
+                this.cart.forEach(m => {
+                    if ( m.id == product.id ){
+                        if ( m.sponsorshipPackageSelected ) {
+                            this.subitemtotal -= m.sponsorship_package.price;
+                            m.sponsorship_package.quantity--;
+                            switch( tier ){
+                                case 'platinum':
+                                    product.tables.sponsorships.gold.quantity = 0;
+                                    product.tables.sponsorships.silver.quantity = 0;
+                                    break;
+                                case 'gold':
+                                    product.tables.sponsorships.platinum.quantity = 0;
+                                    product.tables.sponsorships.silver.quantity = 0;
+                                    break;
+                                case 'silver':
+                                    product.tables.sponsorships.platinum.quantity = 0;
+                                    product.tables.sponsorships.gold.quantity = 0;
+                                    break;
+                            }
+                        }
+                        else this.total -= m.price;
+                        m.sponsorshipPackageSelected = true;
+                        m.sponsorship_package.name = subitem.name;
+                        m.sponsorship_package.price = subitem.price;
+                        m.sponsorship_package.quantity = subitem.quantity + 1;
+                        this.earlytotal = 0;
+                    }
+                });
+            }
+            // this.subitemtotal += subitem.price;
+            // subitem.quantity++;
+            // if ( selector == 'schedules' && subitem.quantity > 1 ){
+            //     this.cart.forEach(m => {
+            //         if ( m.id == product.id ){
+            //             m.quantity = Math.floor( ( subitem.quantity / 2 ) + 1);
+            //             if ( m.selectedearly ) this.earlytotal += m.price;
+            //             this.total += m.price;
+            //             // this.subitemtotal += m.price;
+            //         }
+            //     });
+            // }
+        },
+        // removes either a sponsorship package, an additional schedule or an additional person for an event
+        removeSubItem: function (product, subitem, selector) {
+            subitem.quantity--;
+            this.subitemtotal -= subitem.price;
+            if ( selector == 'sponsorship_package' ) {
+                this.cart.forEach(m => {
+                    if ( m.id == product.id ){
+                        m.sponsorshipPackageSelected = false;
+                        if ( m.earlyrateselected ) this.earlytotal += m.priceearly;
+                        else this.total += m.price;
+                    }
+                })
+            }
+            if ( selector == 'schedules' ){
+                this.cart.forEach(m => {
+                    if ( m.id == product.id ) {
+                        m.quantity = Math.floor( ( subitem.quantity / 2 )+1 );
+                        if ( subitem.quantity == 1 || subitem.quantity == 0 ) m.quantity = 1;
+                        if ( subitem.quantity !== 0 ) this.subitemtotal -= m.price;
+                    }
+                });
+                if ( this.cart.length == 1 && this.cart[0].selectedearly ) {
+                    this.cart[0].price = this.cart[0].priceearly;
+                }
+            }
+        },
         // add a booth to the cart
         addBoothToCart(product, subitem){
             this.cart.forEach(m => {
@@ -666,86 +765,6 @@ var vue = new Vue({
         removeAdvert(advert){
             this.total -= advert.price;
             this.cart = this.cart.filter( m => m.name !== advert.name );
-        },
-        // adds either an extra schedule, an additional person or a subscription package for an event
-        addSubItem: function (product, subitem, selector, tier) {
-            if ( selector == 'schedules') {
-                if ( subitem.quantity >= product.tables.quantity ) {
-                    this.limitReached = true;
-                    return;
-                }
-                else this.limitReached = false;
-            } 
-            if ( selector == 'marketing' ) subitem.name = product.name + " " + subitem.name;
-            else if ( selector == 'sponsorship_package' ){
-                product.tables.sponsorshipPackageSelected = true;
-                this.cart.forEach(m => {
-                    if ( m.id == product.id ){
-                        if ( m.sponsorshipPackageSelected ) {
-                            this.subitemtotal -= m.sponsorship_package.price;
-                            m.sponsorship_package.quantity--;
-                            switch( tier ){
-                                case 'platinum':
-                                    product.tables.sponsorships.gold.quantity = 0;
-                                    product.tables.sponsorships.silver.quantity = 0;
-                                    break;
-                                case 'gold':
-                                    product.tables.sponsorships.platinum.quantity = 0;
-                                    product.tables.sponsorships.silver.quantity = 0;
-                                    break;
-                                case 'silver':
-                                    product.tables.sponsorships.platinum.quantity = 0;
-                                    product.tables.sponsorships.gold.quantity = 0;
-                                    break;
-                            }
-                        }
-                        else this.total -= m.price;
-                        m.sponsorshipPackageSelected = true;
-                        m.sponsorship_package.name = subitem.name;
-                        m.sponsorship_package.price = subitem.price;
-                        m.sponsorship_package.quantity = subitem.quantity + 1;
-                        this.earlytotal = 0;
-                    }
-                });
-            }
-            this.subitemtotal += subitem.price;
-            subitem.quantity++;
-            if ( selector == 'schedules' && subitem.quantity > 1 ){
-                this.cart.forEach(m => {
-                    if ( m.id == product.id ){
-                        m.quantity = Math.floor( ( subitem.quantity / 2 ) + 1);
-                        if ( m.selectedearly ) this.earlytotal += m.price;
-                        this.total += m.price;
-                        // this.subitemtotal += m.price;
-                    }
-                });
-            }
-        },
-        // removes either a sponsorship package, an additional schedule or an additional person for an event
-        removeSubItem: function (product, subitem, selector) {
-            subitem.quantity--;
-            this.subitemtotal -= subitem.price;
-            if ( selector == 'sponsorship_package' ) {
-                this.cart.forEach(m => {
-                    if ( m.id == product.id ){
-                        m.sponsorshipPackageSelected = false;
-                        if ( m.earlyrateselected ) this.earlytotal += m.priceearly;
-                        else this.total += m.price;
-                    }
-                })
-            }
-            if ( selector == 'schedules' ){
-                this.cart.forEach(m => {
-                    if ( m.id == product.id ) {
-                        m.quantity = Math.floor( ( subitem.quantity / 2 )+1 );
-                        if ( subitem.quantity == 1 || subitem.quantity == 0 ) m.quantity = 1;
-                        if ( subitem.quantity !== 0 ) this.subitemtotal -= m.price;
-                    }
-                });
-                if ( this.cart.length == 1 && this.cart[0].selectedearly ) {
-                    this.cart[0].price = this.cart[0].priceearly;
-                }
-            }
         },
         // we exit the calculator screen and go into checkout
         gotoCheckout() {
