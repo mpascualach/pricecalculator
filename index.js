@@ -308,7 +308,6 @@ var vue = new Vue({
                         base: this.fixer.base
                     };
                 }
-                console.log(fx.rates);
                 if ( array ) this.fillProductsArray( array );
             });
         },
@@ -463,6 +462,7 @@ var vue = new Vue({
             };
             cartitem.price = parseInt(product.form_edu_rate_regular_eur_1st__c); //make copy of product
             cartitem.quantity = 1;
+            cartitem.eventId = product.eventId;
             this.regularWorkshops++;
             // product.incart = true;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
@@ -479,9 +479,9 @@ var vue = new Vue({
                 }
             } //log price of subitem and assign it to copy's price
             this.cart.unshift( cartitem ); //push copy of product into cart
-            console.log("Total: ", this.total);
             this.total += cartitem.price;
-            product.incart++;
+            product.wtTablesQuantity++;
+            product.incart = true;
             switch ( this.regularWorkshops ) {
                 case 1:
                     this.discount = 1;
@@ -595,6 +595,32 @@ var vue = new Vue({
                     this.discount = 0.73;
             }
         },
+        // add a table for an event to the cart - used in opened events panel after addToCart has been invoked for an event
+        addTable(product) {
+            product.wtTablesQuantity++;
+            this.cart.forEach(m => {
+                if ( m.eventId == product.eventId ){
+                    m.quantity++;
+                    // if ( m.selectedearly ) this.earlytotal += m.price;
+                    this.total += m.price;
+                }
+            });
+        },
+        // remove a table from cart - accessed via the minus sign - triggers absoluteRemoveFromCart if the last table for an event has been removed
+        removeTable: function (tables) {
+            // tables.quantity--;
+            // if ( tables.quantity == 0 ){
+            //     this.absoluteRemoveFromCart(tables);
+            // }
+            // else {
+            //     this.cart.forEach(m => {
+            //         if ( m.id == tables.id ) {
+            //             m.quantity--;
+            //             this.total -= m.price;
+            //         }
+            //     })
+            // }
+        },
         // add a booth to the cart
         addBoothToCart(product, subitem){
             this.cart.forEach(m => {
@@ -659,32 +685,6 @@ var vue = new Vue({
         removeAdvert(advert){
             this.total -= advert.price;
             this.cart = this.cart.filter( m => m.name !== advert.name );
-        },
-        // add a table for an event to the cart - used in opened events panel after addToCart has been invoked for an event
-        addTable: function (tables) {
-            tables.quantity++;
-            this.cart.forEach(m => {
-                if ( m.id == tables.id ){
-                    m.quantity++;
-                    if ( m.selectedearly ) this.earlytotal += m.price;
-                    else this.total += m.price;
-                }
-            });
-        },
-        // remove a table from cart - accessed via the minus sign - triggers absoluteRemoveFromCart if the last table for an event has been removed
-        removeTable: function (tables) {
-            tables.quantity--;
-            if ( tables.quantity == 0 ){
-                this.absoluteRemoveFromCart(tables);
-            }
-            else {
-                this.cart.forEach(m => {
-                    if ( m.id == tables.id ) {
-                        m.quantity--;
-                        this.total -= m.price;
-                    }
-                })
-            }
         },
         // adds either an extra schedule, an additional person or a subscription package for an event
         addSubItem: function (product, subitem, selector, tier) {

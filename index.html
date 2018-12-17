@@ -151,18 +151,18 @@
                                             </div>
 
                                             <div class="attendance" v-if="product.incart">
-                                                <!-- <div class="attendance tables">
-                                                    <i class="fas fa-table-o"></i> Additional tables: 
+                                                <div class="attendance tables">
+                                                    <i class="fa fa-table-o"></i> Additional tables: 
                                                     <i class="fa fa-minus-square smaller" 
                                                         v-on:click="removeTable(product.tables)" 
-                                                        v-if="product.tables.quantity > 0">
+                                                        v-if="product.wtTablesQuantity > 0">
                                                     </i>
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                    <span>{{ product.tables.quantity }}</span>
-                                                    <i class="fa fa-plus-square smaller" 
-                                                        v-on:click="addTable(product.tables)"></i>
-                                                </div>
-                                                <div class="attendance schedules">
+                                                    <span>{{ product.wtTablesQuantity }}</span>
+                                                    <i class="fa fa-plus-square smaller add-table" 
+                                                        v-on:click="addTable(product)"></i>
+                                                </div> 
+                                                <!-- <div class="attendance schedules">
                                                     <i class="fa fa-calendar-o"></i> Additional schedules:
                                                     <i class="fa fa-minus-square smaller" 
                                                         v-on:click="removeSubItem(product, product.tables.schedules, 'schedules')"
@@ -170,9 +170,11 @@
                                                     </i>
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                     <span>{{ product.tables.schedules.quantity }}</span>
-                                                    <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.schedules, 'schedules')"></i>
-                                                </div>
-                                                <div class="attendance additional-people">
+                                                    <i class="fa fa-plus-square smaller" 
+                                                        v-on:click="addSubItem(product, product.tables.schedules, 'schedules')">
+                                                    </i>
+                                                </div> -->
+                                                <!-- <div class="attendance additional-people">
                                                     <i class="fa fa-id-card"></i> </i> Additional people:
                                                     <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.additionalPeople)"
                                                         v-if="product.tables.additionalPeople.quantity > 0">
@@ -180,7 +182,7 @@
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                     <span> {{ product.tables.additionalPeople.quantity }} </span>
                                                     <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.additionalPeople)"></i>
-                                                </div> -->
+                                                </div>  -->
                                             </div>
                 
                                             <!-- <div class="sponsorship-box" v-if="product.incart > 0">
