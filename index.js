@@ -706,6 +706,16 @@ var vue = new Vue({
                     }
                 })
             }
+            else if ( selector == 'add_people' ) {
+                product.wtAdditionalPeopleQuantity--;
+                this.cart.forEach(m => {
+                    if ( m.eventId == product.eventId ) {
+                        m.additionalPeople.quantity--;
+                        this.subitemtotal -= m.additionalPeople.price;
+                        return;
+                    }
+                })
+            }
             else if ( selector == 'sponsorship_package' ) {
                 this.cart.forEach(m => {
                     if ( m.id == product.id ){
