@@ -457,23 +457,38 @@ var vue = new Vue({
         },
         // push a table to the cart and update our price accordingly
         addToCart: function (product) {
-            let cartitem;
+            let cartitem, schedulePrice, addPeoplePrice;
             cartitem = {
                 name: product.Event_Name + " Table"
             };
             cartitem.price = parseInt(product.form_edu_rate_regular_eur_1st__c); //make copy of product
             cartitem.quantity = 1;
             cartitem.eventId = product.eventId;
+            switch( product.form_edu_available_currency__c ) {
+                case 'EUR':
+                    schedulePrice = parseInt(product.form_edu_rate_regular_eur_2nd__c);
+                    addPeoplePrice = parseInt(product.form_edu_rate_regular_eur_acc__c);
+                    break;
+                case 'AUD':
+                    schedulePrice = parseInt(product.form_edu_rate_regular_aud_2nd__c);
+                    addPeoplePrice = parseInt(product.form_edu_rate_regular_aud_acc__c);
+                    break;
+                case 'USD;CAD':
+                    schedulePrice = parseInt(product.form_edu_rate_regular_usd_2nd__c);
+                    addPeoplePrice = parseInt(product.form_edu_rate_regular_usd_acc__c);
+            }
             cartitem.schedules = {
                 eventId: product.eventId,
+                defaultCurrency: product.form_edu_available_currency__c,
                 name: product.Event_Name + " Schedule",
-                price: 0,
+                price: schedulePrice,
                 quantity: 0
             }
             cartitem.additionalPeople = {
                 eventId: product.eventId,
+                defaultCurrency: product.form_edu_available_currency__c,
                 name: product.Event_Name + " Additional People",
-                price: 0,
+                price: addPeoplePrice,
                 quantity: 0
             }
             this.regularWorkshops++;
@@ -622,16 +637,7 @@ var vue = new Vue({
                 else {
                     product.schedulesQuantity++;
                     let schedulePrice;
-                    switch( product.form_edu_available_currency__c ) {
-                        case 'EUR':
-                            schedulePrice = parseInt(product.form_edu_rate_regular_eur_2nd__c);
-                            break;
-                        case 'AUD':
-                            schedulePrice = parseInt(product.form_edu_rate_regular_aud_2nd__c);
-                            break;
-                        case 'USD;CAD':
-                            schedulePrice = parseInt(product.form_edu_rate_regular_usd_2nd__c);
-                    }
+                    
                     this.cart.forEach(m => {
                         if ( m.eventId == product.eventId ){
                             m.schedules.quantity++;
@@ -644,16 +650,6 @@ var vue = new Vue({
             else if (selector == 'add_people') {
                 product.additionalPeopleQuantity++;
                 let addPeoplePrice;
-                switch ( product.form_edu_available_currency__c ) {
-                    case 'EUR':
-                        addPeoplePrice = parseInt(product.form_edu_rate_regular_eur_acc__c);
-                        break;
-                    case 'AUD':
-                        addPeoplePrice = parseInt(product.form_edu_rate_regular_aud_acc__c);
-                        break;
-                    case 'USD;CAD':
-                        addPeoplePrice = parseInt(product.form_edu_rate_regular_usd_acc__c);
-                }
                 this.cart.forEach(m => {
                     if ( m.eventId == product.eventId ){
                         m.additionalPeople.quantity++;
@@ -780,7 +776,7 @@ var vue = new Vue({
                 })
             }
             else {
-                if (booth.price) this.total -= booth.price;
+                if ( booth.price ) this.total -= booth.price;
             } //for when we're removing booths from 'remove' buttons next to booth rows
             this.products.forEach(m => {
                 if ( m.id == booth.id ){
@@ -792,7 +788,7 @@ var vue = new Vue({
             this.cart = this.cart.filter( m => m.id !== booth.id && !m.notify );
         },
         // add an advert to the cart
-        addAdvert(subitem){
+        addAdvert( subitem ){
             cartitem = Object.assign( {}, subitem );
             cartitem.quantity++;
             this.cart.unshift( cartitem );
@@ -848,7 +844,7 @@ var vue = new Vue({
         closeAdvertModal() {
             this.advertModal = false;
         },
-        showBoothOptions(product) {
+        showBoothOptions( product ) {
             product.selectBoothBoolean = true;
             if ( product.booths.priceOnly ) {
                 this.addBoothToCart( product, product.booths.displaytable );
@@ -876,7 +872,7 @@ var vue = new Vue({
         },
     },
     beforeMount(){
-        this.callEndpoint(this.endpoint);
+        this.callEndpoint( this.endpoint );
         this.setBaseCurrency( this.defaultCurrency );
     },
     mounted(){
