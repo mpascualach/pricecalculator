@@ -268,26 +268,30 @@ var vue = new Vue({
                 return data.json();
             })
             .then(res => {
-                this.fillProductsArray(res);
+                this.activateFixer( res );
             })
         },
         fillProductsArray(products){
             this.productKeys = Object.keys( products );
+            console.log(this.productKeys);
             for ( let i = 0; i < this.productKeys.length; i++ ){
                 let event = products[ this.productKeys[ i ] ];
+                if ( this.currentCurrency !== event.form_edu_available_currency__c ) {
+                    event = this.setCurrencyChange( event );
+                }
                 event.incart = false;
                 this.productsArray.push( event );
             }
-            this.activateFixer();
+            this.loaded = true;
         },
-        activateFixer(){
+        activateFixer( array ){
             axios.get(
                 'https://data.fixer.io/api/latest?access_key=2a8bbb1fd33e5a65dc1404de3d7bd38b&base='
                 + this.currentCurrency)
             .then(response => {
-                console.log(response);
                 this.fixer = response.data;
                 this.fixerRates = this.fixer.rates;
+
                 if ( typeof fx !== "undefined " && fx.rates ) {
                     fx.rates = this.fixer.rates;
                     fx.base = this.fixer.base;
@@ -298,24 +302,22 @@ var vue = new Vue({
                         base: this.fixer.base
                     };
                 }
+                if ( array ) this.fillProductsArray( array );
             });
-            this.setCurrencies();
         },
-        setCurrencies( fx ){
-            this.productsArray.forEach(m => {
-                if ( this.currentCurrency !== m.form_edu_available_currency__c ) {
-                    switch ( m.form_edu_available_currency__c ) {
-                        case 'AUD':
-                            m.product.form_edu_rate_regular_aud_1st__c = parseInt(
-                                fx.convert(m.form_edu_rate_regular_aud_1st__c, {  
-                                    from: m.currency,
-                                    to: this.fixer.base
-                                }).toFixed());
-                            console.log(m);
-                    }
-                }
-            });
-            this.loaded = true;
+        setCurrencyChange( m ){
+            let originalCurrency;
+            switch ( m.form_edu_available_currency__c ) {
+                case 'AUD':
+                    m.form_edu_rate_regular_aud_1st__c = parseInt(
+                        window.fx.convert(m.form_edu_rate_regular_aud_1st__c, {  
+                            from: m.form_edu_available_currency__c,
+                            to: this.currentCurrency
+                        }).toFixed());
+                    originalCurrency = "AUD";
+            }
+            if ( originalCurrency ) m.currencyDisclaimer = "Converted from: " + originalCurrency;
+            return m;
         },
         setBaseCurrency( baseCurrency ) {
             this.currentCurrency = baseCurrency;
