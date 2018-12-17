@@ -263,6 +263,7 @@ var vue = new Vue({
         }
     },
     methods: {
+        //on load functions
         callEndpoint(url) {
             fetch(url).then(data => {
                 return data.json();
@@ -276,11 +277,14 @@ var vue = new Vue({
             for ( let i = 0; i < this.productKeys.length; i++ ){
                 let event = products[ this.productKeys[ i ] ];
                 if ( this.currentCurrency !== event.form_edu_available_currency__c ) {
-                    if (event.form_edu_available_currency__c !== this.currentCurrecny) {
-                        console.log(event.form_edu_available_currency__c, event)
-                    }
-                    event = this.setCurrencyChange( event );
+                    if ( event.form_edu_available_currency__c !== this.currentCurrency ) {
+                        event = this.setCurrencyChange( event );
+                    }  
                 }
+                event.wtTablesAvailable = parseInt( event.WtTablesQuantity ) - parseInt( event.WtTablesSold );
+                event.wtTablesQuantity = 0;
+                event.wtSchedulesQuantity = 0;
+                event.wtAdditionalPeopleQuantity = 0;
                 event.incart = false;
                 this.productsArray.push( event );
             }
@@ -313,19 +317,19 @@ var vue = new Vue({
                 case 'AUD':
                     m.form_edu_rate_regular_aud_1st__c = parseInt(
                         fx.convert(m.form_edu_rate_early_aud_1st__c, {  
-                            from: m.form_edu_rate_early_aud_1st__c,
+                            from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed());
 
                     m.form_edu_rate_regular_aud_2nd__c = parseInt(
                         fx.convert(m.form_edu_rate_early_aud_2nd__c, {  
-                            from: m.form_edu_rate_early_aud_2nd__c,
+                            from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed())
 
                     m.form_edu_rate_early_aud_acc__c = parseInt(
                         fx.convert(m.form_edu_rate_early_aud_acc__c, {  
-                            from: m.form_edu_rate_early_aud_acc__c,
+                            from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed())
 
@@ -349,6 +353,7 @@ var vue = new Vue({
 
                     m.currencyDisclaimer = "Converted from AUD";
                     break;
+
                 case 'USD;CAD':
                     if (m.form_edu_rate_early_usd_1st__c) {
                         m.form_edu_rate_early_usd_1st__c = parseInt(
@@ -356,8 +361,78 @@ var vue = new Vue({
                                 from: "USD",
                                 to: this.currentCurrency
                             }).toFixed());
+
+
+                        m.form_edu_rate_regular_usd_2nd__c = parseInt(
+                            fx.convert(m.form_edu_rate_early_usd_2nd__c, {  
+                                from: "USD",
+                                to: this.currentCurrency
+                            }).toFixed())
+    
+                        m.form_edu_rate_early_aud_acc__c = parseInt(
+                            fx.convert(m.form_edu_rate_early_usd_acc__c, {  
+                                from: "USD",
+                                to: this.currentCurrency
+                            }).toFixed())
+    
+                        m.form_edu_rate_early_aud_1st__c = parseInt(
+                            fx.convert(m.form_edu_rate_regular_usd_1st__c, {  
+                                from: "USD",
+                                to: this.currentCurrency
+                            }).toFixed());
+    
+                        m.form_edu_rate_early_aud_2nd__c = parseInt(
+                            fx.convert(m.form_edu_rate_regular_usd_2nd__c, {  
+                                from: "USD",
+                                to: this.currentCurrency
+                            }).toFixed());
+    
+                        m.form_edu_rate_early_aud_acc__c = parseInt(
+                            fx.convert(m.form_edu_rate_regular_usd_acc__c, {  
+                                from: "USD",
+                                to: this.currentCurrency
+                            }).toFixed());
+
                         m.currencyDisclaimer = "Converted from USD;CAD";
                     }
+                    break;
+
+                case 'EUR':
+                    m.form_edu_rate_early_eur_1st__c = parseInt(
+                        window.fx.convert(m.form_edu_rate_regular_eur_1st__c, {  
+                            from: "USD",
+                            to: this.currentCurrency
+                        }).toFixed());
+
+                    m.form_edu_rate_regular_eur_2nd__c = parseInt(
+                        fx.convert(m.form_edu_rate_early_eur_2nd__c, {  
+                            from: "USD",
+                            to: this.currentCurrency
+                        }).toFixed())
+
+                    m.form_edu_rate_early_eur_acc__c = parseInt(
+                        fx.convert(m.form_edu_rate_early_eur_acc__c, {  
+                            from: "USD",
+                            to: this.currentCurrency
+                        }).toFixed())
+
+                    m.form_edu_rate_early_eur_1st__c = parseInt(
+                        fx.convert(m.form_edu_rate_regular_eur_1st__c, {  
+                            from: "USD",
+                            to: this.currentCurrency
+                        }).toFixed());
+
+                    m.form_edu_rate_early_eur_2nd__c = parseInt(
+                        fx.convert(m.form_edu_rate_regular_eur_2nd__c, {  
+                            from: "USD",
+                            to: this.currentCurrency
+                        }).toFixed());
+
+                    m.form_edu_rate_early_eur_acc__c = parseInt(
+                        fx.convert(m.form_edu_rate_regular_eur_acc__c, {  
+                            from: "USD",
+                            to: this.currentCurrency
+                        }).toFixed());
             }
             return m;
         },

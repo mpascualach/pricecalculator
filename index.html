@@ -113,8 +113,13 @@
                                             <div class="product-info">
                                                 <div class="product-name">
                                                     <span class="product-name-title">{{ product.Event_Name }}</span>
-                                                    <span v-if="product.form_edu_early_rate_active__c && earlyRates" class="early-notification">Early rate:
+                                                    <span v-if="product.form_edu_early_rate_active__c && earlyRates" class="early-notification">
+                                                        <span v-if="product.form_edu_rate_early_eur_1st__c"> Early rate:
                                                         {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!</span>
+                                                        <span v-else-if="product.form_edu_rate_early_usd_1st__c"> Early rate:
+                                                        {{ currencySymbol }}{{ product.form_edu_rate_early_usd_1st__c | moneyify }}!</span>
+                                                        <span v-else-if="product.form_edu_rate_early_aud_1st__c"> Early rate:
+                                                        {{ currencySymbol }}{{ product.form_edu_rate_early_aud_1st__c | moneyify }}!</span>
                                                     <span v-else-if="product.endofearly && product.selectedearly" class="early-notification  multiple-bookings">
                                                         Early discount rates are no longer applicable.
                                                     </span>
