@@ -693,24 +693,20 @@ var vue = new Vue({
                     }
                 });
             }
-            // this.subitemtotal += subitem.price;
-            // subitem.quantity++;
-            // if ( selector == 'schedules' && subitem.quantity > 1 ){
-            //     this.cart.forEach(m => {
-            //         if ( m.id == product.id ){
-            //             m.quantity = Math.floor( ( subitem.quantity / 2 ) + 1);
-            //             if ( m.selectedearly ) this.earlytotal += m.price;
-            //             this.total += m.price;
-            //             // this.subitemtotal += m.price;
-            //         }
-            //     });
-            // }
         },
         // removes either a sponsorship package, an additional schedule or an additional person for an event
-        removeSubItem: function (product, subitem, selector) {
-            subitem.quantity--;
-            this.subitemtotal -= subitem.price;
-            if ( selector == 'sponsorship_package' ) {
+        removeSubItem(product, selector) {
+            if ( selector == 'schedules' ) {
+                product.wtSchedulesQuantity--;
+                this.cart.forEach(m => {
+                    if ( m.eventId == product.eventId ) {
+                        m.schedules.quantity--;
+                        this.subitemtotal -= m.schedules.price;
+                        return;
+                    }
+                })
+            }
+            else if ( selector == 'sponsorship_package' ) {
                 this.cart.forEach(m => {
                     if ( m.id == product.id ){
                         m.sponsorshipPackageSelected = false;
@@ -719,18 +715,18 @@ var vue = new Vue({
                     }
                 })
             }
-            if ( selector == 'schedules' ){
-                this.cart.forEach(m => {
-                    if ( m.id == product.id ) {
-                        m.quantity = Math.floor( ( subitem.quantity / 2 )+1 );
-                        if ( subitem.quantity == 1 || subitem.quantity == 0 ) m.quantity = 1;
-                        if ( subitem.quantity !== 0 ) this.subitemtotal -= m.price;
-                    }
-                });
-                if ( this.cart.length == 1 && this.cart[0].selectedearly ) {
-                    this.cart[0].price = this.cart[0].priceearly;
-                }
-            }
+            // if ( selector == 'schedules' ){
+            //     this.cart.forEach(m => {
+            //         if ( m.id == product.id ) {
+            //             m.quantity = Math.floor( ( subitem.quantity / 2 )+1 );
+            //             if ( subitem.quantity == 1 || subitem.quantity == 0 ) m.quantity = 1;
+            //             if ( subitem.quantity !== 0 ) this.subitemtotal -= m.price;
+            //         }
+            //     });
+            //     if ( this.cart.length == 1 && this.cart[0].selectedearly ) {
+            //         this.cart[0].price = this.cart[0].priceearly;
+            //     }
+            // }
         },
         // add a booth to the cart
         addBoothToCart(product, subitem){
