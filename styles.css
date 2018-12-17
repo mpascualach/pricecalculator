@@ -499,6 +499,17 @@ table.v-table {
     padding: 10px;
 }
 
+.attendance-tables {
+    display: flex;
+}
+
+.available-tables {
+    font-size: 1em;
+    color: green;
+    position: relative;
+    left: 17%;
+}
+
 .v-card__actions {
     position: relative;
     right: 5%;

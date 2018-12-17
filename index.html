@@ -134,8 +134,8 @@
                                                         {{ currencySymbol }}{{ product.form_edu_rate_regular_aud_1st__c | moneyify }}
                                                     </div>
                                                     <div class="product-price" v-else-if="product.form_edu_rate_regular_usd_1st__c">
-                                                            {{ currencySymbol }}{{ product.form_edu_rate_regular_usd_1st__c | moneyify }}
-                                                        </div>
+                                                        {{ currencySymbol }}{{ product.form_edu_rate_regular_usd_1st__c | moneyify }}
+                                                    </div>
                                                     <span v-if="product.currencyDisclaimer" class="early-notification multiple-bookings">{{ product.currencyDisclaimer }}</span>
                                                 </div>
                                                 <!-- <div class="booth-indicator" v-else>
@@ -151,45 +151,54 @@
                                             </div>
 
                                             <div class="attendance" v-if="product.incart">
-                                                <div class="attendance tables">
-                                                    <i class="fa fa-table-o"></i> Additional tables: 
-                                                    <i class="fa fa-minus-square smaller" 
-                                                        v-on:click="removeTable(product)" 
-                                                        v-if="product.wtTablesQuantity > 0">
-                                                    </i>
-                                                    <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                    <span>{{ product.wtTablesQuantity }}</span>
-                                                    <i class="fa fa-plus-square smaller add-table" 
-                                                        v-on:click="addTable(product)"></i>
+                                                <div class="attendance tables attendance-tables">
+                                                    <div class="table-aggregator">
+                                                        <i class="fa fa-table-o"></i> Additional tables: 
+                                                        <i class="fa fa-minus-square smaller" 
+                                                            v-on:click="removeTable(product)" 
+                                                            v-if="product.tablesQuantity > 0">
+                                                        </i>
+                                                        <i class="fa fa-minus-square smaller hidden" v-else></i>
+                                                        <span>{{ product.tablesQuantity }}</span>
+                                                        <i class="fa fa-plus-square smaller add-table" 
+                                                            v-on:click="addTable(product)"></i>
+                                                    </div>
+                                                    
+                                                    <div class="available-tables" v-if="accountType == 'educator' && product.incart && parseInt(product.EduTablesFree) > 0">
+                                                        <span> {{ parseInt(product.EduTablesFree) }} tables available! </span>
+                                                    </div>
                                                 </div> 
                                                 <div class="attendance schedules">
                                                     <i class="fa fa-calendar-o"></i> Additional schedules:
                                                     <i class="fa fa-minus-square smaller" 
                                                         v-on:click="removeSubItem(product, 'schedules')"
-                                                        v-if="product.wtSchedulesQuantity > 0">
+                                                        v-if="product.schedulesQuantity > 0">
                                                     </i>
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                    <span>{{ product.wtSchedulesQuantity}}</span>
+                                                    <span>{{ product.schedulesQuantity}}</span>
                                                     <i class="fa fa-plus-square smaller" 
                                                         v-on:click="addSubItem(product, 'schedules')">
                                                     </i>
                                                 </div>
                                                 <div class="attendance additional-people">
                                                     <i class="fa fa-id-card"></i> </i> Additional people:
-                                                    <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, 'add_people')"
+                                                    <i class="fa fa-minus-square smaller" 
+                                                        v-on:click="removeSubItem(product, 'add_people')"
                                                         v-if="product.wtAdditionalPeopleQuantity > 0">
                                                     </i>
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                     <span> {{ product.wtAdditionalPeopleQuantity }} </span>
-                                                    <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, 'add_people')"></i>
+                                                    <i class="fa fa-plus-square smaller" 
+                                                        v-on:click="addSubItem(product, 'add_people')">
+                                                    </i>
                                                 </div> 
                                             </div>
                 
-                                            <!-- <div class="sponsorship-box" v-if="product.incart > 0">
+                                            <div class="sponsorship-box" v-if="product.incart > 0">
                                                 <span class="sponsorship-intro">Sponsorship packages:</span>
                                                 <div class="sponsorship-container">
 
-                                                    <v-btn light class="platinum sponsorship" 
+                                                    <!-- <v-btn light class="platinum sponsorship" 
                                                         v-on:click="addSubItem(product, product.tables.sponsorships.platinum, 'sponsorship_package', 'platinum')"
                                                         v-if="product.tables.sponsorships.platinum.quantity == 0">
                                                             Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn>
@@ -211,9 +220,9 @@
                                                             Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn>
                                                     <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
                                                         v-on:click="removeSubItem(product,product.tables.sponsorships.silver, 'sponsorship_package')"
-                                                        v-else>Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn>
+                                                        v-else>Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn> -->
 
-                                                    <template class="sponsorship-dialog-start">
+                                                    <!-- <template class="sponsorship-dialog-start">
                                                          <v-layout row justify-start>
                                                             <v-dialog :content-class="'info-modal'" v-model="infoModal">
                                                                 <v-btn class="sponsorship-dialog-info" slot="activator">
@@ -255,10 +264,10 @@
                                                                 
                                                             </v-dialog>
                                                          </v-layout>
-                                                    </template>
+                                                    </template> -->
                                                 </div>
 
-                                                <template>
+                                                <!-- <template>
                                                     <v-expansion-panel class="marketing-and-sponsorship-items">
                                                         <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships"
                                                             v-bind:data="item" v-bind:key="item.name">
@@ -272,9 +281,9 @@
                                                             </div>
                                                         </v-expansion-panel-content>
                                                     </v-expansion-panel>
-                                                </template>
+                                                </template> -->
 
-                                            </div> -->
+                                            </div>
                                             
 											<v-card v-if="product.selectBoothBoolean == true" class="booths-table">
                                                 <v-card-text class="booth-choice-container">

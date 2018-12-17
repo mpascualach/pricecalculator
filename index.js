@@ -281,10 +281,11 @@ var vue = new Vue({
                         event = this.setCurrencyChange( event );
                     }  
                 }
-                event.wtTablesAvailable = parseInt( event.WtTablesQuantity ) - parseInt( event.WtTablesSold );
-                event.wtTablesQuantity = 0;
-                event.wtSchedulesQuantity = 0;
-                event.wtAdditionalPeopleQuantity = 0;
+                event.wtTablesAvailable = parseInt( event.tablesQuantity ) - parseInt( event.WtTablesSold );
+                event.tablesQuantity = 0;
+                event.schedulesQuantity = 0;
+                event.additionalPeopleQuantity = 0;
+
                 event.incart = false;
                 this.productsArray.push( event );
             }
@@ -492,7 +493,7 @@ var vue = new Vue({
             } //log price of subitem and assign it to copy's price
             this.cart.unshift( cartitem ); //push copy of product into cart
             this.total += cartitem.price;
-            product.wtTablesQuantity++;
+            product.tablesQuantity++;
             product.incart = true;
             switch ( this.regularWorkshops ) {
                 case 1:
@@ -525,9 +526,9 @@ var vue = new Vue({
         // remove the existence of a given workshop from the cart
         absoluteRemoveFromCart: function (product, selector) {
             if (selector == 'events'){
-                while ( product.wtAdditionalPeopleQuantity > 0 ){
+                while ( product.additionalPeopleQuantity > 0 ){
                     // this.subitemtotal -= product.additionalPeople.price;
-                    product.wtAdditionalPeopleQuantity--;
+                    product.additionalPeopleQuantity--;
                 }
                 while ( product.wtScheduleQuantity > 0 ){
                     // this.subitemtotal -= product.schedules.price;
@@ -590,7 +591,7 @@ var vue = new Vue({
         },
         // add a table for an event to the cart - used in opened events panel after addToCart has been invoked for an event
         addTable(product) {
-            product.wtTablesQuantity++;
+            product.tablesQuantity++;
             this.cart.forEach(m => {
                 if ( m.eventId == product.eventId ){
                     m.quantity++;
@@ -601,8 +602,8 @@ var vue = new Vue({
         },
         // remove a table from cart - accessed via the minus sign - triggers absoluteRemoveFromCart if the last table for an event has been removed
         removeTable: function (product) {
-            product.wtTablesQuantity--;
-            if ( product.wtTablesQuantity == 0 ){
+            product.tablesQuantity--;
+            if ( product.tablesQuantity == 0 ){
                 this.absoluteRemoveFromCart(product, 'events');
             }
             else {
@@ -617,9 +618,9 @@ var vue = new Vue({
         // adds either an extra schedule, an additional person or a subscription package for an event
         addSubItem( product, selector, tier ) {
             if ( selector == 'schedules' ) {
-                if (product.wtSchedulesQuantity >= product.wtTablesQuantity) return;
+                if (product.schedulesQuantity >= product.tablesQuantity) return;
                 else {
-                    product.wtSchedulesQuantity++;
+                    product.schedulesQuantity++;
                     let schedulePrice;
                     switch( product.form_edu_available_currency__c ) {
                         case 'EUR':
@@ -641,7 +642,7 @@ var vue = new Vue({
                 }
             }
             else if (selector == 'add_people') {
-                product.wtAdditionalPeopleQuantity++;
+                product.additionalPeopleQuantity++;
                 let addPeoplePrice;
                 switch ( product.form_edu_available_currency__c ) {
                     case 'EUR':
@@ -697,7 +698,7 @@ var vue = new Vue({
         // removes either a sponsorship package, an additional schedule or an additional person for an event
         removeSubItem(product, selector) {
             if ( selector == 'schedules' ) {
-                product.wtSchedulesQuantity--;
+                product.schedulesQuantity--;
                 this.cart.forEach(m => {
                     if ( m.eventId == product.eventId ) {
                         m.schedules.quantity--;
@@ -707,7 +708,7 @@ var vue = new Vue({
                 })
             }
             else if ( selector == 'add_people' ) {
-                product.wtAdditionalPeopleQuantity--;
+                product.additionalPeopleQuantity--;
                 this.cart.forEach(m => {
                     if ( m.eventId == product.eventId ) {
                         m.additionalPeople.quantity--;
