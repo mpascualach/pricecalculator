@@ -23,9 +23,6 @@ var vue = new Vue({
     // i18n,
     el: '#vue',
     data: {
-        products: {},
-        productKeys: [],
-        productsArray: [],
         headers:[
             { text: 'Name', value: 'name', sortable: false },
             {
@@ -244,7 +241,10 @@ var vue = new Vue({
         currencySymbol: "€",
         defaultCurrency: "EUR",
         loaded: false,
-        endpoint: "https://dev.live.my.icef.com/api3/allAvailableProducts.php"
+        endpoint: "https://dev.live.my.icef.com/api3/allAvailableProducts.php",
+        products: {},
+        productKeys: [],
+        productsArray: [],
     },
     filters: {
         // we change each displayed price to fit the format exemplified on icef.design/main and the icef ratesheet among other places
@@ -269,19 +269,21 @@ var vue = new Vue({
                 return data.json();
             })
             .then(res => {
+                this.products = res;
                 this.activateFixer( res );
             })
         },
         fillProductsArray(products){
             this.productKeys = Object.keys( products );
-            for ( let i = 0; i < this.productKeys.length; i++ ){
+            console.log(this.currentCurrency)
+            for ( let i = 0; i < this.productKeys.length; i++ ) {
                 let event = products[ this.productKeys[ i ] ];
                 if ( this.currentCurrency !== event.form_edu_available_currency__c ) {
-                    if ( event.form_edu_available_currency__c !== this.currentCurrency ) {
-                        event = this.setCurrencyChange( event );
-                    }  
+                    event = this.setCurrencyChange( event );
                 }
-                event.wtTablesAvailable = parseInt( event.tablesQuantity ) - parseInt( event.WtTablesSold );
+                else {
+                    event.currencyDisclaimer = '';
+                }
                 event.tablesQuantity = 0;
                 event.schedulesQuantity = 0;
                 event.additionalPeopleQuantity = 0;
@@ -291,7 +293,7 @@ var vue = new Vue({
             }
             this.loaded = true;
         },
-        activateFixer( array ){
+        activateFixer( ){
             axios.get(
                 'https://data.fixer.io/api/latest?access_key=2a8bbb1fd33e5a65dc1404de3d7bd38b&base='
                 + this.currentCurrency)
@@ -309,19 +311,19 @@ var vue = new Vue({
                         base: this.fixer.base
                     };
                 }
-                if ( array ) this.fillProductsArray( array );
+                this.fillProductsArray(this.products)
             });
         },
         setCurrencyChange( m ){
             switch ( m.form_edu_available_currency__c ) {
                 case 'AUD':
-                    m.form_edu_rate_regular_aud_1st__c = parseInt(
+                    m.form_edu_rate_early_aud_1st__c = parseInt(
                         fx.convert(m.form_edu_rate_early_aud_1st__c, {  
                             from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed());
 
-                    m.form_edu_rate_regular_aud_2nd__c = parseInt(
+                    m.form_edu_rate_early_aud_2nd__c = parseInt(
                         fx.convert(m.form_edu_rate_early_aud_2nd__c, {  
                             from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
@@ -333,19 +335,19 @@ var vue = new Vue({
                             to: this.currentCurrency
                         }).toFixed())
 
-                    m.form_edu_rate_early_aud_1st__c = parseInt(
+                    m.form_edu_rate_regular_aud_1st__c = parseInt(
                         fx.convert(m.form_edu_rate_regular_aud_1st__c, {  
                             from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed());
 
-                    m.form_edu_rate_early_aud_2nd__c = parseInt(
+                    m.form_edu_rate_regular_aud_2nd__c = parseInt(
                         fx.convert(m.form_edu_rate_regular_aud_2nd__c, {  
                             from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed());
 
-                    m.form_edu_rate_early_aud_acc__c = parseInt(
+                    m.form_edu_rate_regular_aud_acc__c = parseInt(
                         fx.convert(m.form_edu_rate_regular_aud_acc__c, {  
                             from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
@@ -357,13 +359,13 @@ var vue = new Vue({
                 case 'USD;CAD':
                     if (m.form_edu_rate_early_usd_1st__c) {
                         m.form_edu_rate_early_usd_1st__c = parseInt(
-                            window.fx.convert(m.form_edu_rate_regular_usd_1st__c, {  
+                            fx.convert(m.form_edu_rate_regular_usd_1st__c, {  
                                 from: "USD",
                                 to: this.currentCurrency
                             }).toFixed());
 
 
-                        m.form_edu_rate_regular_usd_2nd__c = parseInt(
+                        m.form_edu_rate_early_usd_2nd__c = parseInt(
                             fx.convert(m.form_edu_rate_early_usd_2nd__c, {  
                                 from: "USD",
                                 to: this.currentCurrency
@@ -375,19 +377,19 @@ var vue = new Vue({
                                 to: this.currentCurrency
                             }).toFixed())
     
-                        m.form_edu_rate_early_aud_1st__c = parseInt(
+                        m.form_edu_rate_regular_aud_1st__c = parseInt(
                             fx.convert(m.form_edu_rate_regular_usd_1st__c, {  
                                 from: "USD",
                                 to: this.currentCurrency
                             }).toFixed());
     
-                        m.form_edu_rate_early_aud_2nd__c = parseInt(
+                        m.form_edu_rate_regular_aud_2nd__c = parseInt(
                             fx.convert(m.form_edu_rate_regular_usd_2nd__c, {  
                                 from: "USD",
                                 to: this.currentCurrency
                             }).toFixed());
     
-                        m.form_edu_rate_early_aud_acc__c = parseInt(
+                        m.form_edu_rate_regular_aud_acc__c = parseInt(
                             fx.convert(m.form_edu_rate_regular_usd_acc__c, {  
                                 from: "USD",
                                 to: this.currentCurrency
@@ -399,40 +401,44 @@ var vue = new Vue({
 
                 case 'EUR':
                     m.form_edu_rate_early_eur_1st__c = parseInt(
-                        window.fx.convert(m.form_edu_rate_regular_eur_1st__c, {  
-                            from: "USD",
+                        fx.convert(m.form_edu_rate_regular_eur_1st__c, {  
+                            from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed());
 
                     m.form_edu_rate_regular_eur_2nd__c = parseInt(
                         fx.convert(m.form_edu_rate_early_eur_2nd__c, {  
-                            from: "USD",
+                            from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed())
 
                     m.form_edu_rate_early_eur_acc__c = parseInt(
                         fx.convert(m.form_edu_rate_early_eur_acc__c, {  
-                            from: "USD",
+                            from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed())
 
-                    m.form_edu_rate_early_eur_1st__c = parseInt(
+                    m.form_edu_rate_regular_eur_1st__c = parseInt(
                         fx.convert(m.form_edu_rate_regular_eur_1st__c, {  
-                            from: "USD",
+                            from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed());
 
-                    m.form_edu_rate_early_eur_2nd__c = parseInt(
+                    m.form_edu_rate_regular_eur_2nd__c = parseInt(
                         fx.convert(m.form_edu_rate_regular_eur_2nd__c, {  
-                            from: "USD",
+                            from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed());
 
-                    m.form_edu_rate_early_eur_acc__c = parseInt(
+                    m.form_edu_rate_regular_eur_acc__c = parseInt(
                         fx.convert(m.form_edu_rate_regular_eur_acc__c, {  
-                            from: "USD",
+                            from: m.form_edu_available_currency__c,
                             to: this.currentCurrency
                         }).toFixed());
+
+                    m.currencyDisclaimer = "Converted from EUR";
+                    
+                    console.log(m);
             }
             return m;
         },
@@ -454,6 +460,12 @@ var vue = new Vue({
                 case 'AUD':
                     this.currencySymbol = "$";
             }
+            if ( this.productsArray.length ) {
+                console.log("Refilling array!")
+                this.productsArray = [];
+                this.fillProductsArray(this.products);
+            }
+            
         },
         // push a table to the cart and update our price accordingly
         addToCart: function (product) {
