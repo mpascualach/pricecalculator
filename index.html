@@ -52,7 +52,7 @@
                 </div> -->
                 
                 <!-- list of totals updated with each addition to the cart -->
-                <div class="checkout-totals header-totals" v-if="cart.length > 0 && !checkout">
+                <div class="checkout-totals header-totals" v-if="cart.length > 0 && !checkout && !footerExpanded">
                     <strong>Price breakdown</strong>
                     <div class="header-total" v-if="earlytotal"> 
                         <span class="header-total-property">Early bird total: </span> 
@@ -174,15 +174,15 @@
                                                         v-on:click="addSubItem(product, 'schedules')">
                                                     </i>
                                                 </div>
-                                                <!-- <div class="attendance additional-people">
+                                                <div class="attendance additional-people">
                                                     <i class="fa fa-id-card"></i> </i> Additional people:
-                                                    <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, product.tables.additionalPeople)"
-                                                        v-if="product.tables.additionalPeople.quantity > 0">
+                                                    <i class="fa fa-minus-square smaller" v-on:click="removeSubItem(product, 'add_people')"
+                                                        v-if="product.wtAdditionalPeopleQuantity > 0">
                                                     </i>
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                    <span> {{ product.tables.additionalPeople.quantity }} </span>
-                                                    <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, product.tables.additionalPeople)"></i>
-                                                </div>  -->
+                                                    <span> {{ product.wtAdditionalPeopleQuantity }} </span>
+                                                    <i class="fa fa-plus-square smaller" v-on:click="addSubItem(product, 'add_people')"></i>
+                                                </div> 
                                             </div>
                 
                                             <!-- <div class="sponsorship-box" v-if="product.incart > 0">
@@ -517,13 +517,13 @@
                                 <tr>
                                     <td class="name">{{ props.item.name }} <br /> 
                                         <sub class="includes-1-schedule">(includes 1 schedule)</sub> <br />
-                                        <!-- <sub class="additional-schedule-counter" v-if="props.item.schedules.quantity > 0 && !footerExpanded"> + {{ props.item.schedules.quantity }} additional schedule </sub> <br/>
+                                        <sub class="additional-schedule-counter" v-if="props.item.schedules.quantity > 0 && !footerExpanded"> + {{ props.item.schedules.quantity }} additional schedule </sub> <br/>
                                         <sub class="additional-person-counter" v-if="props.item.additionalPeople.quantity == 1 && !footerExpanded"> 
                                             + {{ props.item.additionalPeople.quantity }} additional person
                                         </sub>
                                         <sub class="additional-person-counter" v-if="props.item.additionalPeople.quantity > 1 && !footerExpanded">
                                             + {{ props.item.additionalPeople.quantity }} additional people
-                                        </sub> -->
+                                        </sub>
                                     </td>
                                     <td class="price">{{ currencySymbol }}{{ props.item.price | moneyify }}</td>
                                     <td class="qty">
@@ -597,7 +597,7 @@
                                         <sub>(max. 1 per table)</sub> <br />
                                         <span class="schedule-alert" v-if="limitReached">There can't be more additional schedules than tables</span>
                                     </td>
-                                    <td>{{ currencySymbol }}{{ props.item.schedules.price | moneyify }}{{ currencySymbol }}</td>
+                                    <td>{{ currencySymbol }}{{ props.item.schedules.price | moneyify }}</td>
                                     <td class="qty">{{ props.item.schedules.quantity }}</td>
                                     <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity )  | moneyify }}</td>
                                     <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 )  | moneyify }}</td>
@@ -605,15 +605,15 @@
                                     <td></td>
                                 </tr>
 
-                                <!-- <tr v-if="!props.item.booths && !props.item.workandtravel && !props.item.advert && !props.item.advert && props.item.additionalPeople.quantity > 0">
+                                <tr if="props.item.additionalPeople.quantity > 0">
                                     <td class="additional-name">{{ props.item.additionalPeople.name }}</td>
-                                    <td>{{ currencySymbol }}{{ props.item.additionalPeople.price | moneyify }}{{ currencySymbol }}</td>
+                                    <td>{{ currencySymbol }}{{ props.item.additionalPeople.price | moneyify }}</td>
                                     <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
                                     <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity ) | moneyify }}</td>
                                     <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity )  | moneyify }}</td>
                                     <td>{{ currencySymbol }}0</td>
                                     <td></td>
-                                </tr> -->
+                                </tr>
                             </template> 
                             
 
@@ -654,7 +654,47 @@
                             </td>
 
                             <td class="totals">
-                                
+                                <div class="header-total" v-if="earlytotal"> 
+                                    <span class="header-total-property">Early bird total: </span> 
+                                    <span class="header-total-value"> {{ currencySymbol }}{{ earlytotal  | moneyify }} </span>
+                                </div>
+                                <div class="header-total" v-else>
+                                    <span class="header-total-property">Original total: </span>
+                                    <span class="header-total-value">{{ currencySymbol }}{{ total  | moneyify }} </span>
+                                </div>
+                                <div class="header-total" v-if="subitemtotal">
+                                    <span class="header-total-property">Subitems total: </span>
+                                    <span class="header-total-value">{{ currencySymbol }}{{ subitemtotal  | moneyify }} </span>
+                                </div>
+                                <div class="header-total" v-if="earlytotal && subitemtotal">
+                                    <span class="header-total-property">Undiscounted total: </span>
+                                    <span class="header-total-value">{{ currencySymbol }}{{ ( earlytotal + subitemtotal )  | moneyify }} </span>
+                                </div>
+                                <div class="header-total" v-if="!earlytotal && subitemtotal">
+                                    <span class="header-total-property">Undiscounted total: </span>
+                                    <span class="header-total-value">{{ currencySymbol }}{{ ( total + subitemtotal )  | moneyify }} </span>
+                                </div>
+                                <div class="header-total" v-if="discount !== 1">
+                                    <span class="header-total-property">Discount rate: </span>
+                                    <span class="header-total-value">{{ ( ( 1 - discount ) * 100 ).toFixed() }}% </span>
+                                </div>
+                                <div class="header-total">
+                                    <span class="header-total-property">Discounted: </span>
+                                    <span class="header-total-value">{{ currencySymbol }}{{ ( total * discount ) - total  | moneyify }}</span> 
+                                </div>
+                                <div class="header-total" v-if="earlytotal">
+                                    <strong class="header-total-property">Total: </strong>
+                                    <strong class="header-total-value">{{ currencySymbol }}{{ ( subitemtotal + earlytotal )  | moneyify }}</strong> 
+                                </div>
+                                <div class="header-total" v-else>
+                                    <strong class="header-total-property">Total: </strong>
+                                    <strong class="header-total-value">{{ currencySymbol }}{{ (( total * discount ) + subitemtotal )  | moneyify }} </strong>
+                                </div>
+                                <!-- <div class="header-total-buttons">
+                                    <v-btn v-on:click="gotoCheckout()">
+                                        Go to checkout
+                                    </v-btn>
+                                </div> -->
                             </td>
                         </template>
                     </v-data-table>

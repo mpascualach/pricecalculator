@@ -463,6 +463,18 @@ var vue = new Vue({
             cartitem.price = parseInt(product.form_edu_rate_regular_eur_1st__c); //make copy of product
             cartitem.quantity = 1;
             cartitem.eventId = product.eventId;
+            cartitem.schedules = {
+                eventId: product.eventId,
+                name: product.Event_Name + " Schedule",
+                price: 0,
+                quantity: 0
+            }
+            cartitem.additionalPeople = {
+                eventId: product.eventId,
+                name: product.Event_Name + " Additional People",
+                price: 0,
+                quantity: 0
+            }
             this.regularWorkshops++;
             // product.incart = true;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
@@ -605,30 +617,49 @@ var vue = new Vue({
         // adds either an extra schedule, an additional person or a subscription package for an event
         addSubItem( product, selector, tier ) {
             if ( selector == 'schedules' ) {
-                product.wtSchedulesQuantity++;
-                let schedulePrice;
-                switch( product.form_edu_available_currency__c ) {
+                if (product.wtSchedulesQuantity >= product.wtTablesQuantity) return;
+                else {
+                    product.wtSchedulesQuantity++;
+                    let schedulePrice;
+                    switch( product.form_edu_available_currency__c ) {
+                        case 'EUR':
+                            schedulePrice = parseInt(product.form_edu_rate_regular_eur_2nd__c);
+                            break;
+                        case 'AUD':
+                            schedulePrice = parseInt(product.form_edu_rate_regular_aud_2nd__c);
+                            break;
+                        case 'USD;CAD':
+                            schedulePrice = parseInt(product.form_edu_rate_regular_usd_2nd__c);
+                    }
+                    this.cart.forEach(m => {
+                        if ( m.eventId == product.eventId ){
+                            m.schedules.quantity++;
+                            m.schedules.price = schedulePrice;
+                        }
+                    })
+                    this.subitemtotal += schedulePrice;
+                }
+            }
+            else if (selector == 'add_people') {
+                product.wtAdditionalPeopleQuantity++;
+                let addPeoplePrice;
+                switch ( product.form_edu_available_currency__c ) {
                     case 'EUR':
-                        schedulePrice = parseInt(product.form_edu_rate_regular_eur_2nd__c);
+                        addPeoplePrice = parseInt(product.form_edu_rate_regular_eur_acc__c);
                         break;
                     case 'AUD':
-                        schedulePrice = parseInt(product.form_edu_rate_regular_aud_2nd__c);
+                        addPeoplePrice = parseInt(product.form_edu_rate_regular_aud_acc__c);
                         break;
                     case 'USD;CAD':
-                        schedulePrice = parseInt(product.form_edu_rate_regular_usd_2nd__c);
-                        break;
+                        addPeoplePrice = parseInt(product.form_edu_rate_regular_usd_acc__c);
                 }
                 this.cart.forEach(m => {
                     if ( m.eventId == product.eventId ){
-                        m.schedules = {
-                            name: product.eventName + " additional schedule",
-                            quantity: 1,
-                            price: schedulePrice
-                        };
-                        console.log()
+                        m.additionalPeople.quantity++;
+                        m.additionalPeople.price = addPeoplePrice;
                     }
                 })
-                this.subitemtotal += schedulePrice;
+                this.subitemtotal += addPeoplePrice;
             } 
             else if ( selector == 'marketing' ) subitem.name = product.name + " " + subitem.name;
             else if ( selector == 'sponsorship_package' ){
