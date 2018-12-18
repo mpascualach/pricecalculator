@@ -498,7 +498,7 @@
             <div class="cart-bottom-screen" id="cart-bottom-screen" 
                 v-if="cart.length > 0" 
                 v-bind:style="[ footerExpanded ? { 'height': '81%' } : { 'height': '11%' } ]">
-                <template class="cart-container">
+                <div class="cart-container">
                     <v-data-table :headers="headers" :items="cart" class="cart">
 
                         <template slot="items" slot-scope="props">
@@ -600,8 +600,8 @@
                                 </td>
                             </tr> -->
 
-                            <template v-if="footerExpanded">
-                                <tr v-if="props.item.schedules">
+                            <template v-if="footerExpanded && props.item.schedules.quantity > 0 || props.item.additionalPeople.quantity > 0">
+                                <tr v-if="props.item.schedules.quantity > 0">
                                     <td class="additional-name">{{ props.item.schedules.name }}<br /> 
                                         <sub>(max. 1 per table)</sub> <br />
                                         <span class="schedule-alert" v-if="limitReached">There can't be more additional schedules than tables</span>
@@ -614,7 +614,7 @@
                                     <td></td>
                                 </tr>
 
-                                <tr if="props.item.additionalPeople.quantity > 0">
+                                <tr v-if="props.item.additionalPeople.quantity > 0">
                                     <td class="additional-name">{{ props.item.additionalPeople.name }}</td>
                                     <td>{{ currencySymbol }}{{ props.item.additionalPeople.price | moneyify }}</td>
                                     <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
@@ -654,60 +654,60 @@
 
                         </template>
 
-                        <template slot="footer" v-if="footerExpanded">
-                            <td class="checkout-btn-container">
-                                <v-btn class="checkout-btn" v-on:click="gotoCheckout()">
-                                    <i class="fa fa-arrow-right"></i>   
-                                    Go to checkout
-                                </v-btn>
-                            </td>
-
-                            <td class="totals">
-                                <div class="header-total" v-if="earlytotal"> 
-                                    <span class="header-total-property">Early bird total: </span> 
-                                    <span class="header-total-value"> {{ currencySymbol }}{{ earlytotal  | moneyify }} </span>
-                                </div>
-                                <div class="header-total" v-else>
-                                    <span class="header-total-property">Original total: </span>
-                                    <span class="header-total-value">{{ currencySymbol }}{{ total  | moneyify }} </span>
-                                </div>
-                                <div class="header-total" v-if="subitemtotal">
-                                    <span class="header-total-property">Subitems total: </span>
-                                    <span class="header-total-value">{{ currencySymbol }}{{ subitemtotal  | moneyify }} </span>
-                                </div>
-                                <div class="header-total" v-if="earlytotal && subitemtotal">
-                                    <span class="header-total-property">Undiscounted total: </span>
-                                    <span class="header-total-value">{{ currencySymbol }}{{ ( earlytotal + subitemtotal )  | moneyify }} </span>
-                                </div>
-                                <div class="header-total" v-if="!earlytotal && subitemtotal">
-                                    <span class="header-total-property">Undiscounted total: </span>
-                                    <span class="header-total-value">{{ currencySymbol }}{{ ( total + subitemtotal )  | moneyify }} </span>
-                                </div>
-                                <div class="header-total" v-if="discount !== 1">
-                                    <span class="header-total-property">Discount rate: </span>
-                                    <span class="header-total-value">{{ ( ( 1 - discount ) * 100 ).toFixed() }}% </span>
-                                </div>
-                                <div class="header-total">
-                                    <span class="header-total-property">Discounted: </span>
-                                    <span class="header-total-value">{{ currencySymbol }}{{ ( total * discount ) - total  | moneyify }}</span> 
-                                </div>
-                                <div class="header-total" v-if="earlytotal">
-                                    <strong class="header-total-property">Total: </strong>
-                                    <strong class="header-total-value">{{ currencySymbol }}{{ ( subitemtotal + earlytotal )  | moneyify }}</strong> 
-                                </div>
-                                <div class="header-total" v-else>
-                                    <strong class="header-total-property">Total: </strong>
-                                    <strong class="header-total-value">{{ currencySymbol }}{{ (( total * discount ) + subitemtotal )  | moneyify }} </strong>
-                                </div>
-                                <!-- <div class="header-total-buttons">
-                                    <v-btn v-on:click="gotoCheckout()">
-                                        Go to checkout
-                                    </v-btn>
-                                </div> -->
-                            </td>
-                        </template>
                     </v-data-table>
-                </template>
+                </div>
+                <div v-if="footerExpanded" class="cart-footer">
+                    <div class="checkout-btn-container">
+                        <v-btn class="checkout-btn" v-on:click="gotoCheckout()">
+                            <i class="fa fa-arrow-right"></i>   
+                            Go to checkout
+                        </v-btn>
+                    </div>
+                    <div class="totals footer-totals">
+                        <div class="header-total" v-if="earlytotal"> 
+                            <span class="header-total-property">Early bird total: </span> 
+                            <span class="header-total-value"> {{ currencySymbol }}{{ earlytotal  | moneyify }} </span>
+                        </div>
+                        <div class="header-total" v-else>
+                            <span class="header-total-property">Original total: </span>
+                            <span class="header-total-value">{{ currencySymbol }}{{ total  | moneyify }} </span>
+                        </div>
+                        <div class="header-total" v-if="subitemtotal">
+                            <span class="header-total-property">Subitems total: </span>
+                            <span class="header-total-value">{{ currencySymbol }}{{ subitemtotal  | moneyify }} </span>
+                        </div>
+                        <div class="header-total" v-if="earlytotal && subitemtotal">
+                            <span class="header-total-property">Undiscounted total: </span>
+                            <span class="header-total-value">{{ currencySymbol }}{{ ( earlytotal + subitemtotal )  | moneyify }} </span>
+                        </div>
+                        <div class="header-total" v-if="!earlytotal && subitemtotal">
+                            <span class="header-total-property">Undiscounted total: </span>
+                            <span class="header-total-value">{{ currencySymbol }}{{ ( total + subitemtotal )  | moneyify }} </span>
+                        </div>
+                        <div class="header-total" v-if="discount !== 1">
+                            <span class="header-total-property">Discount rate: </span>
+                            <span class="header-total-value">{{ ( ( 1 - discount ) * 100 ).toFixed() }}% </span>
+                        </div>
+                        <div class="header-total">
+                            <span class="header-total-property">Discounted: </span>
+                            <span class="header-total-value">{{ currencySymbol }}{{ ( total * discount ) - total  | moneyify }}</span> 
+                        </div>
+                        <div class="header-total" v-if="earlytotal">
+                            <strong class="header-total-property">Total: </strong>
+                            <strong class="header-total-value">{{ currencySymbol }}{{ ( subitemtotal + earlytotal )  | moneyify }}</strong> 
+                        </div>
+                        <div class="header-total" v-else>
+                            <strong class="header-total-property">Total: </strong>
+                            <strong class="header-total-value">{{ currencySymbol }}{{ (( total * discount ) + subitemtotal )  | moneyify }} </strong>
+                        </div>
+                        <!-- <div class="header-total-buttons">
+                            <v-btn v-on:click="gotoCheckout()">
+                                Go to checkout
+                            </v-btn>
+                        </div> -->
+                    </div>
+                </div>
+                
                 <button class="expand-cart-bottom-screen" v-on:click="expandFooter()">
                     <i v-if="!footerExpanded" class="fa fa-arrow-up"></i>
                     <i v-else class="fa fa-arrow-down"></i>
