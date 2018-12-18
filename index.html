@@ -200,27 +200,24 @@
                                                         <span class="sponsorship-intro">Sponsorship packages:</span>
                                                         <div class="sponsorship-container">
         
-                                                            <!-- <v-btn light class="platinum sponsorship" 
-                                                                v-on:click="addSubItem(product, product.tables.sponsorships.platinum, 'sponsorship_package', 'platinum')"
-                                                                v-if="product.tables.sponsorships.platinum.quantity == 0">
-                                                                    Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn>
-                                                            <v-btn light class="platinum-pressed sponsorship-pressed sponsorship light" 
+                                                            <v-btn light class="platinum sponsorship" 
+                                                                v-on:click="addSubItem(product, 'sponsorship_package', 'platinum')">
+                                                                    Platinum: {{product.products.sponsorships.platinum.available}} left </v-btn>
+                                                            <!-- <v-btn light class="platinum-pressed sponsorship-pressed sponsorship light" 
                                                                 v-on:click="removeSubItem(product,product.tables.sponsorships.platinum, 'sponsorship_package')"
-                                                                v-else>Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn>
+                                                                v-else>Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn> -->
         
                                                             <v-btn light class="gold sponsorship light" 
-                                                                v-on:click="addSubItem(product, product.tables.sponsorships.gold, 'sponsorship_package', 'gold')"
-                                                                v-if="product.tables.sponsorships.gold.quantity == 0">
-                                                                Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price | moneyify }}</v-btn>
-                                                            <v-btn light class="gold-pressed sponsorship-pressed sponsorship light" 
+                                                                v-on:click="addSubItem(product, 'sponsorship_package', 'gold')">
+                                                                Gold: {{ product.products.sponsorships.gold.available | moneyify }} left </v-btn>
+                                                            <!-- <v-btn light class="gold-pressed sponsorship-pressed sponsorship light" 
                                                                 v-on:click="removeSubItem(product,product.tables.sponsorships.gold, 'sponsorship_package')"
-                                                                v-else>Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price | moneyify }}</v-btn>
+                                                                v-else>Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price | moneyify }}</v-btn> -->
         
                                                             <v-btn light class="silver sponsorship" 
-                                                                v-on:click="addSubItem(product, product.tables.sponsorships.silver, 'sponsorship_package', 'gold')"
-                                                                v-if="product.tables.sponsorships.silver.quantity == 0">
-                                                                    Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn>
-                                                            <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
+                                                                v-on:click="addSubItem(product, 'sponsorship_package', 'gold')">
+                                                                    Silver: {{ product.products.sponsorships.silver.available | moneyify }} left</v-btn>
+                                                            <!-- <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
                                                                 v-on:click="removeSubItem(product,product.tables.sponsorships.silver, 'sponsorship_package')"
                                                                 v-else>Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn> -->
         

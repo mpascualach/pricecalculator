@@ -275,9 +275,26 @@ var vue = new Vue({
         },
         fillProductsArray(products){
             this.productKeys = Object.keys( products );
-            console.log(this.currentCurrency)
             for ( let i = 0; i < this.productKeys.length; i++ ) {
                 let event = products[ this.productKeys[ i ] ];
+                if (event.products) {
+                    let eventKeys = Object.keys(event.products);
+                    eventKeys.forEach(m => {
+                        if (m == "Workshop Sponsorship"){
+                            event.products.sponsorships = event.products[m];
+                            let sponsorshipKeys = Object.keys(event.products.sponsorships);
+                            sponsorshipKeys.forEach(n => {
+                                if (n == "Platinum Sponsorship  - Recognition as event sponsor")
+                                    event.products.sponsorships.platinum = event.products.sponsorships[n];
+                                else if (n == "Gold Sponsorship  - Recognition as event sponsor")
+                                    event.products.sponsorships.gold = event.products.sponsorships[n];
+                                else if (n == "Silver Sponsorship  - Recognition as event sponsor")
+                                    event.products.sponsorships.silver = event.products.sponsorships[n];
+                            })
+                        }
+                    })
+                }
+                console.log(event.products);
                 if ( this.currentCurrency !== event.form_edu_available_currency__c ) {
                     event = this.setCurrencyChange( event );
                 }
