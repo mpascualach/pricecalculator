@@ -292,6 +292,9 @@ var vue = new Vue({
                                     event.products.sponsorships.silver = event.products.sponsorships[n];
                             })
                         }
+                        else {
+                            
+                        }
                     })
                 }
                 console.log(event.products);
