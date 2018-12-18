@@ -37,6 +37,7 @@ html, body {
 .header-totals {
     position: absolute;
     right: 0;
+    top: 0;
     text-align: center;
     padding: 10px;
     right: 5;
@@ -447,6 +448,7 @@ button.booths.booths-activator.v-btn.theme--light {
     height: 10%;
     box-shadow: 1px -3px 5px 5px #888888;
     background-color: #eef0f3;
+    border-radius: 5px;
 }
 
 .expand-cart-bottom-screen {

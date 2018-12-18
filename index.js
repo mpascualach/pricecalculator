@@ -471,19 +471,21 @@ var vue = new Vue({
             cartitem = {
                 name: product.Event_Name + " Table"
             };
-            cartitem.price = parseInt(product.form_edu_rate_regular_eur_1st__c); //make copy of product
             cartitem.quantity = 1;
             cartitem.eventId = product.eventId;
             switch( product.form_edu_available_currency__c ) {
                 case 'EUR':
+                    cartitem.price = parseInt(product.form_edu_rate_regular_eur_1st__c); 
                     schedulePrice = parseInt(product.form_edu_rate_regular_eur_2nd__c);
                     addPeoplePrice = parseInt(product.form_edu_rate_regular_eur_acc__c);
                     break;
                 case 'AUD':
+                    cartitem.price = parseInt(product.form_edu_rate_regular_aud_1st__c); 
                     schedulePrice = parseInt(product.form_edu_rate_regular_aud_2nd__c);
                     addPeoplePrice = parseInt(product.form_edu_rate_regular_aud_acc__c);
                     break;
                 case 'USD;CAD':
+                    cartitem.price = parseInt(product.form_edu_rate_regular_usd_1st__c); 
                     schedulePrice = parseInt(product.form_edu_rate_regular_usd_2nd__c);
                     addPeoplePrice = parseInt(product.form_edu_rate_regular_usd_acc__c);
             }
@@ -646,27 +648,27 @@ var vue = new Vue({
                 if (product.schedulesQuantity >= product.tablesQuantity) return;
                 else {
                     product.schedulesQuantity++;
-                    let schedulePrice;
                     
                     this.cart.forEach(m => {
                         if ( m.eventId == product.eventId ){
                             m.schedules.quantity++;
-                            m.schedules.price = schedulePrice;
+                            this.subitemtotal += m.schedules.price;
+                            return;
                         }
                     })
-                    this.subitemtotal += schedulePrice;
+                    
                 }
             }
             else if (selector == 'add_people') {
                 product.additionalPeopleQuantity++;
-                let addPeoplePrice;
                 this.cart.forEach(m => {
                     if ( m.eventId == product.eventId ){
                         m.additionalPeople.quantity++;
-                        m.additionalPeople.price = addPeoplePrice;
+                        this.subitemtotal += m.additionalPeople.price;
+                        return;
                     }
                 })
-                this.subitemtotal += addPeoplePrice;
+                
             } 
             else if ( selector == 'marketing' ) subitem.name = product.name + " " + subitem.name;
             else if ( selector == 'sponsorship_package' ){
