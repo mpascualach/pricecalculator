@@ -166,8 +166,8 @@
                                                                     v-on:click="addTable(product)"></i>
                                                             </div>
                                                             
-                                                            <div class="available-tables" v-if="accountType == 'educator' && product.incart">
-                                                                <span> {{ parseInt(product.EduTablesFree) }} tables available! </span>
+                                                            <div class="available-tables" v-if="product.incart">
+                                                                <span> {{ parseInt(product.EduTablesFree) - product.tablesQuantity }} tables available! </span>
                                                             </div>
                                                         </div> 
                                                         <div class="attendance schedules">
@@ -519,8 +519,8 @@
                                                                 v-on:click="addTable(product)"></i>
                                                         </div>
                                                         
-                                                        <div class="available-tables" v-if="accountType == 'educator' && product.incart">
-                                                            <span> {{ parseInt(product.EduTablesFree) }} tables available! </span>
+                                                        <div class="available-tables" v-if="product.incart">
+                                                            <span> {{ parseInt(product.EduTablesFree) - product.tablesQuantity }} tables available! </span>
                                                         </div>
                                                     </div> 
                                                     <div class="attendance schedules">
@@ -880,7 +880,7 @@
                                                         <span class="sponsorship-intro">Sponsorship packages:</span>
                                                         <div class="sponsorship-container">
         
-                                                            <!-- <v-btn light class="platinum sponsorship" 
+                                                            <v-btn light class="platinum sponsorship" 
                                                                 v-on:click="addSubItem(product, product.tables.sponsorships.platinum, 'sponsorship_package', 'platinum')"
                                                                 v-if="product.tables.sponsorships.platinum.quantity == 0">
                                                                     Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn>
@@ -888,7 +888,7 @@
                                                                 v-on:click="removeSubItem(product,product.tables.sponsorships.platinum, 'sponsorship_package')"
                                                                 v-else>Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn>
         
-                                                            <v-btn light class="gold sponsorship light" 
+                                                            <!-- <v-btn light class="gold sponsorship light" 
                                                                 v-on:click="addSubItem(product, product.tables.sponsorships.gold, 'sponsorship_package', 'gold')"
                                                                 v-if="product.tables.sponsorships.gold.quantity == 0">
                                                                 Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price | moneyify }}</v-btn>
@@ -902,7 +902,7 @@
                                                                     Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn>
                                                             <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
                                                                 v-on:click="removeSubItem(product,product.tables.sponsorships.silver, 'sponsorship_package')"
-                                                                v-else>Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn> -->
+                                                                v-else>Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn>  -->
         
                                                             <!-- <template class="sponsorship-dialog-start">
                                                                     <v-layout row justify-start>
@@ -946,7 +946,7 @@
                                                                         
                                                                     </v-dialog>
                                                                     </v-layout>
-                                                            </template> -->
+                                                            </template>
                                                         </div>
         
                                                         <!-- <template>
@@ -1199,8 +1199,8 @@
                                                                 v-on:click="addTable(product)"></i>
                                                         </div>
                                                         
-                                                        <div class="available-tables" v-if="accountType == 'educator' && product.incart">
-                                                            <span> {{ parseInt(product.EduTablesFree) }} tables available! </span>
+                                                        <div class="available-tables" v-if="product.incart">
+                                                            <span> {{ parseInt(product.EduTablesFree) - product.tablesQuantity }} tables available! </span>
                                                         </div>
                                                     </div> 
                                                     <div class="attendance schedules">
