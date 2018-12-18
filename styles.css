@@ -205,6 +205,14 @@ input:checked + .slider:before {
     width: 52%;
 }
 
+.sold-out {
+    opacity: 0.6;
+}
+
+.sold-out-container {
+    margin-right: 6%;
+}
+
 .v-card.theme--light {
     display: flex;
     justify-content: space-between;
