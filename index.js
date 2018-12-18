@@ -230,7 +230,7 @@ var vue = new Vue({
         cartAtBottom: true,
         footerExpanded: false,
         valid: false,
-        accountType: 'educator', //can also be 'service_provider' and 'work_and_travel'
+        accountType: 'exhibitor', //can be 'educator', 'exhibitor' and 'work_and_travel'
         attendBooths: false, //determines whether the user is buying an exhibition booth or another fo
         currentDate: new Date(), //current date
         fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(), //to determine whether early bird rates apply - collating YY/MM/DD format dates as a single number

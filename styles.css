@@ -263,6 +263,8 @@ input:checked + .slider:before {
 
 .multiple-bookings {
     color: grey;
+    position: relative;
+    bottom: 4;
 }
 
 .add-event {
