@@ -273,7 +273,7 @@
                                                                     <div slot="header">{{ item.title }}</div>
                                                                     <div class="sponsorship-type" v-for="type in item.items" v-if="item.items.length">
                                                                         <v-btn class="marketing-choice" 
-                                                                            v-on:click="addSubItem(product, 'marketing')">
+                                                                            v-on:click="addSubItem(product, 'marketing', type)">
                                                                             {{ type.title }} :
                                                                             {{ currencySymbol }}{{ type.price | moneyify }}
                                                                         </v-btn>
@@ -1603,6 +1603,16 @@
                                     <v-btn class="add-to-package remove-btn-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                 </td>
                             </tr> -->
+
+                            <template v-if="props.item.marketing_and_sponsorships.length > 0">
+                                <tr v-for="item in marketing_and_sponsorships">
+                                    <!-- <td>{{ item.title }}</td>
+                                    <td>{{ item.price }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>{{ ( item.price * item.quantity ) }}</td>
+                                    <td>{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td> -->
+                                </tr>
+                            </template>
 
                             <template v-if="footerExpanded && props.item.schedules.quantity > 0 || props.item.additionalPeople.quantity > 0">
                                 <tr v-if="props.item.schedules.quantity > 0">
