@@ -266,21 +266,21 @@
                                                             </template>
                                                         </div>
         
-                                                        <!-- <template>
+                                                        <template>
                                                             <v-expansion-panel class="marketing-and-sponsorship-items">
-                                                                <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships"
+                                                                <v-expansion-panel-content v-for="item in product.products.marketing_and_sponsorships"
                                                                     v-bind:data="item" v-bind:key="item.name">
-                                                                    <div slot="header">{{ item.name }}</div>
-                                                                    <div class="sponsorship-type" v-for="type in item.types">
+                                                                    <div slot="header">{{ item.title }}</div>
+                                                                    <!-- <div class="sponsorship-type" v-for="type in item.types">
                                                                         <v-btn class="marketing-choice" 
                                                                             v-on:click="addSubItem(product, type, 'marketing')">
                                                                             {{ type.name }} :
                                                                             {{ currencySymbol }}{{ type.price | moneyify }}
                                                                         </v-btn>
-                                                                    </div>
+                                                                    </div> -->
                                                                 </v-expansion-panel-content>
                                                             </v-expansion-panel>
-                                                        </template> -->
+                                                        </template>
         
                                                     </div>
                                                     
