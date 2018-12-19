@@ -306,6 +306,7 @@ var vue = new Vue({
                                 bagInsertKeys.forEach(n => {
                                     if (n == "Bag insert - non-paper (agent bag)") {
                                         item = bagInserts[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -314,6 +315,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Bag insert - non-paper  (educator bag)") {
                                         item = bagInserts[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -322,6 +324,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Bag insert - paper (agent bag)") {
                                         item = bagInserts[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -330,6 +333,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Bag insert - paper (educator bag)") {
                                         item = bagInserts[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -338,6 +342,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Bag tags (agent bags)") {
                                         item = bagInserts[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -346,6 +351,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Bag tags (provider bags)") {
                                         item = bagInserts[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -363,6 +369,7 @@ var vue = new Vue({
                                 catalogueKeys.forEach(n => {
                                     if (n == "Full page advertisement (agent)") {
                                         item = catalogues[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -371,6 +378,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Full page advertisement (educator)") {
                                         item = catalogues[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -379,6 +387,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Half page advertisement (agent)") {
                                         item = catalogues[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -387,6 +396,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Half page advertisement (educator)") {
                                         item = catalogues[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -395,6 +405,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Inside back cover (agent)") {
                                         item = catalogues[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -403,6 +414,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Inside back cover (educator)") {
                                         item = catalogues[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -411,6 +423,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Inside front cover (agent)") {
                                         item = catalogues[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -427,6 +440,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Outside back cover (agent)") {
                                         item = catalogues[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -435,6 +449,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Outside back cover (educator)") {
                                         item = catalogues[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -452,6 +467,7 @@ var vue = new Vue({
                                 displayAdKeys.forEach(n => {
                                     if (n == "Literature Display Rack") {
                                         item = displayAds[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -469,6 +485,7 @@ var vue = new Vue({
                                 loungeKeys.forEach(n => {
                                     if (n == "Agent lounge in dedicated room") {
                                         item = lounges[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -486,6 +503,7 @@ var vue = new Vue({
                                 merchandisingKeys.forEach(n => {
                                     if (n == "Hotel Key cards/sleeves") {
                                         item = merchandising[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -494,6 +512,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Logo on catalogue USB sticks") {
                                         item = merchandising[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -502,6 +521,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Neck cords") {
                                         item = merchandising[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -510,6 +530,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Pens and note pads") {
                                         item = merchandising[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -527,6 +548,7 @@ var vue = new Vue({
                                 receptionKeys.forEach(n => {
                                     if (n == "Refreshment break sponsorship - Day 1") {
                                         item = receptions[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -535,6 +557,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Refreshment break sponsorship - Day 2") {
                                         item = receptions[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -543,6 +566,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Refreshment break sponsorship - Registration Day") {
                                         item = receptions[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -551,6 +575,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Welcome reception sponsorship") {
                                         item = receptions[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -559,6 +584,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Workshop Dinner Reception sponsorship") {
                                         item = receptions[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -567,6 +593,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Workshop lunch sponsorship - Day 1") {
                                         item = receptions[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -575,6 +602,7 @@ var vue = new Vue({
                                     }
                                     else if (n == "Workshop lunch sponsorship - Day 2") {
                                         item = receptions[n];
+                                        item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
@@ -586,7 +614,6 @@ var vue = new Vue({
                             }
                         }
                     })
-                    console.log(event.products.marketing_and_sponsorships);
                 }
                 if ( this.currentCurrency !== event.form_edu_available_currency__c ) {
                     event = this.setCurrencyChange( event );
@@ -1033,7 +1060,6 @@ var vue = new Vue({
                 if (product.schedulesQuantity >= product.tablesQuantity) return;
                 else {
                     product.schedulesQuantity++;
-                    
                     this.cart.forEach(m => {
                         if ( m.eventId == product.eventId ){
                             m.schedules.quantity++;
@@ -1055,10 +1081,6 @@ var vue = new Vue({
                 })
                 
             } 
-            else if ( selector == 'marketing' ) {
-                console.log(tier)
-                // subitem.name = product.name + " " + subitem.name;
-            }
             else if ( selector == 'sponsorship_package' ){
                 product.tables.sponsorshipPackageSelected = true;
                 this.cart.forEach(m => {
@@ -1090,6 +1112,9 @@ var vue = new Vue({
                     }
                 });
             }
+        },
+        addMarketingItem(product, item) {
+            console.log(product, item);
         },
         // removes either a sponsorship package, an additional schedule or an additional person for an event
         removeSubItem(product, selector) {
