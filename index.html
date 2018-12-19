@@ -271,13 +271,13 @@
                                                                 <v-expansion-panel-content v-for="item in product.products.marketing_and_sponsorships"
                                                                     v-bind:data="item" v-bind:key="item.name">
                                                                     <div slot="header">{{ item.title }}</div>
-                                                                    <!-- <div class="sponsorship-type" v-for="type in item.types">
+                                                                    <div class="sponsorship-type" v-for="type in item.items" v-if="item.items.length">
                                                                         <v-btn class="marketing-choice" 
                                                                             v-on:click="addSubItem(product, type, 'marketing')">
-                                                                            {{ type.name }} :
+                                                                            {{ type.title }} :
                                                                             {{ currencySymbol }}{{ type.price | moneyify }}
                                                                         </v-btn>
-                                                                    </div> -->
+                                                                    </div>
                                                                 </v-expansion-panel-content>
                                                             </v-expansion-panel>
                                                         </template>
