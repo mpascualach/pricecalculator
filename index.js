@@ -279,25 +279,46 @@ var vue = new Vue({
                 let event = products[ this.productKeys[ i ] ];
                 if (event.products) {
                     let eventKeys = Object.keys(event.products);
+                    event.products.marketing_and_sponsorships = []
                     eventKeys.forEach(m => {
                         if (m == "Workshop Sponsorship"){
                             event.products.sponsorships = event.products[m];
                             let sponsorshipKeys = Object.keys(event.products.sponsorships);
                             sponsorshipKeys.forEach(n => {
-                                if (n == "Platinum Sponsorship  - Recognition as event sponsor")
+                                if (n == "Platinum Sponsorship  - Recognition as event sponsor") {
                                     event.products.sponsorships.platinum = event.products.sponsorships[n];
-                                else if (n == "Gold Sponsorship  - Recognition as event sponsor")
+                                    event.products.sponsorships.platinum.price = this.setSponsorshipPackagePrice( event.Event_Name, "platinum" );
+                                } else if (n == "Gold Sponsorship  - Recognition as event sponsor") {
                                     event.products.sponsorships.gold = event.products.sponsorships[n];
-                                else if (n == "Silver Sponsorship  - Recognition as event sponsor")
+                                    event.products.sponsorships.gold.price = this.setSponsorshipPackagePrice( event.Event_Name, "gold" );
+                                } else if (n == "Silver Sponsorship  - Recognition as event sponsor") {
                                     event.products.sponsorships.silver = event.products.sponsorships[n];
+                                    event.products.sponsorships.silver.price = this.setSponsorshipPackagePrice( event.Event_Name, "silver" );
+                                }
                             })
                         }
                         else {
+                            let subProducts = {
+
+                            };
+                            if (m == "Workshop Bag Inserts/Tags") {
+                                subProducts.bagInserts = event.products[m];
+                                let bagInsertKeys = Object.keys(subProducts.bagInserts);
+                                bagInsertKeys.forEach(n => {
+                                    if (n == "Bag insert - non-paper (agent bag)") {
+                                        subProducts.bagInserts.nonPaperAgentBag = subProducts.bagInserts[n];
+                                        subProducts.bagInserts.nonPaperAgentBag.price = this.setSponsorshipPackagePrice( event.Event_Name, "non-paper-agent-bag");
+                                        console.log(event.Event_Name, subProducts.bagInserts[n]);
+                                    }
+                                    
+                                })
+                                // console.log(bagInsertKeys)
+                                event.products.marketing_and_sponsorships.push(subProducts);
+                            }
                             
                         }
                     })
                 }
-                console.log(event.products);
                 if ( this.currentCurrency !== event.form_edu_available_currency__c ) {
                     event = this.setCurrencyChange( event );
                 }
@@ -459,6 +480,39 @@ var vue = new Vue({
                     console.log(m);
             }
             return m;
+        },
+        setSponsorshipPackagePrice( eventTitle, item ) {
+            let segmentedTitle = eventTitle.split(" "), event;
+            if ( segmentedTitle.indexOf("Berlin") !== -1 ) {
+                event = "Berlin";
+            }
+            else if ( segmentedTitle.indexOf("ANZA") !== -1 ) {
+                event = "ANZA";
+            }
+            else event = "Other";
+            switch( item ) {
+                case ( "platinum" ):
+                    return event == "Berlin" || event == "ANZA" ? 22000 : 16000;
+                case ( "gold" ):
+                    if (event == "Berlin") return 16000;
+                    else if (event == "ANZA") return 14000;
+                    else return 11000;
+                case ( "silver" ):
+                    if (event == "Berlin") return 10000;
+                    else if (event == "ANZA") return 9000;
+                    else return 8000;
+                case ( "non-paper-agent-bag" ):
+                case ( "non-paper-educator-bag" ):
+                    return event == "Berlin" || event == "ANZA" ? 2200 : 1800;
+                case ( "paper-agent-bag" ):
+                case ( "paper-educator-bag" ):
+                    return event == "Berlin" ? 1100 : 900;
+                case ( "bag-tags" ):
+                    if ( event == "Berlin" ) return 3800;
+                    else if (event == "ANZA") return 2000;
+                    else return 2200;
+
+            }
         },
         setBaseCurrency( baseCurrency ) {
             this.currentCurrency = baseCurrency;
