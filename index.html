@@ -273,7 +273,7 @@
                                                                     <div slot="header">{{ item.title }}</div>
                                                                     <div class="sponsorship-type" v-for="type in item.items" v-if="item.items.length">
                                                                         <v-btn class="marketing-choice" 
-                                                                            v-on:click="addSubItem(product, type, 'marketing')">
+                                                                            v-on:click="addSubItem(product, 'marketing')">
                                                                             {{ type.title }} :
                                                                             {{ currencySymbol }}{{ type.price | moneyify }}
                                                                         </v-btn>

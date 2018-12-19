@@ -415,11 +415,15 @@ var vue = new Vue({
                             else if ( m == "Workshop Display Advertising" ) {
                                 let displayAds = event.products[m];
                                 displayAds.title = m;
+                                displayAds.items = [];
                                 let displayAdKeys = Object.keys(displayAds);
+                                let item;
                                 displayAdKeys.forEach(n => {
                                     if (n == "Literature Display Rack") {
-                                        displayAds.litDisplayRack = displayAds[n];
-                                        displayAds.litDisplayRack.price = this.setSponsorshipPackagePrice( event.Event_Name, "lit-display-rack");
+                                        item = displayAds[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lit-display-rack");
+                                        displayAds.items.push(item);
                                     }
                                 })
                                 event.products.marketing_and_sponsorships.push(displayAds);
@@ -427,11 +431,14 @@ var vue = new Vue({
                             else if ( m == "Workshop Lounges/Hub" ) {
                                 let lounges = event.products[m];
                                 lounges.title = m;
-                                let loungeKeys = Object.keys(lounges);
+                                lounges.items = [];
+                                let loungeKeys = Object.keys(lounges), item;
                                 loungeKeys.forEach(n => {
                                     if (n == "Agent lounge in dedicated room") {
-                                        lounges.dedicatedRoomAgent = lounges[n];
-                                        lounges.dedicatedRoomAgent.price = this.setSponsorshipPackagePrice( event.Event_Name, "dedicated-room-agent");
+                                        item = lounges[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "dedicated-room-agent");
+                                        lounges.items.push(item);
                                     }
                                 })
                                 event.products.marketing_and_sponsorships.push(lounges);
@@ -439,23 +446,32 @@ var vue = new Vue({
                             else if ( m == "Workshop Merchandising" ) {
                                 let merchandising = event.products[m];
                                 merchandising.title = m;
-                                let merchandisingKeys = Object.keys(merchandising);
+                                merchandising.items = [];
+                                let merchandisingKeys = Object.keys(merchandising), item;
                                 merchandisingKeys.forEach(n => {
                                     if (n == "Hotel Key cards/sleeves") {
-                                        merchandising.keyCards = merchandising[n];
-                                        merchandising.keyCards.price = this.setSponsorshipPackagePrice( event.Event_Name, "key-cards");
+                                        item = merchandising[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "key-cards");
+                                        merchandising.items.push(item);
                                     }
                                     else if (n == "Logo on catalogue USB sticks") {
-                                        merchandising.usbLogos = merchandising[n];
-                                        merchandising.usbLogos.price = this.setSponsorshipPackagePrice( event.Event_Name, "usb-logos");
+                                        item = merchandising[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "usb-logos");
+                                        merchandising.items.push(item);
                                     }
                                     else if (n == "Neck cords") {
-                                        merchandising.neckCords = merchandising[n];
-                                        merchandising.neckCords.price = this.setSponsorshipPackagePrice( event.Event_Name, "neck-cords");
+                                        item = merchandising[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "neck-cords");
+                                        merchandising.items.push(item);
                                     }
                                     else if (n == "Pens and note pads") {
-                                        merchandising.notePads = merchandising[n];
-                                        merchandising.notePads.price = this.setSponsorshipPackagePrice( event.Event_Name, "note-pads");
+                                        item = merchandising[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "note-pads");
+                                        merchandising.items.push(item);
                                     }
                                 })
                                 event.products.marketing_and_sponsorships.push(merchandising);
@@ -463,36 +479,51 @@ var vue = new Vue({
                             else if ( m == "Workshop Receptions" ) {
                                 let receptions = event.products[m];
                                 receptions.title = m;
-                                let receptionKeys = Object.keys(receptions);
+                                receptions.items = [];
+                                let receptionKeys = Object.keys(receptions), item;
                                 receptionKeys.forEach(n => {
                                     if (n == "Refreshment break sponsorship - Day 1") {
-                                        receptions.refreshmentBreak1 = receptions[n];
-                                        receptions.refreshmentBreak1.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception");
+                                        item = receptions[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception");
+                                        receptions.items.push(item);
                                     }
                                     else if (n == "Refreshment break sponsorship - Day 2") {
-                                        receptions.refreshment2 = receptions[n];
-                                        receptions.refreshment2.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception");
+                                        item = receptions[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception");
+                                        receptions.items.push(item);
                                     }
-                                    // else if (n == "Refreshment break sponsorship - Registration Day") {
-                                    //     receptions.refreshmentBreakReception = merchandising[n];
-                                    //     receptions.refreshmentBreakReception.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception");
-                                    // }
-                                    // else if (n == "Welcome reception sponsorship") {
-                                    //     receptions.welcome = merchandising[n];
-                                    //     receptions.welcome = this.setSponsorshipPackagePrice( event.Event_Name, "welcome-recption");
-                                    // }
-                                    // else if (n == "Workshop Dinner Reception sponsorship") {
-                                    //     receptions.dinner = receptions[n];
-                                    //     receptions.dinner.price = this.setSponsorshipPackagePrice( event.Event_Name, "dinner-reception");
-                                    // }
-                                    // else if (n == "Workshop lunch sponsorship - Day 1") {
-                                    //     receptions.lunch1 = merchandising[n];
-                                    //     receptions.lunch1.price = this.setSponsorshipPackagePrice( event.Event_Name, "lunch-reception");
-                                    // }
-                                    // else if (n == "Workshop lunch sponsorship - Day 2") {
-                                    //     receptions.lunch2 = merchandising[n];
-                                    //     receptions.lunch2 = this.setSponsorshipPackagePrice( event.Event_Name, "lunch-recption");
-                                    // }
+                                    else if (n == "Refreshment break sponsorship - Registration Day") {
+                                        item = receptions[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception");
+                                        receptions.items.push(item);
+                                    }
+                                    else if (n == "Welcome reception sponsorship") {
+                                        item = receptions[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "welcome-reception");
+                                        receptions.items.push(item);
+                                    }
+                                    else if (n == "Workshop Dinner Reception sponsorship") {
+                                        item = receptions[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "dinner-reception");
+                                        receptions.items.push(item);
+                                    }
+                                    else if (n == "Workshop lunch sponsorship - Day 1") {
+                                        item = receptions[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lunch-reception");
+                                        receptions.items.push(item);
+                                    }
+                                    else if (n == "Workshop lunch sponsorship - Day 2") {
+                                        item = receptions[n];
+                                        item.title = n;
+                                        item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lunch-reception");
+                                        receptions.items.push(item);
+                                    }
                                 })
                                 event.products.marketing_and_sponsorships.push(receptions);
                             }
@@ -686,7 +717,7 @@ var vue = new Vue({
                 case ( "non-paper-edu-bag" ):
                     return event == "Berlin" || event == "ANZA" ? 2200 : 1800;
                 case ( "paper-agent-bag" ):
-                case ( "paper-educator-bag" ):
+                case ( "paper-edu-bag" ):
                     return event == "Berlin" ? 1100 : 900;
                 case ( "bag-tags" ):
                     if ( event == "Berlin" ) return 3800;
