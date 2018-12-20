@@ -924,6 +924,8 @@ var vue = new Vue({
             }
             console.log("Cartitem: ", cartitem)
             cartitem.products = [];
+            cartitem.sponsorship = {}
+            cartitem.sponsorshipSelected = false;
             this.regularWorkshops++;
             // product.incart = true;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
@@ -1091,35 +1093,53 @@ var vue = new Vue({
                 
             } 
             else if ( selector == 'sponsorship_package' ){
-                product.tables.sponsorshipPackageSelected = true;
+                let category = "Workshop Sponsorship";
                 this.cart.forEach(m => {
-                    if ( m.id == product.id ){
-                        if ( m.sponsorshipPackageSelected ) {
-                            this.subitemtotal -= m.sponsorship_package.price;
-                            m.sponsorship_package.quantity--;
-                            switch( tier ){
-                                case 'platinum':
-                                    product.tables.sponsorships.gold.quantity = 0;
-                                    product.tables.sponsorships.silver.quantity = 0;
-                                    break;
-                                case 'gold':
-                                    product.tables.sponsorships.platinum.quantity = 0;
-                                    product.tables.sponsorships.silver.quantity = 0;
-                                    break;
-                                case 'silver':
-                                    product.tables.sponsorships.platinum.quantity = 0;
-                                    product.tables.sponsorships.gold.quantity = 0;
-                                    break;
-                            }
+                    if ( m.eventId == product.eventId ){
+                        switch ( tier ) {
+                            case 'platinum':
+                                m.sponsorship = {
+                                    quantity: 1,
+                                    name: product.Event_Name + " platinum sponsorship",
+                                    price: product.products[category].gold.price
+                                }
+                                m.sponsorshipSelected = true;
+                                this.total -= m.price;
+                                this.total += m.sponsorship.price;
+                                console.log("Modified cart item?: ", m)
                         }
-                        else this.total -= m.price;
-                        m.sponsorshipPackageSelected = true;
-                        m.sponsorship_package.name = subitem.name;
-                        m.sponsorship_package.price = subitem.price;
-                        m.sponsorship_package.quantity = subitem.quantity + 1;
-                        this.earlytotal = 0;
                     }
-                });
+                })
+                console.log( product, selector, tier)
+                // product.tables.sponsorshipPackageSelected = true;
+                // this.cart.forEach(m => {
+                //     if ( m.id == product.id ){
+                //         if ( m.sponsorshipPackageSelected ) {
+                //             this.subitemtotal -= m.sponsorship_package.price;
+                //             m.sponsorship_package.quantity--;
+                //             switch( tier ){
+                //                 case 'platinum':
+                //                     product.tables.sponsorships.gold.quantity = 0;
+                //                     product.tables.sponsorships.silver.quantity = 0;
+                //                     break;
+                //                 case 'gold':
+                //                     product.tables.sponsorships.platinum.quantity = 0;
+                //                     product.tables.sponsorships.silver.quantity = 0;
+                //                     break;
+                //                 case 'silver':
+                //                     product.tables.sponsorships.platinum.quantity = 0;
+                //                     product.tables.sponsorships.gold.quantity = 0;
+                //                     break;
+                //             }
+                //         }
+                //         else this.total -= m.price;
+                //         m.sponsorshipPackageSelected = true;
+                //         m.sponsorship_package.name = subitem.name;
+                //         m.sponsorship_package.price = subitem.price;
+                //         m.sponsorship_package.quantity = subitem.quantity + 1;
+                //         this.earlytotal = 0;
+                //     }
+                // });
             }
         },
         addMarketingItem(product, item) {
