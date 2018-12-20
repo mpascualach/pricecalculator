@@ -1617,7 +1617,7 @@
                                 </tr>
                             </template> -->   
 
-                            <template v-if="footerExpanded && props.item.schedules.quantity > 0 || props.item.additionalPeople.quantity > 0">
+                            <template v-if="footerExpanded && props.item.schedules.quantity > 0 || props.item.additionalPeople.quantity > 0 || props.item.products.length > 0">
                                 <tr v-if="props.item.schedules.quantity > 0">
                                     <td class="additional-name">{{ props.item.schedules.name }}<br /> 
                                         <sub>(max. 1 per table)</sub> <br />
@@ -1641,13 +1641,17 @@
                                     <td></td>
                                 </tr>
 
-                                <tr v-for="item in props.item.products">
-                                    <td>{{ item.title }}</td>
-                                    <td>{{ item.price }}</td>
-                                    <td>{{ item.quantity }}</td>
-                                    <td>{{ ( item.price * item.quantity ) }}</td>
-                                    <td>{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td>
-                                </tr>
+                                <template v-if="props.item.products.length > 0">
+                                    <tr v-for="item in props.item.products">
+                                        <td>{{ currencySymbol }}{{ item.name }}</td>
+                                        <td>{{ currencySymbol }}{{ item.price }}</td>
+                                        <td>{{ currencySymbol }}{{ item.quantity }}</td>
+                                        <td>{{ currencySymbol }}{{ ( item.price * item.quantity ) }}</td>
+                                        <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td>
+                                    </tr>
+                                </template>
+
+                                
                             </template> 
                             
 

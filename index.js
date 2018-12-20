@@ -1132,6 +1132,7 @@ var vue = new Vue({
             this.cart.forEach(m => {
                 if (m.eventId == productItem.eventId) {
                     m.products.push(productItem);
+                    console.log(m.products);
                 }
             })
             this.total += item.price;
