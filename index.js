@@ -924,8 +924,9 @@ var vue = new Vue({
             }
             console.log("Cartitem: ", cartitem)
             cartitem.products = [];
-            cartitem.sponsorship = {}
+            cartitem.sponsorship = {};
             cartitem.sponsorshipSelected = false;
+            cartitem.advert = false;
             this.regularWorkshops++;
             // product.incart = true;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
@@ -1101,7 +1102,7 @@ var vue = new Vue({
                             m.sponsorshipSelected = true;
                         }
                         else this.total -= m.sponsorship.price;
-                        if (m.sponsorship.type == tier){
+                        if ( m.sponsorship.type == tier ){
                             m.sponsorshipSelected = false;
                             this.total += m.price;
                             return;
@@ -1193,6 +1194,20 @@ var vue = new Vue({
             //     }
             // }
         },
+        // add an advert to the cart
+        addAdvert( subitem ){
+            console.log( subitem );
+            cartitem = Object.assign( {}, subitem );
+            cartitem.quantity++;
+            this.cart.unshift( cartitem );
+            this.total += cartitem.price;
+            this.advertModal = false;
+        },
+        // remove an advert from the cart
+        removeAdvert(advert){
+            this.total -= advert.price;
+            this.cart = this.cart.filter( m => m.name !== advert.name );
+        },
         // add a booth to the cart
         addBoothToCart(product, subitem){
             this.cart.forEach(m => {
@@ -1244,19 +1259,6 @@ var vue = new Vue({
             })
             booth.quantity--;
             this.cart = this.cart.filter( m => m.id !== booth.id && !m.notify );
-        },
-        // add an advert to the cart
-        addAdvert( subitem ){
-            cartitem = Object.assign( {}, subitem );
-            cartitem.quantity++;
-            this.cart.unshift( cartitem );
-            this.total += cartitem.price;
-            this.advertModal = false;
-        },
-        // remove an advert from the cart
-        removeAdvert(advert){
-            this.total -= advert.price;
-            this.cart = this.cart.filter( m => m.name !== advert.name );
         },
         // we exit the calculator screen and go into checkout
         gotoCheckout() {
