@@ -1097,7 +1097,7 @@ var vue = new Vue({
                 let category = "Workshop Sponsorship";
                 this.cart.forEach(m => {
                     if ( m.eventId == product.eventId ){
-                        if (!m.sponsorshipSelected){
+                        if ( !m.sponsorshipSelected ){
                             this.total -= m.price;
                             m.sponsorshipSelected = true;
                         }
@@ -1105,6 +1105,9 @@ var vue = new Vue({
                         if ( m.sponsorship.type == tier ){
                             m.sponsorshipSelected = false;
                             this.total += m.price;
+                            if ( tier == 'platinum' ) product.products.sponsorships.platinum.pressed = false;
+                            else if ( tier == 'gold' ) product.products.sponsorships.gold.pressed = false;
+                            else if ( tier == 'platinum' ) product.products.sponsorships.gold.pressed = false;
                             return;
                         }
                         else {
@@ -1117,38 +1120,30 @@ var vue = new Vue({
                                 case 'platinum':
                                     m.sponsorship.name = product.Event_Name + " platinum sponsorship";
                                     m.sponsorship.price = product.products[category].platinum.price;
+                                    product.products.sponsorships.platinum.pressed = true;
+                                    product.products.sponsorships.gold.pressed = false;
+                                    product.products.sponsorships.silver.pressed = false;
                                     break;
                                 case 'gold':
                                     m.sponsorship.name = product.Event_Name + " gold sponsorship";
                                     m.sponsorship.price = product.products[category].gold.price;
+                                    product.products.sponsorships.gold.pressed = true;
+                                    product.products.sponsorships.platinum.pressed = false;
+                                    product.products.sponsorships.silver.pressed = false;
                                     break;
                                 case 'silver':
                                     m.sponsorship.name = product.Event_Name + " silver sponsorship";
                                     m.sponsorship.price = product.products[category].siver.price;
+                                    product.products.sponsorships.silver.pressed = true;
+                                    product.products.sponsorships.platinum.pressed = false;
+                                    product.products.sponsorships.gold.pressed = false;
                             }
                             this.total += m.sponsorship.price;
+                            console.log("Products: ", product.products);
                         }
                     }
                 })
             }
-        },
-        addMarketingItem(product, item) {
-            let productItem = {
-                name: product.Event_Name + " " + item.title,
-                price: item.price,
-                eventId: item.eventId,
-                quantity: 1
-            }
-            this.cart.forEach(m => {
-                if (m.eventId == productItem.eventId) {
-                    m.products.push(productItem);
-                    console.log(m.products);
-                }
-            })
-            this.total += item.price;
-        },
-        removeMarketingItem(product, item){
-
         },
         // removes either a sponsorship package, an additional schedule or an additional person for an event
         removeSubItem(product, selector) {
@@ -1193,6 +1188,24 @@ var vue = new Vue({
             //         this.cart[0].price = this.cart[0].priceearly;
             //     }
             // }
+        },
+        addMarketingItem(product, item) {
+            let productItem = {
+                name: product.Event_Name + " " + item.title,
+                price: item.price,
+                eventId: item.eventId,
+                quantity: 1
+            }
+            this.cart.forEach(m => {
+                if (m.eventId == productItem.eventId) {
+                    m.products.push(productItem);
+                    console.log(m.products);
+                }
+            })
+            this.total += item.price;
+        },
+        removeMarketingItem(product, item){
+
         },
         // add an advert to the cart
         addAdvert( subitem ){
