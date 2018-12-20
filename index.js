@@ -943,34 +943,35 @@ var vue = new Vue({
             //     }
             // } //log price of subitem and assign it to copy's price
             this.cart.unshift( cartitem ); //push copy of product into cart
+            console.log(this.total, cartitem.price)
             this.total += cartitem.price;
             product.tablesQuantity++;
             product.incart = true;
-            switch ( this.regularWorkshops ) {
-                case 1:
-                    this.discount = 1;
-                    break;
-                case 2:
-                    this.discount = 0.82;
-                    break;
-                case 3:
-                    this.discount = 0.8;
-                    break;
-                case 4:
-                    this.discount = 0.77;
-                    break;
-                case 5:
-                    this.discount = 0.75;
-                    break;
-                default:
-                    this.discount = 0.73;
-            }
-            if ( this.regularWorkshops == 2 ){
-                this.cart.forEach(m => {
-                    if ( m.selectedearly ) m.price = m.originalprice;
-                });
-                this.total = this.cart.reduce( ( a, b ) => a.price + b.price );
-            }
+            // switch ( this.regularWorkshops ) {
+            //     case 1:
+            //         this.discount = 1;
+            //         break;
+            //     case 2:
+            //         this.discount = 0.82;
+            //         break;
+            //     case 3:
+            //         this.discount = 0.8;
+            //         break;
+            //     case 4:
+            //         this.discount = 0.77;
+            //         break;
+            //     case 5:
+            //         this.discount = 0.75;
+            //         break;
+            //     default:
+            //         this.discount = 0.73;
+            // }
+            // if ( this.regularWorkshops == 2 ){
+            //     this.cart.forEach(m => {
+            //         if ( m.selectedearly ) m.price = m.originalprice;
+            //     });
+            //     this.total = this.cart.reduce( ( a, b ) => a.price + b.price );
+            // }
             // subitem.quantity++;
             // cartitem.quantity++;
         },
@@ -1008,28 +1009,26 @@ var vue = new Vue({
                         m.additionalPeople.quantity--;
                         this.subitemtotal -= m.additionalPeople.price;
                     }
-                    if (m.sponsorshipSelected) {
-                        this.total -= m.sponsorship.price;
-                        console.log("Sponsorship selected: ", m);
-                    }
                     m.products.forEach(n => {
                         while (n.quantity > 0){
                             n.quantity--;
                             this.total -= n.price;
                         }
                     })
+                    if (m.sponsorshipSelected) {
+                        this.total -= m.sponsorship.price;
+                    }
+                    else {
+                        while (m.quantity > 0){
+                            m.quantity--;
+                            this.total -= m.price;
+                        }
+                    }
+                    this.cart.filter(m => m.eventId !== product.eventId);
+                    this.regularWorkshops--;
+                    return;
                 }
             })
-            let cartIds = this.cart.map( m => m.eventId );
-            var position = cartIds.indexOf( product.eventId );
-            let cartEq = this.cart[position];
-            console.log(cartEq)
-            while ( this.cart[position].quantity > 0 ){ //process by which tables are removed and price deduction is applied step by step
-                if ( this.cart[position].selectedearly ) this.earlytotal -= cartEq.priceearly;
-                else this.total -= cartEq.price;
-                this.cart[position].quantity--;
-            }
-            this.cart.splice( position, 1 );
             this.regularWorkshops--;
             // switch( this.regularWorkshops ){
             //     case 0:
