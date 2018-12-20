@@ -791,356 +791,357 @@
                                     </template>
                                     <template v-else-if="accountType == 'exhibitor'">
                                         <v-card class="blue--text event" v-if="parseInt(product.ExhTablesFree) > 0">
-                                                <div class="product-info-container">
-                                                    <div class="product-info">
-                                                        <div class="product-name">
-                                                            <span class="product-name-title">{{ product.Event_Name }}</span>
-                                                            <span v-if="product.form_edu_early_rate_active__c && earlyRates" class="early-notification">
-                                                                <span v-if="product.form_edu_rate_early_eur_1st__c"> Early rate:
-                                                                {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!</span>
-                                                                <span v-else-if="product.form_edu_rate_early_usd_1st__c"> Early rate:
-                                                                {{ currencySymbol }}{{ product.form_edu_rate_early_usd_1st__c | moneyify }}!</span>
-                                                                <span v-else-if="product.form_edu_rate_early_aud_1st__c"> Early rate:
-                                                                {{ currencySymbol }}{{ product.form_edu_rate_early_aud_1st__c | moneyify }}!</span>
-                                                            <span v-else-if="product.endofearly && product.selectedearly" class="early-notification  multiple-bookings">
-                                                                Early discount rates are no longer applicable.
-                                                            </span>
-                                                            <span v-else-if="product.selectedearly" class="early-notification">Early discount
-                                                                rates have been applied at {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!</span>
-                                                        </div>
-                                                        <div class="price-container">
-                                                            <div class="product-price" v-if="product.form_edu_rate_regular_eur_1st__c">
-                                                                {{ currencySymbol }}{{ product.form_edu_rate_regular_eur_1st__c | moneyify }}
-                                                            </div>
-                                                            <div class="product-price" v-else-if="product.form_edu_rate_regular_aud_1st__c">
-                                                                {{ currencySymbol }}{{ product.form_edu_rate_regular_aud_1st__c | moneyify }}
-                                                            </div>
-                                                            <div class="product-price" v-else-if="product.form_edu_rate_regular_usd_1st__c">
-                                                                {{ currencySymbol }}{{ product.form_edu_rate_regular_usd_1st__c | moneyify }}
-                                                            </div>
-                                                            <span v-if="product.currencyDisclaimer" class="early-notification multiple-bookings">{{ product.currencyDisclaimer }}</span>
-                                                        </div>
-                                                        <!-- <div class="booth-indicator" v-else>
-                                                            <div class="booth-disclaimer price-container" 
-                                                                v-if="!product.selectBoothBoolean && product.booths.priceLowest && product.booths.priceHighest">
-                                                                From: {{ currencySymbol }}{{ product.booths.priceLowest | moneyify }} <br/> 
-                                                                to: {{ currencySymbol }}{{ product.booths.priceHighest | moneyify }}
-                                                            </div>
-                                                            <div class="display-table-disclaimer price-container" v-else-if="!product.selectBoothBoolean && product.booths.priceOnly">
-                                                                Display table at <br/>{{ currencySymbol }}{{ product.booths.priceOnly | moneyify }}
-                                                            </div> 
-                                                        </div> -->
+                                            <div class="product-info-container">
+                                                <div class="product-info">
+                                                    <div class="product-name">
+                                                        <span class="product-name-title">{{ product.Event_Name }}</span>
+                                                        <span v-if="product.form_edu_early_rate_active__c && earlyRates" class="early-notification">
+                                                            <span v-if="product.form_edu_rate_early_eur_1st__c"> Early rate:
+                                                            {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!</span>
+                                                            <span v-else-if="product.form_edu_rate_early_usd_1st__c"> Early rate:
+                                                            {{ currencySymbol }}{{ product.form_edu_rate_early_usd_1st__c | moneyify }}!</span>
+                                                            <span v-else-if="product.form_edu_rate_early_aud_1st__c"> Early rate:
+                                                            {{ currencySymbol }}{{ product.form_edu_rate_early_aud_1st__c | moneyify }}!</span>
+                                                        <span v-else-if="product.endofearly && product.selectedearly" class="early-notification  multiple-bookings">
+                                                            Early discount rates are no longer applicable.
+                                                        </span>
+                                                        <span v-else-if="product.selectedearly" class="early-notification">Early discount
+                                                            rates have been applied at {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!</span>
                                                     </div>
-        
-                                                    <div class="attendance" v-if="product.incart">
-                                                        <div class="attendance tables attendance-tables">
-                                                            <div class="table-aggregator">
-                                                                <i class="fa fa-table-o"></i> Additional tables: 
-                                                                <i class="fa fa-minus-square smaller" 
-                                                                    v-on:click="removeTable(product)" 
-                                                                    v-if="product.tablesQuantity > 0">
-                                                                </i>
-                                                                <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                                <span>{{ product.tablesQuantity }}</span>
-                                                                <i class="fa fa-plus-square smaller add-table" 
-                                                                    v-on:click="addTable(product)"></i>
-                                                            </div>
-                                                            
-                                                            <div class="available-tables" v-if="product.incart">
-                                                                <span> {{ parseInt(product.ExhTablesFree) }} tables available! </span>
-                                                            </div>
+                                                    <div class="price-container">
+                                                        <div class="product-price" v-if="product.form_edu_rate_regular_eur_1st__c">
+                                                            {{ currencySymbol }}{{ product.form_edu_rate_regular_eur_1st__c | moneyify }}
+                                                        </div>
+                                                        <div class="product-price" v-else-if="product.form_edu_rate_regular_aud_1st__c">
+                                                            {{ currencySymbol }}{{ product.form_edu_rate_regular_aud_1st__c | moneyify }}
+                                                        </div>
+                                                        <div class="product-price" v-else-if="product.form_edu_rate_regular_usd_1st__c">
+                                                            {{ currencySymbol }}{{ product.form_edu_rate_regular_usd_1st__c | moneyify }}
+                                                        </div>
+                                                        <span v-if="product.currencyDisclaimer" class="early-notification multiple-bookings">{{ product.currencyDisclaimer }}</span>
+                                                    </div>
+                                                    <!-- <div class="booth-indicator" v-else>
+                                                        <div class="booth-disclaimer price-container" 
+                                                            v-if="!product.selectBoothBoolean && product.booths.priceLowest && product.booths.priceHighest">
+                                                            From: {{ currencySymbol }}{{ product.booths.priceLowest | moneyify }} <br/> 
+                                                            to: {{ currencySymbol }}{{ product.booths.priceHighest | moneyify }}
+                                                        </div>
+                                                        <div class="display-table-disclaimer price-container" v-else-if="!product.selectBoothBoolean && product.booths.priceOnly">
+                                                            Display table at <br/>{{ currencySymbol }}{{ product.booths.priceOnly | moneyify }}
                                                         </div> 
-                                                        <div class="attendance schedules">
-                                                            <i class="fa fa-calendar-o"></i> Additional schedules:
-                                                            <i class="fa fa-minus-square smaller" 
-                                                                v-on:click="removeSubItem(product, 'schedules')"
-                                                                v-if="product.schedulesQuantity > 0">
-                                                            </i>
-                                                            <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                            <span>{{ product.schedulesQuantity}}</span>
-                                                            <i class="fa fa-plus-square smaller" 
-                                                                v-on:click="addSubItem(product, 'schedules')">
-                                                            </i>
-                                                        </div>
-                                                        <div class="attendance additional-people">
-                                                            <i class="fa fa-id-card"></i> </i> Additional people:
-                                                            <i class="fa fa-minus-square smaller" 
-                                                                v-on:click="removeSubItem(product, 'add_people')"
-                                                                v-if="product.additionalPeopleQuantity > 0">
-                                                            </i>
-                                                            <i class="fa fa-minus-square smaller hidden" v-else></i>
-                                                            <span> {{ product.additionalPeopleQuantity }} </span>
-                                                            <i class="fa fa-plus-square smaller" 
-                                                                v-on:click="addSubItem(product, 'add_people')">
-                                                            </i>
-                                                        </div> 
-                                                    </div>
-                        
-                                                    <div class="sponsorship-box" v-if="product.incart > 0">
-                                                        <span class="sponsorship-intro">Sponsorship packages:</span>
-                                                        <div class="sponsorship-container">
-        
-                                                            <v-btn light class="platinum sponsorship" 
-                                                                v-on:click="addSubItem(product, product.tables.sponsorships.platinum, 'sponsorship_package', 'platinum')"
-                                                                v-if="product.tables.sponsorships.platinum.quantity == 0">
-                                                                    Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn>
-                                                            <v-btn light class="platinum-pressed sponsorship-pressed sponsorship light" 
-                                                                v-on:click="removeSubItem(product,product.tables.sponsorships.platinum, 'sponsorship_package')"
-                                                                v-else>Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn>
-        
-                                                            <!-- <v-btn light class="gold sponsorship light" 
-                                                                v-on:click="addSubItem(product, product.tables.sponsorships.gold, 'sponsorship_package', 'gold')"
-                                                                v-if="product.tables.sponsorships.gold.quantity == 0">
-                                                                Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price | moneyify }}</v-btn>
-                                                            <v-btn light class="gold-pressed sponsorship-pressed sponsorship light" 
-                                                                v-on:click="removeSubItem(product,product.tables.sponsorships.gold, 'sponsorship_package')"
-                                                                v-else>Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price | moneyify }}</v-btn>
-        
-                                                            <v-btn light class="silver sponsorship" 
-                                                                v-on:click="addSubItem(product, product.tables.sponsorships.silver, 'sponsorship_package', 'gold')"
-                                                                v-if="product.tables.sponsorships.silver.quantity == 0">
-                                                                    Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn>
-                                                            <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
-                                                                v-on:click="removeSubItem(product,product.tables.sponsorships.silver, 'sponsorship_package')"
-                                                                v-else>Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn>  -->
-        
-                                                            <!-- <template class="sponsorship-dialog-start">
-                                                                    <v-layout row justify-start>
-                                                                    <v-dialog :content-class="'info-modal'" v-model="infoModal">
-                                                                        <v-btn class="sponsorship-dialog-info" slot="activator">
-                                                                            <i class="fa fa-question-circle sponsorship-dialog-activator"></i>
-                                                                        </v-btn>
-                                                                        <v-card class="sponsorship-dialog-container">
-                                                                            <v-card-text class="sponsorship-dialog-container-text">
-                                                                                <v-data-table class="sponsorship-modal-info" 
-                                                                                    :headers="helpheaders" 
-                                                                                    :items="sponsorship_package_info"
-                                                                                    :total-items="sponsorship_package_info.length"
-                                                                                    id="sponsorship-modal-info">
-                                                                                    <template slot="items" slot-scope="props">
-                                                                                        <tr class="sponsorship-info-row">
-                                                                                            <td class="sponsorship-info-name" v-if="props.item.name">{{ props.item.name }}
-                                                                                                <span v-if="props.item.sidenote"> - <span class="sponsorship-info-sidenote">{{ props.item.sidenote }}</span> </span>
-                                                                                            </td>
-                                                                                            <td class="sponsorship-info-value">
-                                                                                                <span v-if="props.item.Platinum == 'Yes'"><i class="fa fa-check sponsorship-info-check"></i></span>
-                                                                                                <span v-else-if="props.item.Platinum == 'No'"><i class="fa fa-times sponsorship-info-cross"></i></span>
-                                                                                                <span v-else>{{ props.item.Platinum }}</span>
-                                                                                            </td>
-                                                                                            <td class="sponsorship-info-value">
-                                                                                                <span v-if="props.item.Gold == 'Yes'"><i class="fa fa-check sponsorship-info-check"></i></span>
-                                                                                                <span v-else-if="props.item.Gold == 'No'"><i class="fa fa-times sponsorship-info-cross"></i></span>
-                                                                                                <span v-else>{{ props.item.Gold }}</span>
-                                                                                            </td>
-                                                                                            <td class="sponsorship-info-value">
-                                                                                                <span v-if="props.item.Silver == 'Yes'"><i class="fa fa-check sponsorship-info-check"></i></span>
-                                                                                                <span v-else-if="props.item.Silver == 'No'"><i class="fa fa-times sponsorship-info-cross"></i></span>
-                                                                                                <span v-else>{{ props.item.Silver }}</span>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </template>
-                                                                                </v-data-table>
-                                                                            </v-card-text>
-                                                                            
-                                                                        </v-card>
-                                                                        
-                                                                    </v-dialog>
-                                                                    </v-layout>
-                                                            </template>
-                                                        </div>
-        
-                                                        <!-- <template>
-                                                            <v-expansion-panel class="marketing-and-sponsorship-items">
-                                                                <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships"
-                                                                    v-bind:data="item" v-bind:key="item.name">
-                                                                    <div slot="header">{{ item.name }}</div>
-                                                                    <div class="sponsorship-type" v-for="type in item.types">
-                                                                        <v-btn class="marketing-choice" 
-                                                                            v-on:click="addSubItem(product, type, 'marketing')">
-                                                                            {{ type.name }} :
-                                                                            {{ currencySymbol }}{{ type.price | moneyify }}
-                                                                        </v-btn>
-                                                                    </div>
-                                                                </v-expansion-panel-content>
-                                                            </v-expansion-panel>
-                                                        </template> -->
-        
-                                                    </div>
-                                                    
-                                                    <v-card v-if="product.selectBoothBoolean == true" class="booths-table">
-                                                        <v-card-text class="booth-choice-container">
-                                                            <div class="booth-choice" v-if="product.booths.large12 || product.booths.large10">
-                                                                <div class="booth-category">
-                                                                    Large:
-                                                                </div>
-                                                                <div class="booth-buttons">
-                                                                    <template v-if="product.booths.large12 && product.booths.large12.price">
-                                                                        <v-btn class="booth-btn" 
-                                                                            v-if="!product.booths.large12.selected" 
-                                                                            v-on:click="addBoothToCart(product, product.booths.large12)">
-                                                                            12m²: {{ currencySymbol }}{{ product.booths.large12.price | moneyify }}
-                                                                        </v-btn>
-                                                                        <v-btn class="booth-btn booth-btn-selected" 
-                                                                            v-on:click="removeBoothFromCart(product,'events')"
-                                                                            v-else>
-                                                                            12m²: {{ currencySymbol }}{{ product.booths.large12.price | moneyify }}
-                                                                        </v-btn>
-                                                                    </template>
-        
-                                                                    <template v-if="product.booths.large10 && product.booths.large10.price">
-                                                                        <v-btn class="booth-btn"  
-                                                                            v-on:click="addBoothToCart(product, product.booths.large10)"
-                                                                            v-if="!product.booths.large10.selected">
-                                                                            10m²: {{ currencySymbol }}{{ product.booths.large10.price | moneyify }}
-                                                                        </v-btn>
-                                                                        <v-btn class="booth-btn booth-btn-selected"  
-                                                                            v-on:click="removeBoothFromCart(product, 'events')"
-                                                                            v-else>
-                                                                            10m²: {{ currencySymbol }}{{ product.booths.large10.price | moneyify }}
-                                                                        </v-btn>
-                                                                    </template>
-                                                                        
-                                                                </div>
-                                                            </div>
-        
-                                                            <div class="booth-choice" v-if="product.booths.medium8 || product.booths.medium6">
-                                                                <div class="booth-category">
-                                                                    Medium:
-                                                                </div>
-                                                                <div class="booth-buttons">
-                                                                    <template v-if="product.booths.medium8 && product.booths.medium8.price">
-                                                                        <v-btn class="booth-btn"  
-                                                                            v-on:click="addBoothToCart(product, product.booths.medium8)"
-                                                                            v-if="!product.booths.medium8.selected">
-                                                                            8m²: {{ currencySymbol }}{{ product.booths.medium8.price | moneyify }}
-                                                                        </v-btn>
-                                                                        <v-btn class="booth-btn booth-btn-selected"  
-                                                                            v-on:click="removeBoothFromCart(product, 'events')"
-                                                                            v-else>
-                                                                            8m²: {{ currencySymbol }}{{ product.booths.medium8.price | moneyify }}
-                                                                        </v-btn>
-                                                                    </template>
-                                                                    
-                                                                    <template v-if="product.booths.medium6 && product.booths.medium6.price">
-                                                                        <v-btn class="booth-btn"  
-                                                                            v-on:click="addBoothToCart(product, product.booths.medium6)"
-                                                                            v-if="!product.booths.medium6.selected">
-                                                                            6m²: {{ currencySymbol }}{{ product.booths.medium6.price | moneyify }} 
-                                                                        </v-btn>
-                                                                        <v-btn class="booth-btn booth-btn-selected"  
-                                                                            v-on:click="removeBoothFromCart(product, 'events')"
-                                                                            v-else>
-                                                                            6m²: {{ currencySymbol }}{{ product.booths.medium6.price | moneyify }} 
-                                                                        </v-btn>
-                                                                    </template>
-                                                                </div>
-                                                            </div>
-        
-                                                            <div class="booth-choice" v-if="product.booths.std5 || product.booths.std4 || product.booths.std3">
-                                                                <div class="booth-category">
-                                                                    Small:
-                                                                </div>
-        
-                                                                <div class="booth-buttons">
-                                                                    <template v-if="product.booths.std5 && product.booths.std5.price">
-                                                                        <v-btn class="booth-btn"                                                                 
-                                                                            v-on:click="addBoothToCart(product, product.booths.std5)"
-                                                                            v-if="!product.booths.std5.selected">
-                                                                            4.5m²: {{ currencySymbol }}{{ product.booths.std5.price | moneyify }}
-                                                                        </v-btn>
-                                                                        <v-btn class="booth-btn booth-btn-selected"                                                                 
-                                                                            v-on:click="removeBoothFromCart(product, 'events')"
-                                                                            v-else>
-                                                                            4.5m²: {{ currencySymbol }}{{ product.booths.std5.price | moneyify }}
-                                                                        </v-btn>
-                                                                    </template>
-        
-                                                                    <template v-if="product.booths.std4 && product.booths.std4.price">
-                                                                        <v-btn class="booth-btn" 
-                                                                            v-on:click="addBoothToCart(product, product.booths.std4)"
-                                                                            v-if="!product.booths.std4.selected">
-                                                                            4m²: {{ currencySymbol }}{{ product.booths.std4.price | moneyify }}
-                                                                        </v-btn>
-                                                                        <v-btn class="booth-btn booth-btn-selected" 
-                                                                            v-on:click="removeBoothFromCart(product, 'events')"
-                                                                            v-else>
-                                                                            4m²: {{ currencySymbol }}{{ product.booths.std4.price | moneyify }}
-                                                                        </v-btn>
-                                                                    </template>
-        
-                                                                    <template v-if="product.booths.std3 && product.booths.std3.price">
-                                                                        <v-btn class="booth-btn" 
-                                                                            v-on:click="addBoothToCart(product, product.booths.std3)"
-                                                                            v-if="!product.booths.std3.selected">
-                                                                            3m²: {{ currencySymbol }}{{ product.booths.std3.price | moneyify }}
-                                                                        </v-btn>
-                                                                        <v-btn class="booth-btn booth-btn-selected" 
-                                                                            v-on:click="removeBoothFromCart(product, 'events')"
-                                                                            v-else>
-                                                                            3m²: {{ currencySymbol }}{{ product.booths.std3.price | moneyify }}
-                                                                        </v-btn>
-                                                                    </template>
-                                                                    
-                                            
-                                                                </div>
-                                                            </div>
-        
-                                                            <div class="booth-choice display-table-container" v-if="product.booths.displaytable">
-                                                                <div class="booth-category display-table-header">
-                                                                    Display table: 
-                                                                </div>
-        
-                                                                <div class="booth-buttons">
-                                                                    <template v-if="product.booths.displaytable && product.booths.displaytable.price">
-                                                                        <v-btn class="booth-btn"
-                                                                            v-if="!product.booths.displaytable.selected"
-                                                                            v-on:click="addBoothToCart(product, product.booths.displaytable)">
-                                                                            {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
-                                                                        </v-btn>
-                                                                        <v-btn class="booth-btn booth-btn-selected"
-                                                                            v-on:click="removeBoothFromCart(product,'events')"
-                                                                            v-else>
-                                                                            {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
-                                                                        </v-btn>
-                                                                    </template>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </v-card-text>
-                                                    </v-card>
-        
+                                                    </div> -->
                                                 </div>
+    
+                                                <div class="attendance" v-if="product.incart">
+                                                    <div class="attendance tables attendance-tables">
+                                                        <div class="table-aggregator">
+                                                            <i class="fa fa-table-o"></i> Additional tables: 
+                                                            <i class="fa fa-minus-square smaller" 
+                                                                v-on:click="removeTable(product)" 
+                                                                v-if="product.tablesQuantity > 0">
+                                                            </i>
+                                                            <i class="fa fa-minus-square smaller hidden" v-else></i>
+                                                            <span>{{ product.tablesQuantity }}</span>
+                                                            <i class="fa fa-plus-square smaller add-table" 
+                                                                v-on:click="addTable(product)"></i>
+                                                        </div>
+                                                        
+                                                        <div class="available-tables" v-if="product.incart">
+                                                            <span> {{ parseInt(product.ExhTablesFree) }} tables available! </span>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="attendance schedules">
+                                                        <i class="fa fa-calendar-o"></i> Additional schedules:
+                                                        <i class="fa fa-minus-square smaller" 
+                                                            v-on:click="removeSubItem(product, 'schedules')"
+                                                            v-if="product.schedulesQuantity > 0">
+                                                        </i>
+                                                        <i class="fa fa-minus-square smaller hidden" v-else></i>
+                                                        <span>{{ product.schedulesQuantity}}</span>
+                                                        <i class="fa fa-plus-square smaller" 
+                                                            v-on:click="addSubItem(product, 'schedules')">
+                                                        </i>
+                                                    </div>
+                                                    <div class="attendance additional-people">
+                                                        <i class="fa fa-id-card"></i> </i> Additional people:
+                                                        <i class="fa fa-minus-square smaller" 
+                                                            v-on:click="removeSubItem(product, 'add_people')"
+                                                            v-if="product.additionalPeopleQuantity > 0">
+                                                        </i>
+                                                        <i class="fa fa-minus-square smaller hidden" v-else></i>
+                                                        <span> {{ product.additionalPeopleQuantity }} </span>
+                                                        <i class="fa fa-plus-square smaller" 
+                                                            v-on:click="addSubItem(product, 'add_people')">
+                                                        </i>
+                                                    </div> 
+                                                </div>
+                    
+                                                <div class="sponsorship-box" v-if="product.incart > 0">
+                                                    <span class="sponsorship-intro">Sponsorship packages:</span>
+                                                    <div class="sponsorship-container">
+    
+                                                        <v-btn light class="platinum sponsorship" 
+                                                            v-on:click="addSubItem(product, product.tables.sponsorships.platinum, 'sponsorship_package', 'platinum')"
+                                                            v-if="product.tables.sponsorships.platinum.quantity == 0">
+                                                                Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn>
+                                                        <v-btn light class="platinum-pressed sponsorship-pressed sponsorship light" 
+                                                            v-on:click="removeSubItem(product,product.tables.sponsorships.platinum, 'sponsorship_package')"
+                                                            v-else>Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn>
+    
+                                                        <!-- <v-btn light class="gold sponsorship light" 
+                                                            v-on:click="addSubItem(product, product.tables.sponsorships.gold, 'sponsorship_package', 'gold')"
+                                                            v-if="product.tables.sponsorships.gold.quantity == 0">
+                                                            Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price | moneyify }}</v-btn>
+                                                        <v-btn light class="gold-pressed sponsorship-pressed sponsorship light" 
+                                                            v-on:click="removeSubItem(product,product.tables.sponsorships.gold, 'sponsorship_package')"
+                                                            v-else>Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price | moneyify }}</v-btn>
+    
+                                                        <v-btn light class="silver sponsorship" 
+                                                            v-on:click="addSubItem(product, product.tables.sponsorships.silver, 'sponsorship_package', 'gold')"
+                                                            v-if="product.tables.sponsorships.silver.quantity == 0">
+                                                                Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn>
+                                                        <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
+                                                            v-on:click="removeSubItem(product,product.tables.sponsorships.silver, 'sponsorship_package')"
+                                                            v-else>Silver: {{ currencySymbol }}{{ product.tables.sponsorships.silver.price | moneyify }}</v-btn>  -->
+    
+                                                        <!-- <template class="sponsorship-dialog-start">
+                                                                <v-layout row justify-start>
+                                                                <v-dialog :content-class="'info-modal'" v-model="infoModal">
+                                                                    <v-btn class="sponsorship-dialog-info" slot="activator">
+                                                                        <i class="fa fa-question-circle sponsorship-dialog-activator"></i>
+                                                                    </v-btn>
+                                                                    <v-card class="sponsorship-dialog-container">
+                                                                        <v-card-text class="sponsorship-dialog-container-text">
+                                                                            <v-data-table class="sponsorship-modal-info" 
+                                                                                :headers="helpheaders" 
+                                                                                :items="sponsorship_package_info"
+                                                                                :total-items="sponsorship_package_info.length"
+                                                                                id="sponsorship-modal-info">
+                                                                                <template slot="items" slot-scope="props">
+                                                                                    <tr class="sponsorship-info-row">
+                                                                                        <td class="sponsorship-info-name" v-if="props.item.name">{{ props.item.name }}
+                                                                                            <span v-if="props.item.sidenote"> - <span class="sponsorship-info-sidenote">{{ props.item.sidenote }}</span> </span>
+                                                                                        </td>
+                                                                                        <td class="sponsorship-info-value">
+                                                                                            <span v-if="props.item.Platinum == 'Yes'"><i class="fa fa-check sponsorship-info-check"></i></span>
+                                                                                            <span v-else-if="props.item.Platinum == 'No'"><i class="fa fa-times sponsorship-info-cross"></i></span>
+                                                                                            <span v-else>{{ props.item.Platinum }}</span>
+                                                                                        </td>
+                                                                                        <td class="sponsorship-info-value">
+                                                                                            <span v-if="props.item.Gold == 'Yes'"><i class="fa fa-check sponsorship-info-check"></i></span>
+                                                                                            <span v-else-if="props.item.Gold == 'No'"><i class="fa fa-times sponsorship-info-cross"></i></span>
+                                                                                            <span v-else>{{ props.item.Gold }}</span>
+                                                                                        </td>
+                                                                                        <td class="sponsorship-info-value">
+                                                                                            <span v-if="props.item.Silver == 'Yes'"><i class="fa fa-check sponsorship-info-check"></i></span>
+                                                                                            <span v-else-if="props.item.Silver == 'No'"><i class="fa fa-times sponsorship-info-cross"></i></span>
+                                                                                            <span v-else>{{ props.item.Silver }}</span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </template>
+                                                                            </v-data-table>
+                                                                        </v-card-text>
+                                                                        
+                                                                    </v-card>
+                                                                    
+                                                                </v-dialog>
+                                                                </v-layout>
+                                                        </template>
+                                                    </div>
+    
+                                                    <!-- <template>
+                                                        <v-expansion-panel class="marketing-and-sponsorship-items">
+                                                            <v-expansion-panel-content v-for="item in product.tables.marketing_and_sponsorships"
+                                                                v-bind:data="item" v-bind:key="item.name">
+                                                                <div slot="header">{{ item.name }}</div>
+                                                                <div class="sponsorship-type" v-for="type in item.types">
+                                                                    <v-btn class="marketing-choice" 
+                                                                        v-on:click="addSubItem(product, type, 'marketing')">
+                                                                        {{ type.name }} :
+                                                                        {{ currencySymbol }}{{ type.price | moneyify }}
+                                                                    </v-btn>
+                                                                </div>
+                                                            </v-expansion-panel-content>
+                                                        </v-expansion-panel>
+                                                    </template> -->
+    
+                                                </div>
+                                                
+                                                <v-card v-if="product.selectBoothBoolean == true" class="booths-table">
+                                                    <v-card-text class="booth-choice-container">
+                                                        <div class="booth-choice" v-if="product.booths.large12 || product.booths.large10">
+                                                            <div class="booth-category">
+                                                                Large:
+                                                            </div>
+                                                            <div class="booth-buttons">
+                                                                <template v-if="product.booths.large12 && product.booths.large12.price">
+                                                                    <v-btn class="booth-btn" 
+                                                                        v-if="!product.booths.large12.selected" 
+                                                                        v-on:click="addBoothToCart(product, product.booths.large12)">
+                                                                        12m²: {{ currencySymbol }}{{ product.booths.large12.price | moneyify }}
+                                                                    </v-btn>
+                                                                    <v-btn class="booth-btn booth-btn-selected" 
+                                                                        v-on:click="removeBoothFromCart(product,'events')"
+                                                                        v-else>
+                                                                        12m²: {{ currencySymbol }}{{ product.booths.large12.price | moneyify }}
+                                                                    </v-btn>
+                                                                </template>
+    
+                                                                <template v-if="product.booths.large10 && product.booths.large10.price">
+                                                                    <v-btn class="booth-btn"  
+                                                                        v-on:click="addBoothToCart(product, product.booths.large10)"
+                                                                        v-if="!product.booths.large10.selected">
+                                                                        10m²: {{ currencySymbol }}{{ product.booths.large10.price | moneyify }}
+                                                                    </v-btn>
+                                                                    <v-btn class="booth-btn booth-btn-selected"  
+                                                                        v-on:click="removeBoothFromCart(product, 'events')"
+                                                                        v-else>
+                                                                        10m²: {{ currencySymbol }}{{ product.booths.large10.price | moneyify }}
+                                                                    </v-btn>
+                                                                </template>
+                                                                    
+                                                            </div>
+                                                        </div>
+    
+                                                        <div class="booth-choice" v-if="product.booths.medium8 || product.booths.medium6">
+                                                            <div class="booth-category">
+                                                                Medium:
+                                                            </div>
+                                                            <div class="booth-buttons">
+                                                                <template v-if="product.booths.medium8 && product.booths.medium8.price">
+                                                                    <v-btn class="booth-btn"  
+                                                                        v-on:click="addBoothToCart(product, product.booths.medium8)"
+                                                                        v-if="!product.booths.medium8.selected">
+                                                                        8m²: {{ currencySymbol }}{{ product.booths.medium8.price | moneyify }}
+                                                                    </v-btn>
+                                                                    <v-btn class="booth-btn booth-btn-selected"  
+                                                                        v-on:click="removeBoothFromCart(product, 'events')"
+                                                                        v-else>
+                                                                        8m²: {{ currencySymbol }}{{ product.booths.medium8.price | moneyify }}
+                                                                    </v-btn>
+                                                                </template>
+                                                                
+                                                                <template v-if="product.booths.medium6 && product.booths.medium6.price">
+                                                                    <v-btn class="booth-btn"  
+                                                                        v-on:click="addBoothToCart(product, product.booths.medium6)"
+                                                                        v-if="!product.booths.medium6.selected">
+                                                                        6m²: {{ currencySymbol }}{{ product.booths.medium6.price | moneyify }} 
+                                                                    </v-btn>
+                                                                    <v-btn class="booth-btn booth-btn-selected"  
+                                                                        v-on:click="removeBoothFromCart(product, 'events')"
+                                                                        v-else>
+                                                                        6m²: {{ currencySymbol }}{{ product.booths.medium6.price | moneyify }} 
+                                                                    </v-btn>
+                                                                </template>
+                                                            </div>
+                                                        </div>
+    
+                                                        <div class="booth-choice" v-if="product.booths.std5 || product.booths.std4 || product.booths.std3">
+                                                            <div class="booth-category">
+                                                                Small:
+                                                            </div>
+    
+                                                            <div class="booth-buttons">
+                                                                <template v-if="product.booths.std5 && product.booths.std5.price">
+                                                                    <v-btn class="booth-btn"                                                                 
+                                                                        v-on:click="addBoothToCart(product, product.booths.std5)"
+                                                                        v-if="!product.booths.std5.selected">
+                                                                        4.5m²: {{ currencySymbol }}{{ product.booths.std5.price | moneyify }}
+                                                                    </v-btn>
+                                                                    <v-btn class="booth-btn booth-btn-selected"                                                                 
+                                                                        v-on:click="removeBoothFromCart(product, 'events')"
+                                                                        v-else>
+                                                                        4.5m²: {{ currencySymbol }}{{ product.booths.std5.price | moneyify }}
+                                                                    </v-btn>
+                                                                </template>
+    
+                                                                <template v-if="product.booths.std4 && product.booths.std4.price">
+                                                                    <v-btn class="booth-btn" 
+                                                                        v-on:click="addBoothToCart(product, product.booths.std4)"
+                                                                        v-if="!product.booths.std4.selected">
+                                                                        4m²: {{ currencySymbol }}{{ product.booths.std4.price | moneyify }}
+                                                                    </v-btn>
+                                                                    <v-btn class="booth-btn booth-btn-selected" 
+                                                                        v-on:click="removeBoothFromCart(product, 'events')"
+                                                                        v-else>
+                                                                        4m²: {{ currencySymbol }}{{ product.booths.std4.price | moneyify }}
+                                                                    </v-btn>
+                                                                </template>
+    
+                                                                <template v-if="product.booths.std3 && product.booths.std3.price">
+                                                                    <v-btn class="booth-btn" 
+                                                                        v-on:click="addBoothToCart(product, product.booths.std3)"
+                                                                        v-if="!product.booths.std3.selected">
+                                                                        3m²: {{ currencySymbol }}{{ product.booths.std3.price | moneyify }}
+                                                                    </v-btn>
+                                                                    <v-btn class="booth-btn booth-btn-selected" 
+                                                                        v-on:click="removeBoothFromCart(product, 'events')"
+                                                                        v-else>
+                                                                        3m²: {{ currencySymbol }}{{ product.booths.std3.price | moneyify }}
+                                                                    </v-btn>
+                                                                </template>
+                                                                
+                                        
+                                                            </div>
+                                                        </div>
+    
+                                                        <div class="booth-choice display-table-container" v-if="product.booths.displaytable">
+                                                            <div class="booth-category display-table-header">
+                                                                Display table: 
+                                                            </div>
+    
+                                                            <div class="booth-buttons">
+                                                                <template v-if="product.booths.displaytable && product.booths.displaytable.price">
+                                                                    <v-btn class="booth-btn"
+                                                                        v-if="!product.booths.displaytable.selected"
+                                                                        v-on:click="addBoothToCart(product, product.booths.displaytable)">
+                                                                        {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
+                                                                    </v-btn>
+                                                                    <v-btn class="booth-btn booth-btn-selected"
+                                                                        v-on:click="removeBoothFromCart(product,'events')"
+                                                                        v-else>
+                                                                        {{ currencySymbol }} {{ product.booths.displaytable.price | moneyify }}
+                                                                    </v-btn>
+                                                                </template>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </v-card-text>
+                                                </v-card>
+    
+                                                </div>
+                                            </div>
+    
+                                            <v-card-actions v-if="!product.incart">
+                                                <v-btn v-if="!attendBooths && !product.selectBoothBoolean" 
+                                                    v-on:click="addToCart(product, product.tables, 'tables')"
+                                                    class="add-event"> 
+                                                    Add to package 
+                                                </v-btn>
+                                                <v-btn v-if="attendBooths && !product.selectBoothBoolean" 
+                                                    v-on:click="showBoothOptions(product)"
+                                                    class="booths booths-activator">
+                                                    Add exhibition booth
+                                                </v-btn>
+                                                <v-btn v-if="attendBooths && product.selectBoothBoolean"
+                                                    v-on:click="removeBoothFromCart(product, 'events')"
+                                                    class="booth booths-removal">
+                                                    Remove exhibition booth
+                                                </v-btn>
+                                                <v-btn v-if="accountType == 'work_and_travel' && product.workandtravel"
+                                                    v-on:click="addToCart(product, product.work_and_travel, 'work_and_travel')" 
+                                                    class="work-and-travel">
+                                                    Attend as Work and Travel provider
+                                                </v-btn>
+                                            </v-card-actions>
         
-                                                <v-card-actions v-if="!product.incart">
-                                                    <v-btn v-if="!attendBooths && !product.selectBoothBoolean" 
-                                                        v-on:click="addToCart(product, product.tables, 'tables')"
-                                                        class="add-event"> 
-                                                        Add to package 
-                                                    </v-btn>
-                                                    <v-btn v-if="attendBooths && !product.selectBoothBoolean" 
-                                                        v-on:click="showBoothOptions(product)"
-                                                        class="booths booths-activator">
-                                                        Add exhibition booth
-                                                    </v-btn>
-                                                    <v-btn v-if="attendBooths && product.selectBoothBoolean"
-                                                        v-on:click="removeBoothFromCart(product, 'events')"
-                                                        class="booth booths-removal">
-                                                        Remove exhibition booth
-                                                    </v-btn>
-                                                    <v-btn v-if="accountType == 'work_and_travel' && product.workandtravel"
-                                                        v-on:click="addToCart(product, product.work_and_travel, 'work_and_travel')" 
-                                                        class="work-and-travel">
-                                                        Attend as Work and Travel provider
-                                                    </v-btn>
-                                                </v-card-actions>
-            
-                                                <v-card-actions v-if="product.incart">
-                                                    <v-btn class="add-to-package remove-from-package" 
-                                                        v-on:click="absoluteRemoveFromCart(product)" 
-                                                        v-if="product.incart">
-                                                        Remove
-                                                    </v-btn>
-                                                </v-card-actions>
+                                            <v-card-actions v-if="product.incart">
+                                                <v-btn class="add-to-package remove-from-package" 
+                                                    v-on:click="absoluteRemoveFromCart(product)" 
+                                                    v-if="product.incart">
+                                                    Remove
+                                                </v-btn>
+                                            </v-card-actions>
                                             
                                         </v-card>
                                         <v-card class="blue--text event sold-out" v-else>
@@ -1559,41 +1560,41 @@
                                     </td>
                                 </tr>
                                 <template v-if="footerExpanded && props.item.schedules.quantity > 0 || props.item.additionalPeople.quantity > 0 || props.item.products.length > 0">
-                                        <tr v-if="props.item.schedules.quantity > 0">
-                                            <td class="additional-name">{{ props.item.schedules.name }}<br /> 
-                                                <sub>(max. 1 per table)</sub> <br />
-                                                <span class="schedule-alert" v-if="limitReached">There can't be more additional schedules than tables</span>
-                                            </td>
-                                            <td>{{ currencySymbol }}{{ props.item.schedules.price | moneyify }}</td>
-                                            <td class="qty">{{ props.item.schedules.quantity }}</td>
-                                            <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity )  | moneyify }}</td>
-                                            <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 )  | moneyify }}</td>
+                                    <tr v-if="props.item.schedules.quantity > 0">
+                                        <td class="additional-name">{{ props.item.schedules.name }}<br /> 
+                                            <sub>(max. 1 per table)</sub> <br />
+                                            <span class="schedule-alert" v-if="limitReached">There can't be more additional schedules than tables</span>
+                                        </td>
+                                        <td>{{ currencySymbol }}{{ props.item.schedules.price | moneyify }}</td>
+                                        <td class="qty">{{ props.item.schedules.quantity }}</td>
+                                        <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity )  | moneyify }}</td>
+                                        <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 )  | moneyify }}</td>
+                                        <td>{{ currencySymbol }}0</td>
+                                        <td></td>
+                                    </tr>
+    
+                                    <tr v-if="props.item.additionalPeople.quantity > 0">
+                                        <td class="additional-name">{{ props.item.additionalPeople.name }}</td>
+                                        <td>{{ currencySymbol }}{{ props.item.additionalPeople.price | moneyify }}</td>
+                                        <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
+                                        <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity ) | moneyify }}</td>
+                                        <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity )  | moneyify }}</td>
+                                        <td>{{ currencySymbol }}0</td>
+                                        <td></td>
+                                    </tr>
+    
+                                    <template v-if="props.item.products.length > 0">
+                                        <tr v-for="item in props.item.products">
+                                            <td>{{ item.name }}</td>
+                                            <td>{{ currencySymbol }}{{ item.price }}</td>
+                                            <td class="qty">{{ item.quantity }}</td>
+                                            <td>{{ currencySymbol }}{{ ( item.price * item.quantity ) }}</td>
+                                            <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td>
                                             <td>{{ currencySymbol }}0</td>
-                                            <td></td>
                                         </tr>
-        
-                                        <tr v-if="props.item.additionalPeople.quantity > 0">
-                                            <td class="additional-name">{{ props.item.additionalPeople.name }}</td>
-                                            <td>{{ currencySymbol }}{{ props.item.additionalPeople.price | moneyify }}</td>
-                                            <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
-                                            <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity ) | moneyify }}</td>
-                                            <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity )  | moneyify }}</td>
-                                            <td>{{ currencySymbol }}0</td>
-                                            <td></td>
-                                        </tr>
-        
-                                        <template v-if="props.item.products.length > 0">
-                                            <tr v-for="item in props.item.products">
-                                                <td>{{ item.name }}</td>
-                                                <td>{{ currencySymbol }}{{ item.price }}</td>
-                                                <td class="qty">{{ item.quantity }}</td>
-                                                <td>{{ currencySymbol }}{{ ( item.price * item.quantity ) }}</td>
-                                                <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td>
-                                                <td>{{ currencySymbol }}0</td>
-                                            </tr>
-                                        </template>
-        
                                     </template>
+        
+                                </template>
                             </template>
                                 
                             <!-- <tr v-else-if="props.item.booths && !props.item.advert"> 
