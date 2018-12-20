@@ -1523,8 +1523,7 @@
                                         props.item.sponsorship.quantity * discount)  | moneyify}}
                                     </td>
                                     <td class="discount">
-                                        {{ currencySymbol }}{{ ( ( props.item.sponsorship.price * props.item.sponsorship.quantity ) * discount )
-                                        - ( props.item.price * props.item.quantity ) | moneyify }}
+                                        {{ currencySymbol }}0
                                     </td>
                                     <td class="remove-btn-container">
                                         <v-btn class="add-to-package remove-btn-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
