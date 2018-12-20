@@ -1643,11 +1643,12 @@
 
                                 <template v-if="props.item.products.length > 0">
                                     <tr v-for="item in props.item.products">
-                                        <td>{{ currencySymbol }}{{ item.name }}</td>
+                                        <td>{{ item.name }}</td>
                                         <td>{{ currencySymbol }}{{ item.price }}</td>
-                                        <td>{{ currencySymbol }}{{ item.quantity }}</td>
+                                        <td class="qty">{{ item.quantity }}</td>
                                         <td>{{ currencySymbol }}{{ ( item.price * item.quantity ) }}</td>
                                         <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td>
+                                        <td>{{ currencySymbol }}0</td>
                                     </tr>
                                 </template>
 

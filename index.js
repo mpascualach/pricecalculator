@@ -1137,6 +1137,9 @@ var vue = new Vue({
             })
             this.total += item.price;
         },
+        removeMarketingItem(product, item){
+
+        },
         // removes either a sponsorship package, an additional schedule or an additional person for an event
         removeSubItem(product, selector) {
             if ( selector == 'schedules' ) {
