@@ -1448,6 +1448,9 @@
                                     <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify }}</td>
                                     <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify }}</td>
                                     <td>{{ currencySymbol }}0</td>
+                                    <td class="remove-btn-container">
+                                        <v-btn class="add-to-package remove-btn-package" v-on:click="removeAdvert(props.item)">REMOVE</v-btn>
+                                    </td>
                                 </tr>
                                 <tr v-else>
                                     <td class="name">{{ props.item.name }} <br /> 
