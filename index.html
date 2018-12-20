@@ -196,26 +196,29 @@
                                                         </div> 
                                                     </div>
                         
-                                                    <div class="sponsorship-box" v-if="product.incart > 0">
+                                                    <div class="sponsorship-box" v-if="product.incart > 0 && product.products">
                                                         <span class="sponsorship-intro">Sponsorship packages:</span>
-                                                        <div class="sponsorship-container">
+                                                        <div class="sponsorship-container" v-if="product.products.sponsorships">
         
                                                             <v-btn light class="platinum sponsorship" 
-                                                                v-on:click="addSubItem(product, 'sponsorship_package', 'platinum')">
+                                                                v-on:click="addSubItem(product, 'sponsorship_package', 'platinum')"
+                                                                v-if="product.products.sponsorships.platinum.available">
                                                                     Platinum: {{ product.products.sponsorships.platinum.available }} left </v-btn>
                                                             <!-- <v-btn light class="platinum-pressed sponsorship-pressed sponsorship light" 
                                                                 v-on:click="removeSubItem(product,product.tables.sponsorships.platinum, 'sponsorship_package')"
                                                                 v-else>Platinum: {{ currencySymbol }}{{ product.tables.sponsorships.platinum.price | moneyify }}</v-btn> -->
         
                                                             <v-btn light class="gold sponsorship light" 
-                                                                v-on:click="addSubItem(product, 'sponsorship_package', 'gold')">
+                                                                v-on:click="addSubItem(product, 'sponsorship_package', 'gold')"
+                                                                v-if="product.products.sponsorships.gold.available">
                                                                 Gold: {{ product.products.sponsorships.gold.available }} left </v-btn>
                                                             <!-- <v-btn light class="gold-pressed sponsorship-pressed sponsorship light" 
                                                                 v-on:click="removeSubItem(product,product.tables.sponsorships.gold, 'sponsorship_package')"
                                                                 v-else>Gold: {{ currencySymbol }}{{ product.tables.sponsorships.gold.price | moneyify }}</v-btn> -->
         
                                                             <v-btn light class="silver sponsorship" 
-                                                                v-on:click="addSubItem(product, 'sponsorship_package', 'gold')">
+                                                                v-on:click="addSubItem(product, 'sponsorship_package', 'gold')"
+                                                                v-if="product.products.sponsorships.silver.available">
                                                                     Silver: {{ product.products.sponsorships.silver.available }} left</v-btn>
                                                             <!-- <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
                                                                 v-on:click="removeSubItem(product,product.tables.sponsorships.silver, 'sponsorship_package')"
@@ -1652,35 +1655,7 @@
                                     </tr>
                                 </template>
 
-                                
-                            </template> 
-                            
-
-                            <!-- <tr v-if="!props.item.advert && !props.item.booths && props.item.marketing_and_sponsorships[0].quantity">
-                                <td> {{ props.item.sponsorships.silver.name }} </td>
-                                <td> {{ currencySymbol }}{{ props.item.sponsorships.silver.price | moneyify }} </td>
-                                <td> {{ props.item.sponsorships.silver.quantity }} </td>
-                                <td> {{ currencySymbol }}{{ ( props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity )  | moneyify }} </td>
-                                <td> {{ currencySymbol }}{{ ( props.item.sponsorships.silver.price * props.item.sponsorships.silver.quantity )  | moneyify }} </td>
-                                <td> {{ currencySymbol }}0 </td>
-                                <td></td>
-                            </tr>   -->
-                            
-                            <!-- <template v-if="!props.item.advert">
-                                <template v-for="item in props.item.marketing_and_sponsorships">
-                                    <template v-for="type in item.types">
-                                        <tr v-if="type.quantity > 0">
-                                            <td> {{ type.name }} </td>
-                                            <td> {{ currencySymbol }}{{ type.price | moneyify }} </td>
-                                            <td> {{ type.quantity }} </td>
-                                            <td> {{ currencySymbol }}{{ ( type.price * type.quantity )  | moneyify }} </td>
-                                            <td> {{ currencySymbol }}{{ ( type.price * type.quantity )  | moneyify }} </td>
-                                            <td> {{ currencySymbol }}0 </td>
-                                            <td></td>
-                                        </tr>
-                                    </template>
-                                </template>
-                            </template> -->
+                            </template>
 
                         </template>
 

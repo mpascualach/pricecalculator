@@ -939,7 +939,7 @@ var vue = new Vue({
                 }
             } //log price of subitem and assign it to copy's price
             this.cart.unshift( cartitem ); //push copy of product into cart
-            console.log("Cartitem: ", cartitem);
+            console.log("Product: ", product);
             this.total += cartitem.price;
             product.tablesQuantity++;
             product.incart = true;
