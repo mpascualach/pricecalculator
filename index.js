@@ -922,24 +922,24 @@ var vue = new Vue({
                 price: addPeoplePrice,
                 quantity: 0
             }
+            console.log("Cartitem: ", cartitem)
             cartitem.products = [];
             this.regularWorkshops++;
             // product.incart = true;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
-            if ( product.form_edu_early_rate_active__c && 1 == this.regularWorkshops ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
-                product.selectedearly = true;
-                cartitem.price = parseInt(product.form_edu_rate_early_eur_1st__c); 
-                this.earlytotal += cartitem.price;
-            } else {
-                this.earlytotal = 0;
-                if ( this.regularWorkshops > 1 ) {
-                    this.productsArray.forEach(m => {
-                        if ( m.selectedearly ) m.endofearly = true;
-                    });
-                }
-            } //log price of subitem and assign it to copy's price
+            // if ( product.form_edu_early_rate_active__c && 1 == this.regularWorkshops ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
+            //     product.selectedearly = true;
+            //     cartitem.price = parseInt(product.form_edu_rate_early_eur_1st__c); 
+            //     this.earlytotal += cartitem.price;
+            // } else {
+            //     this.earlytotal = 0;
+            //     if ( this.regularWorkshops > 1 ) {
+            //         this.productsArray.forEach(m => {
+            //             if ( m.selectedearly ) m.endofearly = true;
+            //         });
+            //     }
+            // } //log price of subitem and assign it to copy's price
             this.cart.unshift( cartitem ); //push copy of product into cart
-            console.log("Product: ", product);
             this.total += cartitem.price;
             product.tablesQuantity++;
             product.incart = true;
