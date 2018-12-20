@@ -1101,24 +1101,32 @@ var vue = new Vue({
                             m.sponsorshipSelected = true;
                         }
                         else this.total -= m.sponsorship.price;
-                        m.sponsorship = {
-                            quantity: 1,
-                            eventId: product.eventId,
+                        if (m.sponsorship.type == tier){
+                            m.sponsorshipSelected = false;
+                            this.total += m.price;
+                            return;
                         }
-                        switch ( tier ) {
-                            case 'platinum':
-                                m.sponsorship.name = product.Event_Name + " platinum sponsorship";
-                                m.sponsorship.price = product.products[category].platinum.price;
-                                break;
-                            case 'gold':
-                                m.sponsorship.name = product.Event_Name + " gold sponsorship";
-                                m.sponsorship.price = product.products[category].gold.price;
-                                break;
-                            case 'silver':
-                                m.sponsorship.name = product.Event_Name + " silver sponsorship";
-                                m.sponsorship.price = product.products[category].siver.price;
+                        else {
+                            m.sponsorship = {
+                                quantity: 1,
+                                eventId: product.eventId,
+                                type: tier
+                            }
+                            switch ( tier ) {
+                                case 'platinum':
+                                    m.sponsorship.name = product.Event_Name + " platinum sponsorship";
+                                    m.sponsorship.price = product.products[category].platinum.price;
+                                    break;
+                                case 'gold':
+                                    m.sponsorship.name = product.Event_Name + " gold sponsorship";
+                                    m.sponsorship.price = product.products[category].gold.price;
+                                    break;
+                                case 'silver':
+                                    m.sponsorship.name = product.Event_Name + " silver sponsorship";
+                                    m.sponsorship.price = product.products[category].siver.price;
+                            }
+                            this.total += m.sponsorship.price;
                         }
-                        this.total += m.sponsorship.price;
                     }
                 })
             }

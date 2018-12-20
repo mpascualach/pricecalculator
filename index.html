@@ -1509,8 +1509,8 @@
                     <v-data-table :headers="headers" :items="cart" class="cart">
 
                         <template slot="items" slot-scope="props">
-                            <template>
-                                <tr v-if="props.item.sponsorshipSelected == true">
+                            <template v-if="props.item.sponsorshipSelected == true">
+                                <tr>
                                     <td class="name">{{ props.item.sponsorship.name }} <br /> <sub>(includes 1 schedule)</sub> </td>
                                     <td class="price">{{ currencySymbol }}{{ props.item.sponsorship.price | moneyify }}</td>
                                     <td class="qty">
@@ -1529,7 +1529,9 @@
                                         <v-btn class="add-to-package remove-btn-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                     </td>
                                 </tr>
-                                <tr v-else>
+                            </template>
+                            <template v-else>
+                                <tr>
                                     <td class="name">{{ props.item.name }} <br /> 
                                         <sub class="includes-1-schedule">(includes 1 schedule)</sub> <br />
                                         <sub class="additional-schedule-counter" v-if="props.item.schedules.quantity > 0 && !footerExpanded"> + {{ props.item.schedules.quantity }} additional schedule </sub> <br/>
@@ -1556,7 +1558,44 @@
                                         <v-btn class="add-to-package remove-btn-package" v-on:click="absoluteRemoveFromCart(props.item)">REMOVE</v-btn>
                                     </td>
                                 </tr>
+                                <template v-if="footerExpanded && props.item.schedules.quantity > 0 || props.item.additionalPeople.quantity > 0 || props.item.products.length > 0">
+                                        <tr v-if="props.item.schedules.quantity > 0">
+                                            <td class="additional-name">{{ props.item.schedules.name }}<br /> 
+                                                <sub>(max. 1 per table)</sub> <br />
+                                                <span class="schedule-alert" v-if="limitReached">There can't be more additional schedules than tables</span>
+                                            </td>
+                                            <td>{{ currencySymbol }}{{ props.item.schedules.price | moneyify }}</td>
+                                            <td class="qty">{{ props.item.schedules.quantity }}</td>
+                                            <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity )  | moneyify }}</td>
+                                            <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 )  | moneyify }}</td>
+                                            <td>{{ currencySymbol }}0</td>
+                                            <td></td>
+                                        </tr>
+        
+                                        <tr v-if="props.item.additionalPeople.quantity > 0">
+                                            <td class="additional-name">{{ props.item.additionalPeople.name }}</td>
+                                            <td>{{ currencySymbol }}{{ props.item.additionalPeople.price | moneyify }}</td>
+                                            <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
+                                            <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity ) | moneyify }}</td>
+                                            <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity )  | moneyify }}</td>
+                                            <td>{{ currencySymbol }}0</td>
+                                            <td></td>
+                                        </tr>
+        
+                                        <template v-if="props.item.products.length > 0">
+                                            <tr v-for="item in props.item.products">
+                                                <td>{{ item.name }}</td>
+                                                <td>{{ currencySymbol }}{{ item.price }}</td>
+                                                <td class="qty">{{ item.quantity }}</td>
+                                                <td>{{ currencySymbol }}{{ ( item.price * item.quantity ) }}</td>
+                                                <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td>
+                                                <td>{{ currencySymbol }}0</td>
+                                            </tr>
+                                        </template>
+        
+                                    </template>
                             </template>
+                                
                             <!-- <tr v-else-if="props.item.booths && !props.item.advert"> 
                                 <td class="booths-standby" v-if="props.item.notify">
                                     <span class="booths-standby-text">   What size booth would you like? </span>
@@ -1617,43 +1656,6 @@
                                     <td>{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td>
                                 </tr>
                             </template> -->   
-
-                            <template v-if="footerExpanded && props.item.schedules.quantity > 0 || props.item.additionalPeople.quantity > 0 || props.item.products.length > 0">
-                                <tr v-if="props.item.schedules.quantity > 0">
-                                    <td class="additional-name">{{ props.item.schedules.name }}<br /> 
-                                        <sub>(max. 1 per table)</sub> <br />
-                                        <span class="schedule-alert" v-if="limitReached">There can't be more additional schedules than tables</span>
-                                    </td>
-                                    <td>{{ currencySymbol }}{{ props.item.schedules.price | moneyify }}</td>
-                                    <td class="qty">{{ props.item.schedules.quantity }}</td>
-                                    <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity )  | moneyify }}</td>
-                                    <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 )  | moneyify }}</td>
-                                    <td>{{ currencySymbol }}0</td>
-                                    <td></td>
-                                </tr>
-
-                                <tr v-if="props.item.additionalPeople.quantity > 0">
-                                    <td class="additional-name">{{ props.item.additionalPeople.name }}</td>
-                                    <td>{{ currencySymbol }}{{ props.item.additionalPeople.price | moneyify }}</td>
-                                    <td class="qty">{{ props.item.additionalPeople.quantity }}</td>
-                                    <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity ) | moneyify }}</td>
-                                    <td>{{ currencySymbol }}{{ ( props.item.additionalPeople.price * props.item.additionalPeople.quantity )  | moneyify }}</td>
-                                    <td>{{ currencySymbol }}0</td>
-                                    <td></td>
-                                </tr>
-
-                                <template v-if="props.item.products.length > 0">
-                                    <tr v-for="item in props.item.products">
-                                        <td>{{ item.name }}</td>
-                                        <td>{{ currencySymbol }}{{ item.price }}</td>
-                                        <td class="qty">{{ item.quantity }}</td>
-                                        <td>{{ currencySymbol }}{{ ( item.price * item.quantity ) }}</td>
-                                        <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td>
-                                        <td>{{ currencySymbol }}0</td>
-                                    </tr>
-                                </template>
-
-                            </template>
 
                         </template>
 
