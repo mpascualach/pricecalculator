@@ -273,34 +273,36 @@ var vue = new Vue({
                 this.activateFixer( res );
             })
         },
-        fillProductsArray(products){
+        fillProductsArray( products ) {
             this.productKeys = Object.keys( products );
             for ( let i = 0; i < this.productKeys.length; i++ ) {
                 let event = products[ this.productKeys[ i ] ];
-                if (event.products) {
-                    let eventKeys = Object.keys(event.products);
+                if ( event.products ) {
+                    let eventKeys = Object.keys( event.products );
                     event.products.marketing_and_sponsorships = [];
+                    event.products.marketingItemCount = 0;
                     eventKeys.forEach(m => {
-                        if (m == "Workshop Sponsorship"){
+                        if ( m == "Workshop Sponsorship" ){
                             event.products.sponsorships = event.products[m];
                             let sponsorshipKeys = Object.keys(event.products.sponsorships);
                             sponsorshipKeys.forEach(n => {
-                                if (n == "Platinum Sponsorship  - Recognition as event sponsor") {
+                                if ( n == "Platinum Sponsorship  - Recognition as event sponsor" ) {
                                     event.products.sponsorships.platinum = event.products.sponsorships[n];
                                     event.products.sponsorships.platinum.price = this.setSponsorshipPackagePrice( event.Event_Name, "platinum" );
-                                } else if (n == "Gold Sponsorship  - Recognition as event sponsor") {
+                                } else if ( n == "Gold Sponsorship  - Recognition as event sponsor" ) {
                                     event.products.sponsorships.gold = event.products.sponsorships[n];
                                     event.products.sponsorships.gold.price = this.setSponsorshipPackagePrice( event.Event_Name, "gold" );
-                                } else if (n == "Silver Sponsorship  - Recognition as event sponsor") {
+                                } else if ( n == "Silver Sponsorship  - Recognition as event sponsor" ) {
                                     event.products.sponsorships.silver = event.products.sponsorships[n];
                                     event.products.sponsorships.silver.price = this.setSponsorshipPackagePrice( event.Event_Name, "silver" );
                                 }
                             })
                         }
                         else {
-                            if (m == "Workshop Bag Inserts/Tags") {
+                            if ( m == "Workshop Bag Inserts/Tags" ) {
                                 let bagInserts = event.products[m];
                                 bagInserts.title = m;
+                                bagInserts.quantity = 0;
                                 bagInserts.items = [];
                                 let bagInsertKeys = Object.keys(bagInserts), item;
                                 bagInsertKeys.forEach(n => {
@@ -361,8 +363,9 @@ var vue = new Vue({
                                 })
                                 event.products.marketing_and_sponsorships.push(bagInserts);
                             }
-                            else if (m == "Workshop Catalogue/Guide"){
+                            else if ( m == "Workshop Catalogue/Guide" ){
                                 let catalogues = event.products[m];
+                                catalogues.quantity = 0;
                                 catalogues.title = m;
                                 catalogues.items = [];
                                 let catalogueKeys = Object.keys(catalogues), item;
@@ -461,6 +464,7 @@ var vue = new Vue({
                             }
                             else if ( m == "Workshop Display Advertising" ) {
                                 let displayAds = event.products[m];
+                                displayAds.quantity = 0;
                                 displayAds.title = m;
                                 displayAds.items = [];
                                 let displayAdKeys = Object.keys(displayAds), item;
@@ -479,6 +483,7 @@ var vue = new Vue({
                             }
                             else if ( m == "Workshop Lounges/Hub" ) {
                                 let lounges = event.products[m];
+                                lounges.quantity = 0;
                                 lounges.title = m;
                                 lounges.items = [];
                                 let loungeKeys = Object.keys(lounges), item;
@@ -497,6 +502,7 @@ var vue = new Vue({
                             }
                             else if ( m == "Workshop Merchandising" ) {
                                 let merchandising = event.products[m];
+                                merchandising.quantity = 0;
                                 merchandising.title = m;
                                 merchandising.items = [];
                                 let merchandisingKeys = Object.keys(merchandising), item;
@@ -542,6 +548,7 @@ var vue = new Vue({
                             }
                             else if ( m == "Workshop Receptions" ) {
                                 let receptions = event.products[m];
+                                receptions.quantity = 0;
                                 receptions.title = m;
                                 receptions.items = [];
                                 let receptionKeys = Object.keys(receptions), item;
@@ -628,7 +635,7 @@ var vue = new Vue({
             }
             this.loaded = true;
         },
-        activateFixer( ){
+        activateFixer( ) {
             axios.get(
                 'https://data.fixer.io/api/latest?access_key=2a8bbb1fd33e5a65dc1404de3d7bd38b&base='
                 + this.currentCurrency)
@@ -649,7 +656,7 @@ var vue = new Vue({
                 this.fillProductsArray(this.products)
             });
         },
-        setCurrencyChange( m ){
+        setCurrencyChange( m ) {
             switch ( m.form_edu_available_currency__c ) {
                 case 'AUD':
                     m.form_edu_rate_early_aud_1st__c = parseInt(
@@ -915,6 +922,7 @@ var vue = new Vue({
                 price: addPeoplePrice,
                 quantity: 0
             }
+            cartitem.products = product.products;
             this.regularWorkshops++;
             // product.incart = true;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
@@ -931,6 +939,7 @@ var vue = new Vue({
                 }
             } //log price of subitem and assign it to copy's price
             this.cart.unshift( cartitem ); //push copy of product into cart
+            console.log("Cartitem: ", cartitem);
             this.total += cartitem.price;
             product.tablesQuantity++;
             product.incart = true;
@@ -1114,7 +1123,14 @@ var vue = new Vue({
             }
         },
         addMarketingItem(product, item) {
-            console.log(product, item);
+            this.cart.forEach(m => {
+                if (m.eventId == product.eventId) {
+                    m.products.marketingItemCount++;
+                    m.products[item.category].quantity++;
+                    console.log(m);
+                }
+            })
+            this.total += item.price;
         },
         // removes either a sponsorship package, an additional schedule or an additional person for an event
         removeSubItem(product, selector) {

@@ -1614,6 +1614,15 @@
                                 </tr>
                             </template> -->
 
+                            <template v-if="props.item.products.marketingItemCount > 0">
+                                <td>{{ props.item.name }}</td>
+                                <td>{{ currencySymbol }}{{ props.item.price | moneyify }}</td>
+                                <td class="qty">{{ props.item.quantity }}</td>
+                                <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify }}</td>
+                                <td>{{ currencySymbol }}{{ ( props.item.price * props.item.quantity )  | moneyify }}</td>
+                                <td>{{ currencySymbol }}0</td>
+                            </template>        
+
                             <template v-if="footerExpanded && props.item.schedules.quantity > 0 || props.item.additionalPeople.quantity > 0">
                                 <tr v-if="props.item.schedules.quantity > 0">
                                     <td class="additional-name">{{ props.item.schedules.name }}<br /> 
