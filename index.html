@@ -463,7 +463,7 @@
             
                                                 <v-card-actions v-if="product.incart">
                                                     <v-btn class="add-to-package remove-from-package" 
-                                                        v-on:click="absoluteRemoveFromCart(product)" 
+                                                        v-on:click="absoluteRemoveFromCart(product, 'events')" 
                                                         v-if="product.incart">
                                                         Remove
                                                     </v-btn>

@@ -986,6 +986,10 @@ var vue = new Vue({
                     product.wtScheduleQuantity--;
                 }
                 product.incart = false;
+                product.products.sponsorships.platinum.pressed = false;
+                product.products.sponsorships.gold.pressed = false;
+                product.products.sponsorships.silver.pressed = false;
+                console.log("Product: ", product)
             }
             else {
                 this.productsArray.forEach(m => {
@@ -994,6 +998,28 @@ var vue = new Vue({
                     }
                 })
             }
+            this.cart.forEach(m => {
+                if (m.eventId == product.eventId){
+                    while (m.schedules.quantity > 0) {
+                        m.schedules.quantity--;
+                        this.subitemtotal -= m.schedules.price;
+                    }
+                    while (m.additionalPeople.quantity > 0) {
+                        m.additionalPeople.quantity--;
+                        this.subitemtotal -= m.additionalPeople.price;
+                    }
+                    if (m.sponsorshipSelected) {
+                        this.total -= m.sponsorship.price;
+                        console.log("Sponsorship selected: ", m);
+                    }
+                    m.products.forEach(n => {
+                        while (n.quantity > 0){
+                            n.quantity--;
+                            this.total -= n.price;
+                        }
+                    })
+                }
+            })
             let cartIds = this.cart.map( m => m.eventId );
             var position = cartIds.indexOf( product.eventId );
             let cartEq = this.cart[position];
