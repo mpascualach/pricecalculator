@@ -211,7 +211,7 @@
                                                             <v-btn light class="gold sponsorship light" 
                                                                 v-on:click="addSubItem(product, 'sponsorship_package', 'gold')"
                                                                 v-if="!product.products.sponsorships.gold.pressed">
-                                                                {{ currencySymbol }}{{ product.products.sponsorships.gold.price | moneyify }} </v-btn>
+                                                                Gold: {{ currencySymbol }}{{ product.products.sponsorships.gold.price | moneyify }} </v-btn>
                                                             <v-btn light class="gold-pressed sponsorship-pressed sponsorship light" 
                                                                 v-on:click="addSubItem( product, 'sponsorship_package', 'gold' )"
                                                                 v-else>Gold: {{ currencySymbol }}{{ product.products.sponsorships.gold.price | moneyify }}</v-btn>
@@ -219,7 +219,7 @@
                                                             <v-btn light class="silver sponsorship" 
                                                                 v-on:click="addSubItem(product, 'sponsorship_package', 'silver')"
                                                                 v-if="!product.products.sponsorships.silver.pressed">
-                                                                {{ currencySymbol }}{{ product.products.sponsorships.silver.price | moneyify }}</v-btn>
+                                                                Silver:{{ currencySymbol }}{{ product.products.sponsorships.silver.price | moneyify }}</v-btn>
                                                             <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
                                                                 v-on:click="addSubItem( product, 'sponsorship_package', 'silver' )"
                                                                 v-else>Silver: {{ currencySymbol }}{{ product.products.sponsorships.silver.price | moneyify }}</v-btn>
@@ -280,6 +280,13 @@
                                                                             {{ type.title }} :
                                                                             {{ currencySymbol }}{{ type.price | moneyify }}
                                                                         </v-btn>
+                                                                        <div class="marketing-choice-available" v-if="type.quantity > 0">
+                                                                            <i class="fa fa-minus"></i>
+                                                                            <span>
+                                                                                {{ type.quantity }} 
+                                                                            </span>
+                                                                            <i class="fa fa-plus" v-on:click="addMarketingItemFromPanel(product, type)"></i>
+                                                                        </div>
                                                                     </div>
                                                                 </v-expansion-panel-content>
                                                             </v-expansion-panel>

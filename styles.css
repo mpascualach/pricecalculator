@@ -603,6 +603,10 @@ table.v-table thead tr {
     bottom: -10;
 }
 
+.marketing-item-counter {
+    bottom: -12;
+}
+
 tr {
     height: 70px;
 }
@@ -749,6 +753,19 @@ button.marketing-choice.v-btn.theme--light {
     margin: 10px;
 }
 
+.marketing-choice-available {
+    position: absolute;
+    right: 10%;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.fa-plus {
+    cursor: pointer;
+}
+
 .advert-section {
     display: flex;
     flex-direction: column;
@@ -782,6 +799,8 @@ button.marketing-choice.v-btn.theme--light {
 .sponsorship-type {
     justify-content: start!important;
     margin-left: 6%;
+    display: flex;
+    align-items: center;
 }
 
 .v-select-list.v-card.theme--light,

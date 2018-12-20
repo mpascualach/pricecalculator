@@ -1196,6 +1196,8 @@ var vue = new Vue({
                 eventId: item.eventId,
                 quantity: 1
             }
+            item.quantity++;
+            console.log("Item: ", item);
             this.cart.forEach(m => {
                 if (m.eventId == productItem.eventId) {
                     m.products.push(productItem);
@@ -1203,6 +1205,21 @@ var vue = new Vue({
                 }
             })
             this.total += item.price;
+        },
+        addMarketingItemFromPanel(product, item){
+            item.quantity++;
+            let searchString = product.Event_Name + " " + item.title;
+            this.cart.forEach(m => {
+                if (m.eventId == product.eventId) {
+                    m.products.forEach(n => {
+                        console.log(n);
+                        if ( n.name == searchString ) {
+                            n.quantity++;
+                            this.total += n.price;
+                        }
+                    })
+                }
+            })
         },
         removeMarketingItem(product, item){
 
