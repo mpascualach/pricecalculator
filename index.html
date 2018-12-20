@@ -281,7 +281,7 @@
                                                                             {{ currencySymbol }}{{ type.price | moneyify }}
                                                                         </v-btn>
                                                                         <div class="marketing-choice-available" v-if="type.quantity > 0">
-                                                                            <i class="fa fa-minus"></i>
+                                                                            <i class="fa fa-minus" v-on:click="removeMarketingItemFromPanel(product, type)"></i>
                                                                             <span>
                                                                                 {{ type.quantity }} 
                                                                             </span>
@@ -1469,7 +1469,7 @@
                                         <sub class="additional-person-counter" v-else-if="props.item.additionalPeople.quantity > 1 && !footerExpanded">
                                             + {{ props.item.additionalPeople.quantity }} additional people
                                         </sub>
-                                        <sub class="marketing-item-counter" v-if="props.item.products.length">
+                                        <sub class="marketing-item-counter" v-if="props.item.products.length && !footerExpanded">
                                             + {{ props.item.products.length }} marketing items
                                         </sub>
                                     </td>
@@ -1516,7 +1516,7 @@
                                             <td>{{ currencySymbol }}{{ item.price }}</td>
                                             <td class="qty">{{ item.quantity }}</td>
                                             <td>{{ currencySymbol }}{{ ( item.price * item.quantity ) }}</td>
-                                            <td>{{ currencySymbol }}{{ ( props.item.schedules.price * props.item.schedules.quantity - 0 ) }}</td>
+                                            <td>{{ currencySymbol }}{{ ( item.price * item.quantity - 0 ) }}</td>
                                             <td>{{ currencySymbol }}0</td>
                                         </tr>
                                     </template>

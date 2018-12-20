@@ -762,7 +762,7 @@ button.marketing-choice.v-btn.theme--light {
     justify-content: space-around;
 }
 
-.fa-plus {
+.fa-plus, .fa-minus {
     cursor: pointer;
 }
 

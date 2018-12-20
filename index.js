@@ -1194,6 +1194,7 @@ var vue = new Vue({
                 name: product.Event_Name + " " + item.title,
                 price: item.price,
                 eventId: item.eventId,
+                pId: item.pId,
                 quantity: 1
             }
             item.quantity++;
@@ -1208,12 +1209,10 @@ var vue = new Vue({
         },
         addMarketingItemFromPanel(product, item){
             item.quantity++;
-            let searchString = product.Event_Name + " " + item.title;
             this.cart.forEach(m => {
                 if (m.eventId == product.eventId) {
                     m.products.forEach(n => {
-                        console.log(n);
-                        if ( n.name == searchString ) {
+                        if ( n.pId == item.pId ) {
                             n.quantity++;
                             this.total += n.price;
                         }
@@ -1221,8 +1220,19 @@ var vue = new Vue({
                 }
             })
         },
-        removeMarketingItem(product, item){
-
+        removeMarketingItemFromPanel(product, item){
+            item.quantity--;
+            this.cart.forEach(m => {
+                if (m.eventId == product.eventId) {
+                    m.products.forEach(n => {
+                        if ( n.pId == item.pId ) {
+                            n.quantity--;
+                            if ( n.quantity == 0 ) m.products = m.products.filter(m => m.pId !== item.pId); 
+                            this.total -= n.price;
+                        }
+                    })
+                }
+            })
         },
         // add an advert to the cart
         addAdvert( subitem ){
