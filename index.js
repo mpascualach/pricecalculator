@@ -922,7 +922,7 @@ var vue = new Vue({
                 price: addPeoplePrice,
                 quantity: 0
             }
-            cartitem.products = product.products;
+            cartitem.products = [];
             this.regularWorkshops++;
             // product.incart = true;
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
@@ -1123,11 +1123,15 @@ var vue = new Vue({
             }
         },
         addMarketingItem(product, item) {
+            let productItem = {
+                name: product.Event_Name + " " + item.title,
+                price: item.price,
+                eventId: item.eventId,
+                quantity: 1
+            }
             this.cart.forEach(m => {
-                if (m.eventId == product.eventId) {
-                    m.products.marketingItemCount++;
-                    m.products[item.category].quantity++;
-                    console.log(m);
+                if (m.eventId == productItem.eventId) {
+                    m.products.push(productItem);
                 }
             })
             this.total += item.price;
