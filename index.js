@@ -264,8 +264,8 @@ var vue = new Vue({
     },
     methods: {
         //on load functions
-        callEndpoint(url) {
-            fetch(url).then(data => {
+        callEndpoint( url ) {
+            fetch( url ).then(data => {
                 return data.json();
             })
             .then(res => {
@@ -276,7 +276,7 @@ var vue = new Vue({
         activateFixer( ) {
             axios.get(
                 'https://data.fixer.io/api/latest?access_key=2a8bbb1fd33e5a65dc1404de3d7bd38b&base='
-                + this.currentCurrency)
+                + this.currentCurrency )
             .then(response => {
                 this.fixer = response.data;
                 this.fixerRates = this.fixer.rates;
@@ -291,13 +291,13 @@ var vue = new Vue({
                         base: this.fixer.base
                     };
                 }
-                this.fillProductsArray(this.products)
+                this.fillProductsArray( this.products );
             });
         },
         fillProductsArray( products ) {
             this.productKeys = Object.keys( products );
-            for ( let i = 0; i < this.productKeys.length; i++ ) {
-                let event = products[ this.productKeys[ i ] ];
+            this.productKeys.forEach(a => {
+                let event = products[ a ];
                 if ( event.products ) {
                     let eventKeys = Object.keys( event.products );
                     event.products.marketing_and_sponsorships = [];
@@ -305,7 +305,7 @@ var vue = new Vue({
                     eventKeys.forEach(m => {
                         if ( m == "Workshop Sponsorship" ){
                             event.products.sponsorships = event.products[m];
-                            let sponsorshipKeys = Object.keys(event.products.sponsorships);
+                            let sponsorshipKeys = Object.keys( event.products.sponsorships );
                             sponsorshipKeys.forEach(n => {
                                 if ( n == "Platinum Sponsorship  - Recognition as event sponsor" ) {
                                     event.products.sponsorships.platinum = event.products.sponsorships[n];
@@ -320,326 +320,293 @@ var vue = new Vue({
                             })
                         }
                         else {
+                            let newProduct = this.createMarketingItem ( m, event, event.products.marketing_and_sponsorships);
+                            let newProductKeys = Object.keys(newProduct), item;
                             if ( m == "Workshop Bag Inserts/Tags" ) {
-                                let bagInserts = event.products[m];
-                                bagInserts.title = m;
-                                bagInserts.quantity = 0;
-                                bagInserts.items = [];
-                                let bagInsertKeys = Object.keys(bagInserts), item;
-                                bagInsertKeys.forEach(n => {
+                                newProductKeys.forEach(n => {
                                     if (n == "Bag insert - non-paper (agent bag)") {
-                                        item = bagInserts[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "non-paper-agent-bag");
-                                        bagInserts.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Bag insert - non-paper  (educator bag)") {
-                                        item = bagInserts[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "non-paper-edu-bag");
-                                        bagInserts.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Bag insert - paper (agent bag)") {
-                                        item = bagInserts[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "paper-agent-bag");
-                                        bagInserts.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Bag insert - paper (educator bag)") {
-                                        item = bagInserts[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "paper-edu-bag");
-                                        bagInserts.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Bag tags (agent bags)") {
-                                        item = bagInserts[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "bag-tags");
-                                        bagInserts.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Bag tags (provider bags)") {
-                                        item = bagInserts[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "bag-tags");
-                                        bagInserts.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                 })
-                                event.products.marketing_and_sponsorships.push(bagInserts);
                             }
                             else if ( m == "Workshop Catalogue/Guide" ){
-                                let catalogues = event.products[m];
-                                catalogues.quantity = 0;
-                                catalogues.title = m;
-                                catalogues.items = [];
-                                let catalogueKeys = Object.keys(catalogues), item;
-                                catalogueKeys.forEach(n => {
+                                newProductKeys.forEach(n => {
                                     if (n == "Full page advertisement (agent)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "full-page-ad");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Full page advertisement (educator)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "full-page-ad");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Half page advertisement (agent)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "half-page-ad");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Half page advertisement (educator)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "half-page-ad");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Inside back cover (agent)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "inside-back-cover");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Inside back cover (educator)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "inside-front-cover");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Inside front cover (agent)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "inside-front-cover");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Inside front cover (educator)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "inside-front-cover");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Outside back cover (agent)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "outside-back-cover");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Outside back cover (educator)") {
-                                        item = catalogues[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "outside-back-cover");
-                                        catalogues.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                 })
-                                event.products.marketing_and_sponsorships.push(catalogues);
                             }
                             else if ( m == "Workshop Display Advertising" ) {
-                                let displayAds = event.products[m];
-                                displayAds.quantity = 0;
-                                displayAds.title = m;
-                                displayAds.items = [];
-                                let displayAdKeys = Object.keys(displayAds), item;
-                                displayAdKeys.forEach(n => {
+                                newProductKeys.forEach(n => {
                                     if (n == "Literature Display Rack") {
-                                        item = displayAds[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lit-display-rack");
-                                        displayAds.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                 })
-                                event.products.marketing_and_sponsorships.push(displayAds);
                             }
-                            else if ( m == "Workshop Lounges/Hub" ) {
-                                let lounges = event.products[m];
-                                lounges.quantity = 0;
-                                lounges.title = m;
-                                lounges.items = [];
-                                let loungeKeys = Object.keys(lounges), item;
-                                loungeKeys.forEach(n => {
+                            else if ( m == "Workshop newProduct/Hub" ) {
+                                newProductKeys.forEach(n => {
                                     if (n == "Agent lounge in dedicated room") {
-                                        item = lounges[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "dedicated-room-agent");
-                                        lounges.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                 })
-                                event.products.marketing_and_sponsorships.push(lounges);
                             }
-                            else if ( m == "Workshop Merchandising" ) {
-                                let merchandising = event.products[m];
-                                merchandising.quantity = 0;
-                                merchandising.title = m;
-                                merchandising.items = [];
-                                let merchandisingKeys = Object.keys(merchandising), item;
-                                merchandisingKeys.forEach(n => {
+                            else if ( m == "Workshop newProduct" ) {
+                                newProductKeys.forEach(n => {
                                     if (n == "Hotel Key cards/sleeves") {
-                                        item = merchandising[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "key-cards");
-                                        merchandising.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Logo on catalogue USB sticks") {
-                                        item = merchandising[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "usb-logos");
-                                        merchandising.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Neck cords") {
-                                        item = merchandising[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "neck-cords");
-                                        merchandising.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Pens and note pads") {
-                                        item = merchandising[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "note-pads");
-                                        merchandising.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                 })
-                                event.products.marketing_and_sponsorships.push(merchandising);
                             }
-                            else if ( m == "Workshop Receptions" ) {
-                                let receptions = event.products[m];
-                                receptions.quantity = 0;
-                                receptions.title = m;
-                                receptions.items = [];
-                                let receptionKeys = Object.keys(receptions), item;
-                                receptionKeys.forEach(n => {
+                            else if ( m == "Workshop newProduct" ) {
+                                newProductKeys.forEach(n => {
                                     if (n == "Refreshment break sponsorship - Day 1") {
-                                        item = receptions[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception");
-                                        receptions.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Refreshment break sponsorship - Day 2") {
-                                        item = receptions[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception");
-                                        receptions.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Refreshment break sponsorship - Registration Day") {
-                                        item = receptions[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception");
-                                        receptions.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Welcome reception sponsorship") {
-                                        item = receptions[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "welcome-reception");
-                                        receptions.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Workshop Dinner Reception sponsorship") {
-                                        item = receptions[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "dinner-reception");
-                                        receptions.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Workshop lunch sponsorship - Day 1") {
-                                        item = receptions[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lunch-reception");
-                                        receptions.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                     else if (n == "Workshop lunch sponsorship - Day 2") {
-                                        item = receptions[n];
+                                        item = newProduct[n];
                                         item.category = m;
                                         item.quantity = 0;
                                         item.eventId = event.eventId;
                                         item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lunch-reception");
-                                        receptions.items.push(item);
+                                        newProduct.items.push(item);
                                     }
                                 })
-                                event.products.marketing_and_sponsorships.push(receptions);
                             }
+                            if ( newProduct ) event.products.marketing_and_sponsorships.push( newProduct );
                         }
                     })
                 }
@@ -653,8 +620,15 @@ var vue = new Vue({
 
                 event.incart = false;
                 this.productsArray.push( event );
-            }
+            });
             this.loaded = true;
+        },
+        createMarketingItem( title, object, destinationArray ){
+            let marketingItem = object.products[title];
+            marketingItem.title = title;
+            marketingItem.quantity = 0;
+            marketingItem.items = [];
+            return marketingItem;
         },
         changeCurrency(price,oldCurrency,newCurrency) {
             return parseInt(
@@ -701,6 +675,7 @@ var vue = new Vue({
             }
             if (m.products) {
                 m.products.marketing_and_sponsorships.forEach(n => {
+                    // console.log(n);
                     n.items.forEach(p => {
                         p.price = this.changeCurrency( p.price, oldCurrency, this.currentCurrency );
                     })
