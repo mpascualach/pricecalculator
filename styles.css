@@ -757,10 +757,10 @@ button.marketing-choice.v-btn.theme--light {
     margin: 10px;
 }
 
-.marketing-choice-available {
+.marketing-choice-available-container {
     position: absolute;
-    right: 10%;
-    width: 70px;
+    right: 7%;
+    width: 20%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -805,6 +805,12 @@ button.marketing-choice.v-btn.theme--light {
     margin-left: 6%;
     display: flex;
     align-items: center;
+}
+
+.sold-out-sponsorship {
+    background-color: transparent!important;
+    box-shadow: none!important;
+    color: grey!important;
 }
 
 .v-select-list.v-card.theme--light,

@@ -103,12 +103,12 @@
             </div>
             
             <div class="calculator" id="main-wrapper" v-else>
-                <v-text-field
+                <!-- <v-text-field
                     label="Regular"
                     class="events-search"
                     id="events-search"
                     @input="filterEvents()">
-                </v-text-field>
+                </v-text-field> -->
 
                 <v-card class="events">
                     <v-container xs12 id="events-wrapper">
@@ -188,7 +188,8 @@
                                                         <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                         <span>{{ product.tablesQuantity }}</span>
                                                         <i class="fa fa-plus-square smaller add-table" 
-                                                            v-on:click="addTable( product )">
+                                                            v-on:click="addTable( product )"
+                                                            v-if="0 >= parseInt( product.EduTablesFree ) - product.tablesQuantity">
                                                         </i>
                                                     </div>
                                                     
@@ -205,7 +206,8 @@
                                                     <i class="fa fa-minus-square smaller hidden" v-else></i>
                                                     <span>{{ product.schedulesQuantity}}</span>
                                                     <i class="fa fa-plus-square smaller" 
-                                                        v-on:click="addSubItem( product, 'schedules' )">
+                                                        v-on:click="addSubItem( product, 'schedules' )"
+                                                        v-if="product.schedulesQuantity == product.tablesQuantity">
                                                     </i>
                                                 </div>
                                                 <div class="attendance additional-people">
@@ -228,7 +230,7 @@
 
                                                     <v-btn light class="platinum sponsorship" 
                                                         v-on:click="addSubItem( product, 'sponsorship_package', 'platinum' )"
-                                                        v-if="!product.products.sponsorships.platinum.pressed">
+                                                        v-if="!product.products.sponsorships.platinum.pressed && product.products.sponsorships.platinum.available">
                                                             Platinum: {{ currencySymbol }}{{ product.products.sponsorships.platinum.price | moneyify }} </v-btn>
                                                     <v-btn light class="platinum-pressed sponsorship-pressed sponsorship light" 
                                                         v-on:click="addSubItem( product, 'sponsorship_package', 'platinum' )"
@@ -236,15 +238,21 @@
 
                                                     <v-btn light class="gold sponsorship light" 
                                                         v-on:click="addSubItem( product, 'sponsorship_package', 'gold' )"
-                                                        v-if="!product.products.sponsorships.gold.pressed">
+                                                        v-if="!product.products.sponsorships.gold.pressed && product.products.sponsorships.gold.available">
                                                         Gold: {{ currencySymbol }}{{ product.products.sponsorships.gold.price | moneyify }} </v-btn>
+                                                    <v-btn light class="sold-out sold-out-sponsorship" 
+                                                        v-else-if="0 == product.products.sponsorships.gold.available">
+                                                        Gold: {{ currencySymbol }}{{ product.products.sponsorships.gold.price | moneyify }}
+                                                        <br/>
+                                                        Sold out
+                                                    </v-btn>
                                                     <v-btn light class="gold-pressed sponsorship-pressed sponsorship light" 
                                                         v-on:click="addSubItem( product, 'sponsorship_package', 'gold' )"
                                                         v-else>Gold: {{ currencySymbol }}{{ product.products.sponsorships.gold.price | moneyify }}</v-btn>
 
                                                     <v-btn light class="silver sponsorship" 
                                                         v-on:click="addSubItem( product, 'sponsorship_package', 'silver' )"
-                                                        v-if="!product.products.sponsorships.silver.pressed">
+                                                        v-if="!product.products.sponsorships.silver.pressed && product.products.sponsorships.silver.available">
                                                         Silver:{{ currencySymbol }}{{ product.products.sponsorships.silver.price | moneyify }}</v-btn>
                                                     <v-btn light class="silver-pressed sponsorship-pressed sponsorship" 
                                                         v-on:click="addSubItem( product, 'sponsorship_package', 'silver' )"
@@ -300,18 +308,26 @@
                                                         <v-expansion-panel-content v-for="item in product.products.marketing_and_sponsorships"
                                                             v-bind:data="item" v-bind:key="item.name">
                                                             <div slot="header">{{ item.title }}</div>
-                                                            <div class="sponsorship-type" v-for="type in item.items" v-if="item.items.length">
+                                                            <div class="sponsorship-type" v-for="type in item.items" v-if="item.items.length && type.available > 0">
                                                                 <v-btn class="marketing-choice" 
                                                                     v-on:click="addMarketingItem(product, type)">
                                                                     {{ type.title }} :
                                                                     {{ currencySymbol }}{{ type.price | moneyify }}
                                                                 </v-btn>
-                                                                <div class="marketing-choice-available" v-if="type.quantity > 0">
-                                                                    <i class="fa fa-minus" v-on:click="removeMarketingItemFromPanel(product, type)"></i>
-                                                                    <span>
-                                                                        {{ type.quantity }} 
-                                                                    </span>
-                                                                    <i class="fa fa-plus" v-on:click="addMarketingItemFromPanel(product, type)"></i>
+                                                                <div class="marketing-choice-available-container">
+                                                                    <div v-if="type.quantity > 0">
+                                                                        <i class="fa fa-minus" v-on:click="removeMarketingItemFromPanel(product, type)"></i>
+                                                                        <span>
+                                                                            {{ type.quantity }} 
+                                                                        </span>
+                                                                        <i class="fa fa-plus" 
+                                                                            v-on:click="addMarketingItemFromPanel(product, type)"
+                                                                            v-if="0 >= (type.available - type.quantity)">
+                                                                        </i>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span>{{ type.available - type.quantity }} left</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </v-expansion-panel-content>

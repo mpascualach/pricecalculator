@@ -317,6 +317,7 @@ var vue = new Vue({
                                     event.products.sponsorships.platinum.price = this.setSponsorshipPackagePrice( event.Event_Name, "platinum" );
                                 } else if ( n == "Gold Sponsorship  - Recognition as event sponsor" ) {
                                     event.products.sponsorships.gold = event.products.sponsorships[n];
+                                    event.products.sponsorships.gold.available = 0;
                                     event.products.sponsorships.gold.price = this.setSponsorshipPackagePrice( event.Event_Name, "gold" );
                                 } else if ( n == "Silver Sponsorship  - Recognition as event sponsor" ) {
                                     event.products.sponsorships.silver = event.products.sponsorships[n];
@@ -403,22 +404,25 @@ var vue = new Vue({
                             }
                             else if ( m == "Workshop Display Advertising" ) {
                                 newProductKeys.forEach(n => {
+                                    item = this.createMarketingSubItem( n, m, newProduct[n], event );
                                     if ( n == "Literature Display Rack" ) {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lit-display-rack" );
                                         newProduct.items.push( item );
                                     }
                                 })
                             }
-                            else if ( m == "Workshop newProduct/Hub" ) {
+                            else if ( m == "Workshop Lounges/Hub" ) {
                                 newProductKeys.forEach(n => {
+                                    item = this.createMarketingSubItem( n, m, newProduct[n], event );
                                     if ( n == "Agent lounge in dedicated room" ) {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "dedicated-room-agent" );
                                         newProduct.items.push( item );
                                     }
                                 })
                             }
-                            else if ( m == "Workshop newProduct" ) {
+                            else if ( m == "Workshop Merchandising" ) {
                                 newProductKeys.forEach(n => {
+                                    item = this.createMarketingSubItem( n, m, newProduct[n], event );
                                     if ( n == "Hotel Key cards/sleeves" ) {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "key-cards" );
                                         newProduct.items.push( item );
@@ -437,8 +441,9 @@ var vue = new Vue({
                                     }
                                 })
                             }
-                            else if ( m == "Workshop newProduct" ) {
+                            else if ( m == "Workshop Receptions" ) {
                                 newProductKeys.forEach(n => {
+                                    item = this.createMarketingSubItem( n, m, newProduct[n], event );
                                     if ( n == "Refreshment break sponsorship - Day 1" ) {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception" );
                                         newProduct.items.push( item );
@@ -469,7 +474,7 @@ var vue = new Vue({
                                     }
                                 })
                             }
-                            if ( newProduct ) event.products.marketing_and_sponsorships.push( newProduct );
+                            event.products.marketing_and_sponsorships.push( newProduct );
                         }
                     })
                 }
@@ -553,6 +558,7 @@ var vue = new Vue({
                 if ( m.products.sponsorships ) {
                     m.products.sponsorships.platinum.price = this.changeCurrency( m.products.sponsorships.platinum.price, oldCurrency, this.currentCurrency );
                     m.products.sponsorships.gold.price = this.changeCurrency( m.products.sponsorships.gold.price, oldCurrency, this.currentCurrency );
+                    
                     m.products.sponsorships.silver.price = this.changeCurrency( m.products.sponsorships.silver.price, oldCurrency, this.currentCurrency );
                 }
                 
@@ -886,80 +892,81 @@ var vue = new Vue({
         },
         // adds either an extra schedule, an additional person or a subscription package for an event
         addSubItem( product, selector, tier ) {
-            if ( selector == 'schedules' ) {
-                if ( product.schedulesQuantity >= product.tablesQuantity ) return;
-                else {
-                    product.schedulesQuantity++;
+            switch( selector ){
+                case 'schedules':
+                    if ( product.schedulesQuantity >= product.tablesQuantity ) return;
+                    else {
+                        product.schedulesQuantity++;
+                        this.cart.forEach(m => {
+                            if ( m.eventId == product.eventId ){
+                                m.schedules.quantity++;
+                                this.subitemtotal += m.schedules.price;
+                                return;
+                            }
+                        })
+                        
+                    }
+                    break;
+                case 'add_people':
+                    product.additionalPeopleQuantity++;
                     this.cart.forEach(m => {
                         if ( m.eventId == product.eventId ){
-                            m.schedules.quantity++;
-                            this.subitemtotal += m.schedules.price;
+                            m.additionalPeople.quantity++;
+                            this.subitemtotal += m.additionalPeople.price;
                             return;
                         }
                     })
-                    
-                }
-            }
-            else if ( selector == 'add_people' ) {
-                product.additionalPeopleQuantity++;
-                this.cart.forEach(m => {
-                    if ( m.eventId == product.eventId ){
-                        m.additionalPeople.quantity++;
-                        this.subitemtotal += m.additionalPeople.price;
-                        return;
-                    }
-                })
-                
-            } 
-            else if ( selector == 'sponsorship_package' ){
-                let category = "Workshop Sponsorship";
-                this.cart.forEach(m => {
-                    if ( m.eventId == product.eventId ){
-                        if ( !m.sponsorshipSelected ){
-                            this.total -= m.price;
-                            m.sponsorshipSelected = true;
-                        }
-                        else this.total -= m.sponsorship.price;
-                        if ( m.sponsorship.type == tier ){
-                            m.sponsorshipSelected = false;
-                            this.total += m.price;
-                            if ( tier == 'platinum' ) product.products.sponsorships.platinum.pressed = false;
-                            else if ( tier == 'gold' ) product.products.sponsorships.gold.pressed = false;
-                            else if ( tier == 'platinum' ) product.products.sponsorships.gold.pressed = false;
-                            return;
-                        }
-                        else {
-                            m.sponsorship = {
-                                quantity: 1,
-                                eventId: product.eventId,
-                                type: tier
+                    break;
+                case 'sponsorship_package':
+                    console.log(product);
+                    let category = "Workshop Sponsorship";
+                    this.cart.forEach(m => {
+                        if ( m.eventId == product.eventId ){
+                            if ( !m.sponsorshipSelected ){
+                                this.total -= m.price;
+                                m.sponsorshipSelected = true;
                             }
-                            switch ( tier ) {
-                                case 'platinum':
-                                    m.sponsorship.name = product.Event_Name + " platinum sponsorship";
-                                    m.sponsorship.price = product.products[category].platinum.price;
-                                    product.products.sponsorships.platinum.pressed = true;
-                                    product.products.sponsorships.gold.pressed = false;
-                                    product.products.sponsorships.silver.pressed = false;
-                                    break;
-                                case 'gold':
-                                    m.sponsorship.name = product.Event_Name + " gold sponsorship";
-                                    m.sponsorship.price = product.products[category].gold.price;
-                                    product.products.sponsorships.gold.pressed = true;
-                                    product.products.sponsorships.platinum.pressed = false;
-                                    product.products.sponsorships.silver.pressed = false;
-                                    break;
-                                case 'silver':
-                                    m.sponsorship.name = product.Event_Name + " silver sponsorship";
-                                    m.sponsorship.price = product.products[category].siver.price;
-                                    product.products.sponsorships.silver.pressed = true;
-                                    product.products.sponsorships.platinum.pressed = false;
-                                    product.products.sponsorships.gold.pressed = false;
+                            else this.total -= m.sponsorship.price;
+                            if ( m.sponsorship.type == tier ){
+                                m.sponsorshipSelected = false;
+                                this.total += m.price;
+                                if ( tier == 'platinum' ) product.products.sponsorships.platinum.pressed = false;
+                                else if ( tier == 'gold' ) product.products.sponsorships.gold.pressed = false;
+                                else if ( tier == 'platinum' ) product.products.sponsorships.gold.pressed = false;
+                                return;
                             }
-                            this.total += m.sponsorship.price;
+                            else {
+                                m.sponsorship = {
+                                    quantity: 1,
+                                    eventId: product.eventId,
+                                    type: tier
+                                }
+                                switch ( tier ) {
+                                    case 'platinum':
+                                        m.sponsorship.name = product.Event_Name + " platinum sponsorship";
+                                        m.sponsorship.price = product.products[category].platinum.price;
+                                        product.products.sponsorships.platinum.pressed = true;
+                                        product.products.sponsorships.gold.pressed = false;
+                                        product.products.sponsorships.silver.pressed = false;
+                                        break;
+                                    case 'gold':
+                                        m.sponsorship.name = product.Event_Name + " gold sponsorship";
+                                        m.sponsorship.price = product.products[category].gold.price;
+                                        product.products.sponsorships.gold.pressed = true;
+                                        product.products.sponsorships.platinum.pressed = false;
+                                        product.products.sponsorships.silver.pressed = false;
+                                        break;
+                                    case 'silver':
+                                        m.sponsorship.name = product.Event_Name + " silver sponsorship";
+                                        m.sponsorship.price = product.products[category].siver.price;
+                                        product.products.sponsorships.silver.pressed = true;
+                                        product.products.sponsorships.platinum.pressed = false;
+                                        product.products.sponsorships.gold.pressed = false;
+                                }
+                                this.total += m.sponsorship.price;
+                            }
                         }
-                    }
-                })
+                    })
             }
         },
         // removes either a sponsorship package, an additional schedule or an additional person for an event
@@ -1017,7 +1024,7 @@ var vue = new Vue({
             item.quantity++;
             this.cart.forEach(m => {
                 if ( m.eventId == productItem.eventId ) {
-                    m.products.push(productItem);
+                    m.products.push( productItem );
                 }
             })
             this.total += item.price;
@@ -1069,9 +1076,7 @@ var vue = new Vue({
                     this.total -= m.price;
                     this.cart = this.cart.filter(n => n.id !== m.id);
                 }
-                if ( m.notify ){
-                    this.cart = this.cart.filter(n => !n.notify);
-                }
+                if ( m.notify ) this.cart = this.cart.filter(n => !n.notify);
             })
             if ( product.booths.booths ){
                 if ( product.booths.large12 ) product.booths.large12.selected = false;
