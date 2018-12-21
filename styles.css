@@ -156,10 +156,6 @@ input:checked + .slider:before {
     justify-content: center;
 }
 
-.loading-wheel {
-    
-}
-
 #events-wrapper {
     position: relative;
     overflow-y: scroll;
@@ -176,6 +172,15 @@ input:checked + .slider:before {
 .events {
     background-color: transparent!important;
     margin: 0 auto;
+}
+
+.events-search {
+    width: 50%;
+    margin: 0 auto!important;
+}
+
+.events-search > .v-input__control {
+    margin-top: 0!important;
 }
 
 ::-webkit-scrollbar {

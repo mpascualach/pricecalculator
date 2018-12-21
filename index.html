@@ -103,6 +103,12 @@
             </div>
             
             <div class="calculator" id="main-wrapper" v-else>
+                <v-text-field
+                    label="Regular"
+                    class="events-search"
+                    id="events-search"
+                    @input="filterEvents()"
+                ></v-text-field>
                 <v-card class="events">
                     <v-container xs12 id="events-wrapper">
                         <v-layout row wrap class="events-wrap">

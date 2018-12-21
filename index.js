@@ -228,6 +228,7 @@ var vue = new Vue({
         products: {},
         productKeys: [],
         productsArray: [],
+        originalProductsArray: [],
         //discount-related
         discount: 1,
         regularWorkshops: 0,
@@ -625,6 +626,7 @@ var vue = new Vue({
                 event.incart = false;
                 this.productsArray.push( event );
             });
+            this.originalProductsArray = this.productsArray;
             this.loaded = true;
         },
         createMarketingItem( title, object, destinationArray ){
@@ -821,12 +823,18 @@ var vue = new Vue({
                 switch ( product.form_edu_available_currency__c ) {
                     case 'EUR':
                         cartitem.price = parseInt( product.form_edu_rate_early_eur_1st__c );
+                        schedulePrice = parseInt(product.form_edu_rate_early_eur_2nd__c);
+                        addPeoplePrice = parseInt(product.form_edu_rate_early_eur_acc__c);
                         break;
                     case 'AUD':
                         cartitem.price = parseInt( product.form_edu_rate_early_aud_1st__c );
+                        schedulePrice = parseInt(product.form_edu_rate_early_aud_2nd__c);
+                        addPeoplePrice = parseInt(product.form_edu_rate_early_aud_acc__c);
                         break;
                     case 'USD':
                         cartitem.price = parseInt( product.form_edu_rate_early_usd_1st__c );
+                        schedulePrice = parseInt(product.form_edu_rate_early_usd_2nd__c);
+                        addPeoplePrice = parseInt(product.form_edu_rate_early_usd_acc__c);
                         break;
                 }
                  
@@ -982,6 +990,11 @@ var vue = new Vue({
             }
         },
         // add a table for an event to the cart - used in opened events panel after addToCart has been invoked for an event
+        filterEvents() {
+            let searchString = document.getElementById("events-search").value;
+            console.log(searchString);
+            this.productsArray = this.originalProductsArray.filter(m => m.Event_Name.toUpperCase().includes(searchString.toUpperCase()))
+        },
         addTable(product) {
             product.tablesQuantity++;
             this.cart.forEach(m => {
