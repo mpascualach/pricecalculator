@@ -317,7 +317,6 @@ var vue = new Vue({
                                     event.products.sponsorships.platinum.price = this.setSponsorshipPackagePrice( event.Event_Name, "platinum" );
                                 } else if ( n == "Gold Sponsorship  - Recognition as event sponsor" ) {
                                     event.products.sponsorships.gold = event.products.sponsorships[n];
-                                    event.products.sponsorships.gold.available = 0;
                                     event.products.sponsorships.gold.price = this.setSponsorshipPackagePrice( event.Event_Name, "gold" );
                                 } else if ( n == "Silver Sponsorship  - Recognition as event sponsor" ) {
                                     event.products.sponsorships.silver = event.products.sponsorships[n];
