@@ -797,22 +797,6 @@ var vue = new Vue({
             cartitem.name = product.Event_Name + " Table"
             cartitem.quantity = 1;
             cartitem.eventId = product.eventId;
-            switch( product.form_edu_available_currency__c ) {
-                case 'EUR':
-                    cartitem.price = parseInt(product.form_edu_rate_regular_eur_1st__c); 
-                    schedulePrice = parseInt(product.form_edu_rate_regular_eur_2nd__c);
-                    addPeoplePrice = parseInt(product.form_edu_rate_regular_eur_acc__c);
-                    break;
-                case 'AUD':
-                    cartitem.price = parseInt(product.form_edu_rate_regular_aud_1st__c); 
-                    schedulePrice = parseInt(product.form_edu_rate_regular_aud_2nd__c);
-                    addPeoplePrice = parseInt(product.form_edu_rate_regular_aud_acc__c);
-                    break;
-                case 'USD;CAD':
-                    cartitem.price = parseInt(product.form_edu_rate_regular_usd_1st__c); 
-                    schedulePrice = parseInt(product.form_edu_rate_regular_usd_2nd__c);
-                    addPeoplePrice = parseInt(product.form_edu_rate_regular_usd_acc__c);
-            }
             cartitem.schedules = {
                 eventId: product.eventId,
                 defaultCurrency: product.form_edu_available_currency__c,
@@ -834,9 +818,37 @@ var vue = new Vue({
             this.regularWorkshops++;
             if ( product.form_edu_early_rate_active__c && 1 == this.regularWorkshops ){ //EARLYBIRD check... should skip first if if more than one event selected but reset previously added workshops to regular rate.. awkward
                 product.selectedearly = true;
-                cartitem.price = parseInt( product.form_edu_rate_early_eur_1st__c ); 
+                switch ( product.form_edu_available_currency__c ) {
+                    case 'EUR':
+                        cartitem.price = parseInt( product.form_edu_rate_early_eur_1st__c );
+                        break;
+                    case 'AUD':
+                        cartitem.price = parseInt( product.form_edu_rate_early_aud_1st__c );
+                        break;
+                    case 'USD':
+                        cartitem.price = parseInt( product.form_edu_rate_early_usd_1st__c );
+                        break;
+                }
+                 
+                this.total = 0;
                 this.earlytotal += cartitem.price;
             } else {
+                switch( product.form_edu_available_currency__c ) {
+                    case 'EUR':
+                        cartitem.price = parseInt(product.form_edu_rate_regular_eur_1st__c); 
+                        schedulePrice = parseInt(product.form_edu_rate_regular_eur_2nd__c);
+                        addPeoplePrice = parseInt(product.form_edu_rate_regular_eur_acc__c);
+                        break;
+                    case 'AUD':
+                        cartitem.price = parseInt(product.form_edu_rate_regular_aud_1st__c); 
+                        schedulePrice = parseInt(product.form_edu_rate_regular_aud_2nd__c);
+                        addPeoplePrice = parseInt(product.form_edu_rate_regular_aud_acc__c);
+                        break;
+                    case 'USD;CAD':
+                        cartitem.price = parseInt(product.form_edu_rate_regular_usd_1st__c); 
+                        schedulePrice = parseInt(product.form_edu_rate_regular_usd_2nd__c);
+                        addPeoplePrice = parseInt(product.form_edu_rate_regular_usd_acc__c);
+                }
                 this.earlytotal = 0;
                 if ( this.regularWorkshops > 1 ) {
                     this.productsArray.forEach(m => {
@@ -865,10 +877,10 @@ var vue = new Vue({
                     default:
                         this.discount = 0.73;
                 }
+                this.total += cartitem.price;
             } 
             this.earlyRates = false; //remove possibility of early bird rates from other events in products
             this.cart.unshift( cartitem ); //push copy of product into cart
-            this.total += cartitem.price;
             product.tablesQuantity++;
             product.incart = true;
 
