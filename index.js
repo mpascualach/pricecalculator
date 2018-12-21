@@ -906,6 +906,7 @@ var vue = new Vue({
             }
             this.cart.forEach(m => {
                 if ( m.eventId == product.eventId ) {
+                    console.log(m);
                     while ( m.schedules.quantity > 0 ) {
                         m.schedules.quantity--;
                         this.subitemtotal -= m.schedules.price;
@@ -929,30 +930,28 @@ var vue = new Vue({
                             this.total -= m.price;
                         }
                     }
-                    this.cart.filter( m => m.eventId !== product.eventId );
-                    this.regularWorkshops--;
-                    return;
                 }
-            })
+            });
+            this.cart = this.cart.filter( m => m.eventId !== product.eventId );
             this.regularWorkshops--;
             switch( this.regularWorkshops ){
                 case 0:
                     this.discount = 1;
-                    this.products.forEach(m => {
+                    this.productsArray.forEach(m => {
                         if ( m.selectedearly ) m.selectedearly = false;
                         this.earlyRates = true;
                     });
                     break;
                 case 1:
                     this.discount = 1; //resetting this.discount;
-                    this.products.forEach(m => {
+                    this.productsArray.forEach(m => {
                         if ( m.selectedearly && m.endofearly ){
                             m.endofearly = false;
                         }
                     });
-                    this.cart[0].price = this.cart[0].priceearly;
-                    this.cart[0].endofearly = false;
-                    this.total = this.cart[0].price; //+ this.subitemtotal;
+                    // this.cart[0].price = this.cart[0].priceearly;
+                    // this.cart[0].endofearly = false;
+                    // this.total = this.cart[0].price; //+ this.subitemtotal;
                     break;
                 case 2:
                     this.discount = 0.82;
