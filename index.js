@@ -329,57 +329,28 @@ var vue = new Vue({
                             let newProductKeys = Object.keys( newProduct ), item;
                             if ( m == "Workshop Bag Inserts/Tags" ) {
                                 newProductKeys.forEach(n => {
+                                    item = this.createMarketingSubItem( n, m, newProduct[n], event );
                                     if ( n == "Bag insert - non-paper (agent bag)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "non-paper-agent-bag" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Bag insert - non-paper  (educator bag)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "non-paper-edu-bag" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Bag insert - paper (agent bag)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "paper-agent-bag" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Bag insert - paper (educator bag)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "paper-edu-bag" );
                                         newProduct.items.push( item );
                                     }
                                     else if (n == "Bag tags (agent bags)") {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "bag-tags" );
                                         newProduct.items.push( item );
                                     }
                                     else if (n == "Bag tags (provider bags)") {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "bag-tags" );
                                         newProduct.items.push( item );
                                     }
@@ -387,92 +358,44 @@ var vue = new Vue({
                             }
                             else if ( m == "Workshop Catalogue/Guide" ){
                                 newProductKeys.forEach(n => {
+                                    item = this.createMarketingSubItem( n, m, newProduct[n], event );
                                     if ( n == "Full page advertisement (agent)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "full-page-ad" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Full page advertisement (educator)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "full-page-ad" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Half page advertisement (agent)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "half-page-ad" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Half page advertisement (educator)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "half-page-ad" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Inside back cover (agent)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "inside-back-cover" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Inside back cover (educator)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "inside-front-cover" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Inside front cover (agent)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "inside-front-cover" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Inside front cover (educator)" ) {
-                                        item = newProduct[n];
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "inside-front-cover" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Outside back cover (agent)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "outside-back-cover" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Outside back cover (educator)" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "outside-back-cover" );
                                         newProduct.items.push( item );
                                     }
@@ -481,11 +404,6 @@ var vue = new Vue({
                             else if ( m == "Workshop Display Advertising" ) {
                                 newProductKeys.forEach(n => {
                                     if ( n == "Literature Display Rack" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lit-display-rack" );
                                         newProduct.items.push( item );
                                     }
@@ -494,11 +412,6 @@ var vue = new Vue({
                             else if ( m == "Workshop newProduct/Hub" ) {
                                 newProductKeys.forEach(n => {
                                     if ( n == "Agent lounge in dedicated room" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "dedicated-room-agent" );
                                         newProduct.items.push( item );
                                     }
@@ -507,38 +420,18 @@ var vue = new Vue({
                             else if ( m == "Workshop newProduct" ) {
                                 newProductKeys.forEach(n => {
                                     if ( n == "Hotel Key cards/sleeves" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "key-cards" );
                                         newProduct.items.push( item );
                                     }
                                     else if (n == "Logo on catalogue USB sticks" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "usb-logos" );
                                         newProduct.items.push( item );
                                     }
                                     else if (n == "Neck cords") {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "neck-cords" );
                                         newProduct.items.push( item );
                                     }
                                     else if (n == "Pens and note pads") {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "note-pads" );
                                         newProduct.items.push( item );
                                     }
@@ -547,65 +440,30 @@ var vue = new Vue({
                             else if ( m == "Workshop newProduct" ) {
                                 newProductKeys.forEach(n => {
                                     if ( n == "Refreshment break sponsorship - Day 1" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Refreshment break sponsorship - Day 2" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Refreshment break sponsorship - Registration Day" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "refreshment-reception" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Welcome reception sponsorship" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "welcome-reception" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Workshop Dinner Reception sponsorship" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "dinner-reception" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Workshop lunch sponsorship - Day 1" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lunch-reception" );
                                         newProduct.items.push( item );
                                     }
                                     else if ( n == "Workshop lunch sponsorship - Day 2" ) {
-                                        item = newProduct[n];
-                                        item.category = m;
-                                        item.quantity = 0;
-                                        item.eventId = event.eventId;
-                                        item.title = n;
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "lunch-reception" );
                                         newProduct.items.push( item );
                                     }
@@ -629,14 +487,21 @@ var vue = new Vue({
             this.originalProductsArray = this.productsArray;
             this.loaded = true;
         },
-        createMarketingItem( title, object, destinationArray ){
+        createMarketingItem( title, object ) {
             let marketingItem = object.products[title];
             marketingItem.title = title;
             marketingItem.quantity = 0;
             marketingItem.items = [];
             return marketingItem;
         },
-        changeCurrency(price,oldCurrency,newCurrency) {
+        createMarketingSubItem( title, category, object, event ) {
+            object.title = title;
+            object.category = category;
+            object.quantity = 0;
+            object.eventId = event.eventId;
+            return object;
+        },
+        changeCurrency( price, oldCurrency, newCurrency ) {
             return parseInt(
                 fx.convert(price, {
                     from: oldCurrency,
@@ -679,13 +544,13 @@ var vue = new Vue({
 
                     m.currencyDisclaimer = "Converted from EUR";
             }
-            if (m.products) {
+            if ( m.products ) {
                 m.products.marketing_and_sponsorships.forEach(n => {
                     n.items.forEach(p => {
                         p.price = this.changeCurrency( p.price, oldCurrency, this.currentCurrency );
                     })
                 })
-                if (m.products.sponsorships) {
+                if ( m.products.sponsorships ) {
                     m.products.sponsorships.platinum.price = this.changeCurrency( m.products.sponsorships.platinum.price, oldCurrency, this.currentCurrency );
                     m.products.sponsorships.gold.price = this.changeCurrency( m.products.sponsorships.gold.price, oldCurrency, this.currentCurrency );
                     m.products.sponsorships.silver.price = this.changeCurrency( m.products.sponsorships.silver.price, oldCurrency, this.currentCurrency );
@@ -992,7 +857,6 @@ var vue = new Vue({
         // add a table for an event to the cart - used in opened events panel after addToCart has been invoked for an event
         filterEvents() {
             let searchString = document.getElementById("events-search").value;
-            console.log(searchString);
             this.productsArray = this.originalProductsArray.filter(m => m.Event_Name.toUpperCase().includes(searchString.toUpperCase()))
         },
         addTable(product) {
@@ -1023,7 +887,7 @@ var vue = new Vue({
         // adds either an extra schedule, an additional person or a subscription package for an event
         addSubItem( product, selector, tier ) {
             if ( selector == 'schedules' ) {
-                if (product.schedulesQuantity >= product.tablesQuantity) return;
+                if ( product.schedulesQuantity >= product.tablesQuantity ) return;
                 else {
                     product.schedulesQuantity++;
                     this.cart.forEach(m => {
@@ -1036,7 +900,7 @@ var vue = new Vue({
                     
                 }
             }
-            else if (selector == 'add_people') {
+            else if ( selector == 'add_people' ) {
                 product.additionalPeopleQuantity++;
                 this.cart.forEach(m => {
                     if ( m.eventId == product.eventId ){
@@ -1099,7 +963,7 @@ var vue = new Vue({
             }
         },
         // removes either a sponsorship package, an additional schedule or an additional person for an event
-        removeSubItem(product, selector) {
+        removeSubItem( product, selector ) {
             if ( selector == 'schedules' ) {
                 product.schedulesQuantity--;
                 this.cart.forEach(m => {
@@ -1142,7 +1006,7 @@ var vue = new Vue({
             //     }
             // }
         },
-        addMarketingItem(product, item) {
+        addMarketingItem( product, item ) {
             let productItem = {
                 name: product.Event_Name + " " + item.title,
                 price: item.price,
@@ -1152,16 +1016,16 @@ var vue = new Vue({
             }
             item.quantity++;
             this.cart.forEach(m => {
-                if (m.eventId == productItem.eventId) {
+                if ( m.eventId == productItem.eventId ) {
                     m.products.push(productItem);
                 }
             })
             this.total += item.price;
         },
-        addMarketingItemFromPanel(product, item){
+        addMarketingItemFromPanel( product, item ){
             item.quantity++;
             this.cart.forEach(m => {
-                if (m.eventId == product.eventId) {
+                if ( m.eventId == product.eventId ) {
                     m.products.forEach(n => {
                         if ( n.pId == item.pId ) {
                             n.quantity++;
@@ -1174,7 +1038,7 @@ var vue = new Vue({
         removeMarketingItemFromPanel(product, item){
             item.quantity--;
             this.cart.forEach(m => {
-                if (m.eventId == product.eventId) {
+                if ( m.eventId == product.eventId ) {
                     m.products.forEach(n => {
                         if ( n.pId == item.pId ) {
                             n.quantity--;
@@ -1194,12 +1058,12 @@ var vue = new Vue({
             this.advertModal = false;
         },
         // remove an advert from the cart
-        removeAdvert(advert){
+        removeAdvert( advert ){
             this.total -= advert.price;
             this.cart = this.cart.filter( m => m.name !== advert.name );
         },
         // add a booth to the cart
-        addBoothToCart(product, subitem){
+        addBoothToCart( product, subitem ){
             this.cart.forEach(m => {
                 if ( m.booths && m.id == product.id ){
                     this.total -= m.price;
@@ -1325,6 +1189,4 @@ var vue = new Vue({
         this.callEndpoint( this.endpoint );
         this.setBaseCurrency( this.defaultCurrency );
     },
-    mounted(){
-    }
 })
