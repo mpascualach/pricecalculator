@@ -332,28 +332,24 @@ var vue = new Vue({
                                     item = this.createMarketingSubItem( n, m, newProduct[n], event );
                                     if ( n == "Bag insert - non-paper (agent bag)" ) {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "non-paper-agent-bag" );
-                                        newProduct.items.push( item );
+                                        
                                     }
                                     else if ( n == "Bag insert - non-paper  (educator bag)" ) {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "non-paper-edu-bag" );
-                                        newProduct.items.push( item );
                                     }
                                     else if ( n == "Bag insert - paper (agent bag)" ) {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "paper-agent-bag" );
-                                        newProduct.items.push( item );
                                     }
                                     else if ( n == "Bag insert - paper (educator bag)" ) {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "paper-edu-bag" );
-                                        newProduct.items.push( item );
                                     }
                                     else if (n == "Bag tags (agent bags)") {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "bag-tags" );
-                                        newProduct.items.push( item );
                                     }
                                     else if (n == "Bag tags (provider bags)") {
                                         item.price = this.setSponsorshipPackagePrice( event.Event_Name, "bag-tags" );
-                                        newProduct.items.push( item );
                                     }
+                                    newProduct.items.push( item );
                                 })
                             }
                             else if ( m == "Workshop Catalogue/Guide" ){

@@ -757,6 +757,14 @@ button.marketing-choice.v-btn.theme--light {
     margin: 10px;
 }
 
+.marketing-choice {
+    border: 2px solid #0047A4!important;
+    border-radius: 6px!important;
+    color: #00479e!important;
+    background-color: white!important;
+    box-shadow: none!important;
+}
+
 .marketing-choice-available-container {
     position: absolute;
     right: 7%;

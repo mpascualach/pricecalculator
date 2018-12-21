@@ -189,7 +189,7 @@
                                                         <span>{{ product.tablesQuantity }}</span>
                                                         <i class="fa fa-plus-square smaller add-table" 
                                                             v-on:click="addTable( product )"
-                                                            v-if="0 >= parseInt( product.EduTablesFree ) - product.tablesQuantity">
+                                                            v-if="parseInt( product.EduTablesFree ) - product.tablesQuantity >= 0">
                                                         </i>
                                                     </div>
                                                     
@@ -322,7 +322,7 @@
                                                                         </span>
                                                                         <i class="fa fa-plus" 
                                                                             v-on:click="addMarketingItemFromPanel(product, type)"
-                                                                            v-if="0 >= (type.available - type.quantity)">
+                                                                            v-if="(type.available - type.quantity) >= 0">
                                                                         </i>
                                                                     </div>
                                                                     <div>
