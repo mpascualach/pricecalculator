@@ -122,11 +122,27 @@
                                                                 {{ currencySymbol }}{{ product.form_edu_rate_early_usd_1st__c | moneyify }}!</span>
                                                                 <span v-else-if="product.form_edu_rate_early_aud_1st__c"> Early rate:
                                                                 {{ currencySymbol }}{{ product.form_edu_rate_early_aud_1st__c | moneyify }}!</span>
+                                                                <!-- <span v-if="product.selectedearly && product.form_edu_rate_early_eur_1st__c" class="early-notification">
+                                                                    Early discount rates have been applied at {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!
+                                                                </span>
+                                                                <span v-else-if="product.selectedearly && product.form_edu_rate_early_aud_1st__c" class="early-notification">
+                                                                    Early discount rates have been applied at {{ currencySymbol }}{{ product.form_edu_rate_early_aud_1st__c | moneyify }}!
+                                                                </span>
+                                                                <span v-else-if="product.selectedearly && product.form_edu_rate_early_usd_1st__c" class="early-notification">
+                                                                    Early discount rates have been applied at {{ currencySymbol }}{{ product.form_edu_rate_early_usd_1st__c | moneyify }}!
+                                                                </span> -->
+                                                            </span>
+                                                            <span v-else-if="product.selectedearly" class="early-notification">
+                                                                Early rate discounts have been applied at {{ currencySymbol }}<span v-if="product.form_edu_rate_early_eur_1st__c">
+                                                                    {{ product.form_edu_rate_early_eur_1st__c | moneyify }}!
+                                                                </span>
+                                                                <span v-if="product.form_edu_rate_early_aud_1st__c">{{ product.form_edu_rate_early_aud_1st__c | moneyify }}!</span>
+                                                                <span v-if="product.form_edu_rate_early_usd_1st__c">{{ product.form_edu_rate_early_usd_1st__c | moneyify }}!</span>
+                                                            </span>
                                                             <span v-else-if="product.endofearly && product.selectedearly" class="early-notification  multiple-bookings">
                                                                 Early discount rates are no longer applicable.
                                                             </span>
-                                                            <span v-else-if="product.selectedearly" class="early-notification">Early discount
-                                                                rates have been applied at {{ currencySymbol }}{{ product.form_edu_rate_early_eur_1st__c | moneyify }}!</span>
+                                                            
                                                         </div>
                                                         <div class="price-container">
                                                             <div class="product-price" v-if="product.form_edu_rate_regular_eur_1st__c">
@@ -1674,7 +1690,7 @@
                 </div>
 
                 <template>
-                    <v-form v-model="valid">
+                    <v-form v-model="validEmail">
                         <div class="checkout-section">
                             <v-text-field class="email-box" label="Email"></v-text-field>
                         </div>
