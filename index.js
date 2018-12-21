@@ -212,39 +212,45 @@ var vue = new Vue({
                 ] 
             }
         ],
+        //totals
         total: 0,
         subitemtotal: 0,
         earlytotal: 0,
-        discount: 1,
-        saved: 0,
-        regularWorkshops: 0,
-        limitReached: false,
-        earlyRates: true,
-        checkout: false,
-        checkoutscreen: {},
-        selectedWorkshops: [],
-        advertModal: false,
-        choiceModal: false,
-        boothModal: false,
-        infoModal: false,
-        cartAtBottom: true,
-        footerExpanded: false,
-        valid: false,
-        accountType: 'educator', //can be 'educator', 'exhibitor' and 'work_and_travel'
-        attendBooths: false, //determines whether the user is buying an exhibition booth or another fo
-        currentDate: new Date(), //current date
-        fullDate: (new Date()).getFullYear() + "" + (new Date()).getMonth() + "" + (new Date()).getDate(), //to determine whether early bird rates apply - collating YY/MM/DD format dates as a single number
-        fixer: {}, //with regards to fixer.io
+        //currency-related
+        fixer: {}, 
         fixerRates: {},
         allowedCurrencies: ["EUR","GBP","USD","CAD","AUD"],
         currentCurrency: "EUR",
         currencySymbol: "€",
         defaultCurrency: "EUR",
-        loaded: false,
+        //products-related
         endpoint: "https://dev.live.my.icef.com/api3/allAvailableProducts.php",
         products: {},
         productKeys: [],
         productsArray: [],
+        //discount-related
+        discount: 1,
+        regularWorkshops: 0,
+        earlyRates: true,
+        //cart-related
+        cartAtBottom: true,
+        footerExpanded: false,
+        //modals
+        advertModal: false,
+        choiceModal: false,
+        boothModal: false,
+        infoModal: false,
+        //checkout-related
+        checkout: false,
+        selectedWorkshops: [],
+        //other
+        limitReached: false,
+        loaded: false,
+        attendBooths: false,
+        accountType: 'educator', //can be 'educator', 'exhibitor' and 'work_and_travel'
+        
+        
+        
     },
     filters: {
         // we change each displayed price to fit the format exemplified on icef.design/main and the icef ratesheet among other places
@@ -675,7 +681,6 @@ var vue = new Vue({
             }
             if (m.products) {
                 m.products.marketing_and_sponsorships.forEach(n => {
-                    // console.log(n);
                     n.items.forEach(p => {
                         p.price = this.changeCurrency( p.price, oldCurrency, this.currentCurrency );
                     })
@@ -783,7 +788,6 @@ var vue = new Vue({
                     this.currencySymbol = "$";
             }
             if ( this.productsArray.length ) {
-                console.log("Refilling array!")
                 this.productsArray = [];
                 this.fillProductsArray(this.products);
             }
@@ -827,7 +831,6 @@ var vue = new Vue({
                 price: addPeoplePrice,
                 quantity: 0
             }
-            console.log("Cartitem: ", cartitem)
             cartitem.products = [];
             cartitem.sponsorship = {};
             cartitem.sponsorshipSelected = false;
@@ -848,7 +851,6 @@ var vue = new Vue({
             //     }
             // } //log price of subitem and assign it to copy's price
             this.cart.unshift( cartitem ); //push copy of product into cart
-            console.log(this.total, cartitem.price)
             this.total += cartitem.price;
             product.tablesQuantity++;
             product.incart = true;
@@ -895,7 +897,6 @@ var vue = new Vue({
                 product.products.sponsorships.platinum.pressed = false;
                 product.products.sponsorships.gold.pressed = false;
                 product.products.sponsorships.silver.pressed = false;
-                console.log("Product: ", product)
             }
             else {
                 this.productsArray.forEach(m => {
@@ -1069,7 +1070,6 @@ var vue = new Vue({
                                     product.products.sponsorships.gold.pressed = false;
                             }
                             this.total += m.sponsorship.price;
-                            console.log("Products: ", product.products);
                         }
                     }
                 })
@@ -1128,11 +1128,9 @@ var vue = new Vue({
                 quantity: 1
             }
             item.quantity++;
-            console.log("Item: ", item);
             this.cart.forEach(m => {
                 if (m.eventId == productItem.eventId) {
                     m.products.push(productItem);
-                    console.log(m.products);
                 }
             })
             this.total += item.price;
@@ -1166,7 +1164,6 @@ var vue = new Vue({
         },
         // add an advert to the cart
         addAdvert( subitem ){
-            console.log( subitem );
             cartitem = Object.assign( {}, subitem );
             cartitem.quantity++;
             this.cart.unshift( cartitem );
