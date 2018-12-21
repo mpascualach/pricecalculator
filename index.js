@@ -273,6 +273,27 @@ var vue = new Vue({
                 this.activateFixer( res );
             })
         },
+        activateFixer( ) {
+            axios.get(
+                'https://data.fixer.io/api/latest?access_key=2a8bbb1fd33e5a65dc1404de3d7bd38b&base='
+                + this.currentCurrency)
+            .then(response => {
+                this.fixer = response.data;
+                this.fixerRates = this.fixer.rates;
+
+                if ( typeof fx !== "undefined " && fx.rates ) {
+                    fx.rates = this.fixer.rates;
+                    fx.base = this.fixer.base;
+                }
+                else {
+                    var fxSetup = {
+                        rates: this.fixer.rates,
+                        base: this.fixer.base
+                    };
+                }
+                this.fillProductsArray(this.products)
+            });
+        },
         fillProductsArray( products ) {
             this.productKeys = Object.keys( products );
             for ( let i = 0; i < this.productKeys.length; i++ ) {
@@ -635,152 +656,61 @@ var vue = new Vue({
             }
             this.loaded = true;
         },
-        activateFixer( ) {
-            axios.get(
-                'https://data.fixer.io/api/latest?access_key=2a8bbb1fd33e5a65dc1404de3d7bd38b&base='
-                + this.currentCurrency)
-            .then(response => {
-                this.fixer = response.data;
-                this.fixerRates = this.fixer.rates;
-
-                if ( typeof fx !== "undefined " && fx.rates ) {
-                    fx.rates = this.fixer.rates;
-                    fx.base = this.fixer.base;
-                }
-                else {
-                    var fxSetup = {
-                        rates: this.fixer.rates,
-                        base: this.fixer.base
-                    };
-                }
-                this.fillProductsArray(this.products)
-            });
+        changeCurrency(price,oldCurrency,newCurrency) {
+            return parseInt(
+                fx.convert(price, {
+                    from: oldCurrency,
+                    to: newCurrency
+                }).toFixed()
+            )
         },
         setCurrencyChange( m ) {
-            switch ( m.form_edu_available_currency__c ) {
+            let oldCurrency = "USD;CAD" ? "USD" : m.form_edu_available_currency__c;
+            switch ( oldCurrency ) {
                 case 'AUD':
-                    m.form_edu_rate_early_aud_1st__c = parseInt(
-                        fx.convert(m.form_edu_rate_early_aud_1st__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed());
-
-                    m.form_edu_rate_early_aud_2nd__c = parseInt(
-                        fx.convert(m.form_edu_rate_early_aud_2nd__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed())
-
-                    m.form_edu_rate_early_aud_acc__c = parseInt(
-                        fx.convert(m.form_edu_rate_early_aud_acc__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed())
-
-                    m.form_edu_rate_regular_aud_1st__c = parseInt(
-                        fx.convert(m.form_edu_rate_regular_aud_1st__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed());
-
-                    m.form_edu_rate_regular_aud_2nd__c = parseInt(
-                        fx.convert(m.form_edu_rate_regular_aud_2nd__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed());
-
-                    m.form_edu_rate_regular_aud_acc__c = parseInt(
-                        fx.convert(m.form_edu_rate_regular_aud_acc__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed());
-
+                    m.form_edu_rate_early_aud_1st__c = this.changeCurrency( m.form_edu_rate_early_aud_1st__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_early_aud_2nd__c = this.changeCurrency( m.form_edu_rate_early_aud_2nd__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_early_aud_acc__c = this.changeCurrency( m.form_edu_rate_early_aud_acc__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_regular_aud_1st__c = this.changeCurrency( m.form_edu_rate_regular_aud_1st__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_regular_aud_1st__c = this.changeCurrency( m.form_edu_rate_regular_aud_2nd__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_regular_aud_acc__c = this.changeCurrency( m.form_edu_rate_regular_aud_acc__c, oldCurrency, this.currentCurrency );
+                    
                     m.currencyDisclaimer = "Converted from AUD";
                     break;
 
                 case 'USD;CAD':
-                    if (m.form_edu_rate_early_usd_1st__c) {
-                        m.form_edu_rate_early_usd_1st__c = parseInt(
-                            fx.convert(m.form_edu_rate_regular_usd_1st__c, {  
-                                from: "USD",
-                                to: this.currentCurrency
-                            }).toFixed());
+                    m.form_edu_rate_early_usd_1st__c = this.changeCurrency( m.form_edu_rate_early_usd_1st__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_early_usd_2nd__c = this.changeCurrency( m.form_edu_rate_early_usd_2nd__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_early_usd_acc__c = this.changeCurrency( m.form_edu_rate_early_usd_acc__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_regular_usd_1st__c = this.changeCurrency( m.form_edu_rate_regular_usd_1st__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_regular_usd_1st__c = this.changeCurrency( m.form_edu_rate_regular_usd_2nd__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_regular_usd_acc__c = this.changeCurrency( m.form_edu_rate_regular_usd_acc__c, oldCurrency, this.currentCurrency );
 
-
-                        m.form_edu_rate_early_usd_2nd__c = parseInt(
-                            fx.convert(m.form_edu_rate_early_usd_2nd__c, {  
-                                from: "USD",
-                                to: this.currentCurrency
-                            }).toFixed())
-    
-                        m.form_edu_rate_early_aud_acc__c = parseInt(
-                            fx.convert(m.form_edu_rate_early_usd_acc__c, {  
-                                from: "USD",
-                                to: this.currentCurrency
-                            }).toFixed())
-    
-                        m.form_edu_rate_regular_aud_1st__c = parseInt(
-                            fx.convert(m.form_edu_rate_regular_usd_1st__c, {  
-                                from: "USD",
-                                to: this.currentCurrency
-                            }).toFixed());
-    
-                        m.form_edu_rate_regular_aud_2nd__c = parseInt(
-                            fx.convert(m.form_edu_rate_regular_usd_2nd__c, {  
-                                from: "USD",
-                                to: this.currentCurrency
-                            }).toFixed());
-    
-                        m.form_edu_rate_regular_aud_acc__c = parseInt(
-                            fx.convert(m.form_edu_rate_regular_usd_acc__c, {  
-                                from: "USD",
-                                to: this.currentCurrency
-                            }).toFixed());
-
-                        m.currencyDisclaimer = "Converted from USD;CAD";
-                    }
+                    m.currencyDisclaimer = "Converted from USD;CAD";
                     break;
 
                 case 'EUR':
-                    m.form_edu_rate_early_eur_1st__c = parseInt(
-                        fx.convert(m.form_edu_rate_regular_eur_1st__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed());
-
-                    m.form_edu_rate_regular_eur_2nd__c = parseInt(
-                        fx.convert(m.form_edu_rate_early_eur_2nd__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed())
-
-                    m.form_edu_rate_early_eur_acc__c = parseInt(
-                        fx.convert(m.form_edu_rate_early_eur_acc__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed())
-
-                    m.form_edu_rate_regular_eur_1st__c = parseInt(
-                        fx.convert(m.form_edu_rate_regular_eur_1st__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed());
-
-                    m.form_edu_rate_regular_eur_2nd__c = parseInt(
-                        fx.convert(m.form_edu_rate_regular_eur_2nd__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed());
-
-                    m.form_edu_rate_regular_eur_acc__c = parseInt(
-                        fx.convert(m.form_edu_rate_regular_eur_acc__c, {  
-                            from: m.form_edu_available_currency__c,
-                            to: this.currentCurrency
-                        }).toFixed());
+                    m.form_edu_rate_early_eur_1st__c = this.changeCurrency( m.form_edu_rate_early_eur_1st__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_early_eur_2nd__c = this.changeCurrency( m.form_edu_rate_early_eur_2nd__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_early_eur_acc__c = this.changeCurrency( m.form_edu_rate_early_eur_acc__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_regular_eur_1st__c = this.changeCurrency( m.form_edu_rate_regular_eur_1st__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_regular_eur_1st__c = this.changeCurrency( m.form_edu_rate_regular_eur_2nd__c, oldCurrency, this.currentCurrency );
+                    m.form_edu_rate_regular_eur_acc__c = this.changeCurrency( m.form_edu_rate_regular_eur_acc__c, oldCurrency, this.currentCurrency );
 
                     m.currencyDisclaimer = "Converted from EUR";
-                    
-                    console.log(m);
+            }
+            if (m.products) {
+                m.products.marketing_and_sponsorships.forEach(n => {
+                    n.items.forEach(p => {
+                        p.price = this.changeCurrency( p.price, oldCurrency, this.currentCurrency );
+                    })
+                })
+                if (m.products.sponsorships) {
+                    m.products.sponsorships.platinum.price = this.changeCurrency( m.products.sponsorships.platinum.price, oldCurrency, this.currentCurrency );
+                    m.products.sponsorships.gold.price = this.changeCurrency( m.products.sponsorships.gold.price, oldCurrency, this.currentCurrency );
+                    m.products.sponsorships.silver.price = this.changeCurrency( m.products.sponsorships.silver.price, oldCurrency, this.currentCurrency );
+                }
+                
             }
             return m;
         },
